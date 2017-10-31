@@ -4,11 +4,12 @@
     <script type="text/javascript">
         function AdjustSize() {
             var TabHeight = 28;
+            var ControlHeight = 27;
             var MainHeight = ASPxClientUtils.GetDocumentClientHeight();
             if (document.body.scrollHeight > MainHeight) { MainHeight = document.body.scrollHeight; }
             var GridHeight = MainHeight - HeaderPanel.GetHeight() - FooterPanel.GetHeight() - TabHeight;
             if (typeof GvLevelA !== 'undefined') { GvLevelA.SetHeight(0); GvLevelA.SetHeight(GridHeight); }
-            if (typeof GvLevelB !== 'undefined') { GvLevelB.SetHeight(0); GvLevelB.SetHeight(GridHeight); }
+            if (typeof GvLevelB !== 'undefined') { GvLevelB.SetHeight(0); GvLevelB.SetHeight(GridHeight - ControlHeight); }
             if (typeof GvLevelC !== 'undefined') { GvLevelC.SetHeight(0); GvLevelC.SetHeight(GridHeight); }
             if (typeof GvLevelD !== 'undefined') { GvLevelD.SetHeight(0); GvLevelD.SetHeight(GridHeight); }
         }
@@ -277,7 +278,35 @@
                                 <asp:Parameter Name="ProjectTaskTransmit" Type="DateTime" />
                                 <asp:Parameter Name="ProjectTaskDescription" Type="String" />     
                             </UpdateParameters>
-                        </asp:ObjectDataSource>                    
+                        </asp:ObjectDataSource>    
+                        
+                        <table style="width:100%;border-spacing:0">
+    <tr>
+        <td style="text-align:right;padding-right:3px">
+            <dx:ASPxLabel ID="GvLevelCLabel" runat="server" Text="Chọn điều kiện lọc đơn hàng [ Trạng thái / Độ ưu tiên ]: " Font-Bold="true" />
+        </td>
+        <td style="width:128px;text-align:right;padding-right:3px">
+            <dx:ASPxComboBox runat="server" Width="128" Height="25" ID="CbFilter" ClientSideEvents-TextChanged="function(s, e) { GvLevelA.PerformCallback();}">
+                <Items>
+                    <dx:ListEditItem Text="Chưa bắt đầu" Value="notStart" />
+                    <dx:ListEditItem Text="Đang chạy" Value="Run" Selected="true" />
+                    <dx:ListEditItem Text="Bị hủy bỏ" Value="Destroy" />
+                    <dx:ListEditItem Text="Hoàn thành" Value="Finish" />
+                </Items>
+            </dx:ASPxComboBox>
+        </td>
+        <td style="width:128px;text-align:right;padding-right:3px">
+            <dx:ASPxComboBox runat="server" Width="128" Height="25" ID="ASPxComboBox1" ClientSideEvents-TextChanged="function(s, e) { GvLevelA.PerformCallback();}">
+                <Items>
+                    <dx:ListEditItem Text="Ưu tiên cao" Value="Hight" />
+                    <dx:ListEditItem Text="Bình thường" Value="Normal" Selected="true" />
+                    <dx:ListEditItem Text="Không ưu tiên" Value="Low" />
+                </Items>
+            </dx:ASPxComboBox>
+        </td>
+    </tr>
+</table>
+                                       
                     </dx:ContentControl>
                 </ContentCollection>
             </dx:TabPage>
