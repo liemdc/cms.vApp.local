@@ -76,7 +76,7 @@
                                     </dx:GridViewDataComboBoxColumn>
                                     </Columns>
                                     <HeaderStyle HorizontalAlign="Left" />
-                                    </dx:GridViewBandColumn>
+                                </dx:GridViewBandColumn>
                             </Columns>
                             <ClientSideEvents Init="OnInit" BeginCallback="OnBeginCallback" EndCallback="OnEndCallback" />
                             <SettingsContextMenu Enabled="true" />

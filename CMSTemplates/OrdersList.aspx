@@ -216,12 +216,35 @@
                                         <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
                                     </PropertiesComboBox>
                                 </dx:GridViewDataComboBoxColumn>
+
+                                <dx:GridViewBandColumn Caption="Dự kiến / Thực tế: Thô qua Tinh">
+                                    <Columns>
+                                        <dx:GridViewDataTextColumn FieldName="" Caption="Dự kiến" Width="120">
+                                            <PropertiesTextEdit ValidationSettings-Display="Dynamic" ValidationSettings-RequiredField-IsRequired="true" ValidationSettings-RequiredField-ErrorText="Data is required." />
+                                        </dx:GridViewDataTextColumn> 
+                                        <dx:GridViewDataTextColumn FieldName="" Caption="Thực tế" Width="120">
+                                            <PropertiesTextEdit ValidationSettings-Display="Dynamic" ValidationSettings-RequiredField-IsRequired="true" ValidationSettings-RequiredField-ErrorText="Data is required." />
+                                        </dx:GridViewDataTextColumn>
+                                    </Columns>
+                                    <HeaderStyle HorizontalAlign="Left" />
+                                </dx:GridViewBandColumn>
+                                <dx:GridViewBandColumn Caption="Dự kiến / Thực tế: Tinh qua QA">
+                                    <Columns>
+                                        <dx:GridViewDataTextColumn FieldName="" Caption="Dự kiến" Width="120">
+                                            <PropertiesTextEdit ValidationSettings-Display="Dynamic" ValidationSettings-RequiredField-IsRequired="true" ValidationSettings-RequiredField-ErrorText="Data is required." />
+                                        </dx:GridViewDataTextColumn> 
+                                        <dx:GridViewDataTextColumn FieldName="" Caption="Thực tế" Width="120">
+                                            <PropertiesTextEdit ValidationSettings-Display="Dynamic" ValidationSettings-RequiredField-IsRequired="true" ValidationSettings-RequiredField-ErrorText="Data is required." />
+                                        </dx:GridViewDataTextColumn>
+                                    </Columns>
+                                    <HeaderStyle HorizontalAlign="Left" />
+                                </dx:GridViewBandColumn>
                             </Columns>
                             <ClientSideEvents Init="OnInit" BeginCallback="OnBeginCallback" EndCallback="OnEndCallback" ColumnResized="function(s, e) { OnColumnResized(s, e, 0); }" />
                             <SettingsContextMenu Enabled="true" />
                             <SettingsPager Mode="ShowPager" PageSize="50" PageSizeItemSettings-Visible="true" PageSizeItemSettings-Position="Right" />
                             <SettingsBehavior AllowDragDrop="true" ConfirmDelete="true" ColumnResizeMode="Control" EnableCustomizationWindow="true" EnableRowHotTrack="true" />
-                            <Settings ShowHeaderFilterButton="true" VerticalScrollBarMode="Visible" HorizontalScrollBarMode="Hidden" />
+                            <Settings ShowHeaderFilterButton="true" VerticalScrollBarMode="Visible" HorizontalScrollBarMode="Visible" />
                             <SettingsEditing Mode="PopupEditForm" EditFormColumnCount="1" />
                             <SettingsPopup EditForm-Width="480" EditForm-Modal="true" EditForm-HorizontalAlign="WindowCenter" EditForm-VerticalAlign="WindowCenter" />
                             <SettingsDetail ShowDetailRow="True" AllowOnlyOneMasterRowExpanded="true"/>
