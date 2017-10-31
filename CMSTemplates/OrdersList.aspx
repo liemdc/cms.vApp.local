@@ -27,8 +27,8 @@
                             Border-BorderWidth="0" OnFillContextMenuItems="GvLevelA_FillContextMenuItems" SettingsEditing-EditFormColumnCount="3" OnCustomColumnDisplayText="OnCustomColumnDisplayText" OnContextMenuItemClick="GvLevelA_ContextMenuItemClick" OnInitNewRow="GvLevelA_InitNewRow">                                    
                             <Columns>
                                 <dx:GridViewDataTextColumn VisibleIndex="0" Caption="Num" Width="58" Settings-AllowSort="False" Settings-AllowHeaderFilter="False" EditFormSettings-Visible="False" UnboundType="String" FixedStyle="Left" />
-                                <dx:GridViewDataTextColumn VisibleIndex="1" EditFormSettings-VisibleIndex="1" FieldName="ProjectTaskMoldCode" Caption="Mã số khuôn" Width="148" FixedStyle="Left" />  
-                                <dx:GridViewDataTextColumn VisibleIndex="2" EditFormSettings-VisibleIndex="2" FieldName="ProjectTaskOverlayNum" Caption="Số phủ" Width="148" FixedStyle="Left" /> 
+                                <dx:GridViewDataTextColumn VisibleIndex="1" EditFormSettings-VisibleIndex="1" FieldName="ProjectTaskMoldCode" Caption="Mã số khuôn" Width="120" FixedStyle="Left" />  
+                                <dx:GridViewDataTextColumn VisibleIndex="2" EditFormSettings-VisibleIndex="2" FieldName="ProjectTaskOverlayNum" Caption="Số phủ" Width="120" FixedStyle="Left" /> 
                                 <dx:GridViewDataSpinEditColumn VisibleIndex="3" EditFormSettings-VisibleIndex="3" FieldName="ProjectTaskHoleNum" Caption="Số lỗ" Width="88" PropertiesSpinEdit-NumberType="Integer" />
                                 <dx:GridViewDataSpinEditColumn VisibleIndex="4" EditFormSettings-VisibleIndex="4" FieldName="ProjectTaskDiameterOut" Caption="ĐK ngoài" Width="88" PropertiesSpinEdit-NumberType="Float" PropertiesSpinEdit-DecimalPlaces="2" />
                                 <dx:GridViewDataTextColumn VisibleIndex="5" EditFormSettings-VisibleIndex="5" FieldName="ProjectTaskMaterialsRequire" Caption="NVL KH yêu cầu" Width="128" />  
@@ -174,8 +174,8 @@
                             Border-BorderWidth="0" OnFillContextMenuItems="GvLevelB_FillContextMenuItems" OnCustomColumnDisplayText="OnCustomColumnDisplayText">                                    
                             <Columns>
                                 <dx:GridViewDataTextColumn VisibleIndex="0" Caption="Num" Width="48" Settings-AllowSort="False" Settings-AllowHeaderFilter="False" EditFormSettings-Visible="False" UnboundType="String" FixedStyle="Left" />
-                                <dx:GridViewDataTextColumn VisibleIndex="1" EditFormSettings-VisibleIndex="1" FieldName="ProjectTaskMoldCode" Caption="Mã số khuôn" Width="148" FixedStyle="Left" EditFormSettings-Visible="False" />  
-                                <dx:GridViewDataTextColumn VisibleIndex="2" EditFormSettings-VisibleIndex="2" FieldName="ProjectTaskOverlayNum" Caption="Số phủ" Width="148" FixedStyle="Left" EditFormSettings-Visible="False" /> 
+                                <dx:GridViewDataTextColumn VisibleIndex="1" EditFormSettings-VisibleIndex="1" FieldName="ProjectTaskMoldCode" Caption="Mã số khuôn" Width="120" FixedStyle="Left" EditFormSettings-Visible="False" />  
+                                <dx:GridViewDataTextColumn VisibleIndex="2" EditFormSettings-VisibleIndex="2" FieldName="ProjectTaskOverlayNum" Caption="Số phủ" Width="120" FixedStyle="Left" EditFormSettings-Visible="False" /> 
                                 <dx:GridViewDataComboBoxColumn VisibleIndex="7" EditFormSettings-VisibleIndex="7" FieldName="ProjectTaskMoldsId" Caption="Phân loại" Width="88" EditFormSettings-Visible="False">
                                     <PropertiesComboBox DataSourceID="OdsMolds" TextField="MoldsName" ValueField="MoldsId" ValueType="System.Int32" IncrementalFilteringMode="StartsWith" TextFormatString="{0}" EnableSynchronization="False">
                                         <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
@@ -186,11 +186,33 @@
                                     </PropertiesComboBox>
                                 </dx:GridViewDataComboBoxColumn>                                
                                 <dx:GridViewDataSpinEditColumn VisibleIndex="10" EditFormSettings-VisibleIndex="10" FieldName="ProjectTaskQuantities" Caption="Số lượng" Width="78" PropertiesSpinEdit-NumberType="Integer" EditFormSettings-Visible="False" />
-                                <dx:GridViewDataComboBoxColumn VisibleIndex="16" EditFormSettings-VisibleIndex="0" FieldName="ProjectTaskCustomerId" Caption="Khách hàng" Width="100" EditFormSettings-Visible="False">
+                                <dx:GridViewDataComboBoxColumn VisibleIndex="14" EditFormSettings-VisibleIndex="0" FieldName="ProjectTaskCustomerId" Caption="Khách hàng" Width="100" EditFormSettings-Visible="False">
                                     <PropertiesComboBox DataSourceID="OdsCustomer" TextField="CustomerName" ValueField="CustomerId" ValueType="System.Int32" IncrementalFilteringMode="StartsWith">
                                         <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
                                     </PropertiesComboBox>
                                 </dx:GridViewDataComboBoxColumn>   
+                                <dx:GridViewBandColumn Caption="Dự kiến / Thực tế: Thô qua Tinh" VisibleIndex="15">
+                                    <Columns>
+                                        <dx:GridViewDataTextColumn FieldName="" Caption="Dự kiến" Width="120">
+                                            <PropertiesTextEdit ValidationSettings-Display="Dynamic" ValidationSettings-RequiredField-IsRequired="true" ValidationSettings-RequiredField-ErrorText="Data is required." />
+                                        </dx:GridViewDataTextColumn> 
+                                        <dx:GridViewDataTextColumn FieldName="" Caption="Thực tế" Width="120">
+                                            <PropertiesTextEdit ValidationSettings-Display="Dynamic" ValidationSettings-RequiredField-IsRequired="true" ValidationSettings-RequiredField-ErrorText="Data is required." />
+                                        </dx:GridViewDataTextColumn>
+                                    </Columns>
+                                    <HeaderStyle HorizontalAlign="Left" />
+                                </dx:GridViewBandColumn>
+                                <dx:GridViewBandColumn Caption="Dự kiến / Thực tế: Tinh qua QA" VisibleIndex="16">
+                                    <Columns>
+                                        <dx:GridViewDataTextColumn FieldName="" Caption="Dự kiến" Width="120">
+                                            <PropertiesTextEdit ValidationSettings-Display="Dynamic" ValidationSettings-RequiredField-IsRequired="true" ValidationSettings-RequiredField-ErrorText="Data is required." />
+                                        </dx:GridViewDataTextColumn> 
+                                        <dx:GridViewDataTextColumn FieldName="" Caption="Thực tế" Width="120">
+                                            <PropertiesTextEdit ValidationSettings-Display="Dynamic" ValidationSettings-RequiredField-IsRequired="true" ValidationSettings-RequiredField-ErrorText="Data is required." />
+                                        </dx:GridViewDataTextColumn>
+                                    </Columns>
+                                    <HeaderStyle HorizontalAlign="Left" />
+                                </dx:GridViewBandColumn>
                                 <dx:GridViewDataDateColumn FieldName="ProjectTaskTransmit" Caption="Ngày nhận" VisibleIndex="17" Width="118"> 
                                     <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm">
                                         <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
@@ -216,29 +238,6 @@
                                         <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
                                     </PropertiesComboBox>
                                 </dx:GridViewDataComboBoxColumn>
-
-                                <dx:GridViewBandColumn Caption="Dự kiến / Thực tế: Thô qua Tinh">
-                                    <Columns>
-                                        <dx:GridViewDataTextColumn FieldName="" Caption="Dự kiến" Width="120">
-                                            <PropertiesTextEdit ValidationSettings-Display="Dynamic" ValidationSettings-RequiredField-IsRequired="true" ValidationSettings-RequiredField-ErrorText="Data is required." />
-                                        </dx:GridViewDataTextColumn> 
-                                        <dx:GridViewDataTextColumn FieldName="" Caption="Thực tế" Width="120">
-                                            <PropertiesTextEdit ValidationSettings-Display="Dynamic" ValidationSettings-RequiredField-IsRequired="true" ValidationSettings-RequiredField-ErrorText="Data is required." />
-                                        </dx:GridViewDataTextColumn>
-                                    </Columns>
-                                    <HeaderStyle HorizontalAlign="Left" />
-                                </dx:GridViewBandColumn>
-                                <dx:GridViewBandColumn Caption="Dự kiến / Thực tế: Tinh qua QA">
-                                    <Columns>
-                                        <dx:GridViewDataTextColumn FieldName="" Caption="Dự kiến" Width="120">
-                                            <PropertiesTextEdit ValidationSettings-Display="Dynamic" ValidationSettings-RequiredField-IsRequired="true" ValidationSettings-RequiredField-ErrorText="Data is required." />
-                                        </dx:GridViewDataTextColumn> 
-                                        <dx:GridViewDataTextColumn FieldName="" Caption="Thực tế" Width="120">
-                                            <PropertiesTextEdit ValidationSettings-Display="Dynamic" ValidationSettings-RequiredField-IsRequired="true" ValidationSettings-RequiredField-ErrorText="Data is required." />
-                                        </dx:GridViewDataTextColumn>
-                                    </Columns>
-                                    <HeaderStyle HorizontalAlign="Left" />
-                                </dx:GridViewBandColumn>
                             </Columns>
                             <ClientSideEvents Init="OnInit" BeginCallback="OnBeginCallback" EndCallback="OnEndCallback" ColumnResized="function(s, e) { OnColumnResized(s, e, 0); }" />
                             <SettingsContextMenu Enabled="true" />
