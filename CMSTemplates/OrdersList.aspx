@@ -297,7 +297,7 @@
                         <asp:ObjectDataSource ID="OdsTaskPriority" runat="server" TypeName="OrdersModels" SelectMethod="TaskPriorityList" />
                         <asp:ObjectDataSource ID="OdsLevelB" runat="server" TypeName="OrdersModels" SelectMethod="OrdersListNd" UpdateMethod="OrdersUpdatedNd">
                             <SelectParameters>
-                                <asp:ControlParameter ControlID="CbTaskStatus" Name="TaskStatus" Type="String" />
+                                <asp:ControlParameter ControlID="CbTaskStatus" Name="TaskStatus" Type="Int32" />
                                 <asp:ControlParameter ControlID="CbTaskPriority" Name="TaskPriority" Type="Int32" />
                             </SelectParameters>
                             <UpdateParameters>
@@ -316,18 +316,20 @@
                                     <dx:ASPxLabel ID="GvLevelCLabel" runat="server" Text="Chọn điều kiện lọc đơn hàng [ Trạng thái / Độ ưu tiên ]: " Font-Bold="true" />
                                 </td>
                                 <td style="width:128px;text-align:right;padding-right:3px">
-                                    <dx:ASPxComboBox runat="server" Width="148" Height="25" ID="CbTaskStatus" OnTextChanged="CbTaskData_TextChanged" ClientSideEvents-TextChanged="function(s, e) { OdsLevelB.PerformCallback();}">
+                                    <dx:ASPxComboBox runat="server" Width="148" Height="25" ID="CbTaskStatus" OnTextChanged="CbTaskData_TextChanged" ClientSideEvents-TextChanged="function(s, e) { GvLevelB.PerformCallback();}">
                                         <Items>
-                                            <dx:ListEditItem Text="Chưa bắt đầu" Value="notStart" />
-                                            <dx:ListEditItem Text="Đang chạy" Value="Run" Selected="true" />
-                                            <dx:ListEditItem Text="Bị hủy bỏ" Value="Destroy" />
-                                            <dx:ListEditItem Text="Hoàn thành" Value="Finish" />
+                                            <dx:ListEditItem Text="Chọn tất cả" Value="10" />
+                                            <dx:ListEditItem Text="Chưa bắt đầu" Value="2" />
+                                            <dx:ListEditItem Text="Đang chạy" Value="3" Selected="true" />
+                                            <dx:ListEditItem Text="Bị hủy bỏ" Value="6" />
+                                            <dx:ListEditItem Text="Hoàn thành" Value="7" />
                                         </Items>
                                     </dx:ASPxComboBox>
                                 </td>
                                 <td style="width:128px;text-align:right;padding-right:3px">
-                                    <dx:ASPxComboBox runat="server" Width="148" Height="25" ID="CbTaskPriority" OnTextChanged="CbTaskData_TextChanged" ClientSideEvents-TextChanged="function(s, e) { OdsLevelB.PerformCallback();}">
+                                    <dx:ASPxComboBox runat="server" Width="148" Height="25" ID="CbTaskPriority" OnTextChanged="CbTaskData_TextChanged" ClientSideEvents-TextChanged="function(s, e) { GvLevelB.PerformCallback();}">
                                         <Items>
+                                            <dx:ListEditItem Text="Chọn tất cả" Value="10" />
                                             <dx:ListEditItem Text="Ưu tiên cao" Value="2" />
                                             <dx:ListEditItem Text="Bình thường" Value="3" Selected="true" />
                                             <dx:ListEditItem Text="Không ưu tiên" Value="4" />

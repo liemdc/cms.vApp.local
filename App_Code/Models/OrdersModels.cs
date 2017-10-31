@@ -22,7 +22,8 @@ public class OrdersModels {
                     ProjectTaskTransmit = sm.t.ProjectTaskTransmit, ProjectTaskPriceCalc = sm.t.ProjectTaskQuantities * sm.t.ProjectTaskPrice, ProjectTaskExpectedOne = sm.t.ProjectTaskExpectedOne, ProjectTaskExpectedTwo = sm.t.ProjectTaskExpectedTwo, CreatedWhen = sm.t.CreatedWhen, UserModified = userm.FullName
                 }).OrderBy(o => o.ProjectTaskMoldCode);
     }
-    public static IEnumerable<OrdersObject> OrdersListNd(string TaskStatus, int TaskPriority) {        
+    public static IEnumerable<OrdersObject> OrdersListNd(int TaskStatus, int TaskPriority) {       
+ 
         return LINQData.db.PM_ProjectTasks.Where(w => w.ProjectTaskPriorityID == TaskPriority)
                 .GroupJoin(LINQData.db.CMS_Users, t => t.ModifiedByUserId, userc => userc.UserID, (t, userm) => new { t, userm })
                 .SelectMany(sm => sm.userm.DefaultIfEmpty(), (sm, userm) => new OrdersObject { 
