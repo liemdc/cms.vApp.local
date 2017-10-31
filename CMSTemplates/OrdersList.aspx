@@ -296,6 +296,10 @@
                         <asp:ObjectDataSource ID="OdsTaskStatus" runat="server" TypeName="OrdersModels" SelectMethod="TaskStatusList" />
                         <asp:ObjectDataSource ID="OdsTaskPriority" runat="server" TypeName="OrdersModels" SelectMethod="TaskPriorityList" />
                         <asp:ObjectDataSource ID="OdsLevelB" runat="server" TypeName="OrdersModels" SelectMethod="OrdersList" UpdateMethod="OrdersUpdatedNd">
+                            <SelectParameters>
+                                <asp:ControlParameter ControlID="CbTaskStatus" Name="TaskStatus" Type="String" />
+                                <asp:ControlParameter ControlID="CbTaskStatus" Name="TaskPriority" Type="Int32" />
+                            </SelectParameters>
                             <UpdateParameters>
                                 <asp:Parameter Name="ProjectTaskID" Type="Int32" />
                                 <asp:Parameter Name="ProjectTaskStatusID" Type="Int32" />
@@ -312,7 +316,7 @@
                                     <dx:ASPxLabel ID="GvLevelCLabel" runat="server" Text="Chọn điều kiện lọc đơn hàng [ Trạng thái / Độ ưu tiên ]: " Font-Bold="true" />
                                 </td>
                                 <td style="width:128px;text-align:right;padding-right:3px">
-                                    <dx:ASPxComboBox runat="server" Width="148" Height="25" ID="CbTaskStatus" ClientSideEvents-TextChanged="function(s, e) { GvLevelA.PerformCallback();}">
+                                    <dx:ASPxComboBox runat="server" Width="148" Height="25" ID="CbTaskStatus" OnTextChanged="CbTaskStatus_TextChanged" ClientSideEvents-TextChanged="function(s, e) { GvLevelA.PerformCallback();}">
                                         <Items>
                                             <dx:ListEditItem Text="Chưa bắt đầu" Value="notStart" />
                                             <dx:ListEditItem Text="Đang chạy" Value="Run" Selected="true" />
@@ -324,9 +328,9 @@
                                 <td style="width:128px;text-align:right;padding-right:3px">
                                     <dx:ASPxComboBox runat="server" Width="148" Height="25" ID="CbTaskPriority" ClientSideEvents-TextChanged="function(s, e) { GvLevelA.PerformCallback();}">
                                         <Items>
-                                            <dx:ListEditItem Text="Ưu tiên cao" Value="Hight" />
-                                            <dx:ListEditItem Text="Bình thường" Value="Normal" Selected="true" />
-                                            <dx:ListEditItem Text="Không ưu tiên" Value="Low" />
+                                            <dx:ListEditItem Text="Ưu tiên cao" Value="2" />
+                                            <dx:ListEditItem Text="Bình thường" Value="3" Selected="true" />
+                                            <dx:ListEditItem Text="Không ưu tiên" Value="4" />
                                         </Items>
                                     </dx:ASPxComboBox>
                                 </td>

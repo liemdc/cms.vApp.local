@@ -10,8 +10,8 @@ using System.Transactions;
 using System.Web;
 
 public class OrdersModels {
-    public static IEnumerable<OrdersObject> OrdersList() {        
-        return LINQData.db.PM_ProjectTasks
+    public static IEnumerable<OrdersObject> OrdersList(string TaskStatus, int TaskPriority) {        
+        return LINQData.db.PM_ProjectTasks.Where(w => w.ProjectTaskPriorityID == TaskPriority)
                 .GroupJoin(LINQData.db.CMS_Users, t => t.ModifiedByUserId, userc => userc.UserID, (t, userm) => new { t, userm })
                 .SelectMany(sm => sm.userm.DefaultIfEmpty(), (sm, userm) => new OrdersObject { 
                     ProjectTaskID = sm.t.ProjectTaskID, ProjectTaskBottoHob = sm.t.ProjectTaskBottoHob, ProjectTaskChildNote = sm.t.ProjectTaskChildNote, ProjectTaskContainHead = sm.t.ProjectTaskContainHead,

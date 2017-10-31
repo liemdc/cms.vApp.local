@@ -112,4 +112,7 @@ public partial class CMSTemplates_OrdersList : TemplatePage {
         foreach (string fieldName in copiedFields)
             e.NewValues[fieldName] = copiedValues[fieldName];
     }
+    protected void CbTaskStatus_TextChanged(object sender, EventArgs e) {
+        GvLevelB.DataBind();
+    }
 }
