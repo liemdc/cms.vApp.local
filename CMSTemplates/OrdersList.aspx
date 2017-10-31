@@ -295,7 +295,7 @@
                         </dx:ASPxGridView> 
                         <asp:ObjectDataSource ID="OdsTaskStatus" runat="server" TypeName="OrdersModels" SelectMethod="TaskStatusList" />
                         <asp:ObjectDataSource ID="OdsTaskPriority" runat="server" TypeName="OrdersModels" SelectMethod="TaskPriorityList" />
-                        <asp:ObjectDataSource ID="OdsLevelB" runat="server" TypeName="OrdersModels" SelectMethod="OrdersList" UpdateMethod="OrdersUpdatedNd">
+                        <asp:ObjectDataSource ID="OdsLevelB" runat="server" TypeName="OrdersModels" SelectMethod="OrdersListNd" UpdateMethod="OrdersUpdatedNd">
                             <SelectParameters>
                                 <asp:ControlParameter ControlID="CbTaskStatus" Name="TaskStatus" Type="String" />
                                 <asp:ControlParameter ControlID="CbTaskStatus" Name="TaskPriority" Type="Int32" />
