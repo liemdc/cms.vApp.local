@@ -1,0 +1,8 @@
+﻿body{overflow:hidden;overflow-x:auto;margin:0;min-width:1280px}
+.dxpcModalBackLite, .dxdpModalBackLite{background:none}
+.dxtc-stripContainer{height:25px}
+.bottomCmd{padding:0 8px 8px;text-align:right}
+.bottomCmd a{border:1px solid #A8A8A8;padding:3px 5px;text-decoration:none;min-width:48px;display:inline-block;text-align:center}
+.bottomCmd a:hover{color:#f5530b}
+.bottomCmd table{float:left}
+.bottomCmd table .dxICheckBox{margin-top:0 !important}

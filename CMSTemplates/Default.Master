@@ -1,0 +1,82 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Default.Master.cs" Inherits="CMSTemplates_Default" %>
+
+<!DOCTYPE html>
+
+<html lang="vi" xmlns="http://www.w3.org/1999/xhtml">
+    <head runat="server">
+        <title>KenticoCMS</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <asp:Literal runat="server" ID="ltlTags" EnableViewState="false" />
+        <link href="~/App_Themes/VMMP/css/style.css" rel="stylesheet" type="text/css" />
+        <script type="text/javascript">  
+            var timeStart;
+            
+            function OnInit(s, e) { AdjustSize(); }            
+            function OnColumnResized(s, e, w) {
+                s.SetWidth(window.innerWidth - w);
+            }
+            function OnBeginCallback(s, e) {
+                timeStart = new Date();
+                CommandLabel.SetText("Command: " + e.command);
+                ClientTimeLabel.SetText("Loading: working...");
+            }
+            function OnEndCallback(s, e) {
+                ClientTimeLabel.SetText("Loading: " + (new Date() - timeStart) + " ms.");
+            }
+        </script>
+        <asp:ContentPlaceHolder id="plcHead" runat="server" />
+    </head>
+    <body>        
+        <form id="frmMain" runat="server">
+            <asp:PlaceHolder runat="server" ID="plcManagers">
+                <cms:CMSPortalManager ID="mainPortal" Visible="false" EnableViewState="false" runat="server" />
+                <cms:CMSPageManager ID="mainPage" Visible="false" EnableViewState="false" runat="server" />
+                <ajaxToolkit:ToolkitScriptManager ID="mainScript" runat="server" EnableViewState="false" ScriptMode="Release" />
+            </asp:PlaceHolder>
+            <dx:ASPxPanel ID="HeaderPanel" ClientInstanceName="HeaderPanel" runat="server" FixedPosition="WindowTop" Paddings-Padding="0" BackColor="#F0F0F0">
+                <PanelCollection>                    
+                    <dx:PanelContent runat="server" SupportsDisabledAttribute="True" >
+                        <div style="float:left">
+                            <dx:ASPxMenu ID="NBMenuLeft" runat="server" EnableAnimation="true" EnableViewState="false" Border-BorderWidth="0">
+                                <SubMenuStyle Border-BorderWidth="0"/>
+                                <SubMenuItemStyle Border-BorderWidth="0"/>
+                                <ItemStyle HoverStyle-Border-BorderColor="White" SelectedStyle-Border-BorderColor="White"/>                            
+                            </dx:ASPxMenu>
+                        </div>
+                        <div style="float:right">
+                            <dx:ASPxMenu ID="NBMenuRight" runat="server" EnableAnimation="true" EnableViewState="false" Border-BorderWidth="0">
+                                <SubMenuStyle Border-BorderWidth="0"/>
+                                <SubMenuItemStyle Border-BorderWidth="0"/>
+                                <ItemStyle HoverStyle-Border-BorderColor="White" SelectedStyle-Border-BorderColor="White"/>  
+                            </dx:ASPxMenu>
+                        </div>
+                    </dx:PanelContent>
+                </PanelCollection>
+            </dx:ASPxPanel>
+            <dx:ASPxPanel ID="MainPanel" ClientInstanceName="MainPanel" runat="server" Paddings-Padding="0">
+                <PanelCollection>
+                   <dx:PanelContent runat="server" SupportsDisabledAttribute="True">
+                         <asp:ContentPlaceHolder ID="plcMain" runat="server" />
+                    </dx:PanelContent>
+                </PanelCollection>
+            </dx:ASPxPanel>
+            <dx:ASPxPanel ID="FooterPanel" ClientInstanceName="FooterPanel" runat="server" FixedPosition="WindowBottom">            
+                <PanelCollection>
+                    <dx:PanelContent runat="server" SupportsDisabledAttribute="True">                        
+                        <dx:ASPxLabel runat="server" ID="CommandLabel" ClientInstanceName="CommandLabel" Text="Command: BEGIN" />
+                        <dx:ASPxLabel runat="server" ID="ClientTimeLabel" ClientInstanceName="ClientTimeLabel" Text="Loading: BEGIN" />                        
+                        <span style="float:right;color:#428bca;font-weight:bold;font-family:Arial">Vina Mold & Metal Products Copyright © <%: DateTime.Now.Year %> Viet Tri.</span>
+                    </dx:PanelContent>
+                </PanelCollection>
+            </dx:ASPxPanel>
+            <dx:ASPxCallback ID="Callback" ClientInstanceName="Callback" runat="server">
+                <ClientSideEvents CallbackComplete="function(s, e) { LoadingPanel.Hide(); }" />
+            </dx:ASPxCallback>
+            <dx:ASPxLoadingPanel ID="LoadingPanel" ClientInstanceName="LoadingPanel" runat="server" ContainerElementID="MainPanel" Modal="True" />
+            <script type="text/javascript">
+                ASPxClientControl.GetControlCollection().ControlsInitialized.AddHandler(function (s, e) { AdjustSize(); });
+                ASPxClientControl.GetControlCollection().BrowserWindowResized.AddHandler(function (s, e) { AdjustSize(); });
+            </script>    
+        </form>
+    </body>
+</html>

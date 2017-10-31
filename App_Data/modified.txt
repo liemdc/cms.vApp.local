@@ -1,0 +1,3 @@
+The hotfix files were copied into the target directory with the '.new' extension. Merge your custom changes into these files and remove the '.new' extensions afterwards.
+\\192.168.1.50\vmmp_src\App_Data\Install\SQL\Hotfix\Hotfix.sql
+\\192.168.1.50\vmmp_src\CMSWebParts\Membership\FacebookConnect\FacebookConnectLogon.ascx.cs

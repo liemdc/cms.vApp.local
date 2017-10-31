@@ -1,0 +1,37 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="VMMP.master.cs" Inherits="CMSTemplates_Controls_VMMP" %>
+<%@ Register Assembly="CMS.PortalControls" Namespace="CMS.PortalControls" TagPrefix="cms" %>
+<%@ Register Assembly="CMS.Controls" Namespace="CMS.Controls" TagPrefix="cms" %>
+<!DOCTYPE html>
+<html lang="vi" xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">   
+    <asp:Literal runat="server" ID="ltlTags" EnableViewState="false" />
+    <link href="~/App_Themes/VMMP/css/reset.css" rel="stylesheet" />
+    <link href="~/App_Themes/VMMP/css/master.css" rel="stylesheet" />
+    <script type="text/javascript" src="~/App_Themes/Default/Js/jquery.min.js"></script>
+    <script type="text/javascript">
+        function AddTab(type) { callbackPanel.PerformCallback('add:' + type); }
+        function RemoveTab(index) { callbackPanel.PerformCallback('remove:' + index); }
+        function SelectedItemChanged(e) { AddTab(e.item.name); }
+    </script>
+    <script type="text/javascript">
+        function OnComboBoxInit(s) {
+            var input = s.GetInputElement();
+            input.setAttribute("x-webkit-speech", "x-webkit-speech");
+            input.onwebkitspeechchange = function (evt) {
+                if (s.filterStrategy && s.filterStrategy.FilterStartTimer)
+                    s.filterStrategy.FilterStartTimer();
+                else
+                    aspxETextChanged(s.name);
+            };
+        }
+    </script>
+</head>
+<body class="<%=BodyClass%>" <%=BodyParameters%>>
+    <form id="frmMain" runat="server">
+        <asp:PlaceHolder runat="server" ID="plcManagers">
+            <cms:CMSPageManager ID="mainPage" Visible="false" EnableViewState="false" runat="server" />
+        </asp:PlaceHolder>
+        <asp:ContentPlaceHolder ID="plcMain" runat="server"></asp:ContentPlaceHolder>          
+    </form>
+</body>
+</html>

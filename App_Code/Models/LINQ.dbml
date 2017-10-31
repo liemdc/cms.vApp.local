@@ -1,0 +1,382 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="cms.vApp.local" Class="LINQDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=NiceWebZ\SQLEXPRESS;Initial Catalog=cms.vApp.local;Persist Security Info=False;User ID=vApp;Connect Timeout=240;Current Language=English" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="CMSConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.PM_Project" Member="PM_Projects">
+    <Type Name="PM_Project">
+      <Column Name="ProjectID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProjectNodeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectGroupID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectDisplayName" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="ProjectName" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="ProjectDescription" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ProjectStartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ProjectDeadline" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ProjectOwner" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectCreatedByID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectStatusID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProjectSiteID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProjectGUID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="ProjectLastModified" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ProjectAllowOrdering" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ProjectAccess" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="PM_Project_PM_ProjectDetail" Member="PM_ProjectDetails" ThisKey="ProjectID" OtherKey="DetailProjectID" Type="PM_ProjectDetail" />
+      <Association Name="PM_Project_PM_ProjectRolePermission" Member="PM_ProjectRolePermissions" ThisKey="ProjectID" OtherKey="ProjectID" Type="PM_ProjectRolePermission" />
+      <Association Name="PM_Project_PM_ProjectTask" Member="PM_ProjectTasks" ThisKey="ProjectID" OtherKey="ProjectTaskProjectID" Type="PM_ProjectTask" />
+      <Association Name="PM_ProjectStatus_PM_Project" Member="PM_ProjectStatus" ThisKey="ProjectStatusID" OtherKey="StatusID" Type="PM_ProjectStatus" IsForeignKey="true" />
+      <Association Name="CMS_User_PM_Project" Member="CMS_User" ThisKey="ProjectCreatedByID" OtherKey="UserID" Type="CMS_User" IsForeignKey="true" />
+      <Association Name="CMS_User_PM_Project1" Member="CMS_User1" ThisKey="ProjectOwner" OtherKey="UserID" Type="CMS_User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PM_ProjectTOW" Member="PM_ProjectTOWs">
+    <Type Name="PM_ProjectTOW">
+      <Column Name="TOWID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TOWName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TOWOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PM_ProjectCustomer" Member="PM_ProjectCustomers">
+    <Type Name="PM_ProjectCustomer">
+      <Column Name="CustomerId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CustomerName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CustomerPhone" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CustomerEmail" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CustomerAddress" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ModifiedWhen" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifiedByUserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreatedWhen" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreatedByUserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="PM_ProjectCustomer_PM_ProjectTask" Member="PM_ProjectTasks" ThisKey="CustomerId" OtherKey="ProjectTaskCustomerId" Type="PM_ProjectTask" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PM_ProjectDetail" Member="PM_ProjectDetails">
+    <Type Name="PM_ProjectDetail">
+      <Column Name="DetailID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DetailProjectID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="PM_Project_PM_ProjectDetail" Member="PM_Project" ThisKey="DetailProjectID" OtherKey="ProjectID" Type="PM_Project" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PM_ProjectEmployee" Member="PM_ProjectEmployees">
+    <Type Name="PM_ProjectEmployee">
+      <Column Name="EmployeeID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="EmployeeCode" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="EmployeeFullName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="EmployeeFirstName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="EmployeeLastName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="EmployeeDateOfBirth" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="EmployeeGender" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EmployeeTel" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="EmployeeAvatar" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EmployeeDescription" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="PM_ProjectEmployee_PM_ProjectEmployeeProcess" Member="PM_ProjectEmployeeProcesses" ThisKey="EmployeeID" OtherKey="EmployeeID" Type="PM_ProjectEmployeeProcess" />
+      <Association Name="PM_ProjectEmployee_PM_ProjectProcessDetail" Member="PM_ProjectProcessDetails" ThisKey="EmployeeID" OtherKey="DetailOwnerM" Type="PM_ProjectProcessDetail" />
+      <Association Name="PM_ProjectEmployee_PM_ProjectProcessDetail1" Member="PM_ProjectProcessDetails1" ThisKey="EmployeeID" OtherKey="DetailOwnerP" Type="PM_ProjectProcessDetail" />
+      <Association Name="PM_ProjectEmployee_PM_ProjectProcessDetail2" Member="PM_ProjectProcessDetails2" ThisKey="EmployeeID" OtherKey="DetailOwner" Type="PM_ProjectProcessDetail" />
+      <Association Name="PM_ProjectEmployee_IV_tblTaskHistory" Member="IV_tblTaskHistories" ThisKey="EmployeeID" OtherKey="HistoryEmployeeId" Type="IV_tblTaskHistory" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PM_ProjectEmployeeProcess" Member="PM_ProjectEmployeeProcesses">
+    <Type Name="PM_ProjectEmployeeProcess">
+      <Column Name="EmpProID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="EmployeeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProcessListID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="PM_ProjectEmployee_PM_ProjectEmployeeProcess" Member="PM_ProjectEmployee" ThisKey="EmployeeID" OtherKey="EmployeeID" Type="PM_ProjectEmployee" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="PM_ProjectProcessList_PM_ProjectEmployeeProcess" Member="PM_ProjectProcessList" ThisKey="ProcessListID" OtherKey="ProcessListId" Type="PM_ProjectProcessList" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PM_ProjectMolds" Member="PM_ProjectMolds">
+    <Type Name="PM_ProjectMold">
+      <Column Name="MoldsId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MoldsName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MoldsMinScheduledDays" Type="System.Decimal" DbType="Decimal(2,0)" CanBeNull="true" />
+      <Column Name="MoldsFactor" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="MoldsOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifiedWhen" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifiedByUserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreatedWhen" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreatedByUserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="PM_ProjectMold_IV_tblMoldsProcess" Member="IV_tblMoldsProcesses" ThisKey="MoldsId" OtherKey="MoldsId" Type="IV_tblMoldsProcess" />
+      <Association Name="PM_ProjectMold_PM_ProjectTask" Member="PM_ProjectTasks" ThisKey="MoldsId" OtherKey="ProjectTaskMoldsId" Type="PM_ProjectTask" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PM_ProjectProcess" Member="PM_ProjectProcesses">
+    <Type Name="PM_ProjectProcess">
+      <Column Name="ProcessId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProcessProjectTaskID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProcessListId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProcessExpectedTime" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="ProcessExpectedCompletion" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ProcessFactTime" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="ProcessCompletion" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ProcessPriority" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProcessRequired" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ProcessSMGangerBrowse" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ProcessPlusBrowse" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProcessGangerBrowse" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ModifiedWhen" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifiedByUserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreatedWhen" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreatedByUserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="PM_ProjectTask_PM_ProjectProcess" Member="PM_ProjectTask" ThisKey="ProcessProjectTaskID" OtherKey="ProjectTaskID" Type="PM_ProjectTask" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="PM_ProjectProcessList_PM_ProjectProcess" Member="PM_ProjectProcessList" ThisKey="ProcessListId" OtherKey="ProcessListId" Type="PM_ProjectProcessList" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PM_ProjectProcessDetail" Member="PM_ProjectProcessDetails">
+    <Type Name="PM_ProjectProcessDetail">
+      <Column Name="DetailId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DetailSubProcessId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DetailProjectTaskID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DetailStartTimeM" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DetailEndTimeM" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DetailTotalTimeM" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="DetailOwnerM" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DetailStartTimeP" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DetailEndTimeP" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DetailTotalTimeP" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DetailOwnerP" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DetailOwner" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DetailNormsTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DetailJobNumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DetailBrowse" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DetailComments" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="DetailMachineId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifiedWhen" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifiedByUserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreatedWhen" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreatedByUserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="PM_ProjectEmployee_PM_ProjectProcessDetail" Member="PM_ProjectEmployee" ThisKey="DetailOwnerM" OtherKey="EmployeeID" Type="PM_ProjectEmployee" IsForeignKey="true" />
+      <Association Name="PM_ProjectEmployee_PM_ProjectProcessDetail1" Member="PM_ProjectEmployee1" ThisKey="DetailOwnerP" OtherKey="EmployeeID" Type="PM_ProjectEmployee" IsForeignKey="true" />
+      <Association Name="PM_ProjectEmployee_PM_ProjectProcessDetail2" Member="PM_ProjectEmployee2" ThisKey="DetailOwner" OtherKey="EmployeeID" Type="PM_ProjectEmployee" IsForeignKey="true" />
+      <Association Name="PM_ProjectSubProcess_PM_ProjectProcessDetail" Member="PM_ProjectSubProcess" ThisKey="DetailSubProcessId" OtherKey="SubProcessId" Type="PM_ProjectSubProcess" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="PM_ProjectTask_PM_ProjectProcessDetail" Member="PM_ProjectTask" ThisKey="DetailProjectTaskID" OtherKey="ProjectTaskID" Type="PM_ProjectTask" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="PM_ProjectMachinery_PM_ProjectProcessDetail" Member="PM_ProjectMachinery" ThisKey="DetailMachineId" OtherKey="MachineryId" Type="PM_ProjectMachinery" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PM_ProjectRolePermission" Member="PM_ProjectRolePermissions">
+    <Type Name="PM_ProjectRolePermission">
+      <Column Name="ProjectID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="RoleID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PermissionID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="PM_Project_PM_ProjectRolePermission" Member="PM_Project" ThisKey="ProjectID" OtherKey="ProjectID" Type="PM_Project" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PM_ProjectStatus" Member="PM_ProjectStatus">
+    <Type Name="PM_ProjectStatus">
+      <Column Name="StatusID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="StatusName" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="StatusDisplayName" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="StatusOrder" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="StatusColor" Type="System.String" DbType="NVarChar(7)" CanBeNull="true" />
+      <Column Name="StatusIcon" Type="System.String" DbType="NVarChar(450)" CanBeNull="true" />
+      <Column Name="StatusGUID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="StatusLastModified" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="StatusEnabled" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="StatusIsFinished" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="StatusIsNotStarted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="PM_ProjectStatus_PM_Project" Member="PM_Projects" ThisKey="StatusID" OtherKey="ProjectStatusID" Type="PM_Project" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PM_ProjectSubProcess" Member="PM_ProjectSubProcesses">
+    <Type Name="PM_ProjectSubProcess">
+      <Column Name="SubProcessId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SubProcessListId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SubProcessName" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="SubProcessOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SubProcessFinish" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="PM_ProjectSubProcess_PM_ProjectProcessDetail" Member="PM_ProjectProcessDetails" ThisKey="SubProcessId" OtherKey="DetailSubProcessId" Type="PM_ProjectProcessDetail" />
+      <Association Name="PM_ProjectProcessList_PM_ProjectSubProcess" Member="PM_ProjectProcessList" ThisKey="SubProcessListId" OtherKey="ProcessListId" Type="PM_ProjectProcessList" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PM_ProjectTaskPriority" Member="PM_ProjectTaskPriorities">
+    <Type Name="PM_ProjectTaskPriority">
+      <Column Name="TaskPriorityID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TaskPriorityName" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="TaskPriorityDisplayName" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="TaskPriorityOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TaskPriorityGUID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="TaskPriorityLastModified" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="TaskPriorityEnabled" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="TaskPriorityDefault" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="PM_ProjectTaskPriority_PM_ProjectTask" Member="PM_ProjectTasks" ThisKey="TaskPriorityID" OtherKey="ProjectTaskPriorityID" Type="PM_ProjectTask" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PM_ProjectTaskStatus" Member="PM_ProjectTaskStatus">
+    <Type Name="PM_ProjectTaskStatus">
+      <Column Name="TaskStatusID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TaskStatusName" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="TaskStatusDisplayName" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="TaskStatusOrder" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TaskStatusColor" Type="System.String" DbType="NVarChar(7)" CanBeNull="true" />
+      <Column Name="TaskStatusIcon" Type="System.String" DbType="NVarChar(450)" CanBeNull="true" />
+      <Column Name="TaskStatusGUID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="TaskStatusLastModified" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="TaskStatusEnabled" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="TaskStatusIsNotStarted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="TaskStatusIsFinished" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="PM_ProjectTaskStatus_PM_ProjectTask" Member="PM_ProjectTasks" ThisKey="TaskStatusID" OtherKey="ProjectTaskStatusID" Type="PM_ProjectTask" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IV_tblTaskHistory" Member="IV_tblTaskHistories">
+    <Type Name="IV_tblTaskHistory">
+      <Column Name="HistoryId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="HistoryEmployeeId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="HistoryTaskId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="HistoryBegin" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="HistoryEnd" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="HistoryDuration" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="ModifiedWhen" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifiedByUserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreatedWhen" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreatedByUserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="PM_ProjectEmployee_IV_tblTaskHistory" Member="PM_ProjectEmployee" ThisKey="HistoryEmployeeId" OtherKey="EmployeeID" Type="PM_ProjectEmployee" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="IV_tblTask_IV_tblTaskHistory" Member="IV_tblTask" ThisKey="HistoryTaskId" OtherKey="TaskId" Type="IV_tblTask" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IV_tblTask" Member="IV_tblTasks">
+    <Type Name="IV_tblTask">
+      <Column Name="TaskId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TaskName" Type="System.String" DbType="NVarChar(55) NOT NULL" CanBeNull="false" />
+      <Column Name="TaskDescription" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ModifiedWhen" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifiedByUserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreatedWhen" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreatedByUserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="IV_tblTask_IV_tblTaskHistory" Member="IV_tblTaskHistories" ThisKey="TaskId" OtherKey="HistoryTaskId" Type="IV_tblTaskHistory" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IV_tblMoldsProcess" Member="IV_tblMoldsProcesses">
+    <Type Name="IV_tblMoldsProcess">
+      <Column Name="MoldsProcessId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MoldsId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProcessListId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedWhen" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifiedByUserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreatedWhen" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreatedByUserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="PM_ProjectMold_IV_tblMoldsProcess" Member="PM_ProjectMold" ThisKey="MoldsId" OtherKey="MoldsId" Type="PM_ProjectMold" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="PM_ProjectProcessList_IV_tblMoldsProcess" Member="PM_ProjectProcessList" ThisKey="ProcessListId" OtherKey="ProcessListId" Type="PM_ProjectProcessList" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CMS_User" Member="CMS_Users">
+    <Type Name="CMS_User">
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="MiddleName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="FullName" Type="System.String" DbType="NVarChar(450)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="UserPassword" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="PreferredCultureCode" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="PreferredUICultureCode" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="UserEnabled" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="UserIsEditor" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="UserIsGlobalAdministrator" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="UserIsExternal" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="UserPasswordFormat" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="UserCreated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LastLogon" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UserStartingAliasPath" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="UserGUID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="UserLastModified" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="UserLastLogonInfo" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="UserIsHidden" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="UserVisibility" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="UserIsDomain" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="UserHasAllowedCultures" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="UserSiteManagerDisabled" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="CMS_User_PM_Project" Member="PM_Projects" ThisKey="UserID" OtherKey="ProjectCreatedByID" Type="PM_Project" />
+      <Association Name="CMS_User_PM_Project1" Member="PM_Projects1" ThisKey="UserID" OtherKey="ProjectOwner" Type="PM_Project" />
+      <Association Name="CMS_User_PM_ProjectTask" Member="PM_ProjectTasks" ThisKey="UserID" OtherKey="ProjectTaskAssignedToUserID" Type="PM_ProjectTask" />
+      <Association Name="CMS_User_PM_ProjectTask1" Member="PM_ProjectTasks1" ThisKey="UserID" OtherKey="ProjectTaskCreatedByID" Type="PM_ProjectTask" />
+      <Association Name="CMS_User_PM_ProjectTask2" Member="PM_ProjectTasks2" ThisKey="UserID" OtherKey="ProjectTaskOwnerID" Type="PM_ProjectTask" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PM_ProjectTask" Member="PM_ProjectTasks">
+    <Type Name="PM_ProjectTask">
+      <Column Name="ProjectTaskID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProjectTaskProjectID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectTaskMoldCode" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="ProjectTaskMoldsId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectTaskMoldsFactor" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="ProjectTaskDisplayName" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="ProjectTaskQuantities" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectTaskContainHead" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="ProjectTaskBottoHob" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="ProjectTaskChildNote" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ProjectTaskHorikomi" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="ProjectTaskPrice" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="ProjectTaskThickness" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectTaskThicknessTotal" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="ProjectTaskDiameterOut" Type="System.Decimal" DbType="Decimal(10,0)" CanBeNull="true" />
+      <Column Name="ProjectTaskHardness" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="ProjectTaskOverlayNum" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="ProjectTaskHoleNum" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="ProjectTaskBox" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="ProjectTaskMaterialsCode" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="ProjectTaskMaterialsRequire" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="ProjectTaskDimension" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ProjectTaskWeight" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="ProjectTaskDeadline" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ProjectTaskTransmit" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ProjectTaskStatusID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProjectTaskPriorityID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProjectTaskDescription" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ProjectTaskOwnerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectTaskCreatedByID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectTaskAssignedToUserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectTaskProgress" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProjectTaskHours" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="ProjectTaskGUID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="ProjectTaskLastModified" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ProjectTaskProjectOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectTaskUserOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectTaskNotificationSent" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ProjectTaskIsPrivate" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ProjectTaskCustomerId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectTaskExpectedOne" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ProjectTaskExpectedTwo" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ProjectTaskExpectedThree" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifiedWhen" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifiedByUserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreatedWhen" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreatedByUserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="PM_ProjectTask_PM_ProjectProcess" Member="PM_ProjectProcesses" ThisKey="ProjectTaskID" OtherKey="ProcessProjectTaskID" Type="PM_ProjectProcess" />
+      <Association Name="PM_ProjectTask_PM_ProjectProcessDetail" Member="PM_ProjectProcessDetails" ThisKey="ProjectTaskID" OtherKey="DetailProjectTaskID" Type="PM_ProjectProcessDetail" />
+      <Association Name="PM_ProjectCustomer_PM_ProjectTask" Member="PM_ProjectCustomer" ThisKey="ProjectTaskCustomerId" OtherKey="CustomerId" Type="PM_ProjectCustomer" IsForeignKey="true" DeleteRule="CASCADE" />
+      <Association Name="PM_ProjectMold_PM_ProjectTask" Member="PM_ProjectMold" ThisKey="ProjectTaskMoldsId" OtherKey="MoldsId" Type="PM_ProjectMold" IsForeignKey="true" DeleteRule="CASCADE" />
+      <Association Name="CMS_User_PM_ProjectTask" Member="CMS_User" ThisKey="ProjectTaskAssignedToUserID" OtherKey="UserID" Type="CMS_User" IsForeignKey="true" />
+      <Association Name="CMS_User_PM_ProjectTask1" Member="CMS_User1" ThisKey="ProjectTaskCreatedByID" OtherKey="UserID" Type="CMS_User" IsForeignKey="true" />
+      <Association Name="CMS_User_PM_ProjectTask2" Member="CMS_User2" ThisKey="ProjectTaskOwnerID" OtherKey="UserID" Type="CMS_User" IsForeignKey="true" />
+      <Association Name="PM_ProjectTaskPriority_PM_ProjectTask" Member="PM_ProjectTaskPriority" ThisKey="ProjectTaskPriorityID" OtherKey="TaskPriorityID" Type="PM_ProjectTaskPriority" IsForeignKey="true" />
+      <Association Name="PM_Project_PM_ProjectTask" Member="PM_Project" ThisKey="ProjectTaskProjectID" OtherKey="ProjectID" Type="PM_Project" IsForeignKey="true" />
+      <Association Name="PM_ProjectTaskStatus_PM_ProjectTask" Member="PM_ProjectTaskStatus" ThisKey="ProjectTaskStatusID" OtherKey="TaskStatusID" Type="PM_ProjectTaskStatus" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PM_ProjectProcessList" Member="PM_ProjectProcessLists">
+    <Type Name="PM_ProjectProcessList">
+      <Column Name="ProcessListId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProcessListName" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ProcessListGroup" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ProcessListOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifiedWhen" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifiedByUserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreatedWhen" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreatedByUserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="PM_ProjectProcessList_PM_ProjectEmployeeProcess" Member="PM_ProjectEmployeeProcesses" ThisKey="ProcessListId" OtherKey="ProcessListID" Type="PM_ProjectEmployeeProcess" />
+      <Association Name="PM_ProjectProcessList_PM_ProjectProcess" Member="PM_ProjectProcesses" ThisKey="ProcessListId" OtherKey="ProcessListId" Type="PM_ProjectProcess" />
+      <Association Name="PM_ProjectProcessList_PM_ProjectSubProcess" Member="PM_ProjectSubProcesses" ThisKey="ProcessListId" OtherKey="SubProcessListId" Type="PM_ProjectSubProcess" />
+      <Association Name="PM_ProjectProcessList_IV_tblMoldsProcess" Member="IV_tblMoldsProcesses" ThisKey="ProcessListId" OtherKey="ProcessListId" Type="IV_tblMoldsProcess" />
+      <Association Name="PM_ProjectProcessList_PM_ProjectMachinery" Member="PM_ProjectMachineries" ThisKey="ProcessListId" OtherKey="MachineryProcessListId" Type="PM_ProjectMachinery" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PM_ProjectMachinery" Member="PM_ProjectMachineries">
+    <Type Name="PM_ProjectMachinery">
+      <Column Name="MachineryId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MachineryProcessListId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MachineryName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MachinerySymbol" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MachineryStatus" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="PM_ProjectMachinery_PM_ProjectProcessDetail" Member="PM_ProjectProcessDetails" ThisKey="MachineryId" OtherKey="DetailMachineId" Type="PM_ProjectProcessDetail" />
+      <Association Name="PM_ProjectProcessList_PM_ProjectMachinery" Member="PM_ProjectProcessList" ThisKey="MachineryProcessListId" OtherKey="ProcessListId" Type="PM_ProjectProcessList" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+</Database>

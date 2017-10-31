@@ -1,0 +1,2 @@
+﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="CMS.Controls.CMSAbstractTransformation" %><%@ Register TagPrefix="cms" Namespace="CMS.Controls" Assembly="CMS.Controls" %><%@ Register TagPrefix="cc1" Namespace="CMS.Controls" Assembly="CMS.Controls" %><a style="text-decoration:none;" href="<%# GetDocumentUrl() %>" rel="lightbox[products]" rev="<%# Eval("NodeAliasPath")  %>" title="<%# HTMLEncode(ResHelper.LocalizeString(Convert.ToString(Eval("SKUName")))) %>">
+<%# EcommerceFunctions.GetProductImage(Eval("SKUImagePath"), 120, Eval("SKUName"))%></a>
