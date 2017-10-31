@@ -298,7 +298,7 @@
                         <asp:ObjectDataSource ID="OdsLevelB" runat="server" TypeName="OrdersModels" SelectMethod="OrdersListNd" UpdateMethod="OrdersUpdatedNd">
                             <SelectParameters>
                                 <asp:ControlParameter ControlID="CbTaskStatus" Name="TaskStatus" Type="String" />
-                                <asp:ControlParameter ControlID="CbTaskStatus" Name="TaskPriority" Type="Int32" />
+                                <asp:ControlParameter ControlID="CbTaskPriority" Name="TaskPriority" Type="Int32" />
                             </SelectParameters>
                             <UpdateParameters>
                                 <asp:Parameter Name="ProjectTaskID" Type="Int32" />
