@@ -84,15 +84,15 @@ namespace Models
     partial void InsertCMS_User(CMS_User instance);
     partial void UpdateCMS_User(CMS_User instance);
     partial void DeleteCMS_User(CMS_User instance);
-    partial void InsertPM_ProjectTask(PM_ProjectTask instance);
-    partial void UpdatePM_ProjectTask(PM_ProjectTask instance);
-    partial void DeletePM_ProjectTask(PM_ProjectTask instance);
     partial void InsertPM_ProjectProcessList(PM_ProjectProcessList instance);
     partial void UpdatePM_ProjectProcessList(PM_ProjectProcessList instance);
     partial void DeletePM_ProjectProcessList(PM_ProjectProcessList instance);
     partial void InsertPM_ProjectMachinery(PM_ProjectMachinery instance);
     partial void UpdatePM_ProjectMachinery(PM_ProjectMachinery instance);
     partial void DeletePM_ProjectMachinery(PM_ProjectMachinery instance);
+    partial void InsertPM_ProjectTask(PM_ProjectTask instance);
+    partial void UpdatePM_ProjectTask(PM_ProjectTask instance);
+    partial void DeletePM_ProjectTask(PM_ProjectTask instance);
     #endregion
 		
 		public LINQDataContext() : 
@@ -269,14 +269,6 @@ namespace Models
 			}
 		}
 		
-		public System.Data.Linq.Table<PM_ProjectTask> PM_ProjectTasks
-		{
-			get
-			{
-				return this.GetTable<PM_ProjectTask>();
-			}
-		}
-		
 		public System.Data.Linq.Table<PM_ProjectProcessList> PM_ProjectProcessLists
 		{
 			get
@@ -290,6 +282,14 @@ namespace Models
 			get
 			{
 				return this.GetTable<PM_ProjectMachinery>();
+			}
+		}
+		
+		public System.Data.Linq.Table<PM_ProjectTask> PM_ProjectTasks
+		{
+			get
+			{
+				return this.GetTable<PM_ProjectTask>();
 			}
 		}
 	}
@@ -2400,9 +2400,9 @@ namespace Models
 		
 		private System.Nullable<int> _CreatedByUserId;
 		
-		private EntityRef<PM_ProjectTask> _PM_ProjectTask;
-		
 		private EntityRef<PM_ProjectProcessList> _PM_ProjectProcessList;
+		
+		private EntityRef<PM_ProjectTask> _PM_ProjectTask;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -2444,8 +2444,8 @@ namespace Models
 		
 		public PM_ProjectProcess()
 		{
-			this._PM_ProjectTask = default(EntityRef<PM_ProjectTask>);
 			this._PM_ProjectProcessList = default(EntityRef<PM_ProjectProcessList>);
+			this._PM_ProjectTask = default(EntityRef<PM_ProjectTask>);
 			OnCreated();
 		}
 		
@@ -2777,40 +2777,6 @@ namespace Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PM_ProjectTask_PM_ProjectProcess", Storage="_PM_ProjectTask", ThisKey="ProcessProjectTaskID", OtherKey="ProjectTaskID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public PM_ProjectTask PM_ProjectTask
-		{
-			get
-			{
-				return this._PM_ProjectTask.Entity;
-			}
-			set
-			{
-				PM_ProjectTask previousValue = this._PM_ProjectTask.Entity;
-				if (((previousValue != value) 
-							|| (this._PM_ProjectTask.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._PM_ProjectTask.Entity = null;
-						previousValue.PM_ProjectProcesses.Remove(this);
-					}
-					this._PM_ProjectTask.Entity = value;
-					if ((value != null))
-					{
-						value.PM_ProjectProcesses.Add(this);
-						this._ProcessProjectTaskID = value.ProjectTaskID;
-					}
-					else
-					{
-						this._ProcessProjectTaskID = default(int);
-					}
-					this.SendPropertyChanged("PM_ProjectTask");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PM_ProjectProcessList_PM_ProjectProcess", Storage="_PM_ProjectProcessList", ThisKey="ProcessListId", OtherKey="ProcessListId", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
 		public PM_ProjectProcessList PM_ProjectProcessList
 		{
@@ -2841,6 +2807,40 @@ namespace Models
 						this._ProcessListId = default(int);
 					}
 					this.SendPropertyChanged("PM_ProjectProcessList");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PM_ProjectTask_PM_ProjectProcess", Storage="_PM_ProjectTask", ThisKey="ProcessProjectTaskID", OtherKey="ProjectTaskID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public PM_ProjectTask PM_ProjectTask
+		{
+			get
+			{
+				return this._PM_ProjectTask.Entity;
+			}
+			set
+			{
+				PM_ProjectTask previousValue = this._PM_ProjectTask.Entity;
+				if (((previousValue != value) 
+							|| (this._PM_ProjectTask.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._PM_ProjectTask.Entity = null;
+						previousValue.PM_ProjectProcesses.Remove(this);
+					}
+					this._PM_ProjectTask.Entity = value;
+					if ((value != null))
+					{
+						value.PM_ProjectProcesses.Add(this);
+						this._ProcessProjectTaskID = value.ProjectTaskID;
+					}
+					else
+					{
+						this._ProcessProjectTaskID = default(int);
+					}
+					this.SendPropertyChanged("PM_ProjectTask");
 				}
 			}
 		}
@@ -2922,9 +2922,9 @@ namespace Models
 		
 		private EntityRef<PM_ProjectSubProcess> _PM_ProjectSubProcess;
 		
-		private EntityRef<PM_ProjectTask> _PM_ProjectTask;
-		
 		private EntityRef<PM_ProjectMachinery> _PM_ProjectMachinery;
+		
+		private EntityRef<PM_ProjectTask> _PM_ProjectTask;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -2980,8 +2980,8 @@ namespace Models
 			this._PM_ProjectEmployee1 = default(EntityRef<PM_ProjectEmployee>);
 			this._PM_ProjectEmployee2 = default(EntityRef<PM_ProjectEmployee>);
 			this._PM_ProjectSubProcess = default(EntityRef<PM_ProjectSubProcess>);
-			this._PM_ProjectTask = default(EntityRef<PM_ProjectTask>);
 			this._PM_ProjectMachinery = default(EntityRef<PM_ProjectMachinery>);
+			this._PM_ProjectTask = default(EntityRef<PM_ProjectTask>);
 			OnCreated();
 		}
 		
@@ -3565,40 +3565,6 @@ namespace Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PM_ProjectTask_PM_ProjectProcessDetail", Storage="_PM_ProjectTask", ThisKey="DetailProjectTaskID", OtherKey="ProjectTaskID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public PM_ProjectTask PM_ProjectTask
-		{
-			get
-			{
-				return this._PM_ProjectTask.Entity;
-			}
-			set
-			{
-				PM_ProjectTask previousValue = this._PM_ProjectTask.Entity;
-				if (((previousValue != value) 
-							|| (this._PM_ProjectTask.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._PM_ProjectTask.Entity = null;
-						previousValue.PM_ProjectProcessDetails.Remove(this);
-					}
-					this._PM_ProjectTask.Entity = value;
-					if ((value != null))
-					{
-						value.PM_ProjectProcessDetails.Add(this);
-						this._DetailProjectTaskID = value.ProjectTaskID;
-					}
-					else
-					{
-						this._DetailProjectTaskID = default(int);
-					}
-					this.SendPropertyChanged("PM_ProjectTask");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PM_ProjectMachinery_PM_ProjectProcessDetail", Storage="_PM_ProjectMachinery", ThisKey="DetailMachineId", OtherKey="MachineryId", IsForeignKey=true, DeleteRule="CASCADE")]
 		public PM_ProjectMachinery PM_ProjectMachinery
 		{
@@ -3629,6 +3595,40 @@ namespace Models
 						this._DetailMachineId = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("PM_ProjectMachinery");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PM_ProjectTask_PM_ProjectProcessDetail", Storage="_PM_ProjectTask", ThisKey="DetailProjectTaskID", OtherKey="ProjectTaskID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public PM_ProjectTask PM_ProjectTask
+		{
+			get
+			{
+				return this._PM_ProjectTask.Entity;
+			}
+			set
+			{
+				PM_ProjectTask previousValue = this._PM_ProjectTask.Entity;
+				if (((previousValue != value) 
+							|| (this._PM_ProjectTask.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._PM_ProjectTask.Entity = null;
+						previousValue.PM_ProjectProcessDetails.Remove(this);
+					}
+					this._PM_ProjectTask.Entity = value;
+					if ((value != null))
+					{
+						value.PM_ProjectProcessDetails.Add(this);
+						this._DetailProjectTaskID = value.ProjectTaskID;
+					}
+					else
+					{
+						this._DetailProjectTaskID = default(int);
+					}
+					this.SendPropertyChanged("PM_ProjectTask");
 				}
 			}
 		}
@@ -6634,6 +6634,603 @@ namespace Models
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PM_ProjectProcessList")]
+	public partial class PM_ProjectProcessList : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ProcessListId;
+		
+		private string _ProcessListName;
+		
+		private string _ProcessListGroup;
+		
+		private System.Nullable<int> _ProcessListOrder;
+		
+		private System.Nullable<System.DateTime> _ModifiedWhen;
+		
+		private System.Nullable<int> _ModifiedByUserId;
+		
+		private System.Nullable<System.DateTime> _CreatedWhen;
+		
+		private System.Nullable<int> _CreatedByUserId;
+		
+		private EntitySet<PM_ProjectEmployeeProcess> _PM_ProjectEmployeeProcesses;
+		
+		private EntitySet<PM_ProjectProcess> _PM_ProjectProcesses;
+		
+		private EntitySet<PM_ProjectSubProcess> _PM_ProjectSubProcesses;
+		
+		private EntitySet<IV_tblMoldsProcess> _IV_tblMoldsProcesses;
+		
+		private EntitySet<PM_ProjectMachinery> _PM_ProjectMachineries;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnProcessListIdChanging(int value);
+    partial void OnProcessListIdChanged();
+    partial void OnProcessListNameChanging(string value);
+    partial void OnProcessListNameChanged();
+    partial void OnProcessListGroupChanging(string value);
+    partial void OnProcessListGroupChanged();
+    partial void OnProcessListOrderChanging(System.Nullable<int> value);
+    partial void OnProcessListOrderChanged();
+    partial void OnModifiedWhenChanging(System.Nullable<System.DateTime> value);
+    partial void OnModifiedWhenChanged();
+    partial void OnModifiedByUserIdChanging(System.Nullable<int> value);
+    partial void OnModifiedByUserIdChanged();
+    partial void OnCreatedWhenChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreatedWhenChanged();
+    partial void OnCreatedByUserIdChanging(System.Nullable<int> value);
+    partial void OnCreatedByUserIdChanged();
+    #endregion
+		
+		public PM_ProjectProcessList()
+		{
+			this._PM_ProjectEmployeeProcesses = new EntitySet<PM_ProjectEmployeeProcess>(new Action<PM_ProjectEmployeeProcess>(this.attach_PM_ProjectEmployeeProcesses), new Action<PM_ProjectEmployeeProcess>(this.detach_PM_ProjectEmployeeProcesses));
+			this._PM_ProjectProcesses = new EntitySet<PM_ProjectProcess>(new Action<PM_ProjectProcess>(this.attach_PM_ProjectProcesses), new Action<PM_ProjectProcess>(this.detach_PM_ProjectProcesses));
+			this._PM_ProjectSubProcesses = new EntitySet<PM_ProjectSubProcess>(new Action<PM_ProjectSubProcess>(this.attach_PM_ProjectSubProcesses), new Action<PM_ProjectSubProcess>(this.detach_PM_ProjectSubProcesses));
+			this._IV_tblMoldsProcesses = new EntitySet<IV_tblMoldsProcess>(new Action<IV_tblMoldsProcess>(this.attach_IV_tblMoldsProcesses), new Action<IV_tblMoldsProcess>(this.detach_IV_tblMoldsProcesses));
+			this._PM_ProjectMachineries = new EntitySet<PM_ProjectMachinery>(new Action<PM_ProjectMachinery>(this.attach_PM_ProjectMachineries), new Action<PM_ProjectMachinery>(this.detach_PM_ProjectMachineries));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProcessListId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ProcessListId
+		{
+			get
+			{
+				return this._ProcessListId;
+			}
+			set
+			{
+				if ((this._ProcessListId != value))
+				{
+					this.OnProcessListIdChanging(value);
+					this.SendPropertyChanging();
+					this._ProcessListId = value;
+					this.SendPropertyChanged("ProcessListId");
+					this.OnProcessListIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProcessListName", DbType="NVarChar(255)")]
+		public string ProcessListName
+		{
+			get
+			{
+				return this._ProcessListName;
+			}
+			set
+			{
+				if ((this._ProcessListName != value))
+				{
+					this.OnProcessListNameChanging(value);
+					this.SendPropertyChanging();
+					this._ProcessListName = value;
+					this.SendPropertyChanged("ProcessListName");
+					this.OnProcessListNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProcessListGroup", DbType="NVarChar(255)")]
+		public string ProcessListGroup
+		{
+			get
+			{
+				return this._ProcessListGroup;
+			}
+			set
+			{
+				if ((this._ProcessListGroup != value))
+				{
+					this.OnProcessListGroupChanging(value);
+					this.SendPropertyChanging();
+					this._ProcessListGroup = value;
+					this.SendPropertyChanged("ProcessListGroup");
+					this.OnProcessListGroupChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProcessListOrder", DbType="Int")]
+		public System.Nullable<int> ProcessListOrder
+		{
+			get
+			{
+				return this._ProcessListOrder;
+			}
+			set
+			{
+				if ((this._ProcessListOrder != value))
+				{
+					this.OnProcessListOrderChanging(value);
+					this.SendPropertyChanging();
+					this._ProcessListOrder = value;
+					this.SendPropertyChanged("ProcessListOrder");
+					this.OnProcessListOrderChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifiedWhen", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ModifiedWhen
+		{
+			get
+			{
+				return this._ModifiedWhen;
+			}
+			set
+			{
+				if ((this._ModifiedWhen != value))
+				{
+					this.OnModifiedWhenChanging(value);
+					this.SendPropertyChanging();
+					this._ModifiedWhen = value;
+					this.SendPropertyChanged("ModifiedWhen");
+					this.OnModifiedWhenChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifiedByUserId", DbType="Int")]
+		public System.Nullable<int> ModifiedByUserId
+		{
+			get
+			{
+				return this._ModifiedByUserId;
+			}
+			set
+			{
+				if ((this._ModifiedByUserId != value))
+				{
+					this.OnModifiedByUserIdChanging(value);
+					this.SendPropertyChanging();
+					this._ModifiedByUserId = value;
+					this.SendPropertyChanged("ModifiedByUserId");
+					this.OnModifiedByUserIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedWhen", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreatedWhen
+		{
+			get
+			{
+				return this._CreatedWhen;
+			}
+			set
+			{
+				if ((this._CreatedWhen != value))
+				{
+					this.OnCreatedWhenChanging(value);
+					this.SendPropertyChanging();
+					this._CreatedWhen = value;
+					this.SendPropertyChanged("CreatedWhen");
+					this.OnCreatedWhenChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedByUserId", DbType="Int")]
+		public System.Nullable<int> CreatedByUserId
+		{
+			get
+			{
+				return this._CreatedByUserId;
+			}
+			set
+			{
+				if ((this._CreatedByUserId != value))
+				{
+					this.OnCreatedByUserIdChanging(value);
+					this.SendPropertyChanging();
+					this._CreatedByUserId = value;
+					this.SendPropertyChanged("CreatedByUserId");
+					this.OnCreatedByUserIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PM_ProjectProcessList_PM_ProjectEmployeeProcess", Storage="_PM_ProjectEmployeeProcesses", ThisKey="ProcessListId", OtherKey="ProcessListID")]
+		public EntitySet<PM_ProjectEmployeeProcess> PM_ProjectEmployeeProcesses
+		{
+			get
+			{
+				return this._PM_ProjectEmployeeProcesses;
+			}
+			set
+			{
+				this._PM_ProjectEmployeeProcesses.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PM_ProjectProcessList_PM_ProjectProcess", Storage="_PM_ProjectProcesses", ThisKey="ProcessListId", OtherKey="ProcessListId")]
+		public EntitySet<PM_ProjectProcess> PM_ProjectProcesses
+		{
+			get
+			{
+				return this._PM_ProjectProcesses;
+			}
+			set
+			{
+				this._PM_ProjectProcesses.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PM_ProjectProcessList_PM_ProjectSubProcess", Storage="_PM_ProjectSubProcesses", ThisKey="ProcessListId", OtherKey="SubProcessListId")]
+		public EntitySet<PM_ProjectSubProcess> PM_ProjectSubProcesses
+		{
+			get
+			{
+				return this._PM_ProjectSubProcesses;
+			}
+			set
+			{
+				this._PM_ProjectSubProcesses.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PM_ProjectProcessList_IV_tblMoldsProcess", Storage="_IV_tblMoldsProcesses", ThisKey="ProcessListId", OtherKey="ProcessListId")]
+		public EntitySet<IV_tblMoldsProcess> IV_tblMoldsProcesses
+		{
+			get
+			{
+				return this._IV_tblMoldsProcesses;
+			}
+			set
+			{
+				this._IV_tblMoldsProcesses.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PM_ProjectProcessList_PM_ProjectMachinery", Storage="_PM_ProjectMachineries", ThisKey="ProcessListId", OtherKey="MachineryProcessListId")]
+		public EntitySet<PM_ProjectMachinery> PM_ProjectMachineries
+		{
+			get
+			{
+				return this._PM_ProjectMachineries;
+			}
+			set
+			{
+				this._PM_ProjectMachineries.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_PM_ProjectEmployeeProcesses(PM_ProjectEmployeeProcess entity)
+		{
+			this.SendPropertyChanging();
+			entity.PM_ProjectProcessList = this;
+		}
+		
+		private void detach_PM_ProjectEmployeeProcesses(PM_ProjectEmployeeProcess entity)
+		{
+			this.SendPropertyChanging();
+			entity.PM_ProjectProcessList = null;
+		}
+		
+		private void attach_PM_ProjectProcesses(PM_ProjectProcess entity)
+		{
+			this.SendPropertyChanging();
+			entity.PM_ProjectProcessList = this;
+		}
+		
+		private void detach_PM_ProjectProcesses(PM_ProjectProcess entity)
+		{
+			this.SendPropertyChanging();
+			entity.PM_ProjectProcessList = null;
+		}
+		
+		private void attach_PM_ProjectSubProcesses(PM_ProjectSubProcess entity)
+		{
+			this.SendPropertyChanging();
+			entity.PM_ProjectProcessList = this;
+		}
+		
+		private void detach_PM_ProjectSubProcesses(PM_ProjectSubProcess entity)
+		{
+			this.SendPropertyChanging();
+			entity.PM_ProjectProcessList = null;
+		}
+		
+		private void attach_IV_tblMoldsProcesses(IV_tblMoldsProcess entity)
+		{
+			this.SendPropertyChanging();
+			entity.PM_ProjectProcessList = this;
+		}
+		
+		private void detach_IV_tblMoldsProcesses(IV_tblMoldsProcess entity)
+		{
+			this.SendPropertyChanging();
+			entity.PM_ProjectProcessList = null;
+		}
+		
+		private void attach_PM_ProjectMachineries(PM_ProjectMachinery entity)
+		{
+			this.SendPropertyChanging();
+			entity.PM_ProjectProcessList = this;
+		}
+		
+		private void detach_PM_ProjectMachineries(PM_ProjectMachinery entity)
+		{
+			this.SendPropertyChanging();
+			entity.PM_ProjectProcessList = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PM_ProjectMachinery")]
+	public partial class PM_ProjectMachinery : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _MachineryId;
+		
+		private System.Nullable<int> _MachineryProcessListId;
+		
+		private string _MachineryName;
+		
+		private string _MachinerySymbol;
+		
+		private string _MachineryStatus;
+		
+		private EntitySet<PM_ProjectProcessDetail> _PM_ProjectProcessDetails;
+		
+		private EntityRef<PM_ProjectProcessList> _PM_ProjectProcessList;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnMachineryIdChanging(int value);
+    partial void OnMachineryIdChanged();
+    partial void OnMachineryProcessListIdChanging(System.Nullable<int> value);
+    partial void OnMachineryProcessListIdChanged();
+    partial void OnMachineryNameChanging(string value);
+    partial void OnMachineryNameChanged();
+    partial void OnMachinerySymbolChanging(string value);
+    partial void OnMachinerySymbolChanged();
+    partial void OnMachineryStatusChanging(string value);
+    partial void OnMachineryStatusChanged();
+    #endregion
+		
+		public PM_ProjectMachinery()
+		{
+			this._PM_ProjectProcessDetails = new EntitySet<PM_ProjectProcessDetail>(new Action<PM_ProjectProcessDetail>(this.attach_PM_ProjectProcessDetails), new Action<PM_ProjectProcessDetail>(this.detach_PM_ProjectProcessDetails));
+			this._PM_ProjectProcessList = default(EntityRef<PM_ProjectProcessList>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MachineryId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int MachineryId
+		{
+			get
+			{
+				return this._MachineryId;
+			}
+			set
+			{
+				if ((this._MachineryId != value))
+				{
+					this.OnMachineryIdChanging(value);
+					this.SendPropertyChanging();
+					this._MachineryId = value;
+					this.SendPropertyChanged("MachineryId");
+					this.OnMachineryIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MachineryProcessListId", DbType="Int")]
+		public System.Nullable<int> MachineryProcessListId
+		{
+			get
+			{
+				return this._MachineryProcessListId;
+			}
+			set
+			{
+				if ((this._MachineryProcessListId != value))
+				{
+					if (this._PM_ProjectProcessList.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnMachineryProcessListIdChanging(value);
+					this.SendPropertyChanging();
+					this._MachineryProcessListId = value;
+					this.SendPropertyChanged("MachineryProcessListId");
+					this.OnMachineryProcessListIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MachineryName", DbType="NVarChar(50)")]
+		public string MachineryName
+		{
+			get
+			{
+				return this._MachineryName;
+			}
+			set
+			{
+				if ((this._MachineryName != value))
+				{
+					this.OnMachineryNameChanging(value);
+					this.SendPropertyChanging();
+					this._MachineryName = value;
+					this.SendPropertyChanged("MachineryName");
+					this.OnMachineryNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MachinerySymbol", DbType="NVarChar(50)")]
+		public string MachinerySymbol
+		{
+			get
+			{
+				return this._MachinerySymbol;
+			}
+			set
+			{
+				if ((this._MachinerySymbol != value))
+				{
+					this.OnMachinerySymbolChanging(value);
+					this.SendPropertyChanging();
+					this._MachinerySymbol = value;
+					this.SendPropertyChanged("MachinerySymbol");
+					this.OnMachinerySymbolChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MachineryStatus", DbType="NVarChar(50)")]
+		public string MachineryStatus
+		{
+			get
+			{
+				return this._MachineryStatus;
+			}
+			set
+			{
+				if ((this._MachineryStatus != value))
+				{
+					this.OnMachineryStatusChanging(value);
+					this.SendPropertyChanging();
+					this._MachineryStatus = value;
+					this.SendPropertyChanged("MachineryStatus");
+					this.OnMachineryStatusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PM_ProjectMachinery_PM_ProjectProcessDetail", Storage="_PM_ProjectProcessDetails", ThisKey="MachineryId", OtherKey="DetailMachineId")]
+		public EntitySet<PM_ProjectProcessDetail> PM_ProjectProcessDetails
+		{
+			get
+			{
+				return this._PM_ProjectProcessDetails;
+			}
+			set
+			{
+				this._PM_ProjectProcessDetails.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PM_ProjectProcessList_PM_ProjectMachinery", Storage="_PM_ProjectProcessList", ThisKey="MachineryProcessListId", OtherKey="ProcessListId", IsForeignKey=true, DeleteRule="CASCADE")]
+		public PM_ProjectProcessList PM_ProjectProcessList
+		{
+			get
+			{
+				return this._PM_ProjectProcessList.Entity;
+			}
+			set
+			{
+				PM_ProjectProcessList previousValue = this._PM_ProjectProcessList.Entity;
+				if (((previousValue != value) 
+							|| (this._PM_ProjectProcessList.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._PM_ProjectProcessList.Entity = null;
+						previousValue.PM_ProjectMachineries.Remove(this);
+					}
+					this._PM_ProjectProcessList.Entity = value;
+					if ((value != null))
+					{
+						value.PM_ProjectMachineries.Add(this);
+						this._MachineryProcessListId = value.ProcessListId;
+					}
+					else
+					{
+						this._MachineryProcessListId = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("PM_ProjectProcessList");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_PM_ProjectProcessDetails(PM_ProjectProcessDetail entity)
+		{
+			this.SendPropertyChanging();
+			entity.PM_ProjectMachinery = this;
+		}
+		
+		private void detach_PM_ProjectProcessDetails(PM_ProjectProcessDetail entity)
+		{
+			this.SendPropertyChanging();
+			entity.PM_ProjectMachinery = null;
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PM_ProjectTask")]
 	public partial class PM_ProjectTask : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -6725,6 +7322,14 @@ namespace Models
 		private System.Nullable<System.DateTime> _ProjectTaskExpectedTwo;
 		
 		private System.Nullable<System.DateTime> _ProjectTaskExpectedThree;
+		
+		private System.Nullable<System.DateTime> _ProjectTaskDuKienThoQuaTinh;
+		
+		private System.Nullable<System.DateTime> _ProjectTaskThucTeThoQuaTinh;
+		
+		private System.Nullable<System.DateTime> _ProjectTaskDuKienTinhQuaQA;
+		
+		private System.Nullable<System.DateTime> _ProjectTaskThucTeTinhQuaQA;
 		
 		private System.Nullable<System.DateTime> _ModifiedWhen;
 		
@@ -6844,6 +7449,14 @@ namespace Models
     partial void OnProjectTaskExpectedTwoChanged();
     partial void OnProjectTaskExpectedThreeChanging(System.Nullable<System.DateTime> value);
     partial void OnProjectTaskExpectedThreeChanged();
+    partial void OnProjectTaskDuKienThoQuaTinhChanging(System.Nullable<System.DateTime> value);
+    partial void OnProjectTaskDuKienThoQuaTinhChanged();
+    partial void OnProjectTaskThucTeThoQuaTinhChanging(System.Nullable<System.DateTime> value);
+    partial void OnProjectTaskThucTeThoQuaTinhChanged();
+    partial void OnProjectTaskDuKienTinhQuaQAChanging(System.Nullable<System.DateTime> value);
+    partial void OnProjectTaskDuKienTinhQuaQAChanged();
+    partial void OnProjectTaskThucTeTinhQuaQAChanging(System.Nullable<System.DateTime> value);
+    partial void OnProjectTaskThucTeTinhQuaQAChanged();
     partial void OnModifiedWhenChanging(System.Nullable<System.DateTime> value);
     partial void OnModifiedWhenChanged();
     partial void OnModifiedByUserIdChanging(System.Nullable<int> value);
@@ -7761,6 +8374,86 @@ namespace Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskDuKienThoQuaTinh", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ProjectTaskDuKienThoQuaTinh
+		{
+			get
+			{
+				return this._ProjectTaskDuKienThoQuaTinh;
+			}
+			set
+			{
+				if ((this._ProjectTaskDuKienThoQuaTinh != value))
+				{
+					this.OnProjectTaskDuKienThoQuaTinhChanging(value);
+					this.SendPropertyChanging();
+					this._ProjectTaskDuKienThoQuaTinh = value;
+					this.SendPropertyChanged("ProjectTaskDuKienThoQuaTinh");
+					this.OnProjectTaskDuKienThoQuaTinhChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskThucTeThoQuaTinh", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ProjectTaskThucTeThoQuaTinh
+		{
+			get
+			{
+				return this._ProjectTaskThucTeThoQuaTinh;
+			}
+			set
+			{
+				if ((this._ProjectTaskThucTeThoQuaTinh != value))
+				{
+					this.OnProjectTaskThucTeThoQuaTinhChanging(value);
+					this.SendPropertyChanging();
+					this._ProjectTaskThucTeThoQuaTinh = value;
+					this.SendPropertyChanged("ProjectTaskThucTeThoQuaTinh");
+					this.OnProjectTaskThucTeThoQuaTinhChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskDuKienTinhQuaQA", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ProjectTaskDuKienTinhQuaQA
+		{
+			get
+			{
+				return this._ProjectTaskDuKienTinhQuaQA;
+			}
+			set
+			{
+				if ((this._ProjectTaskDuKienTinhQuaQA != value))
+				{
+					this.OnProjectTaskDuKienTinhQuaQAChanging(value);
+					this.SendPropertyChanging();
+					this._ProjectTaskDuKienTinhQuaQA = value;
+					this.SendPropertyChanged("ProjectTaskDuKienTinhQuaQA");
+					this.OnProjectTaskDuKienTinhQuaQAChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskThucTeTinhQuaQA", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ProjectTaskThucTeTinhQuaQA
+		{
+			get
+			{
+				return this._ProjectTaskThucTeTinhQuaQA;
+			}
+			set
+			{
+				if ((this._ProjectTaskThucTeTinhQuaQA != value))
+				{
+					this.OnProjectTaskThucTeTinhQuaQAChanging(value);
+					this.SendPropertyChanging();
+					this._ProjectTaskThucTeTinhQuaQA = value;
+					this.SendPropertyChanged("ProjectTaskThucTeTinhQuaQA");
+					this.OnProjectTaskThucTeTinhQuaQAChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifiedWhen", DbType="DateTime")]
 		public System.Nullable<System.DateTime> ModifiedWhen
 		{
@@ -8181,603 +8874,6 @@ namespace Models
 		{
 			this.SendPropertyChanging();
 			entity.PM_ProjectTask = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PM_ProjectProcessList")]
-	public partial class PM_ProjectProcessList : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ProcessListId;
-		
-		private string _ProcessListName;
-		
-		private string _ProcessListGroup;
-		
-		private System.Nullable<int> _ProcessListOrder;
-		
-		private System.Nullable<System.DateTime> _ModifiedWhen;
-		
-		private System.Nullable<int> _ModifiedByUserId;
-		
-		private System.Nullable<System.DateTime> _CreatedWhen;
-		
-		private System.Nullable<int> _CreatedByUserId;
-		
-		private EntitySet<PM_ProjectEmployeeProcess> _PM_ProjectEmployeeProcesses;
-		
-		private EntitySet<PM_ProjectProcess> _PM_ProjectProcesses;
-		
-		private EntitySet<PM_ProjectSubProcess> _PM_ProjectSubProcesses;
-		
-		private EntitySet<IV_tblMoldsProcess> _IV_tblMoldsProcesses;
-		
-		private EntitySet<PM_ProjectMachinery> _PM_ProjectMachineries;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnProcessListIdChanging(int value);
-    partial void OnProcessListIdChanged();
-    partial void OnProcessListNameChanging(string value);
-    partial void OnProcessListNameChanged();
-    partial void OnProcessListGroupChanging(string value);
-    partial void OnProcessListGroupChanged();
-    partial void OnProcessListOrderChanging(System.Nullable<int> value);
-    partial void OnProcessListOrderChanged();
-    partial void OnModifiedWhenChanging(System.Nullable<System.DateTime> value);
-    partial void OnModifiedWhenChanged();
-    partial void OnModifiedByUserIdChanging(System.Nullable<int> value);
-    partial void OnModifiedByUserIdChanged();
-    partial void OnCreatedWhenChanging(System.Nullable<System.DateTime> value);
-    partial void OnCreatedWhenChanged();
-    partial void OnCreatedByUserIdChanging(System.Nullable<int> value);
-    partial void OnCreatedByUserIdChanged();
-    #endregion
-		
-		public PM_ProjectProcessList()
-		{
-			this._PM_ProjectEmployeeProcesses = new EntitySet<PM_ProjectEmployeeProcess>(new Action<PM_ProjectEmployeeProcess>(this.attach_PM_ProjectEmployeeProcesses), new Action<PM_ProjectEmployeeProcess>(this.detach_PM_ProjectEmployeeProcesses));
-			this._PM_ProjectProcesses = new EntitySet<PM_ProjectProcess>(new Action<PM_ProjectProcess>(this.attach_PM_ProjectProcesses), new Action<PM_ProjectProcess>(this.detach_PM_ProjectProcesses));
-			this._PM_ProjectSubProcesses = new EntitySet<PM_ProjectSubProcess>(new Action<PM_ProjectSubProcess>(this.attach_PM_ProjectSubProcesses), new Action<PM_ProjectSubProcess>(this.detach_PM_ProjectSubProcesses));
-			this._IV_tblMoldsProcesses = new EntitySet<IV_tblMoldsProcess>(new Action<IV_tblMoldsProcess>(this.attach_IV_tblMoldsProcesses), new Action<IV_tblMoldsProcess>(this.detach_IV_tblMoldsProcesses));
-			this._PM_ProjectMachineries = new EntitySet<PM_ProjectMachinery>(new Action<PM_ProjectMachinery>(this.attach_PM_ProjectMachineries), new Action<PM_ProjectMachinery>(this.detach_PM_ProjectMachineries));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProcessListId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ProcessListId
-		{
-			get
-			{
-				return this._ProcessListId;
-			}
-			set
-			{
-				if ((this._ProcessListId != value))
-				{
-					this.OnProcessListIdChanging(value);
-					this.SendPropertyChanging();
-					this._ProcessListId = value;
-					this.SendPropertyChanged("ProcessListId");
-					this.OnProcessListIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProcessListName", DbType="NVarChar(255)")]
-		public string ProcessListName
-		{
-			get
-			{
-				return this._ProcessListName;
-			}
-			set
-			{
-				if ((this._ProcessListName != value))
-				{
-					this.OnProcessListNameChanging(value);
-					this.SendPropertyChanging();
-					this._ProcessListName = value;
-					this.SendPropertyChanged("ProcessListName");
-					this.OnProcessListNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProcessListGroup", DbType="NVarChar(255)")]
-		public string ProcessListGroup
-		{
-			get
-			{
-				return this._ProcessListGroup;
-			}
-			set
-			{
-				if ((this._ProcessListGroup != value))
-				{
-					this.OnProcessListGroupChanging(value);
-					this.SendPropertyChanging();
-					this._ProcessListGroup = value;
-					this.SendPropertyChanged("ProcessListGroup");
-					this.OnProcessListGroupChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProcessListOrder", DbType="Int")]
-		public System.Nullable<int> ProcessListOrder
-		{
-			get
-			{
-				return this._ProcessListOrder;
-			}
-			set
-			{
-				if ((this._ProcessListOrder != value))
-				{
-					this.OnProcessListOrderChanging(value);
-					this.SendPropertyChanging();
-					this._ProcessListOrder = value;
-					this.SendPropertyChanged("ProcessListOrder");
-					this.OnProcessListOrderChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifiedWhen", DbType="DateTime")]
-		public System.Nullable<System.DateTime> ModifiedWhen
-		{
-			get
-			{
-				return this._ModifiedWhen;
-			}
-			set
-			{
-				if ((this._ModifiedWhen != value))
-				{
-					this.OnModifiedWhenChanging(value);
-					this.SendPropertyChanging();
-					this._ModifiedWhen = value;
-					this.SendPropertyChanged("ModifiedWhen");
-					this.OnModifiedWhenChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifiedByUserId", DbType="Int")]
-		public System.Nullable<int> ModifiedByUserId
-		{
-			get
-			{
-				return this._ModifiedByUserId;
-			}
-			set
-			{
-				if ((this._ModifiedByUserId != value))
-				{
-					this.OnModifiedByUserIdChanging(value);
-					this.SendPropertyChanging();
-					this._ModifiedByUserId = value;
-					this.SendPropertyChanged("ModifiedByUserId");
-					this.OnModifiedByUserIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedWhen", DbType="DateTime")]
-		public System.Nullable<System.DateTime> CreatedWhen
-		{
-			get
-			{
-				return this._CreatedWhen;
-			}
-			set
-			{
-				if ((this._CreatedWhen != value))
-				{
-					this.OnCreatedWhenChanging(value);
-					this.SendPropertyChanging();
-					this._CreatedWhen = value;
-					this.SendPropertyChanged("CreatedWhen");
-					this.OnCreatedWhenChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedByUserId", DbType="Int")]
-		public System.Nullable<int> CreatedByUserId
-		{
-			get
-			{
-				return this._CreatedByUserId;
-			}
-			set
-			{
-				if ((this._CreatedByUserId != value))
-				{
-					this.OnCreatedByUserIdChanging(value);
-					this.SendPropertyChanging();
-					this._CreatedByUserId = value;
-					this.SendPropertyChanged("CreatedByUserId");
-					this.OnCreatedByUserIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PM_ProjectProcessList_PM_ProjectEmployeeProcess", Storage="_PM_ProjectEmployeeProcesses", ThisKey="ProcessListId", OtherKey="ProcessListID")]
-		public EntitySet<PM_ProjectEmployeeProcess> PM_ProjectEmployeeProcesses
-		{
-			get
-			{
-				return this._PM_ProjectEmployeeProcesses;
-			}
-			set
-			{
-				this._PM_ProjectEmployeeProcesses.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PM_ProjectProcessList_PM_ProjectProcess", Storage="_PM_ProjectProcesses", ThisKey="ProcessListId", OtherKey="ProcessListId")]
-		public EntitySet<PM_ProjectProcess> PM_ProjectProcesses
-		{
-			get
-			{
-				return this._PM_ProjectProcesses;
-			}
-			set
-			{
-				this._PM_ProjectProcesses.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PM_ProjectProcessList_PM_ProjectSubProcess", Storage="_PM_ProjectSubProcesses", ThisKey="ProcessListId", OtherKey="SubProcessListId")]
-		public EntitySet<PM_ProjectSubProcess> PM_ProjectSubProcesses
-		{
-			get
-			{
-				return this._PM_ProjectSubProcesses;
-			}
-			set
-			{
-				this._PM_ProjectSubProcesses.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PM_ProjectProcessList_IV_tblMoldsProcess", Storage="_IV_tblMoldsProcesses", ThisKey="ProcessListId", OtherKey="ProcessListId")]
-		public EntitySet<IV_tblMoldsProcess> IV_tblMoldsProcesses
-		{
-			get
-			{
-				return this._IV_tblMoldsProcesses;
-			}
-			set
-			{
-				this._IV_tblMoldsProcesses.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PM_ProjectProcessList_PM_ProjectMachinery", Storage="_PM_ProjectMachineries", ThisKey="ProcessListId", OtherKey="MachineryProcessListId")]
-		public EntitySet<PM_ProjectMachinery> PM_ProjectMachineries
-		{
-			get
-			{
-				return this._PM_ProjectMachineries;
-			}
-			set
-			{
-				this._PM_ProjectMachineries.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_PM_ProjectEmployeeProcesses(PM_ProjectEmployeeProcess entity)
-		{
-			this.SendPropertyChanging();
-			entity.PM_ProjectProcessList = this;
-		}
-		
-		private void detach_PM_ProjectEmployeeProcesses(PM_ProjectEmployeeProcess entity)
-		{
-			this.SendPropertyChanging();
-			entity.PM_ProjectProcessList = null;
-		}
-		
-		private void attach_PM_ProjectProcesses(PM_ProjectProcess entity)
-		{
-			this.SendPropertyChanging();
-			entity.PM_ProjectProcessList = this;
-		}
-		
-		private void detach_PM_ProjectProcesses(PM_ProjectProcess entity)
-		{
-			this.SendPropertyChanging();
-			entity.PM_ProjectProcessList = null;
-		}
-		
-		private void attach_PM_ProjectSubProcesses(PM_ProjectSubProcess entity)
-		{
-			this.SendPropertyChanging();
-			entity.PM_ProjectProcessList = this;
-		}
-		
-		private void detach_PM_ProjectSubProcesses(PM_ProjectSubProcess entity)
-		{
-			this.SendPropertyChanging();
-			entity.PM_ProjectProcessList = null;
-		}
-		
-		private void attach_IV_tblMoldsProcesses(IV_tblMoldsProcess entity)
-		{
-			this.SendPropertyChanging();
-			entity.PM_ProjectProcessList = this;
-		}
-		
-		private void detach_IV_tblMoldsProcesses(IV_tblMoldsProcess entity)
-		{
-			this.SendPropertyChanging();
-			entity.PM_ProjectProcessList = null;
-		}
-		
-		private void attach_PM_ProjectMachineries(PM_ProjectMachinery entity)
-		{
-			this.SendPropertyChanging();
-			entity.PM_ProjectProcessList = this;
-		}
-		
-		private void detach_PM_ProjectMachineries(PM_ProjectMachinery entity)
-		{
-			this.SendPropertyChanging();
-			entity.PM_ProjectProcessList = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PM_ProjectMachinery")]
-	public partial class PM_ProjectMachinery : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _MachineryId;
-		
-		private System.Nullable<int> _MachineryProcessListId;
-		
-		private string _MachineryName;
-		
-		private string _MachinerySymbol;
-		
-		private string _MachineryStatus;
-		
-		private EntitySet<PM_ProjectProcessDetail> _PM_ProjectProcessDetails;
-		
-		private EntityRef<PM_ProjectProcessList> _PM_ProjectProcessList;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnMachineryIdChanging(int value);
-    partial void OnMachineryIdChanged();
-    partial void OnMachineryProcessListIdChanging(System.Nullable<int> value);
-    partial void OnMachineryProcessListIdChanged();
-    partial void OnMachineryNameChanging(string value);
-    partial void OnMachineryNameChanged();
-    partial void OnMachinerySymbolChanging(string value);
-    partial void OnMachinerySymbolChanged();
-    partial void OnMachineryStatusChanging(string value);
-    partial void OnMachineryStatusChanged();
-    #endregion
-		
-		public PM_ProjectMachinery()
-		{
-			this._PM_ProjectProcessDetails = new EntitySet<PM_ProjectProcessDetail>(new Action<PM_ProjectProcessDetail>(this.attach_PM_ProjectProcessDetails), new Action<PM_ProjectProcessDetail>(this.detach_PM_ProjectProcessDetails));
-			this._PM_ProjectProcessList = default(EntityRef<PM_ProjectProcessList>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MachineryId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int MachineryId
-		{
-			get
-			{
-				return this._MachineryId;
-			}
-			set
-			{
-				if ((this._MachineryId != value))
-				{
-					this.OnMachineryIdChanging(value);
-					this.SendPropertyChanging();
-					this._MachineryId = value;
-					this.SendPropertyChanged("MachineryId");
-					this.OnMachineryIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MachineryProcessListId", DbType="Int")]
-		public System.Nullable<int> MachineryProcessListId
-		{
-			get
-			{
-				return this._MachineryProcessListId;
-			}
-			set
-			{
-				if ((this._MachineryProcessListId != value))
-				{
-					if (this._PM_ProjectProcessList.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnMachineryProcessListIdChanging(value);
-					this.SendPropertyChanging();
-					this._MachineryProcessListId = value;
-					this.SendPropertyChanged("MachineryProcessListId");
-					this.OnMachineryProcessListIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MachineryName", DbType="NVarChar(50)")]
-		public string MachineryName
-		{
-			get
-			{
-				return this._MachineryName;
-			}
-			set
-			{
-				if ((this._MachineryName != value))
-				{
-					this.OnMachineryNameChanging(value);
-					this.SendPropertyChanging();
-					this._MachineryName = value;
-					this.SendPropertyChanged("MachineryName");
-					this.OnMachineryNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MachinerySymbol", DbType="NVarChar(50)")]
-		public string MachinerySymbol
-		{
-			get
-			{
-				return this._MachinerySymbol;
-			}
-			set
-			{
-				if ((this._MachinerySymbol != value))
-				{
-					this.OnMachinerySymbolChanging(value);
-					this.SendPropertyChanging();
-					this._MachinerySymbol = value;
-					this.SendPropertyChanged("MachinerySymbol");
-					this.OnMachinerySymbolChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MachineryStatus", DbType="NVarChar(50)")]
-		public string MachineryStatus
-		{
-			get
-			{
-				return this._MachineryStatus;
-			}
-			set
-			{
-				if ((this._MachineryStatus != value))
-				{
-					this.OnMachineryStatusChanging(value);
-					this.SendPropertyChanging();
-					this._MachineryStatus = value;
-					this.SendPropertyChanged("MachineryStatus");
-					this.OnMachineryStatusChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PM_ProjectMachinery_PM_ProjectProcessDetail", Storage="_PM_ProjectProcessDetails", ThisKey="MachineryId", OtherKey="DetailMachineId")]
-		public EntitySet<PM_ProjectProcessDetail> PM_ProjectProcessDetails
-		{
-			get
-			{
-				return this._PM_ProjectProcessDetails;
-			}
-			set
-			{
-				this._PM_ProjectProcessDetails.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PM_ProjectProcessList_PM_ProjectMachinery", Storage="_PM_ProjectProcessList", ThisKey="MachineryProcessListId", OtherKey="ProcessListId", IsForeignKey=true, DeleteRule="CASCADE")]
-		public PM_ProjectProcessList PM_ProjectProcessList
-		{
-			get
-			{
-				return this._PM_ProjectProcessList.Entity;
-			}
-			set
-			{
-				PM_ProjectProcessList previousValue = this._PM_ProjectProcessList.Entity;
-				if (((previousValue != value) 
-							|| (this._PM_ProjectProcessList.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._PM_ProjectProcessList.Entity = null;
-						previousValue.PM_ProjectMachineries.Remove(this);
-					}
-					this._PM_ProjectProcessList.Entity = value;
-					if ((value != null))
-					{
-						value.PM_ProjectMachineries.Add(this);
-						this._MachineryProcessListId = value.ProcessListId;
-					}
-					else
-					{
-						this._MachineryProcessListId = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("PM_ProjectProcessList");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_PM_ProjectProcessDetails(PM_ProjectProcessDetail entity)
-		{
-			this.SendPropertyChanging();
-			entity.PM_ProjectMachinery = this;
-		}
-		
-		private void detach_PM_ProjectProcessDetails(PM_ProjectProcessDetail entity)
-		{
-			this.SendPropertyChanging();
-			entity.PM_ProjectMachinery = null;
 		}
 	}
 }

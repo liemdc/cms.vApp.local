@@ -127,6 +127,10 @@ public partial class OrdersObject {
     public Nullable<DateTime> CreatedWhen { get; set; }
     public Nullable<DateTime> ProjectTaskExpectedOne { get; set; }
     public Nullable<DateTime> ProjectTaskExpectedTwo { get; set; }
+    public Nullable<DateTime> ProjectTaskDuKienThoQuaTinh { get; set; }
+    public Nullable<DateTime> ProjectTaskThucTeThoQuaTinh { get; set; }
+    public Nullable<DateTime> ProjectTaskDuKienTinhQuaQA { get; set; }
+    public Nullable<DateTime> ProjectTaskThucTeTinhQuaQA { get; set; }
 }
 public partial class MoldsProcessObject {
     public int MoldsProcessId { get; set; }

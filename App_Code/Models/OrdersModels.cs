@@ -22,9 +22,10 @@ public class OrdersModels {
                     ProjectTaskTransmit = sm.t.ProjectTaskTransmit, ProjectTaskPriceCalc = sm.t.ProjectTaskQuantities * sm.t.ProjectTaskPrice, ProjectTaskExpectedOne = sm.t.ProjectTaskExpectedOne, ProjectTaskExpectedTwo = sm.t.ProjectTaskExpectedTwo, CreatedWhen = sm.t.CreatedWhen, UserModified = userm.FullName
                 }).OrderBy(o => o.ProjectTaskMoldCode);
     }
-    public static IEnumerable<OrdersObject> OrdersListNd(int TaskStatus, int TaskPriority) {       
- 
-        return LINQData.db.PM_ProjectTasks.Where(w => w.ProjectTaskPriorityID == TaskPriority)
+    public static IEnumerable<OrdersObject> OrdersListNd(string TaskStatus, string TaskPriority) {
+        int[] statusIds = Array.ConvertAll(TaskStatus.Split(';'), s => int.Parse(s));
+        int[] priorityIds = Array.ConvertAll(TaskPriority.Split(';'), s => int.Parse(s));
+        return LINQData.db.PM_ProjectTasks.Where(w => statusIds.Contains(w.ProjectTaskStatusID) && priorityIds.Contains(w.ProjectTaskPriorityID))
                 .GroupJoin(LINQData.db.CMS_Users, t => t.ModifiedByUserId, userc => userc.UserID, (t, userm) => new { t, userm })
                 .SelectMany(sm => sm.userm.DefaultIfEmpty(), (sm, userm) => new OrdersObject { 
                     ProjectTaskID = sm.t.ProjectTaskID, ProjectTaskBottoHob = sm.t.ProjectTaskBottoHob, ProjectTaskChildNote = sm.t.ProjectTaskChildNote, ProjectTaskContainHead = sm.t.ProjectTaskContainHead,
@@ -32,7 +33,8 @@ public class OrdersModels {
                     ProjectTaskDisplayName = sm.t.ProjectTaskDisplayName, ProjectTaskHardness = sm.t.ProjectTaskHardness, ProjectTaskHoleNum = sm.t.ProjectTaskHoleNum, ProjectTaskHorikomi = sm.t.ProjectTaskHorikomi, ProjectTaskMaterialsCode = sm.t.ProjectTaskMaterialsCode,
                     ProjectTaskMaterialsRequire = sm.t.ProjectTaskMaterialsRequire, ProjectTaskMoldCode = sm.t.ProjectTaskMoldCode, ProjectTaskMoldsId = sm.t.ProjectTaskMoldsId, ProjectTaskOverlayNum = sm.t.ProjectTaskOverlayNum, ProjectTaskPrice = sm.t.ProjectTaskPrice,
                     ProjectTaskPriorityID = sm.t.ProjectTaskPriorityID, ProjectTaskQuantities = sm.t.ProjectTaskQuantities, ProjectTaskStatusID = sm.t.ProjectTaskStatusID, ProjectTaskThickness = sm.t.ProjectTaskThickness, ProjectTaskThicknessTotal = sm.t.ProjectTaskThicknessTotal,
-                    ProjectTaskTransmit = sm.t.ProjectTaskTransmit, ProjectTaskPriceCalc = sm.t.ProjectTaskQuantities * sm.t.ProjectTaskPrice, ProjectTaskExpectedOne = sm.t.ProjectTaskExpectedOne, ProjectTaskExpectedTwo = sm.t.ProjectTaskExpectedTwo, CreatedWhen = sm.t.CreatedWhen, UserModified = userm.FullName
+                    ProjectTaskTransmit = sm.t.ProjectTaskTransmit, ProjectTaskPriceCalc = sm.t.ProjectTaskQuantities * sm.t.ProjectTaskPrice, ProjectTaskExpectedOne = sm.t.ProjectTaskExpectedOne, ProjectTaskExpectedTwo = sm.t.ProjectTaskExpectedTwo, CreatedWhen = sm.t.CreatedWhen, UserModified = userm.FullName,
+                    ProjectTaskDuKienThoQuaTinh = sm.t.ProjectTaskDuKienThoQuaTinh, ProjectTaskDuKienTinhQuaQA = sm.t.ProjectTaskDuKienTinhQuaQA, ProjectTaskThucTeThoQuaTinh = sm.t.ProjectTaskThucTeThoQuaTinh, ProjectTaskThucTeTinhQuaQA = sm.t.ProjectTaskThucTeTinhQuaQA
                 }).OrderBy(o => o.ProjectTaskMoldCode);
     }
     public static void OrdersCreated(string ProjectTaskMoldCode, string ProjectTaskOverlayNum, string ProjectTaskHoleNum, decimal ProjectTaskDiameterOut, string ProjectTaskMaterialsRequire, string ProjectTaskMaterialsCode, int ProjectTaskMoldsId, 
@@ -146,7 +148,8 @@ public class OrdersModels {
             } catch { }
         }
     }
-    public static void OrdersUpdatedNd(int ProjectTaskID, int ProjectTaskStatusID, int ProjectTaskPriorityID, decimal ProjectTaskPrice, DateTime ProjectTaskDeadline, DateTime ProjectTaskTransmit, string ProjectTaskDescription) {
+    public static void OrdersUpdatedNd(int ProjectTaskID, int ProjectTaskStatusID, int ProjectTaskPriorityID, decimal ProjectTaskPrice, DateTime ProjectTaskDeadline, DateTime ProjectTaskTransmit, string ProjectTaskDescription, 
+        DateTime ProjectTaskDuKienThoQuaTinh, DateTime ProjectTaskThucTeThoQuaTinh, DateTime ProjectTaskDuKienTinhQuaQA, DateTime ProjectTaskThucTeTinhQuaQA) {
         PM_ProjectTask pt = LINQData.db.PM_ProjectTasks.FirstOrDefault(x => x.ProjectTaskID == ProjectTaskID);
         if (pt != null) {
             pt.ProjectTaskStatusID = ProjectTaskStatusID;
@@ -155,6 +158,10 @@ public class OrdersModels {
             pt.ProjectTaskDeadline = ProjectTaskDeadline;
             pt.ProjectTaskTransmit = ProjectTaskTransmit;
             pt.ProjectTaskDescription = ProjectTaskDescription;
+            pt.ProjectTaskDuKienThoQuaTinh = ProjectTaskDuKienThoQuaTinh;
+            //pt.ProjectTaskThucTeThoQuaTinh = ProjectTaskThucTeThoQuaTinh;
+            //pt.ProjectTaskDuKienTinhQuaQA = ProjectTaskDuKienTinhQuaQA;
+            //pt.ProjectTaskThucTeTinhQuaQA = ProjectTaskThucTeTinhQuaQA;
             LINQData.db.SubmitChanges();
         }
     }

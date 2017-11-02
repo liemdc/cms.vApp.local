@@ -4,12 +4,11 @@
     <script type="text/javascript">
         function AdjustSize() {
             var TabHeight = 28;
-            var ControlHeight = 27;
             var MainHeight = ASPxClientUtils.GetDocumentClientHeight();
             if (document.body.scrollHeight > MainHeight) { MainHeight = document.body.scrollHeight; }
             var GridHeight = MainHeight - HeaderPanel.GetHeight() - FooterPanel.GetHeight() - TabHeight;
             if (typeof GvLevelA !== 'undefined') { GvLevelA.SetHeight(0); GvLevelA.SetHeight(GridHeight); }
-            if (typeof GvLevelB !== 'undefined') { GvLevelB.SetHeight(0); GvLevelB.SetHeight(GridHeight - ControlHeight); }
+            if (typeof GvLevelB !== 'undefined') { GvLevelB.SetHeight(0); GvLevelB.SetHeight(GridHeight); }
             if (typeof GvLevelC !== 'undefined') { GvLevelC.SetHeight(0); GvLevelC.SetHeight(GridHeight); }
             if (typeof GvLevelD !== 'undefined') { GvLevelD.SetHeight(0); GvLevelD.SetHeight(GridHeight); }
         }
@@ -171,8 +170,8 @@
                 <ContentCollection>
                     <dx:ContentControl ID="OrdersListNdTab" Visible="true" runat="server">
                         <dx:ASPxGridView ID="GvLevelB" ClientInstanceName="GvLevelB" runat="server" Width="100%" DataSourceID="OdsLevelB" KeyFieldName="ProjectTaskID"
-                            Border-BorderWidth="0" OnFillContextMenuItems="GvLevelB_FillContextMenuItems" OnCustomColumnDisplayText="OnCustomColumnDisplayText">                                    
-                            <Columns>
+                            Border-BorderWidth="0" OnFillContextMenuItems="GvLevelB_FillContextMenuItems" OnCustomColumnDisplayText="OnCustomColumnDisplayText">
+                            <Columns>                                
                                 <dx:GridViewBandColumn Caption="Dữ liệu thông tin đơn hàng" VisibleIndex="0">
                                     <Columns>
                                         <dx:GridViewDataTextColumn VisibleIndex="0" Caption="Num" Width="48" Settings-AllowSort="False" Settings-AllowHeaderFilter="False" EditFormSettings-Visible="False" UnboundType="String" FixedStyle="Left" />
@@ -198,61 +197,76 @@
                                 </dx:GridViewBandColumn> 
                                 <dx:GridViewBandColumn Caption="Dự kiến / Thực tế: Thô qua Tinh" VisibleIndex="15">
                                     <Columns>
-                                        <dx:GridViewDataTextColumn FieldName="" Caption="Dự kiến" Width="120">
-                                            <PropertiesTextEdit ValidationSettings-Display="Dynamic" ValidationSettings-RequiredField-IsRequired="true" ValidationSettings-RequiredField-ErrorText="Data is required." />
-                                        </dx:GridViewDataTextColumn> 
-                                        <dx:GridViewDataTextColumn FieldName="" Caption="Thực tế" Width="120">
-                                            <PropertiesTextEdit ValidationSettings-Display="Dynamic" ValidationSettings-RequiredField-IsRequired="true" ValidationSettings-RequiredField-ErrorText="Data is required." />
-                                        </dx:GridViewDataTextColumn>
+                                        <dx:GridViewDataDateColumn FieldName="ProjectTaskDuKienThoQuaTinh" Caption="Dự kiến" EditFormSettings-Caption="Dự kiến Thô qua Tinh" Width="120" VisibleIndex="15"> 
+                                            <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm" AllowNull="true">
+                                                <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
+                                            </PropertiesDateEdit>
+                                        </dx:GridViewDataDateColumn>
+                                        <dx:GridViewDataDateColumn FieldName="ProjectTaskThucTeThoQuaTinh" Caption="Thực tế" EditFormSettings-Caption="Thực tế Thô qua Tinh" Width="120" VisibleIndex="15">
+                                            <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm" AllowNull="true">
+                                                <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
+                                            </PropertiesDateEdit>
+                                        </dx:GridViewDataDateColumn>
                                     </Columns>
                                     <HeaderStyle HorizontalAlign="Left" />
                                 </dx:GridViewBandColumn>
                                 <dx:GridViewBandColumn Caption="Dự kiến / Thực tế: Tinh qua QA" VisibleIndex="16">
                                     <Columns>
-                                        <dx:GridViewDataTextColumn FieldName="" Caption="Dự kiến" Width="120">
-                                            <PropertiesTextEdit ValidationSettings-Display="Dynamic" ValidationSettings-RequiredField-IsRequired="true" ValidationSettings-RequiredField-ErrorText="Data is required." />
-                                        </dx:GridViewDataTextColumn> 
-                                        <dx:GridViewDataTextColumn FieldName="" Caption="Thực tế" Width="120">
-                                            <PropertiesTextEdit ValidationSettings-Display="Dynamic" ValidationSettings-RequiredField-IsRequired="true" ValidationSettings-RequiredField-ErrorText="Data is required." />
-                                        </dx:GridViewDataTextColumn>
+                                        <dx:GridViewDataDateColumn FieldName="ProjectTaskDuKienTinhQuaQA" Caption="Dự kiến" EditFormSettings-Caption="Dự kiến Tinh qua QA" Width="120" VisibleIndex="16"> 
+                                            <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm" AllowNull="true">
+                                                <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
+                                            </PropertiesDateEdit>
+                                        </dx:GridViewDataDateColumn>
+                                        <dx:GridViewDataDateColumn FieldName="ProjectTaskThucTeTinhQuaQA" Caption="Thực tế" EditFormSettings-Caption="Thực tế Tinh qua QA" Width="120" VisibleIndex="16"> 
+                                            <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm" AllowNull="true">
+                                                <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
+                                            </PropertiesDateEdit>
+                                        </dx:GridViewDataDateColumn>
                                     </Columns>
                                     <HeaderStyle HorizontalAlign="Left" />
                                 </dx:GridViewBandColumn>
-                                <dx:GridViewDataDateColumn FieldName="ProjectTaskTransmit" Caption="Ngày nhận" VisibleIndex="17" Width="118"> 
-                                    <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm">
-                                        <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
-                                        <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
-                                    </PropertiesDateEdit>
-                                </dx:GridViewDataDateColumn>
-                                <dx:GridViewDataDateColumn FieldName="ProjectTaskDeadline" Caption="Ngày hoàn thành" VisibleIndex="18" Width="120">
-                                    <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm">
-                                        <DateRangeSettings StartDateEditID="ProjectTaskTransmit" />    
-                                        <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
-            	                        <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
-	                            </PropertiesDateEdit>
-                                </dx:GridViewDataDateColumn>
-                                <dx:GridViewDataSpinEditColumn VisibleIndex="20" EditFormSettings-VisibleIndex="20" FieldName="ProjectTaskPrice" Caption="Đơn giá" Width="108" PropertiesSpinEdit-NumberFormat="Currency" PropertiesSpinEdit-DisplayFormatString="{0:C}" PropertiesSpinEdit-DisplayFormatInEditMode="true" />
-                                <dx:GridViewDataSpinEditColumn VisibleIndex="20" EditFormSettings-VisibleIndex="20" FieldName="ProjectTaskPriceCalc" Caption="Thành tiền" Width="108" PropertiesSpinEdit-NumberFormat="Currency" PropertiesSpinEdit-DisplayFormatString="{0:C}" EditFormSettings-Visible="False" />
-                                <dx:GridViewDataComboBoxColumn VisibleIndex="21" EditFormSettings-VisibleIndex="21" FieldName="ProjectTaskStatusID" Caption="Trạng thái" Width="88">
-                                    <PropertiesComboBox DataSourceID="OdsTaskStatus" TextField="TaskStatusDisplayName" ValueField="TaskStatusID" ValueType="System.Int32" IncrementalFilteringMode="StartsWith">
-                                        <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
-                                    </PropertiesComboBox>
-                                </dx:GridViewDataComboBoxColumn>
-                                <dx:GridViewDataComboBoxColumn VisibleIndex="22" EditFormSettings-VisibleIndex="22" FieldName="ProjectTaskPriorityID" Caption="Độ ưu tiên">
-                                    <PropertiesComboBox DataSourceID="OdsTaskPriority" TextField="TaskPriorityDisplayName" ValueField="TaskPriorityID" ValueType="System.Int32" IncrementalFilteringMode="StartsWith">
-                                        <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
-                                    </PropertiesComboBox>
-                                </dx:GridViewDataComboBoxColumn>
+                                <dx:GridViewBandColumn Caption="Dữ liệu trạng thái đơn hàng" VisibleIndex="17">
+                                    <Columns>
+                                        <dx:GridViewDataDateColumn FieldName="ProjectTaskTransmit" Caption="Ngày nhận" VisibleIndex="17" Width="118"> 
+                                            <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm">
+                                                <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
+                                                <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
+                                            </PropertiesDateEdit>
+                                        </dx:GridViewDataDateColumn>
+                                        <dx:GridViewDataDateColumn FieldName="ProjectTaskDeadline" Caption="Ngày hoàn thành" VisibleIndex="18" Width="120">
+                                            <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm">
+                                                <DateRangeSettings StartDateEditID="ProjectTaskTransmit" />    
+                                                <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
+            	                                <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
+	                                    </PropertiesDateEdit>
+                                        </dx:GridViewDataDateColumn>
+                                        <dx:GridViewDataSpinEditColumn VisibleIndex="20" EditFormSettings-VisibleIndex="20" FieldName="ProjectTaskPrice" Caption="Đơn giá" Width="108" PropertiesSpinEdit-NumberFormat="Currency" PropertiesSpinEdit-DisplayFormatString="{0:C}" PropertiesSpinEdit-DisplayFormatInEditMode="true" />
+                                        <dx:GridViewDataSpinEditColumn VisibleIndex="20" EditFormSettings-VisibleIndex="20" FieldName="ProjectTaskPriceCalc" Caption="Thành tiền" Width="108" PropertiesSpinEdit-NumberFormat="Currency" PropertiesSpinEdit-DisplayFormatString="{0:C}" EditFormSettings-Visible="False" />
+                                        <dx:GridViewDataComboBoxColumn VisibleIndex="21" EditFormSettings-VisibleIndex="21" FieldName="ProjectTaskStatusID" Caption="Trạng thái" Width="88">
+                                            <PropertiesComboBox DataSourceID="OdsTaskStatus" TextField="TaskStatusDisplayName" ValueField="TaskStatusID" ValueType="System.Int32" IncrementalFilteringMode="StartsWith">
+                                                <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
+                                            </PropertiesComboBox>
+                                        </dx:GridViewDataComboBoxColumn>
+                                        <dx:GridViewDataComboBoxColumn VisibleIndex="22" EditFormSettings-VisibleIndex="22" FieldName="ProjectTaskPriorityID" Caption="Độ ưu tiên">
+                                            <PropertiesComboBox DataSourceID="OdsTaskPriority" TextField="TaskPriorityDisplayName" ValueField="TaskPriorityID" ValueType="System.Int32" IncrementalFilteringMode="StartsWith">
+                                                <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
+                                            </PropertiesComboBox>
+                                        </dx:GridViewDataComboBoxColumn>
+                                    </Columns>
+                                <HeaderStyle HorizontalAlign="Left" />
+                            </dx:GridViewBandColumn>
                             </Columns>
                             <ClientSideEvents Init="OnInit" BeginCallback="OnBeginCallback" EndCallback="OnEndCallback" ColumnResized="function(s, e) { OnColumnResized(s, e, 0); }" />
                             <SettingsContextMenu Enabled="true" />
-                            <SettingsPager Mode="ShowPager" PageSize="50" PageSizeItemSettings-Visible="true" PageSizeItemSettings-Position="Right" />
+                            <SettingsPager Mode="ShowPager" PageSize="50" FirstPageButton-Visible="true" LastPageButton-Visible="true" PageSizeItemSettings-Visible="true" PageSizeItemSettings-Position="Right" Summary-Text="Trang {0} / {1} (Số dòng: {2}):" PageSizeItemSettings-Caption="Số dòng 1 trang:" />
                             <SettingsBehavior AllowDragDrop="true" ConfirmDelete="true" ColumnResizeMode="Control" EnableCustomizationWindow="true" EnableRowHotTrack="true" />
                             <Settings ShowHeaderFilterButton="true" VerticalScrollBarMode="Visible" HorizontalScrollBarMode="Visible" />
                             <SettingsEditing Mode="PopupEditForm" EditFormColumnCount="1" />
                             <SettingsPopup EditForm-Width="480" EditForm-Modal="true" EditForm-HorizontalAlign="WindowCenter" EditForm-VerticalAlign="WindowCenter" />
                             <SettingsDetail ShowDetailRow="True" AllowOnlyOneMasterRowExpanded="true"/>
                             <Styles DetailCell-Paddings-Padding="0" DetailCell-Paddings-PaddingBottom="8" />
+                            <StylesPopup EditForm-Header-Font-Bold="true" EditForm-Header-Paddings-Padding="5" EditForm-Header-Paddings-PaddingTop="7" />
+                            <SettingsText PopupEditFormCaption="Cập nhật dữ liệu" CommandUpdate="Cập nhật" CommandCancel="Hủy bỏ" />
                             <Templates>
                                 <DetailRow>
                                     <dx:ASPxGridView ID="GvLevelBA" ClientInstanceName="GvLevelBA" runat="server" Width="100%" DataSourceID="OdsLevelBA" KeyFieldName="ProcessId" SettingsEditing-EditFormColumnCount="1"
@@ -291,14 +305,56 @@
                                         </DeleteParameters>
                                     </asp:ObjectDataSource>
                                 </DetailRow>
+                                <EditForm>
+                                    <div style="padding:8px;height:258px">
+                                        <dx:ASPxGridViewTemplateReplacement ID="dxEditors" ReplacementType="EditFormEditors" runat="server" />                                                                                    
+                                    </div>
+                                    <div class="bottomCmd" style="border-top:1px solid #A8A8A8;padding-top:3px">
+                                        <dx:ASPxGridViewTemplateReplacement ID="UpdateButton" ReplacementType="EditFormUpdateButton" runat="server" />
+                                        <dx:ASPxGridViewTemplateReplacement ID="CancelButton" ReplacementType="EditFormCancelButton" runat="server" />
+                                    </div>
+                                </EditForm>
+                                <PagerBar>
+                                    <table style="width:100%;border-spacing:0">
+                                        <tr>
+                                            <td style="text-align:right;padding-right:3px">
+                                                <dx:ASPxLabel ID="dxLblNotes" runat="server" Text="Điều kiện lọc [ Trạng thái / Độ ưu tiên ]:" />
+                                            </td>
+                                            <td style="width:128px;text-align:right;padding-right:3px">
+                                                <dx:ASPxComboBox runat="server" Width="128" Height="23" ID="CbTaskStatus" OnTextChanged="CbTaskData_TextChanged" ClientSideEvents-TextChanged="function(s, e) { GvLevelB.PerformCallback();}">
+                                                    <Items>
+                                                        <dx:ListEditItem Text="Chọn tất cả" Value="2;3;6;7" />
+                                                        <dx:ListEditItem Text="Chưa bắt đầu" Value="2" />
+                                                        <dx:ListEditItem Text="Đang chạy" Value="3" Selected="true" />
+                                                        <dx:ListEditItem Text="Bị hủy bỏ" Value="6" />
+                                                        <dx:ListEditItem Text="Hoàn thành" Value="7" />
+                                                    </Items>
+                                                </dx:ASPxComboBox>
+                                            </td>
+                                            <td style="width:128px;text-align:right;padding-right:3px">
+                                                <dx:ASPxComboBox runat="server" Width="128" Height="23" ID="CbTaskPriority" OnTextChanged="CbTaskData_TextChanged" ClientSideEvents-TextChanged="function(s, e) { GvLevelB.PerformCallback();}">
+                                                    <Items>
+                                                        <dx:ListEditItem Text="Chọn tất cả" Value="2;3;4" />
+                                                        <dx:ListEditItem Text="Ưu tiên cao" Value="2" />
+                                                        <dx:ListEditItem Text="Bình thường" Value="3" Selected="true" />
+                                                        <dx:ListEditItem Text="Không ưu tiên" Value="4" />
+                                                    </Items>
+                                                </dx:ASPxComboBox>
+                                            </td>
+                                            <td>
+                                                <dx:ASPxGridViewTemplateReplacement ID="dxEditors" ReplacementType="Pager" runat="server" />                                   
+                                            </td>                                            
+                                        </tr>
+                                    </table>
+                                </PagerBar>
                             </Templates>
                         </dx:ASPxGridView> 
                         <asp:ObjectDataSource ID="OdsTaskStatus" runat="server" TypeName="OrdersModels" SelectMethod="TaskStatusList" />
                         <asp:ObjectDataSource ID="OdsTaskPriority" runat="server" TypeName="OrdersModels" SelectMethod="TaskPriorityList" />
                         <asp:ObjectDataSource ID="OdsLevelB" runat="server" TypeName="OrdersModels" SelectMethod="OrdersListNd" UpdateMethod="OrdersUpdatedNd">
                             <SelectParameters>
-                                <asp:ControlParameter ControlID="CbTaskStatus" Name="TaskStatus" Type="Int32" />
-                                <asp:ControlParameter ControlID="CbTaskPriority" Name="TaskPriority" Type="Int32" />
+                                <asp:ControlParameter ControlID="MainPanel$plcMain$PageControl$GvLevelB$PagerBarB$CbTaskStatus" Name="TaskStatus" Type="String" />
+                                <asp:ControlParameter ControlID="MainPanel$plcMain$PageControl$GvLevelB$PagerBarB$CbTaskPriority" Name="TaskPriority" Type="String" />
                             </SelectParameters>
                             <UpdateParameters>
                                 <asp:Parameter Name="ProjectTaskID" Type="Int32" />
@@ -307,37 +363,13 @@
                                 <asp:Parameter Name="ProjectTaskPrice" Type="Decimal" />
                                 <asp:Parameter Name="ProjectTaskDeadline" Type="DateTime" />
                                 <asp:Parameter Name="ProjectTaskTransmit" Type="DateTime" />
-                                <asp:Parameter Name="ProjectTaskDescription" Type="String" />     
+                                <asp:Parameter Name="ProjectTaskDescription" Type="String" />    
+                                <asp:Parameter Name="ProjectTaskDuKienThoQuaTinh" Type="DateTime" />
+                                <asp:Parameter Name="ProjectTaskThucTeThoQuaTinh" Type="DateTime" />
+                                <asp:Parameter Name="ProjectTaskDuKienTinhQuaQA" Type="DateTime" />
+                                <asp:Parameter Name="ProjectTaskThucTeTinhQuaQA" Type="DateTime" /> 
                             </UpdateParameters>
-                        </asp:ObjectDataSource>
-                        <table style="width:100%;border-spacing:0">
-                            <tr>
-                                <td style="text-align:right;padding-right:3px">
-                                    <dx:ASPxLabel ID="GvLevelCLabel" runat="server" Text="Chọn điều kiện lọc đơn hàng [ Trạng thái / Độ ưu tiên ]: " Font-Bold="true" />
-                                </td>
-                                <td style="width:128px;text-align:right;padding-right:3px">
-                                    <dx:ASPxComboBox runat="server" Width="148" Height="25" ID="CbTaskStatus" OnTextChanged="CbTaskData_TextChanged" ClientSideEvents-TextChanged="function(s, e) { GvLevelB.PerformCallback();}">
-                                        <Items>
-                                            <dx:ListEditItem Text="Chọn tất cả" Value="10" />
-                                            <dx:ListEditItem Text="Chưa bắt đầu" Value="2" />
-                                            <dx:ListEditItem Text="Đang chạy" Value="3" Selected="true" />
-                                            <dx:ListEditItem Text="Bị hủy bỏ" Value="6" />
-                                            <dx:ListEditItem Text="Hoàn thành" Value="7" />
-                                        </Items>
-                                    </dx:ASPxComboBox>
-                                </td>
-                                <td style="width:128px;text-align:right;padding-right:3px">
-                                    <dx:ASPxComboBox runat="server" Width="148" Height="25" ID="CbTaskPriority" OnTextChanged="CbTaskData_TextChanged" ClientSideEvents-TextChanged="function(s, e) { GvLevelB.PerformCallback();}">
-                                        <Items>
-                                            <dx:ListEditItem Text="Chọn tất cả" Value="10" />
-                                            <dx:ListEditItem Text="Ưu tiên cao" Value="2" />
-                                            <dx:ListEditItem Text="Bình thường" Value="3" Selected="true" />
-                                            <dx:ListEditItem Text="Không ưu tiên" Value="4" />
-                                        </Items>
-                                    </dx:ASPxComboBox>
-                                </td>
-                            </tr>
-                        </table>                                       
+                        </asp:ObjectDataSource>                              
                     </dx:ContentControl>
                 </ContentCollection>
             </dx:TabPage>
