@@ -158,10 +158,14 @@ public class OrdersModels {
             pt.ProjectTaskDeadline = ProjectTaskDeadline;
             pt.ProjectTaskTransmit = ProjectTaskTransmit;
             pt.ProjectTaskDescription = ProjectTaskDescription;
-            pt.ProjectTaskDuKienThoQuaTinh = ProjectTaskDuKienThoQuaTinh;
-            //pt.ProjectTaskThucTeThoQuaTinh = ProjectTaskThucTeThoQuaTinh;
-            //pt.ProjectTaskDuKienTinhQuaQA = ProjectTaskDuKienTinhQuaQA;
-            //pt.ProjectTaskThucTeTinhQuaQA = ProjectTaskThucTeTinhQuaQA;
+            if(ProjectTaskDuKienThoQuaTinh != null)
+                pt.ProjectTaskDuKienThoQuaTinh = ProjectTaskDuKienThoQuaTinh;
+            if (ProjectTaskDuKienThoQuaTinh != null)
+                pt.ProjectTaskThucTeThoQuaTinh = ProjectTaskThucTeThoQuaTinh;
+            if (ProjectTaskDuKienThoQuaTinh != null)
+                pt.ProjectTaskDuKienTinhQuaQA = ProjectTaskDuKienTinhQuaQA;
+            if (ProjectTaskDuKienThoQuaTinh != null)
+                pt.ProjectTaskThucTeTinhQuaQA = ProjectTaskThucTeTinhQuaQA;
             LINQData.db.SubmitChanges();
         }
     }
