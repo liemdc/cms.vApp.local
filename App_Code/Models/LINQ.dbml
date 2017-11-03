@@ -360,12 +360,10 @@
       <Column Name="ProjectTaskNotificationSent" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="ProjectTaskIsPrivate" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="ProjectTaskCustomerId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ProjectTaskExpectedOne" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="ProjectTaskExpectedTwo" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="ProjectTaskExpectedThree" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ProjectTaskDuKienThoQuaTinh" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="ProjectTaskThucTeThoQuaTinh" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ProjectTaskDuKienTinhQuaQA" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ProjectTaskExpectedThree" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ProjectTaskThucTeThoQuaTinh" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ProjectTaskThucTeTinhQuaQA" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifiedWhen" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifiedByUserId" Type="System.Int32" DbType="Int" CanBeNull="true" />

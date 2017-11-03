@@ -125,8 +125,6 @@ public partial class OrdersObject {
     public string ProjectTaskDescription { get; set; }
     public string UserModified { get; set; }
     public Nullable<DateTime> CreatedWhen { get; set; }
-    public Nullable<DateTime> ProjectTaskExpectedOne { get; set; }
-    public Nullable<DateTime> ProjectTaskExpectedTwo { get; set; }
     public Nullable<DateTime> ProjectTaskDuKienThoQuaTinh { get; set; }
     public Nullable<DateTime> ProjectTaskThucTeThoQuaTinh { get; set; }
     public Nullable<DateTime> ProjectTaskDuKienTinhQuaQA { get; set; }

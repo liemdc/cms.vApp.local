@@ -7317,17 +7317,13 @@ namespace Models
 		
 		private System.Nullable<int> _ProjectTaskCustomerId;
 		
-		private System.Nullable<System.DateTime> _ProjectTaskExpectedOne;
+		private System.Nullable<System.DateTime> _ProjectTaskDuKienThoQuaTinh;
 		
-		private System.Nullable<System.DateTime> _ProjectTaskExpectedTwo;
+		private System.Nullable<System.DateTime> _ProjectTaskDuKienTinhQuaQA;
 		
 		private System.Nullable<System.DateTime> _ProjectTaskExpectedThree;
 		
-		private System.Nullable<System.DateTime> _ProjectTaskDuKienThoQuaTinh;
-		
 		private System.Nullable<System.DateTime> _ProjectTaskThucTeThoQuaTinh;
-		
-		private System.Nullable<System.DateTime> _ProjectTaskDuKienTinhQuaQA;
 		
 		private System.Nullable<System.DateTime> _ProjectTaskThucTeTinhQuaQA;
 		
@@ -7443,18 +7439,14 @@ namespace Models
     partial void OnProjectTaskIsPrivateChanged();
     partial void OnProjectTaskCustomerIdChanging(System.Nullable<int> value);
     partial void OnProjectTaskCustomerIdChanged();
-    partial void OnProjectTaskExpectedOneChanging(System.Nullable<System.DateTime> value);
-    partial void OnProjectTaskExpectedOneChanged();
-    partial void OnProjectTaskExpectedTwoChanging(System.Nullable<System.DateTime> value);
-    partial void OnProjectTaskExpectedTwoChanged();
-    partial void OnProjectTaskExpectedThreeChanging(System.Nullable<System.DateTime> value);
-    partial void OnProjectTaskExpectedThreeChanged();
     partial void OnProjectTaskDuKienThoQuaTinhChanging(System.Nullable<System.DateTime> value);
     partial void OnProjectTaskDuKienThoQuaTinhChanged();
-    partial void OnProjectTaskThucTeThoQuaTinhChanging(System.Nullable<System.DateTime> value);
-    partial void OnProjectTaskThucTeThoQuaTinhChanged();
     partial void OnProjectTaskDuKienTinhQuaQAChanging(System.Nullable<System.DateTime> value);
     partial void OnProjectTaskDuKienTinhQuaQAChanged();
+    partial void OnProjectTaskExpectedThreeChanging(System.Nullable<System.DateTime> value);
+    partial void OnProjectTaskExpectedThreeChanged();
+    partial void OnProjectTaskThucTeThoQuaTinhChanging(System.Nullable<System.DateTime> value);
+    partial void OnProjectTaskThucTeThoQuaTinhChanged();
     partial void OnProjectTaskThucTeTinhQuaQAChanging(System.Nullable<System.DateTime> value);
     partial void OnProjectTaskThucTeTinhQuaQAChanged();
     partial void OnModifiedWhenChanging(System.Nullable<System.DateTime> value);
@@ -8314,42 +8306,42 @@ namespace Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskExpectedOne", DbType="DateTime")]
-		public System.Nullable<System.DateTime> ProjectTaskExpectedOne
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskDuKienThoQuaTinh", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ProjectTaskDuKienThoQuaTinh
 		{
 			get
 			{
-				return this._ProjectTaskExpectedOne;
+				return this._ProjectTaskDuKienThoQuaTinh;
 			}
 			set
 			{
-				if ((this._ProjectTaskExpectedOne != value))
+				if ((this._ProjectTaskDuKienThoQuaTinh != value))
 				{
-					this.OnProjectTaskExpectedOneChanging(value);
+					this.OnProjectTaskDuKienThoQuaTinhChanging(value);
 					this.SendPropertyChanging();
-					this._ProjectTaskExpectedOne = value;
-					this.SendPropertyChanged("ProjectTaskExpectedOne");
-					this.OnProjectTaskExpectedOneChanged();
+					this._ProjectTaskDuKienThoQuaTinh = value;
+					this.SendPropertyChanged("ProjectTaskDuKienThoQuaTinh");
+					this.OnProjectTaskDuKienThoQuaTinhChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskExpectedTwo", DbType="DateTime")]
-		public System.Nullable<System.DateTime> ProjectTaskExpectedTwo
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskDuKienTinhQuaQA", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ProjectTaskDuKienTinhQuaQA
 		{
 			get
 			{
-				return this._ProjectTaskExpectedTwo;
+				return this._ProjectTaskDuKienTinhQuaQA;
 			}
 			set
 			{
-				if ((this._ProjectTaskExpectedTwo != value))
+				if ((this._ProjectTaskDuKienTinhQuaQA != value))
 				{
-					this.OnProjectTaskExpectedTwoChanging(value);
+					this.OnProjectTaskDuKienTinhQuaQAChanging(value);
 					this.SendPropertyChanging();
-					this._ProjectTaskExpectedTwo = value;
-					this.SendPropertyChanged("ProjectTaskExpectedTwo");
-					this.OnProjectTaskExpectedTwoChanged();
+					this._ProjectTaskDuKienTinhQuaQA = value;
+					this.SendPropertyChanged("ProjectTaskDuKienTinhQuaQA");
+					this.OnProjectTaskDuKienTinhQuaQAChanged();
 				}
 			}
 		}
@@ -8374,26 +8366,6 @@ namespace Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskDuKienThoQuaTinh", DbType="DateTime")]
-		public System.Nullable<System.DateTime> ProjectTaskDuKienThoQuaTinh
-		{
-			get
-			{
-				return this._ProjectTaskDuKienThoQuaTinh;
-			}
-			set
-			{
-				if ((this._ProjectTaskDuKienThoQuaTinh != value))
-				{
-					this.OnProjectTaskDuKienThoQuaTinhChanging(value);
-					this.SendPropertyChanging();
-					this._ProjectTaskDuKienThoQuaTinh = value;
-					this.SendPropertyChanged("ProjectTaskDuKienThoQuaTinh");
-					this.OnProjectTaskDuKienThoQuaTinhChanged();
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskThucTeThoQuaTinh", DbType="DateTime")]
 		public System.Nullable<System.DateTime> ProjectTaskThucTeThoQuaTinh
 		{
@@ -8410,26 +8382,6 @@ namespace Models
 					this._ProjectTaskThucTeThoQuaTinh = value;
 					this.SendPropertyChanged("ProjectTaskThucTeThoQuaTinh");
 					this.OnProjectTaskThucTeThoQuaTinhChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskDuKienTinhQuaQA", DbType="DateTime")]
-		public System.Nullable<System.DateTime> ProjectTaskDuKienTinhQuaQA
-		{
-			get
-			{
-				return this._ProjectTaskDuKienTinhQuaQA;
-			}
-			set
-			{
-				if ((this._ProjectTaskDuKienTinhQuaQA != value))
-				{
-					this.OnProjectTaskDuKienTinhQuaQAChanging(value);
-					this.SendPropertyChanging();
-					this._ProjectTaskDuKienTinhQuaQA = value;
-					this.SendPropertyChanged("ProjectTaskDuKienTinhQuaQA");
-					this.OnProjectTaskDuKienTinhQuaQAChanged();
 				}
 			}
 		}

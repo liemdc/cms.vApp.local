@@ -58,13 +58,13 @@
                                         <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
                                     </PropertiesComboBox>
                                 </dx:GridViewDataComboBoxColumn>   
-                                <dx:GridViewDataDateColumn FieldName="ProjectTaskExpectedOne" Caption="Dự kiến Tinh" VisibleIndex="17" Width="128"> 
+                                <dx:GridViewDataDateColumn FieldName="ProjectTaskDuKienThoQuaTinh" Caption="Dự kiến: Thô qua Tinh" VisibleIndex="17" Width="148"> 
                                     <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm">
                                         <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
                                         <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
                                     </PropertiesDateEdit>
                                 </dx:GridViewDataDateColumn>
-                                <dx:GridViewDataDateColumn FieldName="ProjectTaskExpectedTwo" Caption="Dự kiến QA" VisibleIndex="17" Width="128"> 
+                                <dx:GridViewDataDateColumn FieldName="ProjectTaskDuKienTinhQuaQA" Caption="Dự kiến: Tinh qua QA" VisibleIndex="17" Width="148"> 
                                     <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm">
                                         <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
                                         <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
@@ -153,8 +153,8 @@
                                 <asp:Parameter Name="ProjectTaskHorikomi" Type="String" />
                                 <asp:Parameter Name="ProjectTaskHardness" Type="String" />
                                 <asp:Parameter Name="ProjectTaskCustomerId" Type="Int32" />
-                                <asp:Parameter Name="ProjectTaskExpectedOne" Type="DateTime" />
-                                <asp:Parameter Name="ProjectTaskExpectedTwo" Type="DateTime" />
+                                <asp:Parameter Name="ProjectTaskDuKienThoQuaTinh" Type="DateTime" />
+                                <asp:Parameter Name="ProjectTaskDuKienTinhQuaQA" Type="DateTime" />
                                 <asp:Parameter Name="ProjectTaskDeadline" Type="DateTime" />
                                 <asp:Parameter Name="ProjectTaskTransmit" Type="DateTime" />
                                 <asp:Parameter Name="ProjectTaskDescription" Type="String" />     
