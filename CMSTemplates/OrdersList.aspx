@@ -316,14 +316,14 @@
                                         <Columns>
                                             <dx:GridViewBandColumn Caption="Dữ liệu công đoạn" VisibleIndex="0">
                                                 <Columns>
-                                                    <dx:GridViewDataTextColumn VisibleIndex="0" Caption="Num" Width="35" Settings-AllowSort="False" EditFormSettings-Visible="False" UnboundType="String" FixedStyle="Left" />
-                                                    <dx:GridViewDataComboBoxColumn VisibleIndex="1" EditFormSettings-VisibleIndex="1" FieldName="ProcessListId" Caption="Công đoạn đơn hàng" Width="228" Visible="false" EditFormSettings-Visible="True">
+                                                    <dx:GridViewDataTextColumn VisibleIndex="0" Caption="Num" Width="34" Settings-AllowSort="False" EditFormSettings-Visible="False" UnboundType="String" FixedStyle="Left" />
+                                                    <dx:GridViewDataComboBoxColumn VisibleIndex="1" EditFormSettings-VisibleIndex="1" FieldName="ProcessListId" Caption="Công đoạn Id" Width="48" Visible="false" EditFormSettings-Visible="True">
                                                         <PropertiesComboBox DataSourceID="OdsProcessListNotInTaskId" TextField="ProcessListName" ValueField="ProcessListId" ValueType="System.Int32" IncrementalFilteringMode="StartsWith">
                                                             <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
                                                         </PropertiesComboBox>
                                                     </dx:GridViewDataComboBoxColumn>
-                                                    <dx:GridViewDataTextColumn VisibleIndex="2" EditFormSettings-VisibleIndex="2" FieldName="ProcessListName" Caption="Công đoạn" Width="378" EditFormSettings-Visible="False" /> 
-                                                    <dx:GridViewDataComboBoxColumn VisibleIndex="2" FieldName="ProcessListgroup" Caption="Nhóm công đoạn" Width="188" EditFormSettings-Visible="False" ReadOnly="true">
+                                                    <dx:GridViewDataTextColumn VisibleIndex="2" EditFormSettings-VisibleIndex="2" FieldName="ProcessListName" Caption="Công đoạn" Width="307" EditFormSettings-Visible="False" /> 
+                                                    <dx:GridViewDataComboBoxColumn VisibleIndex="2" FieldName="ProcessListgroup" Caption="Nhóm công đoạn" Width="253" EditFormSettings-Visible="False" ReadOnly="true">
                                                         <PropertiesComboBox DropDownStyle="DropDownList">
                                                             <Items>
                                                                 <dx:ListEditItem Value="dataTho" Text="Bộ phận Thô" />
@@ -338,24 +338,24 @@
                                             </dx:GridViewBandColumn>
                                             <dx:GridViewBandColumn Caption="Dữ liệu trạng thái" VisibleIndex="1">
                                                 <Columns>
-                                                    <dx:GridViewDataTextColumn VisibleIndex="11" FieldName="ProcessExpectedTime" Caption="Thời gian dự kiến" Width="120" EditFormSettings-Visible="False"> 
+                                                    <dx:GridViewDataTextColumn VisibleIndex="11" FieldName="ProcessExpectedTime" Caption="Thời gian dự kiến" Width="107" EditFormSettings-Visible="False"> 
                                                         <PropertiesTextEdit DisplayFormatString="{0} giờ." />
                                                     </dx:GridViewDataTextColumn>
-                                                    <dx:GridViewDataTextColumn VisibleIndex="11" FieldName="ProcessFactTime" Caption="Thời gian thực tế" Width="120" EditFormSettings-Visible="False"> 
+                                                    <dx:GridViewDataTextColumn VisibleIndex="11" FieldName="ProcessFactTime" Caption="Thời gian thực tế" Width="107" EditFormSettings-Visible="False"> 
                                                         <PropertiesTextEdit DisplayFormatString="{0} giờ." />
                                                     </dx:GridViewDataTextColumn>
-                                                    <dx:GridViewDataComboBoxColumn VisibleIndex="13" FieldName="" Caption="Trạng thái" Width="120" EditFormSettings-Visible="False">
+                                                    <dx:GridViewDataComboBoxColumn VisibleIndex="13" FieldName="" Caption="Trạng thái" Width="107" EditFormSettings-Visible="False">
                                                         <PropertiesComboBox DropDownStyle="DropDownList">
                                                             <Items>
                                                                 <dx:ListEditItem Value="0" Text="Không xác định" Selected="true" />
                                                                 <dx:ListEditItem Value="1" Text="Đang chạy" />
                                                                 <dx:ListEditItem Value="2" Text="Hoàn thành" />
-                                                                <dx:ListEditItem Value="3" Text="Hủy bỏ" />
+                                                                <dx:ListEditItem Value="3" Text="Hỗ trợ" />
                                                             </Items>
                                                             <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
                                                         </PropertiesComboBox>
                                                     </dx:GridViewDataComboBoxColumn> 
-                                                    <dx:GridViewDataTextColumn VisibleIndex="14" FieldName="" Caption="Ghi chú" Width="555" EditFormSettings-Visible="False" /> 
+                                                    <dx:GridViewDataTextColumn VisibleIndex="14" FieldName="" Caption="Ghi chú" MinWidth="348" Width="585" EditFormSettings-Visible="False" /> 
                                                     <dx:GridViewDataTextColumn VisibleIndex="15" FieldName="UserModified" Caption="Cập nhật bởi" MinWidth="148" EditFormSettings-Visible="False" />                                                             
                                                 </Columns>
                                                 <HeaderStyle HorizontalAlign="Left" />
