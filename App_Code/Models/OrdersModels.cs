@@ -35,7 +35,7 @@ public class OrdersModels {
                     ProjectTaskPriorityID = sm.t.ProjectTaskPriorityID, ProjectTaskQuantities = sm.t.ProjectTaskQuantities, ProjectTaskStatusID = sm.t.ProjectTaskStatusID, ProjectTaskThickness = sm.t.ProjectTaskThickness, ProjectTaskThicknessTotal = sm.t.ProjectTaskThicknessTotal,
                     ProjectTaskTransmit = sm.t.ProjectTaskTransmit, ProjectTaskPriceCalc = sm.t.ProjectTaskQuantities * sm.t.ProjectTaskPrice, CreatedWhen = sm.t.CreatedWhen, UserModified = userm.FullName,
                     ProjectTaskDuKienThoQuaTinh = sm.t.ProjectTaskDuKienThoQuaTinh, ProjectTaskDuKienTinhQuaQA = sm.t.ProjectTaskDuKienTinhQuaQA, ProjectTaskThucTeThoQuaTinh = sm.t.ProjectTaskThucTeThoQuaTinh, ProjectTaskThucTeTinhQuaQA = sm.t.ProjectTaskThucTeTinhQuaQA
-                }).OrderBy(o => o.ProjectTaskMoldCode);
+                }).OrderBy(o => o.ProjectTaskPriorityID);
     }
     public static void OrdersCreated(string ProjectTaskMoldCode, string ProjectTaskOverlayNum, string ProjectTaskHoleNum, decimal ProjectTaskDiameterOut, string ProjectTaskMaterialsRequire, string ProjectTaskMaterialsCode, int ProjectTaskMoldsId, 
                                      int ProjectTaskThickness, string ProjectTaskThicknessTotal, int ProjectTaskQuantities, string ProjectTaskContainHead, string ProjectTaskBottoHob, string ProjectTaskChildNote, string ProjectTaskHorikomi, string ProjectTaskHardness, int ProjectTaskCustomerId, 

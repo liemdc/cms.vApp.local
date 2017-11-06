@@ -334,9 +334,9 @@
                                             <td style="width:128px;text-align:right;padding-right:3px">
                                                 <dx:ASPxComboBox runat="server" Width="128" Height="23" ID="CbTaskPriority" OnTextChanged="CbTaskData_TextChanged" ClientSideEvents-TextChanged="function(s, e) { GvLevelB.PerformCallback();}">
                                                     <Items>
-                                                        <dx:ListEditItem Text="Chọn tất cả" Value="2;3;4" />
+                                                        <dx:ListEditItem Text="Chọn tất cả" Value="2;3;4" Selected="true" />
                                                         <dx:ListEditItem Text="Ưu tiên cao" Value="2" />
-                                                        <dx:ListEditItem Text="Bình thường" Value="3" Selected="true" />
+                                                        <dx:ListEditItem Text="Bình thường" Value="3" />
                                                         <dx:ListEditItem Text="Không ưu tiên" Value="4" />
                                                     </Items>
                                                 </dx:ASPxComboBox>
