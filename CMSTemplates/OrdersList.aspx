@@ -99,8 +99,8 @@
                             <SettingsEditing Mode="PopupEditForm" EditFormColumnCount="1" />
                             <SettingsPopup EditForm-Width="480" EditForm-Modal="true" EditForm-HorizontalAlign="WindowCenter" EditForm-VerticalAlign="WindowCenter" />  
                             <StylesPopup EditForm-Header-Font-Bold="true" EditForm-Header-Paddings-Padding="5" EditForm-Header-Paddings-PaddingTop="7" />
-                            <SettingsText PopupEditFormCaption="Cập nhật dữ liệu" CommandUpdate="Cập nhật" CommandCancel="Hủy bỏ" SearchPanelEditorNullText="Nhập dữ liệu cần tìm ..." />
-                            <SettingsSearchPanel Visible="true" />
+                            <SettingsText PopupEditFormCaption="Cập nhật dữ liệu" CommandUpdate="Cập nhật" CommandCancel="Hủy bỏ" />
+                            <SettingsSearchPanel CustomEditorID="dxTxtSearch" />
                             <Templates>
                                 <EditForm>
                                     <div style="padding:8px;overflow-y:scroll;height:408px">
@@ -112,6 +112,21 @@
                                         <dx:ASPxGridViewTemplateReplacement ID="CancelButton" ReplacementType="EditFormCancelButton" runat="server" />
                                     </div>
                                 </EditForm>
+                                <PagerBar>
+                                    <table style="width:100%;border-spacing:0">
+                                        <tr>
+                                            <td style="text-align:right;padding-right:3px">
+                                                <dx:ASPxLabel ID="dxLblNotes" runat="server" Text="Nội dung tìm kiếm:" />
+                                            </td>
+                                            <td style="width:128px;text-align:right;padding-right:3px">
+                                                <dx:ASPxTextBox ID="dxTxtSearch" runat="server" NullText="Nhập dữ liệu cần tìm ..." Width="255" />
+                                            </td>
+                                            <td>
+                                                <dx:ASPxGridViewTemplateReplacement ID="dxEditors" ReplacementType="Pager" runat="server" />                                   
+                                            </td>                                            
+                                        </tr>
+                                    </table>
+                                </PagerBar>
                             </Templates>
                         </dx:ASPxGridView>
                         <asp:ObjectDataSource ID="OdsMinProcessList" runat="server" TypeName="ProcessListModels" SelectMethod="MinProcessList" />

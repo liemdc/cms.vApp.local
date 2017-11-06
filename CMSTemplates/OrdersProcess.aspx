@@ -72,10 +72,10 @@
                     <SettingsContextMenu Enabled="true" />                       
                     <SettingsDetail ShowDetailRow="True" AllowOnlyOneMasterRowExpanded="true"/>
                     <SettingsPager Mode="ShowPager" PageSize="15" FirstPageButton-Visible="true" LastPageButton-Visible="true" PageSizeItemSettings-Visible="true" PageSizeItemSettings-Position="Right" Summary-Text="Trang {0} / {1} (Số dòng: {2}):" PageSizeItemSettings-Caption="Số dòng 1 trang:" />
-                    <SettingsSearchPanel Visible="true" />                    
                     <SettingsText PopupEditFormCaption="Cập nhật dữ liệu" CommandUpdate="Cập nhật" CommandCancel="Hủy bỏ" SearchPanelEditorNullText="Nhập dữ liệu cần tìm ..." />
                     <Styles DetailCell-Paddings-Padding="0" />
                     <StylesPopup EditForm-Header-Font-Bold="true" EditForm-Header-Paddings-Padding="5" EditForm-Header-Paddings-PaddingTop="7" />
+                    <SettingsSearchPanel CustomEditorID="dxTxtSearch" />
                     <Templates>
                         <DetailRow>
                             <dx:ASPxGridView ID="GvLevelAAA" ClientInstanceName="GvLevelAAA" runat="server" DataSourceID="OdsGvLevelAAA" KeyFieldName="DetailId" Width="100%"
@@ -196,6 +196,21 @@
                                 <dx:ASPxGridViewTemplateReplacement ID="CancelButton" ReplacementType="EditFormCancelButton" runat="server" />
                             </div>
                         </EditForm>
+                        <PagerBar>
+                            <table style="width:100%;border-spacing:0">
+                                <tr>
+                                    <td style="text-align:right;padding-right:3px">
+                                        <dx:ASPxLabel ID="dxLblNotes" runat="server" Text="Nội dung tìm kiếm:" />
+                                    </td>
+                                    <td style="width:128px;text-align:right;padding-right:3px">
+                                        <dx:ASPxTextBox ID="dxTxtSearch" runat="server" NullText="Nhập dữ liệu cần tìm ..." Width="255" />
+                                    </td>
+                                    <td>
+                                        <dx:ASPxGridViewTemplateReplacement ID="dxEditors" ReplacementType="Pager" runat="server" />                                   
+                                    </td>                                            
+                                </tr>
+                            </table>
+                        </PagerBar>
                     </Templates>
                 </dx:ASPxGridView>
                 <asp:ObjectDataSource ID="OdsGvLevelAA" runat="server" TypeName="OrdersModels" SelectMethod="OrdersProcessList" UpdateMethod="OrdersProcessUpdated">
