@@ -59,21 +59,21 @@
                             Border-BorderWidth="0" SettingsEditing-EditFormColumnCount="2" OnFillContextMenuItems="GvLevelA_FillContextMenuItems" OnCustomColumnDisplayText="OnCustomColumnDisplayText" OnCustomCallback="GvLevelA_CustomCallback" OnHtmlRowPrepared="GvLevelA_HtmlRowPrepared">
                             <Columns>
                                 <dx:GridViewDataTextColumn Caption="Num" Width="58" Settings-AllowSort="False" Settings-AllowHeaderFilter="False" EditFormSettings-Visible="False" UnboundType="String" FixedStyle="Left" />
-                                <dx:GridViewBandColumn Caption="Danh mục các công đoạn đơn hàng">
+                                <dx:GridViewBandColumn Caption="Danh mục công đoạn đơn hàng">
                                     <Columns>
-                                    <dx:GridViewDataTextColumn FieldName="ProcessListName" Caption="Công đoạn" CellStyle-Paddings-PaddingLeft="8px">
-                                        <PropertiesTextEdit ValidationSettings-Display="Dynamic" ValidationSettings-RequiredField-IsRequired="true" ValidationSettings-RequiredField-ErrorText="Data is required." />
-                                    </dx:GridViewDataTextColumn> 
-                                    <dx:GridViewDataComboBoxColumn FieldName="ProcessListGroup" Caption="Nhóm công đoạn" CellStyle-Paddings-PaddingLeft="8px" Width="328">
-                                        <PropertiesComboBox DropDownStyle="DropDownList">
-                                            <Items>
-                                                <dx:ListEditItem Value="dataTho" Text="Bộ phận Thô" />
-                                                <dx:ListEditItem Value="dataTinh" Text="Bộ phận Tinh" />
-                                                <dx:ListEditItem Value="dataQA" Text="Bộ phận QA" />
-                                            </Items>
-                                            <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
-                                        </PropertiesComboBox>
-                                    </dx:GridViewDataComboBoxColumn>
+                                        <dx:GridViewDataTextColumn FieldName="ProcessListName" Caption="Công đoạn" CellStyle-Paddings-PaddingLeft="8px">
+                                            <PropertiesTextEdit ValidationSettings-Display="Dynamic" ValidationSettings-RequiredField-IsRequired="true" ValidationSettings-RequiredField-ErrorText="Data is required." />
+                                        </dx:GridViewDataTextColumn> 
+                                        <dx:GridViewDataComboBoxColumn FieldName="ProcessListGroup" Caption="Nhóm công đoạn" CellStyle-Paddings-PaddingLeft="8px" Width="328">
+                                            <PropertiesComboBox DropDownStyle="DropDownList">
+                                                <Items>
+                                                    <dx:ListEditItem Value="dataTho" Text="Bộ phận Thô" />
+                                                    <dx:ListEditItem Value="dataTinh" Text="Bộ phận Tinh" />
+                                                    <dx:ListEditItem Value="dataQA" Text="Bộ phận QA" />
+                                                </Items>
+                                                <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
+                                            </PropertiesComboBox>
+                                        </dx:GridViewDataComboBoxColumn>
                                     </Columns>
                                     <HeaderStyle HorizontalAlign="Left" />
                                 </dx:GridViewBandColumn>
