@@ -369,6 +369,8 @@
       <Column Name="ModifiedByUserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreatedWhen" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreatedByUserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectTaskDuKienXuatHang" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ProjectTaskThucTeXuatHang" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Association Name="PM_ProjectTask_PM_ProjectProcess" Member="PM_ProjectProcesses" ThisKey="ProjectTaskID" OtherKey="ProcessProjectTaskID" Type="PM_ProjectProcess" />
       <Association Name="PM_ProjectTask_PM_ProjectProcessDetail" Member="PM_ProjectProcessDetails" ThisKey="ProjectTaskID" OtherKey="DetailProjectTaskID" Type="PM_ProjectProcessDetail" />
       <Association Name="PM_ProjectCustomer_PM_ProjectTask" Member="PM_ProjectCustomer" ThisKey="ProjectTaskCustomerId" OtherKey="CustomerId" Type="PM_ProjectCustomer" IsForeignKey="true" DeleteRule="CASCADE" />

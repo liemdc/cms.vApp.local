@@ -7335,6 +7335,10 @@ namespace Models
 		
 		private System.Nullable<int> _CreatedByUserId;
 		
+		private System.Nullable<System.DateTime> _ProjectTaskDuKienXuatHang;
+		
+		private System.Nullable<System.DateTime> _ProjectTaskThucTeXuatHang;
+		
 		private EntitySet<PM_ProjectProcess> _PM_ProjectProcesses;
 		
 		private EntitySet<PM_ProjectProcessDetail> _PM_ProjectProcessDetails;
@@ -7457,6 +7461,10 @@ namespace Models
     partial void OnCreatedWhenChanged();
     partial void OnCreatedByUserIdChanging(System.Nullable<int> value);
     partial void OnCreatedByUserIdChanged();
+    partial void OnProjectTaskDuKienXuatHangChanging(System.Nullable<System.DateTime> value);
+    partial void OnProjectTaskDuKienXuatHangChanged();
+    partial void OnProjectTaskThucTeXuatHangChanging(System.Nullable<System.DateTime> value);
+    partial void OnProjectTaskThucTeXuatHangChanged();
     #endregion
 		
 		public PM_ProjectTask()
@@ -8482,6 +8490,46 @@ namespace Models
 					this._CreatedByUserId = value;
 					this.SendPropertyChanged("CreatedByUserId");
 					this.OnCreatedByUserIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskDuKienXuatHang", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ProjectTaskDuKienXuatHang
+		{
+			get
+			{
+				return this._ProjectTaskDuKienXuatHang;
+			}
+			set
+			{
+				if ((this._ProjectTaskDuKienXuatHang != value))
+				{
+					this.OnProjectTaskDuKienXuatHangChanging(value);
+					this.SendPropertyChanging();
+					this._ProjectTaskDuKienXuatHang = value;
+					this.SendPropertyChanged("ProjectTaskDuKienXuatHang");
+					this.OnProjectTaskDuKienXuatHangChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskThucTeXuatHang", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ProjectTaskThucTeXuatHang
+		{
+			get
+			{
+				return this._ProjectTaskThucTeXuatHang;
+			}
+			set
+			{
+				if ((this._ProjectTaskThucTeXuatHang != value))
+				{
+					this.OnProjectTaskThucTeXuatHangChanging(value);
+					this.SendPropertyChanging();
+					this._ProjectTaskThucTeXuatHang = value;
+					this.SendPropertyChanged("ProjectTaskThucTeXuatHang");
+					this.OnProjectTaskThucTeXuatHangChanged();
 				}
 			}
 		}

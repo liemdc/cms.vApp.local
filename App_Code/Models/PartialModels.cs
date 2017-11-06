@@ -2,28 +2,35 @@
 using System;
 using System.Web;
 
-public static class LINQData {
-    public static LINQDataContext db {
-        get {
+public static class LINQData
+{
+    public static LINQDataContext db
+    {
+        get
+        {
             if (HttpContext.Current.Items["LINQDataContext"] == null)
                 HttpContext.Current.Items["LINQDataContext"] = new LINQDataContext();
             return (LINQDataContext)HttpContext.Current.Items["LINQDataContext"];
         }
-    }    
+    }
 }
-public static class DateTool {
-    public static DateTime Min(DateTime? x, DateTime? y) {
+public static class DateTool
+{
+    public static DateTime Min(DateTime? x, DateTime? y)
+    {
         if (x.GetHashCode() == 0) return Convert.ToDateTime(y);
         if (y.GetHashCode() == 0) return Convert.ToDateTime(x);
         return (Convert.ToDateTime(x).ToUniversalTime() < Convert.ToDateTime(y).ToUniversalTime()) ? Convert.ToDateTime(x) : Convert.ToDateTime(y);
     }
-    public static DateTime Max(DateTime? x, DateTime? y) {
+    public static DateTime Max(DateTime? x, DateTime? y)
+    {
         if (x.GetHashCode() == 0) return Convert.ToDateTime(y);
         if (y.GetHashCode() == 0) return Convert.ToDateTime(x);
         return (Convert.ToDateTime(x).ToUniversalTime() > Convert.ToDateTime(y).ToUniversalTime()) ? Convert.ToDateTime(x) : Convert.ToDateTime(y);
     }
 }
-public partial class TaskObject {
+public partial class TaskObject
+{
     public int TaskId { get; set; }
     public string TaskName { get; set; }
     public string TaskDescription { get; set; }
@@ -36,7 +43,8 @@ public partial class TaskObject {
     public string UserModified { get; set; }
     public Nullable<DateTime> ModifiedWhen { get; set; }
 }
-public partial class EmployeeObject {
+public partial class EmployeeObject
+{
     public int EmployeeId { get; set; }
     public int EmployeeProcessId { get; set; }
     public string EmployeeCode { get; set; }
@@ -54,7 +62,8 @@ public partial class EmployeeObject {
     public Nullable<DateTime> OrDateBegin { get; set; }
     public Nullable<DateTime> OrDateEnd { get; set; }
 }
-public partial class EmployeeTaskObject {
+public partial class EmployeeTaskObject
+{
     public int TaskId { get; set; }
     public string TaskName { get; set; }
     public string EmployeeCode { get; set; }
@@ -62,9 +71,10 @@ public partial class EmployeeTaskObject {
     public string MachineName { get; set; }
     public Nullable<DateTime> DateBegin { get; set; }
     public Nullable<DateTime> DateEnd { get; set; }
-    public Nullable<decimal> TaskTime { get; set; }    
+    public Nullable<decimal> TaskTime { get; set; }
 }
-public partial class CustomerObject {
+public partial class CustomerObject
+{
     public int CustomerId { get; set; }
     public string CustomerName { get; set; }
     public string CustomerPhone { get; set; }
@@ -72,36 +82,41 @@ public partial class CustomerObject {
     public string CustomerAddress { get; set; }
     public string UserModified { get; set; }
 }
-public partial class MoldsObject {
+public partial class MoldsObject
+{
     public int MoldsId { get; set; }
     public string MoldsName { get; set; }
     public Nullable<decimal> MoldsMinScheduledDays { get; set; }
     public Nullable<decimal> MoldsFactor { get; set; }
     public string UserModified { get; set; }
 }
-public partial class ProcessListObject {
+public partial class ProcessListObject
+{
     public int ProcessListId { get; set; }
     public string ProcessListName { get; set; }
     public string ProcessListGroup { get; set; }
-    public Nullable<int> ProcessListOrder { get; set; }    
+    public Nullable<int> ProcessListOrder { get; set; }
 }
-public partial class SubProcessObject {
+public partial class SubProcessObject
+{
     public int SubProcessId { get; set; }
     public string SubProcessName { get; set; }
     public Nullable<bool> SubProcessFinish { get; set; }
 }
-public partial class MachineriesObject {
+public partial class MachineriesObject
+{
     public int MachineryId { get; set; }
     public string MachineryName { get; set; }
     public string MachinerySymbol { get; set; }
     public string MachineryStatus { get; set; }
 }
-public partial class OrdersObject {
+public partial class OrdersObject
+{
     public int ProjectTaskID { get; set; }
     public string ProjectTaskMoldCode { get; set; }
     public string ProjectTaskOverlayNum { get; set; }
     public string ProjectTaskHoleNum { get; set; }
-    public Nullable<decimal> ProjectTaskDiameterOut { get; set; }    
+    public Nullable<decimal> ProjectTaskDiameterOut { get; set; }
     public string ProjectTaskMaterialsRequire { get; set; }
     public string ProjectTaskMaterialsCode { get; set; }
     public Nullable<int> ProjectTaskMoldsId { get; set; }
@@ -129,21 +144,29 @@ public partial class OrdersObject {
     public Nullable<DateTime> ProjectTaskThucTeThoQuaTinh { get; set; }
     public Nullable<DateTime> ProjectTaskDuKienTinhQuaQA { get; set; }
     public Nullable<DateTime> ProjectTaskThucTeTinhQuaQA { get; set; }
+    public Nullable<DateTime> ProjectTaskDuKienXuatHang { get; set; }
+    public Nullable<DateTime> ProjectTaskThucTeXuatHang { get; set; }
 }
-public partial class MoldsProcessObject {
+public partial class MoldsProcessObject
+{
     public int MoldsProcessId { get; set; }
     public int MoldsId { get; set; }
     public int ProcessListId { get; set; }
     public string ProcessListName { get; set; }
     public string UserModified { get; set; }
 }
-public partial class ProjectProcessObject {
+public partial class ProjectProcessObject
+{
     public int ProcessId { get; set; }
     public int ProcessListId { get; set; }
     public string ProcessListName { get; set; }
+    public string ProcessListgroup { get; set; }
+    public Nullable<decimal> ProcessExpectedTime { get; set; }
+    public Nullable<decimal> ProcessFactTime { get; set; }
     public string UserModified { get; set; }
 }
-public partial class OrdersProcessObject {
+public partial class OrdersProcessObject
+{
     public int ProjectTaskID { get; set; }
     public int ProcessListId { get; set; }
     public string ProjectTaskMoldCode { get; set; }
@@ -164,7 +187,8 @@ public partial class OrdersProcessObject {
     public Nullable<DateTime> ProcessExpectedCompletion { get; set; }
     public int AutoPriority { get; set; }
 }
-public partial class OrdersProcessDetailObject {
+public partial class OrdersProcessDetailObject
+{
     public int DetailId { get; set; }
     public int ProjectTaskID { get; set; }
     public int SubProcessID { get; set; }
@@ -174,7 +198,8 @@ public partial class OrdersProcessDetailObject {
     public Nullable<int> DetailOwnerM { get; set; }
     public Nullable<decimal> DetailTotalTimeM { get; set; }
 }
-public partial class UserInfoObject {
+public partial class UserInfoObject
+{
     public int UserID { get; set; }
     public string FullName { get; set; }
     public string Email { get; set; }
@@ -182,13 +207,15 @@ public partial class UserInfoObject {
     public Nullable<DateTime> UserCreated { get; set; }
     public Nullable<DateTime> LastLogon { get; set; }
 }
-public partial class RoleInfoObject {
+public partial class RoleInfoObject
+{
     public int RoleID { get; set; }
     public string RoleName { get; set; }
     public string RoleDisplayName { get; set; }
     public string RoleDescription { get; set; }
 }
-public partial class PermissionsObject {
+public partial class PermissionsObject
+{
     public int PermissionID { get; set; }
     public string PermissionDisplayName { get; set; }
     public bool PermissionAllow { get; set; }
