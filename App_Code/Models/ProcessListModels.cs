@@ -84,7 +84,7 @@ public class ProcessListModels {
             }).OrderBy(o => o.ProcessListOrder).ToList();
     }
     public static List<ProcessListObject> MinProcessListForUserId() {
-        List<ProcessListObject> ProcessList = LINQData.db.PM_ProjectProcessLists.Select(s => new ProcessListObject { ProcessListId = s.ProcessListId, ProcessListName = s.ProcessListName, ProcessListOrder = s.ProcessListOrder }).OrderBy(o => o.ProcessListOrder).ToList();
+        List<ProcessListObject> ProcessList = LINQData.db.PM_ProjectProcessLists.Select(s => new ProcessListObject { ProcessListId = s.ProcessListId, ProcessListName = s.ProcessListName, ProcessListGroup = s.ProcessListGroup, ProcessListOrder = s.ProcessListOrder }).OrderBy(o => o.ProcessListOrder).ToList();
         List<ProcessListObject> UsProcessList = new List<ProcessListObject>();
         foreach (ProcessListObject Process in ProcessList) {
             if (CMSContext.CurrentUser.IsAuthorizedPerResource("Functions", "CongDoan" + Process.ProcessListId))

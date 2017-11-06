@@ -21,6 +21,15 @@
     <dx:ASPxGridView ID="GvLevelA" ClientInstanceName="GvLevelA" runat="server" Width="100%" DataSourceID="OdsGvLevelA" KeyFieldName="ProcessListId" Border-BorderWidth="0">
         <Columns>
             <dx:GridViewDataTextColumn FieldName="ProcessListName" VisibleIndex="0" Caption="Công đoạn đơn hàng" CellStyle-Paddings-PaddingLeft="8px" />
+            <dx:GridViewDataComboBoxColumn FieldName="ProcessListGroup" Caption="Nhóm công đoạn" CellStyle-Paddings-PaddingLeft="8px" Width="328">
+                <PropertiesComboBox DropDownStyle="DropDownList">
+                    <Items>
+                        <dx:ListEditItem Value="dataTho" Text="Bộ phận Thô" />
+                        <dx:ListEditItem Value="dataTinh" Text="Bộ phận Tinh" />
+                        <dx:ListEditItem Value="dataQA" Text="Bộ phận QA" />
+                    </Items>
+                </PropertiesComboBox>
+            </dx:GridViewDataComboBoxColumn>
         </Columns>
         <ClientSideEvents Init="OnInit" BeginCallback="OnBeginCallback" EndCallback="OnEndCallback" />
         <SettingsDetail ShowDetailRow="True" AllowOnlyOneMasterRowExpanded="true" />        
