@@ -84,7 +84,11 @@
                             <SettingsPager Mode="ShowAllRecords" />
                             <SettingsBehavior ConfirmDelete="true" EnableRowHotTrack="true" ProcessFocusedRowChangedOnServer="True" />
                             <Settings VerticalScrollBarMode="Visible" HorizontalScrollBarMode="Hidden" />
+                            <SettingsEditing Mode="PopupEditForm" EditFormColumnCount="1" />
+                            <SettingsPopup EditForm-Width="320" EditForm-Modal="true" EditForm-HorizontalAlign="WindowCenter" EditForm-VerticalAlign="WindowCenter" />
                             <Styles DetailCell-Paddings-Padding="0" DetailCell-Paddings-PaddingBottom="1" Row-CssClass="draggable" />
+                            <StylesPopup EditForm-Header-Font-Bold="true" EditForm-Header-Paddings-Padding="5" EditForm-Header-Paddings-PaddingTop="7" />
+                            <SettingsText PopupEditFormCaption="Cập nhật dữ liệu" CommandUpdate="Cập nhật" CommandCancel="Hủy bỏ" />
                             <Templates>
                                 <DetailRow>
                                     <dx:ASPxPageControl runat="server" ID="DPageControl" Width="100%" ActiveTabIndex="0">
@@ -242,6 +246,15 @@
                                         </TabPages>
                                     </dx:ASPxPageControl>            
                                 </DetailRow>
+                                <EditForm>
+                                    <div style="padding:8px;">
+                                        <dx:ASPxGridViewTemplateReplacement ID="dxEditors" ReplacementType="EditFormEditors" runat="server" />                                                                                    
+                                    </div>
+                                    <div class="bottomCmd" style="border-top:1px solid #A8A8A8;padding-top:3px">
+                                        <dx:ASPxGridViewTemplateReplacement ID="UpdateButton" ReplacementType="EditFormUpdateButton" runat="server" />
+                                        <dx:ASPxGridViewTemplateReplacement ID="CancelButton" ReplacementType="EditFormCancelButton" runat="server" />
+                                    </div>
+                                </EditForm>
                             </Templates>
                         </dx:ASPxGridView>
                         <asp:ObjectDataSource ID="OdsGvLevelA" runat="server" TypeName="ProcessListModels" SelectMethod="MinProcessList" InsertMethod="ProcessListCreated" UpdateMethod="ProcessListUpdated" DeleteMethod="ProcessListDeleted">
