@@ -356,7 +356,7 @@
                                         <SettingsText PopupEditFormCaption="Cập nhật dữ liệu" CommandUpdate="Cập nhật" CommandCancel="Hủy bỏ" />
                                         <Templates>
                                             <EditForm>
-                                                <div style="padding:8px;">
+                                                <div style="padding:8px">
                                                     <dx:ASPxGridViewTemplateReplacement ID="dxEditors" ReplacementType="EditFormEditors" runat="server" />                                                                                    
                                                 </div>
                                                 <div class="bottomCmd" style="border-top:1px solid #A8A8A8;padding-top:3px">
