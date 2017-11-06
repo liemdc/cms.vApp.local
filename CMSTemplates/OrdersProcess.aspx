@@ -35,7 +35,7 @@
                     OnBeforePerformDataSelect="GvLevelAA_BeforePerformDataSelect" OnHtmlDataCellPrepared="GvLevelAA_HtmlDataCellPrepared" OnStartRowEditing="GvLevelAA_StartRowEditing" OnFillContextMenuItems="GvLevelAA_FillContextMenuItems" OnCustomColumnDisplayText="OnCustomColumnDisplayText">
                     <Columns>
                         <dx:GridViewDataTextColumn VisibleIndex="0" Caption="Num" Width="48" Settings-AllowSort="False" Settings-AllowHeaderFilter="False" EditFormSettings-Visible="False" UnboundType="String" />
-                        <dx:GridViewDataTextColumn VisibleIndex="1" EditFormSettings-VisibleIndex="1" FieldName="ProjectTaskMoldCode" Caption="Mã số khuôn" ReadOnly="true" />
+                        <dx:GridViewDataTextColumn VisibleIndex="1" EditFormSettings-VisibleIndex="1" FieldName="ProjectTaskMoldCode" Caption="Mã số khuôn" ReadOnly="true" Width="200" />
 					    <dx:GridViewDataTextColumn VisibleIndex="2" EditFormSettings-VisibleIndex="2" FieldName="ProjectTaskOverlayNum" Caption="Số phủ" ReadOnly="true" Width="88" />
                         <dx:GridViewDataTextColumn VisibleIndex="3" EditFormSettings-VisibleIndex="3" FieldName="MoldsName" Caption="Loại" ReadOnly="true" Width="100"/>
                         <dx:GridViewDataTextColumn VisibleIndex="4" EditFormSettings-VisibleIndex="4" FieldName="ProjectTaskDiameterOut" Caption="Đ kính" ReadOnly="true" EditFormSettings-Visible="False" Width="78"/>
