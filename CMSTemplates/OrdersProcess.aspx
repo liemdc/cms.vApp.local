@@ -48,31 +48,56 @@
                     Border-BorderColor="#CFCFCF" Styles-Header-Border-BorderColor="#CFCFCF" Styles-Header-BackColor="#F2F2F2" Border-BorderWidth="0" BorderLeft-BorderWidth="1" BorderRight-BorderWidth="1"
                     OnBeforePerformDataSelect="GvLevelAA_BeforePerformDataSelect" OnHtmlDataCellPrepared="GvLevelAA_HtmlDataCellPrepared" OnStartRowEditing="GvLevelAA_StartRowEditing" OnFillContextMenuItems="GvLevelAA_FillContextMenuItems" OnCustomColumnDisplayText="OnCustomColumnDisplayText">
                     <Columns>
-                        <dx:GridViewDataTextColumn VisibleIndex="0" Caption="Num" Width="48" Settings-AllowSort="False" Settings-AllowHeaderFilter="False" EditFormSettings-Visible="False" UnboundType="String" />
-                        <dx:GridViewDataTextColumn VisibleIndex="1" EditFormSettings-VisibleIndex="1" FieldName="ProjectTaskMoldCode" Caption="Mã số khuôn" ReadOnly="true" Width="200" />
-					    <dx:GridViewDataTextColumn VisibleIndex="2" EditFormSettings-VisibleIndex="2" FieldName="ProjectTaskOverlayNum" Caption="Số phủ" ReadOnly="true" Width="88" />
-                        <dx:GridViewDataTextColumn VisibleIndex="3" EditFormSettings-VisibleIndex="3" FieldName="MoldsName" Caption="Loại" ReadOnly="true" Width="100"/>
-                        <dx:GridViewDataTextColumn VisibleIndex="4" EditFormSettings-VisibleIndex="4" FieldName="ProjectTaskDiameterOut" Caption="Đ kính" ReadOnly="true" EditFormSettings-Visible="False" Width="78"/>
-                        <dx:GridViewDataTextColumn VisibleIndex="5" EditFormSettings-VisibleIndex="5" FieldName="ProjectTaskQuantities" Caption="Số lượng" ReadOnly="true" EditFormSettings-Visible="False" Width="78"/>
-                        <dx:GridViewDataTextColumn VisibleIndex="6" EditFormSettings-VisibleIndex="6" FieldName="ProjectTaskThickness" Caption="Bề dày" ReadOnly="true" EditFormSettings-Visible="False" Width="78"/>
-                        <dx:GridViewDataTextColumn VisibleIndex="7" EditFormSettings-VisibleIndex="7" FieldName="CustomerName" Caption="Khách hàng" ReadOnly="true" Width="100"/>
-                        <dx:GridViewDataTextColumn VisibleIndex="8" EditFormSettings-VisibleIndex="8" FieldName="ProjectTaskTransmit" Caption="Ngày nhận" ReadOnly="true" PropertiesTextEdit-DisplayFormatString="dd/MM/yyyy HH:mm" EditFormSettings-Visible="False" Width="120"/>
-                        <dx:GridViewDataTextColumn VisibleIndex="9" EditFormSettings-VisibleIndex="9" FieldName="ProjectTaskDeadline" Caption="Ngày xuất" ReadOnly="true" PropertiesTextEdit-DisplayFormatString="dd/MM/yyyy HH:mm" EditFormSettings-Visible="False" Width="120"/>
-                        <dx:GridViewDataDateColumn VisibleIndex="10" EditFormSettings-VisibleIndex="10" FieldName="ProcessExpectedCompletion" Caption="Ngày dự kiến" Width="120">
-                            <PropertiesDateEdit DisplayFormatString="MM/dd/yyyy HH:mm">
-                                <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
-                                <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
-                            </PropertiesDateEdit>
-                        </dx:GridViewDataDateColumn>
-                        <dx:GridViewDataSpinEditColumn VisibleIndex="11" EditFormSettings-VisibleIndex="11" FieldName="AutoPriority" Caption="Độ trễ" ReadOnly="true" EditFormSettings-Visible="False" Width="78" />
-                        <dx:GridViewDataComboBoxColumn VisibleIndex="12" EditFormSettings-VisibleIndex="12" FieldName="ProcessPlusBrowse" Caption="Hỗ trợ" Visible="false" EditFormSettings-Visible="True">
-                            <PropertiesComboBox DataSourceID="OdsProcessExtraList" ValueField="ProcessListId" TextField="ProcessListName" ValueType="System.Int32" />
-                        </dx:GridViewDataComboBoxColumn>
-                        <dx:GridViewDataSpinEditColumn VisibleIndex="13" EditFormSettings-VisibleIndex="13" FieldName="ProcessExpectedTime" Caption="Tg dự kiến" Width="88">
-                            <PropertiesSpinEdit DecimalPlaces="2" NumberType="Float" DisplayFormatString="{0} giờ.">
-                                <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
-                            </PropertiesSpinEdit>
-                        </dx:GridViewDataSpinEditColumn>
+                        <dx:GridViewBandColumn Caption="Dữ liệu đơn hàng" VisibleIndex="0">
+                            <Columns>
+                                <dx:GridViewDataTextColumn VisibleIndex="0" Caption="Num" Width="48" Settings-AllowSort="False" Settings-AllowHeaderFilter="False" EditFormSettings-Visible="False" UnboundType="String" />
+                                <dx:GridViewDataTextColumn VisibleIndex="1" EditFormSettings-VisibleIndex="1" FieldName="ProjectTaskMoldCode" Caption="Mã số khuôn" ReadOnly="true" Width="200" />
+					            <dx:GridViewDataTextColumn VisibleIndex="2" EditFormSettings-VisibleIndex="2" FieldName="ProjectTaskOverlayNum" Caption="Số phủ" ReadOnly="true" Width="88" />
+                                <dx:GridViewDataTextColumn VisibleIndex="3" EditFormSettings-VisibleIndex="3" FieldName="MoldsName" Caption="Loại" ReadOnly="true" Width="100"/>
+                                <dx:GridViewDataTextColumn VisibleIndex="4" EditFormSettings-VisibleIndex="4" FieldName="ProjectTaskDiameterOut" Caption="Đ kính" ReadOnly="true" EditFormSettings-Visible="False" Width="78"/>
+                                <dx:GridViewDataTextColumn VisibleIndex="5" EditFormSettings-VisibleIndex="5" FieldName="ProjectTaskQuantities" Caption="Số lượng" ReadOnly="true" EditFormSettings-Visible="False" Width="78"/>
+                                <dx:GridViewDataTextColumn VisibleIndex="6" EditFormSettings-VisibleIndex="6" FieldName="ProjectTaskThickness" Caption="Bề dày" ReadOnly="true" EditFormSettings-Visible="False" Width="78"/>
+                                <dx:GridViewDataTextColumn VisibleIndex="7" EditFormSettings-VisibleIndex="7" FieldName="CustomerName" Caption="Khách hàng" ReadOnly="true" Width="100"/>
+                            </Columns>
+                            <HeaderStyle HorizontalAlign="Left" />
+                        </dx:GridViewBandColumn>  
+                        <dx:GridViewBandColumn Caption="Dữ liệu thời gian" VisibleIndex="1">
+                            <Columns>
+                                <dx:GridViewDataTextColumn VisibleIndex="8" EditFormSettings-VisibleIndex="8" FieldName="ProjectTaskTransmit" Caption="Ngày nhận" ReadOnly="true" PropertiesTextEdit-DisplayFormatString="dd/MM/yyyy HH:mm" EditFormSettings-Visible="False" Width="120"/>
+                                <dx:GridViewDataTextColumn VisibleIndex="9" EditFormSettings-VisibleIndex="9" FieldName="ProjectTaskDeadline" Caption="Ngày xuất" ReadOnly="true" PropertiesTextEdit-DisplayFormatString="dd/MM/yyyy HH:mm" EditFormSettings-Visible="False" Width="120"/>
+                                <dx:GridViewDataDateColumn VisibleIndex="10" EditFormSettings-VisibleIndex="10" FieldName="ProcessExpectedCompletion" Caption="Ngày dự kiến" Width="120">
+                                    <PropertiesDateEdit DisplayFormatString="MM/dd/yyyy HH:mm">
+                                        <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
+                                        <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
+                                    </PropertiesDateEdit>
+                                </dx:GridViewDataDateColumn>
+                                <dx:GridViewDataSpinEditColumn VisibleIndex="11" EditFormSettings-VisibleIndex="11" FieldName="AutoPriority" Caption="Độ trễ" ReadOnly="true" EditFormSettings-Visible="False" Width="78" />
+                                <dx:GridViewDataComboBoxColumn VisibleIndex="12" EditFormSettings-VisibleIndex="12" FieldName="ProcessPlusBrowse" Caption="Hỗ trợ" Visible="false" EditFormSettings-Visible="True">
+                                    <PropertiesComboBox DataSourceID="OdsProcessExtraList" ValueField="ProcessListId" TextField="ProcessListName" ValueType="System.Int32" />
+                                </dx:GridViewDataComboBoxColumn>
+                                <dx:GridViewDataSpinEditColumn VisibleIndex="13" EditFormSettings-VisibleIndex="13" FieldName="ProcessExpectedTime" Caption="Tg dự kiến" Width="88">
+                                    <PropertiesSpinEdit DecimalPlaces="2" NumberType="Float" DisplayFormatString="{0} giờ.">
+                                        <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
+                                    </PropertiesSpinEdit>
+                                </dx:GridViewDataSpinEditColumn>
+                            </Columns>
+                            <HeaderStyle HorizontalAlign="Left" />
+                        </dx:GridViewBandColumn> 
+                        <dx:GridViewBandColumn Caption="Dự kiến / Thực tế: Tinh qua QA" VisibleIndex="2">
+                            <Columns>
+                                <dx:GridViewDataDateColumn FieldName="" Caption="Dự kiến" EditFormSettings-Caption="Dự kiến Tinh qua QA" Width="120" VisibleIndex="16"> 
+                                    <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm" AllowNull="true">
+                                        <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
+                                    </PropertiesDateEdit>
+                                </dx:GridViewDataDateColumn>
+                                <dx:GridViewDataDateColumn FieldName="" Caption="Thực tế" EditFormSettings-Caption="Thực tế Tinh qua QA" Width="120" VisibleIndex="16"> 
+                                    <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm" AllowNull="true">
+                                        <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
+                                    </PropertiesDateEdit>
+                                </dx:GridViewDataDateColumn>
+                            </Columns>
+                            <HeaderStyle HorizontalAlign="Left" />
+                        </dx:GridViewBandColumn>
                         <dx:GridViewDataCheckColumn VisibleIndex="14" EditFormSettings-VisibleIndex="14" FieldName="ProcessGangerBrowse" Caption="Duyệt" Visible="false" EditFormSettings-Visible="True" />
                         <dx:GridViewDataMemoColumn VisibleIndex="15" EditFormSettings-VisibleIndex="15" FieldName="" Caption="Ghi chú:" PropertiesMemoEdit-Rows="2" EditFormSettings-ColumnSpan="2" Width="480" MinWidth="255" />
                     </Columns>
@@ -85,7 +110,7 @@
                     <SettingsBehavior EnableRowHotTrack="true" />                    
                     <SettingsContextMenu Enabled="true" />                       
                     <SettingsDetail ShowDetailRow="True" AllowOnlyOneMasterRowExpanded="true"/>
-                    <SettingsPager Mode="ShowPager" PageSize="15" FirstPageButton-Visible="true" LastPageButton-Visible="true" PageSizeItemSettings-Visible="true" PageSizeItemSettings-Position="Right" Summary-Text="Trang {0} / {1} (Số dòng: {2}):" PageSizeItemSettings-Caption="Số dòng 1 trang:" />
+                    <SettingsPager Mode="ShowPager" PageSize="10" FirstPageButton-Visible="true" LastPageButton-Visible="true" PageSizeItemSettings-Visible="true" PageSizeItemSettings-Position="Right" Summary-Text="Trang {0} / {1} (Số dòng: {2}):" PageSizeItemSettings-Caption="Số dòng 1 trang:" />
                     <SettingsText PopupEditFormCaption="Cập nhật dữ liệu" CommandUpdate="Cập nhật" CommandCancel="Hủy bỏ" SearchPanelEditorNullText="Nhập dữ liệu cần tìm ..." />
                     <Styles DetailCell-Paddings-Padding="0" />
                     <StylesPopup EditForm-Header-Font-Bold="true" EditForm-Header-Paddings-Padding="5" EditForm-Header-Paddings-PaddingTop="7" />

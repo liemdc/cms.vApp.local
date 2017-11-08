@@ -91,7 +91,7 @@ public class OrdersModels
                     ProjectTaskThucTeTinhQuaQA = sm.t.ProjectTaskThucTeTinhQuaQA,
                     ProjectTaskDuKienXuatHang = sm.t.ProjectTaskDuKienXuatHang,
                     ProjectTaskThucTeXuatHang = sm.t.ProjectTaskThucTeXuatHang
-                }).OrderBy(o => o.ProjectTaskPriorityID);
+                }).OrderByDescending(o => o.ProjectTaskTransmit).ThenBy(o => o.ProjectTaskPriorityID);
     }
     public static void OrdersCreated(string ProjectTaskMoldCode, string ProjectTaskOverlayNum, string ProjectTaskHoleNum, decimal ProjectTaskDiameterOut, string ProjectTaskMaterialsRequire, string ProjectTaskMaterialsCode, int ProjectTaskMoldsId,
                                      int ProjectTaskThickness, string ProjectTaskThicknessTotal, int ProjectTaskQuantities, string ProjectTaskContainHead, string ProjectTaskBottoHob, string ProjectTaskChildNote, string ProjectTaskHorikomi, string ProjectTaskHardness, int ProjectTaskCustomerId,
