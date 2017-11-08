@@ -163,6 +163,7 @@ public partial class ProjectProcessObject
     public string ProcessListgroup { get; set; }
     public Nullable<decimal> ProcessExpectedTime { get; set; }
     public Nullable<decimal> ProcessFactTime { get; set; }
+    public string ProcessNotes { get; set; }
     public string UserModified { get; set; }
 }
 public partial class OrdersProcessObject
@@ -188,6 +189,7 @@ public partial class OrdersProcessObject
     public int AutoPriority { get; set; }
     public Nullable<DateTime> ProjectTaskDuKienThoQuaTinh { get; set; }
     public Nullable<DateTime> ProjectTaskDuKienTinhQuaQA { get; set; }
+    public string ProcessNotes { get; set; }
 }
 public partial class OrdersProcessDetailObject
 {

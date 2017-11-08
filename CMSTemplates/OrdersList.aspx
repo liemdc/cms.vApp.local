@@ -355,7 +355,7 @@
                                                             <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
                                                         </PropertiesComboBox>
                                                     </dx:GridViewDataComboBoxColumn> 
-                                                    <dx:GridViewDataTextColumn VisibleIndex="14" FieldName="" Caption="Ghi chú" MinWidth="348" Width="585" EditFormSettings-Visible="False" /> 
+                                                    <dx:GridViewDataTextColumn VisibleIndex="14" FieldName="ProcessNotes" Caption="Ghi chú" MinWidth="348" Width="585" EditFormSettings-Visible="False" /> 
                                                     <dx:GridViewDataTextColumn VisibleIndex="15" FieldName="UserModified" Caption="Cập nhật bởi" MinWidth="148" EditFormSettings-Visible="False" />                                                             
                                                 </Columns>
                                                 <HeaderStyle HorizontalAlign="Left" />

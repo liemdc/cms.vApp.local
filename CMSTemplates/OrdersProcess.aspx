@@ -96,7 +96,7 @@
                                     </PropertiesDateEdit>
                                 </dx:GridViewDataDateColumn>
                                 <dx:GridViewDataCheckColumn VisibleIndex="23" EditFormSettings-VisibleIndex="23" FieldName="ProcessGangerBrowse" Caption="Duyệt" Visible="false" EditFormSettings-Visible="True" />
-                                <dx:GridViewDataMemoColumn VisibleIndex="24" EditFormSettings-VisibleIndex="24" FieldName="" Caption="Ghi chú:" PropertiesMemoEdit-Rows="2" EditFormSettings-ColumnSpan="2" Width="480" MinWidth="255" />
+                                <dx:GridViewDataMemoColumn VisibleIndex="24" EditFormSettings-VisibleIndex="24" FieldName="ProcessNotes" Caption="Ghi chú:" PropertiesMemoEdit-Rows="2" EditFormSettings-ColumnSpan="2" Width="480" MinWidth="255" />
                             </Columns>
                             <HeaderStyle HorizontalAlign="Left" />
                         </dx:GridViewBandColumn>
@@ -262,7 +262,8 @@
                         <asp:Parameter Name="ProcessGangerBrowse" Type="Boolean" />
                         <asp:Parameter Name="ProcessExpectedTime" Type="Decimal" />
                         <asp:Parameter Name="ProcessExpectedCompletion" Type="DateTime" />
-                        <asp:Parameter Name="ProcessPlusBrowse" Type="Int32" />        
+                        <asp:Parameter Name="ProcessPlusBrowse" Type="Int32" />
+                        <asp:Parameter Name="ProcessNotes" Type="String" />   
                     </UpdateParameters>
                 </asp:ObjectDataSource>   
             </DetailRow>

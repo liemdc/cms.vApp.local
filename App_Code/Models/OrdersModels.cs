@@ -270,8 +270,7 @@ public class OrdersModels
     {
         return LINQData.db.PM_ProjectTasks.Select(s => new { ProjectTaskHardness = s.ProjectTaskHardness }).Distinct();
     }
-    public static List<ProjectProcessObject> ProjectProcessListByProjectTaskID(int ProjectTaskID)
-    {
+    public static List<ProjectProcessObject> ProjectProcessListByProjectTaskID(int ProjectTaskID) {
         return LINQData.db.PM_ProjectProcesses.Where(w => w.ProcessProjectTaskID == ProjectTaskID)
                 .GroupJoin(LINQData.db.PM_ProjectProcessLists, mp => mp.ProcessListId, pl => pl.ProcessListId, (mp, pl) => new { mp, pl })
                 .SelectMany(sm => sm.pl.DefaultIfEmpty(), (sm, pl) => new { sm, pl })
@@ -284,6 +283,7 @@ public class OrdersModels
                     ProcessListgroup = sm1.mp1.pl.ProcessListGroup,
                     ProcessExpectedTime = sm1.mp1.sm.mp.ProcessExpectedTime,
                     ProcessFactTime = sm1.mp1.sm.mp.ProcessFactTime,
+                    ProcessNotes = sm1.mp1.sm.mp.ProcessNotes,
                     UserModified = userm.FullName
                 }).ToList();
     }
@@ -350,37 +350,32 @@ public class OrdersModels
                 ProcessExpectedCompletion = sm.pp.pp.pp.ProcessExpectedCompletion,
                 ProjectTaskDuKienThoQuaTinh = sm.pp.pp.pt.ProjectTaskDuKienThoQuaTinh,
                 ProjectTaskDuKienTinhQuaQA = sm.pp.pp.pt.ProjectTaskDuKienTinhQuaQA,
+                ProcessNotes = sm.pp.pp.pp.ProcessNotes,
                 AutoPriority = Convert.ToInt32(((Convert.ToDateTime(sm.pp.pp.pt.ProjectTaskTransmit) - DateTime.Now).Days + (Convert.ToDateTime(sm.pp.pp.pt.ProjectTaskDeadline) - DateTime.Now).Days) - sm.pp.pm.MoldsMinScheduledDays)
             }).OrderBy(o => o.AutoPriority).OrderBy(o1 => o1.ProjectTaskPriorityID).ToList();
     }
-    public static void OrdersProcessUpdated(int ProjectTaskID, int ProcessListId, bool ProcessGangerBrowse, decimal ProcessExpectedTime, DateTime ProcessExpectedCompletion, int ProcessPlusBrowse)
-    {
-        using (TransactionScope transactionScope = new TransactionScope())
-        {
-            try
-            {
+    public static void OrdersProcessUpdated(int ProjectTaskID, int ProcessListId, bool ProcessGangerBrowse, decimal ProcessExpectedTime, DateTime ProcessExpectedCompletion, int ProcessPlusBrowse, string ProcessNotes) {
+        using (TransactionScope transactionScope = new TransactionScope()) {
+            try {
                 bool finish = true;
                 PM_ProjectProcess pp = LINQData.db.PM_ProjectProcesses.FirstOrDefault(x => x.ProcessProjectTaskID == ProjectTaskID && x.ProcessListId == ProcessListId);
                 List<PM_ProjectProcess> ppl = LINQData.db.PM_ProjectProcesses.Where(w => w.ProcessProjectTaskID == ProjectTaskID).ToList();
-                if (pp != null)
-                {
+                if (pp != null) {
                     pp.ProcessExpectedTime = ProcessExpectedTime;
                     pp.ProcessExpectedCompletion = ProcessExpectedCompletion;
+                    pp.ProcessNotes = ProcessNotes;
                     if (pp.ProcessPlusBrowse == null)
                         pp.ProcessGangerBrowse = ProcessGangerBrowse;
                     if (pp.ProcessListId == pp.ProcessPlusBrowse && ProcessPlusBrowse == 0)
                         ppl.ForEach(fe => fe.ProcessPlusBrowse = null);
-                    else if (pp.ProcessListId != pp.ProcessPlusBrowse && pp.ProcessPlusBrowse == null && ProcessPlusBrowse > 0)
-                    {
+                    else if (pp.ProcessListId != pp.ProcessPlusBrowse && pp.ProcessPlusBrowse == null && ProcessPlusBrowse > 0) {
                         PM_ProjectProcess ppb = LINQData.db.PM_ProjectProcesses.FirstOrDefault(x => x.ProcessProjectTaskID == ProjectTaskID && x.ProcessListId == ProcessPlusBrowse);
-                        if (ppb != null && ppb.ProcessGangerBrowse == true)
-                        {
+                        if (ppb != null && ppb.ProcessGangerBrowse == true) {
                             pp.ProcessPlusBrowse = ProcessPlusBrowse;
                             ppb.ProcessPlusBrowse = ProcessPlusBrowse;
                         }
                     }
-                    if (ProcessGangerBrowse)
-                    {
+                    if (ProcessGangerBrowse) {
                         pp.ProcessFactTime = LINQData.db.PM_ProjectProcessDetails.Where(w => w.DetailProjectTaskID == ProjectTaskID)
                                                         .Join(LINQData.db.PM_ProjectSubProcesses.Where(w => w.SubProcessListId == ProcessListId), ppd => ppd.DetailSubProcessId, psp => psp.SubProcessId, (ppd, psp) => new { ppd, psp })
                                                         .Sum(s => s.ppd.DetailTotalTimeM);
