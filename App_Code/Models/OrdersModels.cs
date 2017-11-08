@@ -348,6 +348,8 @@ public class OrdersModels
                 CustomerName = pc.CustomerName,
                 ProjectTaskPriorityID = sm.pp.pp.pt.ProjectTaskPriorityID,
                 ProcessExpectedCompletion = sm.pp.pp.pp.ProcessExpectedCompletion,
+                ProjectTaskDuKienThoQuaTinh = sm.pp.pp.pt.ProjectTaskDuKienThoQuaTinh,
+                ProjectTaskDuKienTinhQuaQA = sm.pp.pp.pt.ProjectTaskDuKienTinhQuaQA,
                 AutoPriority = Convert.ToInt32(((Convert.ToDateTime(sm.pp.pp.pt.ProjectTaskTransmit) - DateTime.Now).Days + (Convert.ToDateTime(sm.pp.pp.pt.ProjectTaskDeadline) - DateTime.Now).Days) - sm.pp.pm.MoldsMinScheduledDays)
             }).OrderBy(o => o.AutoPriority).OrderBy(o1 => o1.ProjectTaskPriorityID).ToList();
     }

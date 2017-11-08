@@ -83,23 +83,23 @@
                             </Columns>
                             <HeaderStyle HorizontalAlign="Left" />
                         </dx:GridViewBandColumn> 
-                        <dx:GridViewBandColumn Caption="Dự kiến / Thực tế: Tinh qua QA" VisibleIndex="2">
+                        <dx:GridViewBandColumn Caption="Dự kiến / Ghi chú" VisibleIndex="2">
                             <Columns>
-                                <dx:GridViewDataDateColumn FieldName="" Caption="Dự kiến" EditFormSettings-Caption="Dự kiến Tinh qua QA" Width="120" VisibleIndex="16"> 
+                                <dx:GridViewDataDateColumn FieldName="ProjectTaskDuKienThoQuaTinh" Caption="Thô qua Tinh" Width="120" VisibleIndex="21" EditFormSettings-Visible="False"> 
                                     <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm" AllowNull="true">
                                         <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
                                     </PropertiesDateEdit>
                                 </dx:GridViewDataDateColumn>
-                                <dx:GridViewDataDateColumn FieldName="" Caption="Thực tế" EditFormSettings-Caption="Thực tế Tinh qua QA" Width="120" VisibleIndex="16"> 
+                                <dx:GridViewDataDateColumn FieldName="ProjectTaskDuKienTinhQuaQA" Caption="Tinh qua QA" Width="120" VisibleIndex="22" EditFormSettings-Visible="False"> 
                                     <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm" AllowNull="true">
                                         <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
                                     </PropertiesDateEdit>
                                 </dx:GridViewDataDateColumn>
+                                <dx:GridViewDataCheckColumn VisibleIndex="23" EditFormSettings-VisibleIndex="23" FieldName="ProcessGangerBrowse" Caption="Duyệt" Visible="false" EditFormSettings-Visible="True" />
+                                <dx:GridViewDataMemoColumn VisibleIndex="24" EditFormSettings-VisibleIndex="24" FieldName="" Caption="Ghi chú:" PropertiesMemoEdit-Rows="2" EditFormSettings-ColumnSpan="2" Width="480" MinWidth="255" />
                             </Columns>
                             <HeaderStyle HorizontalAlign="Left" />
                         </dx:GridViewBandColumn>
-                        <dx:GridViewDataCheckColumn VisibleIndex="14" EditFormSettings-VisibleIndex="14" FieldName="ProcessGangerBrowse" Caption="Duyệt" Visible="false" EditFormSettings-Visible="True" />
-                        <dx:GridViewDataMemoColumn VisibleIndex="15" EditFormSettings-VisibleIndex="15" FieldName="" Caption="Ghi chú:" PropertiesMemoEdit-Rows="2" EditFormSettings-ColumnSpan="2" Width="480" MinWidth="255" />
                     </Columns>
                     <ClientSideEvents BeginCallback="OnBeginCallback" EndCallback="OnEndCallback" />
                     <SettingsEditing Mode="PopupEditForm" />
@@ -169,7 +169,7 @@
                                             <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
                                         </PropertiesTextEdit>
                                     </dx:GridViewDataTextColumn>
-                                    <dx:GridViewDataTextColumn VisibleIndex="6" Caption="" Settings-AllowSort="False" Settings-AllowHeaderFilter="False" EditFormSettings-Visible="False" UnboundType="String" Width="468" MinWidth="243" />
+                                    <dx:GridViewDataTextColumn VisibleIndex="6" Caption="" Settings-AllowSort="False" Settings-AllowHeaderFilter="False" EditFormSettings-Visible="False" UnboundType="String" Width="708" MinWidth="243" />
                                 </Columns>
                                 <TotalSummary>
                                     <dx:ASPxSummaryItem FieldName="SubProcessID" ShowInColumn="SubProcessID" SummaryType="Count" DisplayFormat="<span style='color:#0FAA15'>Số công việc:</span> {0}." />

@@ -186,6 +186,8 @@ public partial class OrdersProcessObject
     public int ProjectTaskPriorityID { get; set; }
     public Nullable<DateTime> ProcessExpectedCompletion { get; set; }
     public int AutoPriority { get; set; }
+    public Nullable<DateTime> ProjectTaskDuKienThoQuaTinh { get; set; }
+    public Nullable<DateTime> ProjectTaskDuKienTinhQuaQA { get; set; }
 }
 public partial class OrdersProcessDetailObject
 {
