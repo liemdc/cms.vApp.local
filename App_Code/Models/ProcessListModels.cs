@@ -69,6 +69,13 @@ public class ProcessListModels {
             } catch (Exception ex ) { System.Diagnostics.Debug.WriteLine(ex.Message); }
         }
     } 
+    public static List<OrdersProcessDetailObject> ProjectProcessDetailByMachineId(int MachineryId){
+        return LINQData.db.PM_ProjectProcessDetails.Where(w => w.DetailMachineId == MachineryId)
+            .Join(LINQData.db.PM_ProjectTasks, ppd => ppd.DetailProjectTaskID, pt => pt.ProjectTaskID, (ppd, pt) => new { ppd, pt })
+            .Select(s => new OrdersProcessDetailObject {
+                DetailId = s.ppd.DetailId, ProjectTaskID = s.ppd.DetailProjectTaskID, DetailStartTimeM = s.ppd.DetailStartTimeM, DetailEndTimeM = s.ppd.DetailEndTimeM, ProjectTaskMoldCode = s.pt.ProjectTaskMoldCode
+            }).OrderByDescending(o => o.DetailEndTimeM).ToList();
+    } 
     public static List<ProcessListObject> MinProcessListNotInMoldsId(int MoldsId) {      
         return LINQData.db.PM_ProjectProcessLists
             .Where(w => !LINQData.db.IV_tblMoldsProcesses.Where(w1 => w1.MoldsId == MoldsId).Select(s => s.ProcessListId).ToArray().Contains(w.ProcessListId))

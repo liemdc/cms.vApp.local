@@ -104,12 +104,6 @@
                     </dx:ContentControl>
                 </ContentCollection>
             </dx:TabPage>
-            <dx:TabPage Text="Máy gia công" TabStyle-Font-Names="Arial" TabStyle-Width="100%">
-                <ContentCollection>
-                    <dx:ContentControl ID="tabMayGiaCong" Visible="true" runat="server">
-                     </dx:ContentControl>
-                </ContentCollection>
-            </dx:TabPage>
             <dx:TabPage Text="Danh sách công việc" TabStyle-Font-Names="Arial" TabStyle-Width="100%">
                 <ContentCollection>
                     <dx:ContentControl ID="TaskListTab" Visible="true" runat="server">

@@ -164,6 +164,31 @@
                                                             <Settings VerticalScrollBarMode="Hidden" HorizontalScrollBarMode="Hidden" />
                                                             <SettingsPager Mode="ShowAllRecords"/>
                                                             <SettingsBehavior ConfirmDelete="true" EnableRowHotTrack="true" />
+                                                            <SettingsDetail ShowDetailRow="True" AllowOnlyOneMasterRowExpanded="true" />
+                                                            <Styles DetailCell-Paddings-Padding="0" DetailCell-Paddings-PaddingBottom="8" />
+                                                            <Templates>
+                                                                <DetailRow>
+                                                                    <dx:ASPxGridView ID="GvLevelABA" ClientInstanceName="GvLevelABA" runat="server" Width="100%" DataSourceID="OdsLevelABA" KeyFieldName="DetailId" SettingsEditing-EditFormColumnCount="1"
+                                                                        Border-BorderColor="#CFCFCF" Styles-Header-Border-BorderColor="#CFCFCF" Styles-Header-BackColor="#F2F2F2" BorderTop-BorderWidth="0" 
+                                                                        OnBeforePerformDataSelect="GvLevelABA_BeforePerformDataSelect" OnCustomColumnDisplayText="OnCustomColumnDisplayText">                                    
+                                                                        <Columns>
+                                                                            <dx:GridViewDataTextColumn VisibleIndex="0" Caption="Num" Width="44" Settings-AllowSort="False" EditFormSettings-Visible="False" UnboundType="String" FixedStyle="Left" />
+                                                                            <dx:GridViewDataTextColumn FieldName="ProjectTaskMoldCode" Caption="Mã số khuôn" MinWidth="188" />
+                                                                            <dx:GridViewDataTextColumn FieldName="DetailStartTimeM" Caption="Bắt đầu" PropertiesTextEdit-DisplayFormatString="dd/MM/yyyy HH:mm" Width="188"/>
+                                                                            <dx:GridViewDataTextColumn FieldName="DetailEndTimeM" Caption="Kết thúc" PropertiesTextEdit-DisplayFormatString="dd/MM/yyyy HH:mm" Width="188"/>
+                                                                        </Columns>
+                                                                        <ClientSideEvents BeginCallback="OnBeginCallback" EndCallback="OnEndCallback" />
+                                                                        <SettingsContextMenu Enabled="true" EnableColumnMenu="False" />
+                                                                        <SettingsBehavior ConfirmDelete="true" EnableCustomizationWindow="true" EnableRowHotTrack="true" />
+                                                                        <Settings VerticalScrollBarMode="Hidden" HorizontalScrollBarMode="Hidden" />
+                                                                    </dx:ASPxGridView>
+                                                                    <asp:ObjectDataSource ID="OdsLevelABA" runat="server" TypeName="ProcessListModels" SelectMethod="ProjectProcessDetailByMachineId" >
+                                                                        <SelectParameters>
+                                                                            <asp:SessionParameter Name="MachineryId" SessionField="MachineryId" Type="Int32" />
+                                                                        </SelectParameters>
+                                                                    </asp:ObjectDataSource>
+                                                                </DetailRow>
+                                                            </Templates>
                                                        </dx:ASPxGridView>
                                                        <asp:ObjectDataSource ID="OdsGvLevelAB" runat="server" TypeName="ProcessListModels" SelectMethod="MachineriesList" InsertMethod="MachineriesCreated" UpdateMethod="MachineriesUpdated" DeleteMethod="MachineriesDeleted">
                                                             <SelectParameters>

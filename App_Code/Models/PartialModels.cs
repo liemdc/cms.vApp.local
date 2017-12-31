@@ -196,6 +196,7 @@ public partial class OrdersProcessDetailObject
     public int DetailId { get; set; }
     public int ProjectTaskID { get; set; }
     public int SubProcessID { get; set; }
+    public string ProjectTaskMoldCode { get; set; }    
     public Nullable<int> DetailMachineId { get; set; }
     public Nullable<DateTime> DetailStartTimeM { get; set; }
     public Nullable<DateTime> DetailEndTimeM { get; set; }

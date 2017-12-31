@@ -87,4 +87,8 @@ public partial class CMSTemplates_Manager : TemplatePage {
                 e.Row.Attributes.Add("sortOrder", rowOrder.ToString());
         }
     }
+
+    protected void GvLevelABA_BeforePerformDataSelect(object sender, EventArgs e) {
+        Session["MachineryId"] = (sender as ASPxGridView).GetMasterRowKeyValue();
+    }
 }
