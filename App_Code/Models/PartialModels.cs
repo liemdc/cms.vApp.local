@@ -161,6 +161,7 @@ public partial class ProjectProcessObject
     public int ProcessListId { get; set; }
     public string ProcessListName { get; set; }
     public string ProcessListgroup { get; set; }
+    public Nullable<bool> ProcessGangerBrowse { get; set; }
     public Nullable<decimal> ProcessExpectedTime { get; set; }
     public Nullable<decimal> ProcessFactTime { get; set; }
     public string ProcessNotes { get; set; }

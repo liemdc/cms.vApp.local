@@ -320,8 +320,7 @@ public class OrdersModels
     {
         return LINQData.db.PM_ProjectTaskPriorities.Select(s => new { TaskPriorityID = s.TaskPriorityID, TaskPriorityDisplayName = s.TaskPriorityDisplayName }).ToList();
     }
-    public static List<OrdersProcessObject> OrdersProcessList(int ProcessListId)
-    {
+    public static List<OrdersProcessObject> OrdersProcessList(int ProcessListId) {
         return LINQData.db.PM_ProjectProcesses.Where(w => (w.ProcessListId == ProcessListId || w.ProcessPlusBrowse == ProcessListId) && w.ProcessGangerBrowse == false)
             .GroupJoin(LINQData.db.PM_ProjectTasks.Where(w => w.ProjectTaskStatusID == 3), pp => pp.ProcessProjectTaskID, pt => pt.ProjectTaskID, (pp, pt) => new { pp, pt })
             .SelectMany(sm => sm.pt, (sm, pt) => new { sm.pp, pt })
@@ -358,6 +357,8 @@ public class OrdersModels
         using (TransactionScope transactionScope = new TransactionScope()) {
             try {
                 bool finish = true;
+                bool finishTho = true;
+                bool finishTinh = true;
                 PM_ProjectProcess pp = LINQData.db.PM_ProjectProcesses.FirstOrDefault(x => x.ProcessProjectTaskID == ProjectTaskID && x.ProcessListId == ProcessListId);
                 List<PM_ProjectProcess> ppl = LINQData.db.PM_ProjectProcesses.Where(w => w.ProcessProjectTaskID == ProjectTaskID).ToList();
                 if (pp != null) {
@@ -380,14 +381,25 @@ public class OrdersModels
                                                         .Join(LINQData.db.PM_ProjectSubProcesses.Where(w => w.SubProcessListId == ProcessListId), ppd => ppd.DetailSubProcessId, psp => psp.SubProcessId, (ppd, psp) => new { ppd, psp })
                                                         .Sum(s => s.ppd.DetailTotalTimeM);
                     }
-
                 }
                 if (ppl.FirstOrDefault(fod => fod.ProcessGangerBrowse == false) != null)
                     finish = false;
+                List<ProjectProcessObject> lsTho = ppl.Join(LINQData.db.PM_ProjectProcessLists.Where(w => w.ProcessListGroup == "dataTho"), ppll => ppll.ProcessListId, ppls => ppls.ProcessListId, (ppll, ppls) => new { ppll, ppls })
+                                                      .Select(s => new ProjectProcessObject { ProcessGangerBrowse = s.ppll.ProcessGangerBrowse,  }).ToList();
+                if (lsTho.FirstOrDefault(fod => fod.ProcessGangerBrowse == false) != null)
+                    finishTho = false;
+                List<ProjectProcessObject> lsTinh = ppl.Join(LINQData.db.PM_ProjectProcessLists.Where(w => w.ProcessListGroup == "dataTinh"), ppll => ppll.ProcessListId, ppls => ppls.ProcessListId, (ppll, ppls) => new { ppll, ppls })
+                                                      .Select(s => new ProjectProcessObject { ProcessGangerBrowse = s.ppll.ProcessGangerBrowse, }).ToList();
+                if (lsTinh.FirstOrDefault(fod => fod.ProcessGangerBrowse == false) != null)
+                    finishTinh = false;
                 PM_ProjectTask pt = LINQData.db.PM_ProjectTasks.Where(w => w.ProjectTaskID == ProjectTaskID).FirstOrDefault();
                 if (pt != null && finish)
                     pt.ProjectTaskStatusID = 7;
-                LINQData.db.SubmitChanges();
+                if (pt != null && !pt.ProjectTaskThucTeThoQuaTinh.HasValue && finishTho)
+                    pt.ProjectTaskThucTeThoQuaTinh = DateTime.Now;
+                if (pt != null && !pt.ProjectTaskThucTeTinhQuaQA.HasValue && finishTinh)
+                    pt.ProjectTaskThucTeTinhQuaQA = DateTime.Now;
+                LINQData.db.SubmitChanges();                
                 transactionScope.Complete();
             }
             catch { }
