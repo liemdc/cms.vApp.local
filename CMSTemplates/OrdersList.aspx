@@ -196,7 +196,7 @@
                 <ContentCollection>
                     <dx:ContentControl ID="OrdersListNdTab" Visible="true" runat="server">
                         <dx:ASPxGridView ID="GvLevelB" ClientInstanceName="GvLevelB" runat="server" Width="100%" DataSourceID="OdsLevelB" KeyFieldName="ProjectTaskID"
-                            Border-BorderWidth="0" OnFillContextMenuItems="GvLevelB_FillContextMenuItems" OnCustomColumnDisplayText="OnCustomColumnDisplayText">
+                            Border-BorderWidth="0" OnFillContextMenuItems="GvLevelB_FillContextMenuItems" OnCustomColumnDisplayText="OnCustomColumnDisplayText" OnDataBound="GvLevelB_DataBound">
                             <Columns>                                
                                 <dx:GridViewBandColumn Caption="Dữ liệu thông tin đơn hàng" VisibleIndex="0">
                                     <Columns>
@@ -411,11 +411,11 @@
                                 <PagerBar>
                                     <table style="width:100%;border-spacing:0">
                                         <tr>
-                                            <td style="text-align:right;padding-right:3px">
-                                                <dx:ASPxLabel ID="dxLblNotes" runat="server" Text="Điều kiện lọc [ Trạng thái / Độ ưu tiên ]:" />
+                                            <td style="width:100px;text-align:right;padding-right:3px">
+                                                <dx:ASPxLabel ID="dxLblNotes" runat="server" Text="Chọn trạng thái Độ ưu tiên :" Font-Bold="true" />
                                             </td>
-                                            <td style="width:128px;text-align:right;padding-right:3px">
-                                                <dx:ASPxComboBox runat="server" Width="128" Height="23" ID="CbTaskStatus" OnTextChanged="CbTaskData_TextChanged" ClientSideEvents-TextChanged="function(s, e) { GvLevelB.PerformCallback();}">
+                                            <td style="width:100px;text-align:right;padding-right:3px">
+                                                <dx:ASPxComboBox runat="server" Width="100" Height="25" ID="CbTaskStatus" OnTextChanged="CbTaskData_TextChanged" ClientSideEvents-TextChanged="function(s, e) { GvLevelB.PerformCallback();}">
                                                     <Items>
                                                         <dx:ListEditItem Text="Chọn tất cả" Value="2;3;6;7" Selected="true" />
                                                         <dx:ListEditItem Text="Chưa bắt đầu" Value="2" />
@@ -425,8 +425,8 @@
                                                     </Items>
                                                 </dx:ASPxComboBox>
                                             </td>
-                                            <td style="width:128px;text-align:right;padding-right:3px">
-                                                <dx:ASPxComboBox runat="server" Width="128" Height="23" ID="CbTaskPriority" OnTextChanged="CbTaskData_TextChanged" ClientSideEvents-TextChanged="function(s, e) { GvLevelB.PerformCallback();}">
+                                            <td style="width:100px;text-align:right;padding-right:3px">
+                                                <dx:ASPxComboBox runat="server" Width="100" Height="25" ID="CbTaskPriority" OnTextChanged="CbTaskData_TextChanged" ClientSideEvents-TextChanged="function(s, e) { GvLevelB.PerformCallback();}">
                                                     <Items>
                                                         <dx:ListEditItem Text="Chọn tất cả" Value="2;3;4" Selected="true" />
                                                         <dx:ListEditItem Text="Ưu tiên cao" Value="2" />
@@ -434,6 +434,18 @@
                                                         <dx:ListEditItem Text="Không ưu tiên" Value="4" />
                                                     </Items>
                                                 </dx:ASPxComboBox>
+                                            </td>
+                                            <td style="width:50px;text-align:right;padding-right:3px">
+                                                <dx:ASPxLabel ID="GvLevelCLabelE" runat="server" Text="Xuất Excel: " Font-Bold="true" />
+                                            </td>
+                                            <td style="width:100px;text-align:right;padding-right:3px">
+                                                <dx:ASPxComboBox runat="server" Width="100" Height="25" ID="CbExportMode" ClientSideEvents-TextChanged="function(s, e) { GvLevelB.PerformCallback();}" />
+                                            </td>
+                                            <td style="width:70px;text-align:right;padding-right:3px">
+                                                <dx:ASPxButton ID="btnXlsExport" runat="server" Width="70" Height="25" Paddings-Padding="0" Text="Excel XLS" UseSubmitBehavior="False" OnClick="btnXlsExport_Click" ClientSideEvents-Click="function(s, e) { GvLevelB.PerformCallback();}" />
+                                            </td>
+                                            <td style="width:70px;text-align:right;padding-right:3px">
+                                                <dx:ASPxButton ID="btnXlsxExport" runat="server" Width="70" Height="25" Paddings-Padding="0" Text="Excel XLSX" UseSubmitBehavior="False" OnClick="btnXlsxExport_Click" ClientSideEvents-Click="function(s, e) { GvLevelB.PerformCallback();}" />
                                             </td>
                                             <td>
                                                 <dx:ASPxGridViewTemplateReplacement ID="dxEditors" ReplacementType="Pager" runat="server" />                                   
@@ -443,6 +455,7 @@
                                 </PagerBar>
                             </Templates>
                         </dx:ASPxGridView> 
+                        <dx:ASPxGridViewExporter ID="GvExport" runat="server" GridViewID="GvLevelB" />
                         <asp:ObjectDataSource ID="OdsTaskStatus" runat="server" TypeName="OrdersModels" SelectMethod="TaskStatusList" />
                         <asp:ObjectDataSource ID="OdsTaskPriority" runat="server" TypeName="OrdersModels" SelectMethod="TaskPriorityList" />
                         <asp:ObjectDataSource ID="OdsLevelB" runat="server" TypeName="OrdersModels" SelectMethod="OrdersListNd" UpdateMethod="OrdersUpdatedNd">
