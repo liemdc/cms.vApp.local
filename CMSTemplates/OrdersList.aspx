@@ -308,6 +308,7 @@
                             <Styles DetailCell-Paddings-Padding="0" DetailCell-Paddings-PaddingBottom="8" />
                             <StylesPopup EditForm-Header-Font-Bold="true" EditForm-Header-Paddings-Padding="5" EditForm-Header-Paddings-PaddingTop="7" />
                             <SettingsText PopupEditFormCaption="Cập nhật dữ liệu" CommandUpdate="Cập nhật" CommandCancel="Hủy bỏ" />
+                            
                             <Templates>
                                 <DetailRow>
                                     <dx:ASPxGridView ID="GvLevelBA" ClientInstanceName="GvLevelBA" runat="server" Width="100%" DataSourceID="OdsLevelBA" KeyFieldName="ProcessId" SettingsEditing-EditFormColumnCount="1"
@@ -439,7 +440,7 @@
                                                 <dx:ASPxLabel ID="GvLevelCLabelE" runat="server" Text="Xuất Excel: " Font-Bold="true" />
                                             </td>
                                             <td style="width:100px;text-align:right;padding-right:3px">
-                                                <dx:ASPxComboBox runat="server" Width="100" Height="25" ID="CbExportMode" ClientSideEvents-TextChanged="function(s, e) { GvLevelB.PerformCallback();}" />
+                                                <dx:ASPxComboBox runat="server" Width="100" Height="25" ID="CbExportMode" OnInit="CbExportMode_Init" ClientSideEvents-TextChanged="function(s, e) { GvLevelB.PerformCallback();}" />
                                             </td>
                                             <td style="width:70px;text-align:right;padding-right:3px">
                                                 <dx:ASPxButton ID="btnXlsExport" runat="server" Width="70" Height="25" Paddings-Padding="0" Text="Excel XLS" UseSubmitBehavior="False" OnClick="btnXlsExport_Click" ClientSideEvents-Click="function(s, e) { GvLevelB.PerformCallback();}" />

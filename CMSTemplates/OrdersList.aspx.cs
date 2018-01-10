@@ -14,6 +14,11 @@ using System.Web.UI.WebControls;
 
 public partial class CMSTemplates_OrdersList : TemplatePage {
     protected void Page_Load(object sender, EventArgs e) {
+        if (!IsPostBack) {
+        ASPxComboBox CbExportMode = GvLevelB.FindPagerBarTemplateControl("CbExportMode", GridViewPagerBarPosition.Bottom) as ASPxComboBox;
+        CbExportMode.Items.AddRange(Enum.GetNames(typeof(GridViewDetailExportMode)));
+        CbExportMode.Text = GridViewDetailExportMode.Expanded.ToString();
+        }
     }
     protected void OnCustomColumnDisplayText(object sender, DevExpress.Web.ASPxGridViewColumnDisplayTextEventArgs e) {
         if (e.Column.Caption == "Num")
@@ -131,8 +136,16 @@ public partial class CMSTemplates_OrdersList : TemplatePage {
         GvExport.WriteXlsxToResponse(string.Format("ExportXlsx {0}", DateTime.Now.Date.ToShortDateString()), new XlsxExportOptionsEx() { ExportType = ExportType.WYSIWYG });
     }
     protected void GvLevelB_DataBound(object sender, EventArgs e) {
-        ASPxComboBox CbExportMode = GvLevelB.FindPagerBarTemplateControl("CbExportMode", GridViewPagerBarPosition.Bottom) as ASPxComboBox;
-        CbExportMode.Items.AddRange(Enum.GetNames(typeof(GridViewDetailExportMode)));
-        CbExportMode.Text = GridViewDetailExportMode.Expanded.ToString();
+        //ASPxComboBox CbExportMode = GvLevelB.FindPagerBarTemplateControl("CbExportMode", GridViewPagerBarPosition.Bottom) as ASPxComboBox;
+        //CbExportMode.Items.AddRange(Enum.GetNames(typeof(GridViewDetailExportMode)));
+        //CbExportMode.Text = GridViewDetailExportMode.Expanded.ToString();
+    }
+
+    protected void CbExportMode_Init(object sender, EventArgs e) {
+        ////if (!IsPostBack) {
+        //    ASPxComboBox CbExportMode = GvLevelB.FindPagerBarTemplateControl("CbExportMode", GridViewPagerBarPosition.Bottom) as ASPxComboBox;
+        //    CbExportMode.Items.AddRange(Enum.GetNames(typeof(GridViewDetailExportMode)));
+        //    CbExportMode.Text = GridViewDetailExportMode.Expanded.ToString();
+        ////}
     }
 }
