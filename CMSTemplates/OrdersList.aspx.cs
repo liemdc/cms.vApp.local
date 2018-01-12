@@ -13,11 +13,10 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 
 public partial class CMSTemplates_OrdersList : TemplatePage {
-    protected void Page_Load(object sender, EventArgs e) {
+    protected void Page_Load(object sender, EventArgs e){
         if (!IsPostBack) {
-        ASPxComboBox CbExportMode = GvLevelB.FindPagerBarTemplateControl("CbExportMode", GridViewPagerBarPosition.Bottom) as ASPxComboBox;
-        CbExportMode.Items.AddRange(Enum.GetNames(typeof(GridViewDetailExportMode)));
-        CbExportMode.Text = GridViewDetailExportMode.Expanded.ToString();
+            CbExportMode.Items.AddRange(Enum.GetNames(typeof(GridViewDetailExportMode)));
+            CbExportMode.Text = GridViewDetailExportMode.Expanded.ToString();
         }
     }
     protected void OnCustomColumnDisplayText(object sender, DevExpress.Web.ASPxGridViewColumnDisplayTextEventArgs e) {
@@ -124,7 +123,6 @@ public partial class CMSTemplates_OrdersList : TemplatePage {
     }
 
     protected void UpdateExportMode() {
-        ASPxComboBox CbExportMode = GvLevelB.FindPagerBarTemplateControl("CbExportMode", GridViewPagerBarPosition.Bottom) as ASPxComboBox;
         GvLevelB.SettingsDetail.ExportMode = (GridViewDetailExportMode)Enum.Parse(typeof(GridViewDetailExportMode), CbExportMode.Text);
     }
     protected void btnXlsExport_Click(object sender, EventArgs e) {
@@ -134,18 +132,5 @@ public partial class CMSTemplates_OrdersList : TemplatePage {
     protected void btnXlsxExport_Click(object sender, EventArgs e) {
         UpdateExportMode();
         GvExport.WriteXlsxToResponse(string.Format("ExportXlsx {0}", DateTime.Now.Date.ToShortDateString()), new XlsxExportOptionsEx() { ExportType = ExportType.WYSIWYG });
-    }
-    protected void GvLevelB_DataBound(object sender, EventArgs e) {
-        //ASPxComboBox CbExportMode = GvLevelB.FindPagerBarTemplateControl("CbExportMode", GridViewPagerBarPosition.Bottom) as ASPxComboBox;
-        //CbExportMode.Items.AddRange(Enum.GetNames(typeof(GridViewDetailExportMode)));
-        //CbExportMode.Text = GridViewDetailExportMode.Expanded.ToString();
-    }
-
-    protected void CbExportMode_Init(object sender, EventArgs e) {
-        ////if (!IsPostBack) {
-        //    ASPxComboBox CbExportMode = GvLevelB.FindPagerBarTemplateControl("CbExportMode", GridViewPagerBarPosition.Bottom) as ASPxComboBox;
-        //    CbExportMode.Items.AddRange(Enum.GetNames(typeof(GridViewDetailExportMode)));
-        //    CbExportMode.Text = GridViewDetailExportMode.Expanded.ToString();
-        ////}
     }
 }

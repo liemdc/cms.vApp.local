@@ -4,11 +4,12 @@
     <script type="text/javascript">
         function AdjustSize() {
             var TabHeight = 28;
+            var ControlHeight = 27;
             var MainHeight = ASPxClientUtils.GetDocumentClientHeight();
             if (document.body.scrollHeight > MainHeight) { MainHeight = document.body.scrollHeight; }
             var GridHeight = MainHeight - HeaderPanel.GetHeight() - FooterPanel.GetHeight() - TabHeight;
             if (typeof GvLevelA !== 'undefined') { GvLevelA.SetHeight(0); GvLevelA.SetHeight(GridHeight); }
-            if (typeof GvLevelB !== 'undefined') { GvLevelB.SetHeight(0); GvLevelB.SetHeight(GridHeight); }
+            if (typeof GvLevelB !== 'undefined') { GvLevelB.SetHeight(0); GvLevelB.SetHeight(GridHeight - ControlHeight); }
             if (typeof GvLevelC !== 'undefined') { GvLevelC.SetHeight(0); GvLevelC.SetHeight(GridHeight); }
             if (typeof GvLevelD !== 'undefined') { GvLevelD.SetHeight(0); GvLevelD.SetHeight(GridHeight); }
         }
@@ -196,7 +197,7 @@
                 <ContentCollection>
                     <dx:ContentControl ID="OrdersListNdTab" Visible="true" runat="server">
                         <dx:ASPxGridView ID="GvLevelB" ClientInstanceName="GvLevelB" runat="server" Width="100%" DataSourceID="OdsLevelB" KeyFieldName="ProjectTaskID"
-                            Border-BorderWidth="0" OnFillContextMenuItems="GvLevelB_FillContextMenuItems" OnCustomColumnDisplayText="OnCustomColumnDisplayText" OnDataBound="GvLevelB_DataBound">
+                            Border-BorderWidth="0" BorderBottom-BorderWidth="1" OnFillContextMenuItems="GvLevelB_FillContextMenuItems" OnCustomColumnDisplayText="OnCustomColumnDisplayText">
                             <Columns>                                
                                 <dx:GridViewBandColumn Caption="Dữ liệu thông tin đơn hàng" VisibleIndex="0">
                                     <Columns>
@@ -308,7 +309,7 @@
                             <Styles DetailCell-Paddings-Padding="0" DetailCell-Paddings-PaddingBottom="8" />
                             <StylesPopup EditForm-Header-Font-Bold="true" EditForm-Header-Paddings-Padding="5" EditForm-Header-Paddings-PaddingTop="7" />
                             <SettingsText PopupEditFormCaption="Cập nhật dữ liệu" CommandUpdate="Cập nhật" CommandCancel="Hủy bỏ" />
-                            
+                            <SettingsSearchPanel CustomEditorID="dxTxtSearchGvLevelB" />
                             <Templates>
                                 <DetailRow>
                                     <dx:ASPxGridView ID="GvLevelBA" ClientInstanceName="GvLevelBA" runat="server" Width="100%" DataSourceID="OdsLevelBA" KeyFieldName="ProcessId" SettingsEditing-EditFormColumnCount="1"
@@ -412,41 +413,11 @@
                                 <PagerBar>
                                     <table style="width:100%;border-spacing:0">
                                         <tr>
-                                            <td style="width:100px;text-align:right;padding-right:3px">
-                                                <dx:ASPxLabel ID="dxLblNotes" runat="server" Text="Chọn trạng thái Độ ưu tiên :" Font-Bold="true" />
+                                            <td style="text-align:right;padding-right:3px">
+                                                <dx:ASPxLabel ID="dxLblNotes" runat="server" Text="Nội dung tìm kiếm:" />
                                             </td>
-                                            <td style="width:100px;text-align:right;padding-right:3px">
-                                                <dx:ASPxComboBox runat="server" Width="100" Height="25" ID="CbTaskStatus" OnTextChanged="CbTaskData_TextChanged" ClientSideEvents-TextChanged="function(s, e) { GvLevelB.PerformCallback();}">
-                                                    <Items>
-                                                        <dx:ListEditItem Text="Chọn tất cả" Value="2;3;6;7" Selected="true" />
-                                                        <dx:ListEditItem Text="Chưa bắt đầu" Value="2" />
-                                                        <dx:ListEditItem Text="Đang chạy" Value="3" />
-                                                        <dx:ListEditItem Text="Bị hủy bỏ" Value="6" />
-                                                        <dx:ListEditItem Text="Hoàn thành" Value="7" />
-                                                    </Items>
-                                                </dx:ASPxComboBox>
-                                            </td>
-                                            <td style="width:100px;text-align:right;padding-right:3px">
-                                                <dx:ASPxComboBox runat="server" Width="100" Height="25" ID="CbTaskPriority" OnTextChanged="CbTaskData_TextChanged" ClientSideEvents-TextChanged="function(s, e) { GvLevelB.PerformCallback();}">
-                                                    <Items>
-                                                        <dx:ListEditItem Text="Chọn tất cả" Value="2;3;4" Selected="true" />
-                                                        <dx:ListEditItem Text="Ưu tiên cao" Value="2" />
-                                                        <dx:ListEditItem Text="Bình thường" Value="3" />
-                                                        <dx:ListEditItem Text="Không ưu tiên" Value="4" />
-                                                    </Items>
-                                                </dx:ASPxComboBox>
-                                            </td>
-                                            <td style="width:50px;text-align:right;padding-right:3px">
-                                                <dx:ASPxLabel ID="GvLevelCLabelE" runat="server" Text="Xuất Excel: " Font-Bold="true" />
-                                            </td>
-                                            <td style="width:100px;text-align:right;padding-right:3px">
-                                                <dx:ASPxComboBox runat="server" Width="100" Height="25" ID="CbExportMode" OnInit="CbExportMode_Init" ClientSideEvents-TextChanged="function(s, e) { GvLevelB.PerformCallback();}" />
-                                            </td>
-                                            <td style="width:70px;text-align:right;padding-right:3px">
-                                                <dx:ASPxButton ID="btnXlsExport" runat="server" Width="70" Height="25" Paddings-Padding="0" Text="Excel XLS" UseSubmitBehavior="False" OnClick="btnXlsExport_Click" ClientSideEvents-Click="function(s, e) { GvLevelB.PerformCallback();}" />
-                                            </td>
-                                            <td style="width:70px;text-align:right;padding-right:3px">
-                                                <dx:ASPxButton ID="btnXlsxExport" runat="server" Width="70" Height="25" Paddings-Padding="0" Text="Excel XLSX" UseSubmitBehavior="False" OnClick="btnXlsxExport_Click" ClientSideEvents-Click="function(s, e) { GvLevelB.PerformCallback();}" />
+                                            <td style="width:128px;text-align:right;padding-right:3px">
+                                                <dx:ASPxTextBox ID="dxTxtSearchGvLevelB" runat="server" NullText="Nhập dữ liệu cần tìm ..." Width="255" />
                                             </td>
                                             <td>
                                                 <dx:ASPxGridViewTemplateReplacement ID="dxEditors" ReplacementType="Pager" runat="server" />                                   
@@ -461,8 +432,8 @@
                         <asp:ObjectDataSource ID="OdsTaskPriority" runat="server" TypeName="OrdersModels" SelectMethod="TaskPriorityList" />
                         <asp:ObjectDataSource ID="OdsLevelB" runat="server" TypeName="OrdersModels" SelectMethod="OrdersListNd" UpdateMethod="OrdersUpdatedNd">
                             <SelectParameters>
-                                <asp:ControlParameter ControlID="MainPanel$plcMain$PageControl$GvLevelB$PagerBarB$CbTaskStatus" Name="TaskStatus" Type="String" />
-                                <asp:ControlParameter ControlID="MainPanel$plcMain$PageControl$GvLevelB$PagerBarB$CbTaskPriority" Name="TaskPriority" Type="String" />
+                                <asp:ControlParameter ControlID="MainPanel$plcMain$PageControl$CbTaskStatus" Name="TaskStatus" Type="String" />
+                                <asp:ControlParameter ControlID="MainPanel$plcMain$PageControl$CbTaskPriority" Name="TaskPriority" Type="String" />
                             </SelectParameters>
                             <UpdateParameters>
                                 <asp:Parameter Name="ProjectTaskID" Type="Int32" />
@@ -479,7 +450,47 @@
                                 <asp:Parameter Name="ProjectTaskDuKienXuatHang" Type="DateTime" />
                                 <asp:Parameter Name="ProjectTaskThucTeXuatHang" Type="DateTime" /> 
                             </UpdateParameters>
-                        </asp:ObjectDataSource>                              
+                        </asp:ObjectDataSource>
+                        <table style="width:100%;border-spacing:0">
+                            <tr>
+                                <td style="text-align:right;padding-right:3px">
+                                    <dx:ASPxLabel ID="dxLblNotes" runat="server" Text="Chọn [ Trạng thái / Độ ưu tiên ]: " Font-Bold="true" />
+                                </td>
+                                <td style="width:100px;text-align:right;padding-right:3px">
+                                    <dx:ASPxComboBox runat="server" Width="100" Height="25" ID="CbTaskStatus" OnTextChanged="CbTaskData_TextChanged" ClientSideEvents-TextChanged="function(s, e) { GvLevelB.PerformCallback();}">
+                                        <Items>
+                                            <dx:ListEditItem Text="Chọn tất cả" Value="2;3;6;7" Selected="true" />
+                                            <dx:ListEditItem Text="Chưa bắt đầu" Value="2" />
+                                            <dx:ListEditItem Text="Đang chạy" Value="3" />
+                                            <dx:ListEditItem Text="Bị hủy bỏ" Value="6" />
+                                            <dx:ListEditItem Text="Hoàn thành" Value="7" />
+                                        </Items>
+                                    </dx:ASPxComboBox>
+                                </td>
+                                <td style="width:100px;text-align:right;padding-right:3px">
+                                    <dx:ASPxComboBox runat="server" Width="100" Height="25" ID="CbTaskPriority" OnTextChanged="CbTaskData_TextChanged" ClientSideEvents-TextChanged="function(s, e) { GvLevelB.PerformCallback();}">
+                                        <Items>
+                                            <dx:ListEditItem Text="Chọn tất cả" Value="2;3;4" Selected="true" />
+                                            <dx:ListEditItem Text="Ưu tiên cao" Value="2" />
+                                            <dx:ListEditItem Text="Bình thường" Value="3" />
+                                            <dx:ListEditItem Text="Không ưu tiên" Value="4" />
+                                        </Items>
+                                    </dx:ASPxComboBox>
+                                </td>                                
+                                <td style="width:100px;text-align:right;padding-right:3px">
+                                    <dx:ASPxLabel ID="GvLevelCLabelE" runat="server" Text="Xuất dữ liệu: " Font-Bold="true" />
+                                </td>
+                                <td style="width:128px;text-align:right;padding-right:3px">
+                                    <dx:ASPxComboBox runat="server" Width="128" Height="25" ID="CbExportMode" ClientSideEvents-TextChanged="function(s, e) { GvLevelB.PerformCallback();}" />
+                                </td>
+                                <td style="width:100px;text-align:right;padding-right:3px">
+                                    <dx:ASPxButton ID="btnXlsExport" runat="server" Width="100" Height="25" Paddings-Padding="0" Text="Excel XLS" UseSubmitBehavior="False" OnClick="btnXlsExport_Click" ClientSideEvents-Click="function(s, e) { GvLevelB.PerformCallback();}" />
+                                </td>
+                                <td style="width:100px;text-align:right;padding-right:3px">
+                                    <dx:ASPxButton ID="btnXlsxExport" runat="server" Width="100" Height="25" Paddings-Padding="0" Text="Excel XLSX" UseSubmitBehavior="False" OnClick="btnXlsxExport_Click" ClientSideEvents-Click="function(s, e) { GvLevelB.PerformCallback();}" />
+                                </td>
+                            </tr>
+                        </table> 
                     </dx:ContentControl>
                 </ContentCollection>
             </dx:TabPage>
