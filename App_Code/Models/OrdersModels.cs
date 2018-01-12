@@ -393,8 +393,10 @@ public class OrdersModels
                 if (lsTinh.FirstOrDefault(fod => fod.ProcessGangerBrowse == false) != null)
                     finishTinh = false;
                 PM_ProjectTask pt = LINQData.db.PM_ProjectTasks.Where(w => w.ProjectTaskID == ProjectTaskID).FirstOrDefault();
-                if (pt != null && finish)
+                if (pt != null && finish) {
                     pt.ProjectTaskStatusID = 7;
+                    pt.ProjectTaskThucTeXuatHang = DateTime.Now;
+                }
                 if (pt != null && !pt.ProjectTaskThucTeThoQuaTinh.HasValue && finishTho)
                     pt.ProjectTaskThucTeThoQuaTinh = DateTime.Now;
                 if (pt != null && !pt.ProjectTaskThucTeTinhQuaQA.HasValue && finishTinh)

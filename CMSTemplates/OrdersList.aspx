@@ -456,8 +456,8 @@
                                 <td style="text-align:right;padding-right:3px">
                                     <dx:ASPxLabel ID="dxLblNotes" runat="server" Text="Chọn [ Trạng thái / Độ ưu tiên ]: " Font-Bold="true" />
                                 </td>
-                                <td style="width:100px;text-align:right;padding-right:3px">
-                                    <dx:ASPxComboBox runat="server" Width="100" Height="25" ID="CbTaskStatus" OnTextChanged="CbTaskData_TextChanged" ClientSideEvents-TextChanged="function(s, e) { GvLevelB.PerformCallback();}">
+                                <td style="width:128px;text-align:right;padding-right:3px">
+                                    <dx:ASPxComboBox runat="server" Width="128" Height="25" ID="CbTaskStatus" OnTextChanged="CbTaskData_TextChanged" ClientSideEvents-TextChanged="function(s, e) { GvLevelB.PerformCallback();}">
                                         <Items>
                                             <dx:ListEditItem Text="Chọn tất cả" Value="2;3;6;7" Selected="true" />
                                             <dx:ListEditItem Text="Chưa bắt đầu" Value="2" />
@@ -467,8 +467,8 @@
                                         </Items>
                                     </dx:ASPxComboBox>
                                 </td>
-                                <td style="width:100px;text-align:right;padding-right:3px">
-                                    <dx:ASPxComboBox runat="server" Width="100" Height="25" ID="CbTaskPriority" OnTextChanged="CbTaskData_TextChanged" ClientSideEvents-TextChanged="function(s, e) { GvLevelB.PerformCallback();}">
+                                <td style="width:128px;text-align:right;padding-right:3px">
+                                    <dx:ASPxComboBox runat="server" Width="128" Height="25" ID="CbTaskPriority" OnTextChanged="CbTaskData_TextChanged" ClientSideEvents-TextChanged="function(s, e) { GvLevelB.PerformCallback();}">
                                         <Items>
                                             <dx:ListEditItem Text="Chọn tất cả" Value="2;3;4" Selected="true" />
                                             <dx:ListEditItem Text="Ưu tiên cao" Value="2" />
