@@ -166,6 +166,7 @@ public partial class ProjectProcessObject
     public Nullable<decimal> ProcessFactTime { get; set; }
     public string ProcessNotes { get; set; }
     public string UserModified { get; set; }
+    public Nullable<DateTime> DateModified { get; set; }
 }
 public partial class OrdersProcessObject
 {

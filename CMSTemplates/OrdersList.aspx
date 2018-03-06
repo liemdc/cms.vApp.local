@@ -358,7 +358,12 @@
                                                         </PropertiesComboBox>
                                                     </dx:GridViewDataComboBoxColumn> 
                                                     <dx:GridViewDataTextColumn VisibleIndex="14" FieldName="ProcessNotes" Caption="Ghi chú" MinWidth="348" Width="585" EditFormSettings-Visible="False" /> 
-                                                    <dx:GridViewDataTextColumn VisibleIndex="15" FieldName="UserModified" Caption="Cập nhật bởi" MinWidth="148" EditFormSettings-Visible="False" />                                                             
+                                                    <dx:GridViewDataTextColumn VisibleIndex="15" FieldName="UserModified" Caption="Cập nhật bởi" MinWidth="148" EditFormSettings-Visible="False" /> 
+                                                    <dx:GridViewDataDateColumn VisibleIndex="16" FieldName="DateModified" Caption="Cập nhật lúc" Width="120" EditFormSettings-Visible="False"> 
+                                                        <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm" AllowNull="true">
+                                                            <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
+                                                        </PropertiesDateEdit>
+                                                    </dx:GridViewDataDateColumn>
                                                 </Columns>
                                                 <HeaderStyle HorizontalAlign="Left" />
                                             </dx:GridViewBandColumn>

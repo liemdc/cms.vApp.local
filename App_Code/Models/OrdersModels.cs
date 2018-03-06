@@ -284,7 +284,8 @@ public class OrdersModels
                     ProcessExpectedTime = sm1.mp1.sm.mp.ProcessExpectedTime,
                     ProcessFactTime = sm1.mp1.sm.mp.ProcessFactTime,
                     ProcessNotes = sm1.mp1.sm.mp.ProcessNotes,
-                    UserModified = userm.FullName
+                    UserModified = userm.FullName,
+                    DateModified = sm1.mp1.sm.mp.ModifiedWhen
                 }).ToList();
     }
     public static void ProjectProcessCreated(int ProjectTaskID, int ProcessListId)
