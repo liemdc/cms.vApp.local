@@ -366,6 +366,8 @@ public class OrdersModels
                     pp.ProcessExpectedTime = ProcessExpectedTime;
                     pp.ProcessExpectedCompletion = ProcessExpectedCompletion;
                     pp.ProcessNotes = ProcessNotes;
+                    pp.ModifiedWhen = DateTime.Now;
+                    pp.ModifiedByUserId = CMSContext.CurrentUser.UserID;
                     if (pp.ProcessPlusBrowse == null)
                         pp.ProcessGangerBrowse = ProcessGangerBrowse;
                     if (pp.ProcessListId == pp.ProcessPlusBrowse && ProcessPlusBrowse == 0)
