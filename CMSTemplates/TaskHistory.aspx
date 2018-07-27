@@ -12,6 +12,8 @@
                 GvLevelB.SetHeight(Height - (HeaderPanel.GetHeight() + FooterPanel.GetHeight() + TabHeight));
             if (typeof GvLevelC !== 'undefined')
                 GvLevelC.SetHeight(Height - (HeaderPanel.GetHeight() + FooterPanel.GetHeight() + TabHeight + ControlHeight));
+            if (typeof GvLevelD !== 'undefined')
+                GvLevelD.SetHeight(Height - (HeaderPanel.GetHeight() + FooterPanel.GetHeight() + TabHeight + ControlHeight));
         }
         function OnTabChanged(s, e) {
             AdjustSize();
@@ -327,6 +329,100 @@
                                 </td>
                                 <td style="width:100px;text-align:right;padding-right:3px">
                                     <dx:ASPxButton ID="btnXlsxExport" runat="server" Width="100" Height="25" Paddings-Padding="0" Text="Excel XLSX" UseSubmitBehavior="False" OnClick="btnXlsxExport_Click" ClientSideEvents-Click="function(s, e) { GvLevelC.PerformCallback();}" />
+                                </td>
+                            </tr>
+                        </table>                         
+                    </dx:ContentControl>
+                </ContentCollection>
+            </dx:TabPage>
+            <dx:TabPage Text="Hiệu suất máy" TabStyle-Font-Names="Arial" TabStyle-Width="100%">
+                <ContentCollection>
+                    <dx:ContentControl ID="TaskMachineTab" Visible="true" runat="server">
+                        <dx:ASPxGridView ID="GvLevelD" ClientInstanceName="GvLevelD" runat="server" Width="100%" DataSourceID="OdsLevelD" KeyFieldName="MachineryId" 
+                            Border-BorderWidth="0" BorderBottom-BorderWidth="1" OnFillContextMenuItems="GvLevelC_FillContextMenuItems" OnCustomColumnDisplayText="OnCustomColumnDisplayText">                                    
+                            <Columns>
+                                <dx:GridViewDataTextColumn VisibleIndex="0" Caption="Num" Width="58" Settings-AllowSort="False" Settings-AllowHeaderFilter="False" EditFormSettings-Visible="False" UnboundType="String" FixedStyle="Left" />
+                                <dx:GridViewDataTextColumn VisibleIndex="1" FieldName="MachineryName" Caption="Tên máy" MinWidth="188" />
+                                <dx:GridViewDataTextColumn VisibleIndex="2" FieldName="MachinerySymbol" Caption="Kí hiệu" Width="188" />
+                                <dx:GridViewDataTextColumn VisibleIndex="3" FieldName="SumTG" Caption="T/g máy chạy" Width="188" PropertiesTextEdit-DisplayFormatString="0,0.00 giờ" />
+                                <dx:GridViewDataTextColumn VisibleIndex="4" FieldName="SumHS" Caption="Hiệu suất [T/g máy chạy/Số ngày*24]" Width="400"  PropertiesTextEdit-DisplayFormatString="0,0.0" />
+                                <dx:GridViewDataDateColumn Visible="false" FieldName="DateBegin" Caption="Bắt đầu" />
+                                <dx:GridViewDataDateColumn Visible="false" FieldName="DateEnd" Caption="Kết thúc" /> 
+                            </Columns>
+                            <SettingsDetail ShowDetailRow="True" />
+                            <Styles DetailCell-Paddings-Padding="0" />
+                            <ClientSideEvents Init="OnInit" BeginCallback="OnBeginCallback" EndCallback="OnEndCallback" />
+                            <SettingsContextMenu Enabled="true" />
+                            <SettingsPager Mode="ShowPager" PageSize="20" PageSizeItemSettings-Visible="true" PageSizeItemSettings-Position="Right" />
+                            <SettingsBehavior EnableRowHotTrack="true" />
+                            <Settings ShowHeaderFilterButton="true" VerticalScrollBarMode="Visible" HorizontalScrollBarMode="Hidden" />
+                            <Templates>
+                                <DetailRow>     
+                                    <dx:ASPxGridView ID="GvLevelDA" ClientInstanceName="GvLevelDA" runat="server" Width="100%" DataSourceID="OdsLevelDA" KeyFieldName="DetailId" SettingsEditing-EditFormColumnCount="1"
+                                        Border-BorderColor="#CFCFCF" Styles-Header-Border-BorderColor="#CFCFCF" Styles-Header-BackColor="#F2F2F2" BorderTop-BorderWidth="0" 
+                                        OnBeforePerformDataSelect="GvLevelDA_BeforePerformDataSelect" OnCustomColumnDisplayText="OnCustomColumnDisplayText">                                    
+                                        <Columns>
+                                            <dx:GridViewDataTextColumn VisibleIndex="0" Caption="Num" Width="44" Settings-AllowSort="False" EditFormSettings-Visible="False" UnboundType="String" FixedStyle="Left" />
+                                            <dx:GridViewDataTextColumn FieldName="ProjectTaskMoldCode" Caption="Mã số khuôn" MinWidth="188" />
+                                            <dx:GridViewDataTextColumn FieldName="DetailStartTimeM" Caption="Bắt đầu" PropertiesTextEdit-DisplayFormatString="dd/MM/yyyy HH:mm" Width="187"/>
+                                            <dx:GridViewDataTextColumn FieldName="DetailEndTimeM" Caption="Kết thúc" PropertiesTextEdit-DisplayFormatString="dd/MM/yyyy HH:mm" Width="187"/>
+                                        </Columns>
+                                        <ClientSideEvents BeginCallback="OnBeginCallback" EndCallback="OnEndCallback" />
+                                        <SettingsBehavior ConfirmDelete="true" EnableCustomizationWindow="true" EnableRowHotTrack="true" />
+                                        <Settings VerticalScrollBarMode="Hidden" HorizontalScrollBarMode="Hidden" />
+                                    </dx:ASPxGridView>
+                                    <asp:ObjectDataSource ID="OdsLevelDA" runat="server" TypeName="ProcessListModels" SelectMethod="ProjectProcessDetailByMachineId" >
+                                        <SelectParameters>
+                                            <asp:SessionParameter Name="MachineryId" SessionField="MachineryId" Type="Int32" />
+                                            <asp:SessionParameter Name="DeStartDA" SessionField="DeStartDA" Type="DateTime" />
+                                            <asp:SessionParameter Name="DeEndDA" SessionField="DeEndDA" Type="DateTime" />
+                                        </SelectParameters>
+                                    </asp:ObjectDataSource>
+                                </DetailRow>
+                            </Templates>
+                        </dx:ASPxGridView>
+                        <dx:ASPxGridViewExporter ID="GvExportD" runat="server" GridViewID="GvLevelD" />  
+                        <asp:ObjectDataSource ID="OdsLevelD" runat="server" TypeName="ProcessListModels" SelectMethod="MachineriesList" InsertMethod="MachineriesCreated" UpdateMethod="MachineriesUpdated" DeleteMethod="MachineriesDeleted">
+                            <SelectParameters>
+                                <asp:ControlParameter ControlID="DeStartD" Name="DeStartD" Type="DateTime" />
+                                <asp:ControlParameter ControlID="DeEndD" Name="DeEndD" Type="DateTime" />
+                            </SelectParameters>                            
+                        </asp:ObjectDataSource>
+                        <table style="width:100%;border-spacing:0">
+                            <tr>
+                                <td style="text-align:right;padding-right:3px">
+                                    <dx:ASPxLabel ID="ASPxLabel1" runat="server" Text="Chọn khoảng thời gian [ Từ ngày / Đến ngày ]: " Font-Bold="true" />
+                                </td>
+                                <td style="width:128px;height:25px;padding-right:3px">
+                                    <dx:ASPxDateEdit ID="DeStartD" ClientInstanceName="DeStartD" runat="server" Width="128" Height="25" DisplayFormatString="dd/MM/yyyy HH:mm" EditFormatString="dd/MM/yyyy HH:mm" OnDateChanged="On_DateChangedD">
+                                        <TimeSectionProperties Visible="true" TimeEditProperties-DisplayFormatString="HH:mm" />
+                                        <ValidationSettings Display="Dynamic" SetFocusOnError="True" CausesValidation="True" ErrorDisplayMode="ImageWithTooltip">
+                                            <RequiredField IsRequired="True" ErrorText="Start date is required" />
+                                        </ValidationSettings>
+                                        <ClientSideEvents DateChanged="function(s, e) { GvLevelD.PerformCallback();}" />
+                                    </dx:ASPxDateEdit>
+                                </td>
+                                <td style="width:128px;height:25px;padding-right:3px">
+                                    <dx:ASPxDateEdit ID="DeEndD" ClientInstanceName="DeEndD" runat="server" Width="128" Height="25" DisplayFormatString="dd/MM/yyyy HH:mm" EditFormatString="dd/MM/yyyy HH:mm" OnDateChanged="On_DateChangedD">
+                                        <DateRangeSettings StartDateEditID="DeStartD" />
+                                        <TimeSectionProperties Visible="true" TimeEditProperties-DisplayFormatString="HH:mm" />
+                                        <ValidationSettings Display="Dynamic" SetFocusOnError="True" CausesValidation="True" ErrorDisplayMode="ImageWithTooltip">
+                                            <RequiredField IsRequired="True" ErrorText="End date is required" />
+                                        </ValidationSettings>
+                                        <ClientSideEvents DateChanged="function(s, e) { GvLevelD.PerformCallback();}" />
+                                    </dx:ASPxDateEdit>
+                                </td>
+                                <td style="width:100px;text-align:right;padding-right:3px">
+                                    <dx:ASPxLabel ID="ASPxLabel2" runat="server" Text="Xuất dữ liệu: " Font-Bold="true" />
+                                </td>
+                                <td style="width:128px;text-align:right;padding-right:3px">
+                                    <dx:ASPxComboBox runat="server" Width="128" Height="25" ID="CbExportModeD" ClientSideEvents-TextChanged="function(s, e) { GvLevelD.PerformCallback();}" />
+                                </td>
+                                <td style="width:100px;text-align:right;padding-right:3px">
+                                    <dx:ASPxButton ID="btnXlsExportD" runat="server" Width="100" Height="25" Paddings-Padding="0" Text="Excel XLS" UseSubmitBehavior="False" OnClick="btnXlsExportD_Click" ClientSideEvents-Click="function(s, e) { GvLevelD.PerformCallback();}" />
+                                </td>
+                                <td style="width:100px;text-align:right;padding-right:3px">
+                                    <dx:ASPxButton ID="btnXlsxExportD" runat="server" Width="100" Height="25" Paddings-Padding="0" Text="Excel XLSX" UseSubmitBehavior="False" OnClick="btnXlsxExportD_Click" ClientSideEvents-Click="function(s, e) { GvLevelD.PerformCallback();}" />
                                 </td>
                             </tr>
                         </table>                         

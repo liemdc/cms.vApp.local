@@ -109,6 +109,10 @@ public partial class MachineriesObject
     public string MachineryName { get; set; }
     public string MachinerySymbol { get; set; }
     public string MachineryStatus { get; set; }
+    public Nullable<DateTime> DateBegin { get; set; }
+    public Nullable<DateTime> DateEnd { get; set; }
+    public double SumTG { get; set; }
+    public double SumHS { get; set; }
 }
 public partial class OrdersObject
 {

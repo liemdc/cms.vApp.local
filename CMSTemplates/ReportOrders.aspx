@@ -15,8 +15,8 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="plcMain" Runat="Server">
-    <dx:ASPxPivotGrid ID="PGReportOrders" ClientInstanceName="PGReportOrders" runat="server" Width="100%" DataSourceID="OdsPGReportOrders" 
-        Height="480" OnCustomCellDisplayText="PGReportOrders_CustomCellDisplayText">        
+    <dx:ASPxPivotGrid ID="PGReportOrders" ClientInstanceName="PGReportOrders" runat="server" Width="99.99%" DataSourceID="OdsPGReportOrders" 
+        Height="480" OnCustomCellDisplayText="PGReportOrders_CustomCellDisplayText" BorderLeft-BorderWidth="0" BorderTop-BorderWidth="0">        
         <ClientSideEvents Init="PvOnInit" BeginCallback="OnBeginCallback" EndCallback="OnEndCallback" />
         <OptionsView VerticalScrollBarMode="Visible" VerticalScrollingMode="Standard" HorizontalScrollBarMode="Visible" ShowRowGrandTotals="False" ShowColumnGrandTotals="False" ShowRowTotals="False" ShowDataHeaders="False" ShowColumnHeaders="False" ShowFilterHeaders="False" />
         <OptionsPager Position="Bottom" RowsPerPage="20" PageSizeItemSettings-Visible="true" PageSizeItemSettings-Position="Right" />

@@ -69,8 +69,8 @@ public class ProcessListModels {
             } catch (Exception ex ) { System.Diagnostics.Debug.WriteLine(ex.Message); }
         }
     } 
-    public static List<OrdersProcessDetailObject> ProjectProcessDetailByMachineId(int MachineryId){
-        return LINQData.db.PM_ProjectProcessDetails.Where(w => w.DetailMachineId == MachineryId)
+    public static List<OrdersProcessDetailObject> ProjectProcessDetailByMachineId(int MachineryId, DateTime DeStartDA, DateTime DeEndDA){
+        return LINQData.db.PM_ProjectProcessDetails.Where(w => w.DetailMachineId == MachineryId && w.DetailStartTimeM >= DeStartDA && w.DetailEndTimeM <= DeEndDA)
             .Join(LINQData.db.PM_ProjectTasks, ppd => ppd.DetailProjectTaskID, pt => pt.ProjectTaskID, (ppd, pt) => new { ppd, pt })
             .Select(s => new OrdersProcessDetailObject {
                 DetailId = s.ppd.DetailId, ProjectTaskID = s.ppd.DetailProjectTaskID, DetailStartTimeM = s.ppd.DetailStartTimeM, DetailEndTimeM = s.ppd.DetailEndTimeM, ProjectTaskMoldCode = s.pt.ProjectTaskMoldCode
@@ -148,6 +148,35 @@ public class ProcessListModels {
             .Select(s => new MachineriesObject { 
                 MachineryId = s.MachineryId, MachineryName = s.MachineryName, MachinerySymbol = s.MachinerySymbol, MachineryStatus = s.MachineryStatus
             }).OrderBy(o => o.MachineryName).ToList();
+    }
+    public static List<MachineriesObject> MachineriesList(DateTime DeStartD, DateTime DeEndD) {
+        int day = DeEndD.Day - DeStartD.Day;
+        if (day == 0) day = 1;
+        List<MachineriesObject> ls = LINQData.db.PM_ProjectMachineries
+            .Join(LINQData.db.PM_ProjectProcessDetails, pm => pm.MachineryId, ppd => ppd.DetailMachineId, (pm, ppd) => new { pm, ppd })
+            .Join(LINQData.db.PM_ProjectTasks, pmppd => pmppd.ppd.DetailProjectTaskID, pt => pt.ProjectTaskID, (pmppd, pt) => new { pmppd, pt })
+            .Where(w => w.pmppd.ppd.DetailStartTimeM >= DeStartD && w.pmppd.ppd.DetailEndTimeM <= DeEndD)
+            .Select(s => new MachineriesObject{
+                MachineryId = s.pmppd.pm.MachineryId,
+                MachineryName = s.pmppd.pm.MachineryName,
+                MachinerySymbol = s.pmppd.pm.MachinerySymbol,
+                MachineryStatus = s.pmppd.pm.MachineryStatus,
+                SumTG = (s.pmppd.ppd.DetailEndTimeM - s.pmppd.ppd.DetailStartTimeM).Value.TotalMinutes,
+                SumHS = 0,
+                DateBegin = DeStartD,
+                DateEnd = DeEndD
+            }).OrderBy(o => o.MachineryName).ToList();
+        return ls.GroupBy(g => g.MachineryId)
+            .Select(s => new MachineriesObject {
+                MachineryId = s.Key,
+                MachineryName = s.Select(w => w.MachineryName).FirstOrDefault(),
+                MachinerySymbol = s.Select(w => w.MachinerySymbol).FirstOrDefault(),
+                MachineryStatus = s.Select(w => w.MachineryStatus).FirstOrDefault(),
+                SumTG = s.Sum(w => w.SumTG) / 60,
+                SumHS = (s.Sum(w => w.SumTG) / 60)/(day * 24),
+                DateBegin = DeStartD,
+                DateEnd = DeEndD
+            }).ToList();
     }
     public static void MachineriesCreated(int SubProcessListId, string MachineryName, string MachinerySymbol, string MachineryStatus) {
         LINQData.db.PM_ProjectMachineries.InsertOnSubmit(new PM_ProjectMachinery() {
