@@ -85,7 +85,7 @@ public class OrdersModels
                     UserModified = userm.FullName,
                     ProjectTaskDuKienThoQuaTinh = sm.t.ProjectTaskDuKienThoQuaTinh,
                     ProjectTaskDuKienTinhQuaQA = sm.t.ProjectTaskDuKienTinhQuaQA,
-                    ProjectTaskKetQuaThoQuaTinh = "0",
+                    ProjectTaskKetQuaThoQuaTinh = (sm.t.ProjectTaskThucTeThoQuaTinh <= sm.t.ProjectTaskDuKienThoQuaTinh) ? "Đạt" : !sm.t.ProjectTaskThucTeThoQuaTinh.HasValue ? "" : "Không đạt",
                     ProjectTaskThucTeThoQuaTinh = sm.t.ProjectTaskThucTeThoQuaTinh,
                     ProjectTaskThucTeTinhQuaQA = sm.t.ProjectTaskThucTeTinhQuaQA,
                     ProjectTaskDuKienXuatHang = sm.t.ProjectTaskDuKienXuatHang,
