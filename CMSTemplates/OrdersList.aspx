@@ -214,12 +214,11 @@
                                                 </Columns>
                                             </PropertiesComboBox>
                                         </dx:GridViewDataComboBoxColumn>   
-                                        <dx:GridViewDataSpinEditColumn VisibleIndex="8" EditFormSettings-VisibleIndex="8" FieldName="ProjectTaskThickness" Caption="Bề dày" Width="88" PropertiesSpinEdit-NumberType="Integer" EditFormSettings-Visible="False" />
                                         <dx:GridViewDataTextColumn VisibleIndex="9" EditFormSettings-VisibleIndex="9" FieldName="ProjectTaskThicknessTotal" Caption="Tổng bề dày" Width="100" EditFormSettings-Visible="False" />
-                                        <dx:GridViewDataSpinEditColumn VisibleIndex="10" EditFormSettings-VisibleIndex="10" FieldName="ProjectTaskQuantities" Caption="Số lượng" Width="78" PropertiesSpinEdit-NumberType="Integer" EditFormSettings-Visible="False" />
                                         <dx:GridViewDataComboBoxColumn VisibleIndex="11" EditFormSettings-VisibleIndex="11" FieldName="ProjectTaskHardness" Caption="Độ cứng" Width="88" EditFormSettings-Visible="False">
                                             <PropertiesComboBox DataSourceID="OdsHardness" TextField="ProjectTaskHardness" ValueField="ProjectTaskHardness" ValueType="System.String" DropDownStyle="DropDown" />
                                         </dx:GridViewDataComboBoxColumn>
+                                        <dx:GridViewDataSpinEditColumn VisibleIndex="12" EditFormSettings-VisibleIndex="12" FieldName="ProjectTaskQuantities" Caption="Số lượng" Width="78" PropertiesSpinEdit-NumberType="Integer" EditFormSettings-Visible="False" />
                                         <dx:GridViewDataComboBoxColumn VisibleIndex="14" EditFormSettings-VisibleIndex="0" FieldName="ProjectTaskCustomerId" Caption="Khách hàng" Width="100" EditFormSettings-Visible="False">
                                             <PropertiesComboBox DataSourceID="OdsCustomer" TextField="CustomerName" ValueField="CustomerId" ValueType="System.Int32" IncrementalFilteringMode="StartsWith">
                                                 <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
@@ -303,7 +302,8 @@
                                         </dx:GridViewDataComboBoxColumn>
                                     </Columns>
                                 <HeaderStyle HorizontalAlign="Left" />
-                            </dx:GridViewBandColumn>
+                                </dx:GridViewBandColumn>
+                                <dx:GridViewDataMemoColumn FieldName="ProjectTaskDescription" Caption="Mô tả" VisibleIndex="23" MinWidth="348" /> 
                             </Columns>
                             <ClientSideEvents Init="OnInit" BeginCallback="OnBeginCallback" EndCallback="OnEndCallback" ColumnResized="function(s, e) { OnColumnResized(s, e, 0); }" />
                             <SettingsContextMenu Enabled="true" />

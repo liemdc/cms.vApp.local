@@ -77,9 +77,27 @@
                             </Columns>
                             <ClientSideEvents Init="OnInit" BeginCallback="OnBeginCallback" EndCallback="OnEndCallback" ColumnResized="function(s, e) { OnColumnResized(s, e, 0); }" />
                             <SettingsContextMenu Enabled="true" />
-                            <SettingsPager Mode="ShowPager" PageSize="20" PageSizeItemSettings-Visible="true" PageSizeItemSettings-Position="Right" />
+                            <SettingsPager Mode="ShowPager" PageSize="20" PageSizeItemSettings-Visible="true" PageSizeItemSettings-Position="Right" Summary-Text="Trang {0} / {1} (Số dòng: {2}):" PageSizeItemSettings-Caption="Số dòng 1 trang:" />
                             <SettingsBehavior AllowDragDrop="true" ConfirmDelete="true" ColumnResizeMode="Control" EnableCustomizationWindow="true" EnableRowHotTrack="true" />
-                            <Settings ShowHeaderFilterButton="true" VerticalScrollBarMode="Visible" HorizontalScrollBarMode="Hidden" />
+                            <Settings ShowHeaderFilterButton="false" VerticalScrollBarMode="Visible" HorizontalScrollBarMode="Hidden" />
+                            <SettingsSearchPanel CustomEditorID="dxTxtSearch" />
+                            <Templates>                               
+                                <PagerBar>
+                                    <table style="width:100%;border-spacing:0">
+                                        <tr>
+                                            <td style="text-align:right;padding-right:3px">
+                                                <dx:ASPxLabel ID="dxLblNotes" runat="server" Text="Nội dung tìm kiếm:" />
+                                            </td>
+                                            <td style="width:128px;text-align:right;padding-right:3px">
+                                                <dx:ASPxTextBox ID="dxTxtSearch" runat="server" NullText="Nhập dữ liệu cần tìm ..." Width="255" />
+                                            </td>
+                                            <td>
+                                                <dx:ASPxGridViewTemplateReplacement ID="dxEditors" ReplacementType="Pager" runat="server" />                                   
+                                            </td>                                            
+                                        </tr>
+                                    </table>
+                                </PagerBar>
+                            </Templates>
                         </dx:ASPxGridView>
                         <asp:ObjectDataSource ID="OdsEmployee" runat="server" TypeName="EmployeeModels" SelectMethod="MinEmployeeList" />
                         <asp:ObjectDataSource ID="OdsTask" runat="server" TypeName="TaskModels" SelectMethod="MinTaskList" />
@@ -123,9 +141,9 @@
                             </Columns>
                             <ClientSideEvents Init="OnInit" BeginCallback="OnBeginCallback" EndCallback="OnEndCallback" ColumnResized="function(s, e) { OnColumnResized(s, e, 0); }" />
                             <SettingsContextMenu Enabled="true" />
-                            <SettingsPager Mode="ShowPager" PageSize="20" PageSizeItemSettings-Visible="true" PageSizeItemSettings-Position="Right" />
+                            <SettingsPager Mode="ShowPager" PageSize="20" PageSizeItemSettings-Visible="true" PageSizeItemSettings-Position="Right" Summary-Text="Trang {0} / {1} (Số dòng: {2}):" PageSizeItemSettings-Caption="Số dòng 1 trang:" />
                             <SettingsBehavior AllowDragDrop="true" ConfirmDelete="true" ColumnResizeMode="Control" EnableCustomizationWindow="true" EnableRowHotTrack="true" />
-                            <Settings ShowHeaderFilterButton="true" VerticalScrollBarMode="Visible" HorizontalScrollBarMode="Hidden" />
+                            <Settings ShowHeaderFilterButton="false" VerticalScrollBarMode="Visible" HorizontalScrollBarMode="Hidden" />
                         </dx:ASPxGridView>
                         <asp:ObjectDataSource ID="OdsLevelB" runat="server" TypeName="TaskModels" SelectMethod="TaskList" InsertMethod="TaskCreated" UpdateMethod="TaskUpdated" DeleteMethod="TaskDeleted">
                             <InsertParameters>
@@ -187,9 +205,9 @@
                             <Styles DetailCell-Paddings-Padding="0" />
                             <ClientSideEvents Init="OnInit" BeginCallback="OnBeginCallback" EndCallback="OnEndCallback" />
                             <SettingsContextMenu Enabled="true" />
-                            <SettingsPager Mode="ShowPager" PageSize="20" PageSizeItemSettings-Visible="true" PageSizeItemSettings-Position="Right" />
+                            <SettingsPager Mode="ShowPager" PageSize="20" PageSizeItemSettings-Visible="true" PageSizeItemSettings-Position="Right" Summary-Text="Trang {0} / {1} (Số dòng: {2}):" PageSizeItemSettings-Caption="Số dòng 1 trang:" />
                             <SettingsBehavior EnableRowHotTrack="true" />
-                            <Settings ShowHeaderFilterButton="true" VerticalScrollBarMode="Visible" HorizontalScrollBarMode="Hidden" />
+                            <Settings ShowHeaderFilterButton="false" VerticalScrollBarMode="Visible" HorizontalScrollBarMode="Hidden" />
                             <Templates>
                                 <DetailRow>
                                     <dx:ASPxPageControl runat="server" ID="DPageControl" Width="100%" ActiveTabIndex="0">
@@ -345,8 +363,8 @@
                                 <dx:GridViewDataTextColumn VisibleIndex="1" FieldName="MachineryName" Caption="Tên máy" MinWidth="188" />
                                 <dx:GridViewDataTextColumn VisibleIndex="2" FieldName="MachinerySymbol" Caption="Kí hiệu" Width="188" />
                                 <dx:GridViewDataTextColumn VisibleIndex="3" FieldName="SumTG" Caption="T/g máy chạy" Width="188" PropertiesTextEdit-DisplayFormatString="0,0.00 giờ" />
-                                <dx:GridViewDataTextColumn VisibleIndex="4" FieldName="SumHS" Caption="Hiệu suất [T/g máy chạy/Số ngày*24]" Width="250"  PropertiesTextEdit-DisplayFormatString="0.0000" />
-                                <dx:GridViewDataProgressBarColumn VisibleIndex="5" FieldName="CalcPE" Caption="Hiệu suất" Width="200" CellStyle-Paddings-Padding="0" PropertiesProgressBar-Style-Border-BorderWidth="0" />
+                                <dx:GridViewDataTextColumn VisibleIndex="4" FieldName="SumHS" Caption="Hiệu suất [T/g máy chạy/Số ngày*24]" Width="238"  PropertiesTextEdit-DisplayFormatString="0.0000" />
+                                <dx:GridViewDataProgressBarColumn VisibleIndex="5" FieldName="CalcPE" Caption="Hiệu suất" Width="140" CellStyle-Paddings-Padding="0" PropertiesProgressBar-Style-Border-BorderWidth="0" />
                                 <dx:GridViewDataDateColumn Visible="false" FieldName="DateBegin" Caption="Bắt đầu" />
                                 <dx:GridViewDataDateColumn Visible="false" FieldName="DateEnd" Caption="Kết thúc" /> 
                             </Columns>
@@ -354,9 +372,9 @@
                             <Styles DetailCell-Paddings-Padding="0" />
                             <ClientSideEvents Init="OnInit" BeginCallback="OnBeginCallback" EndCallback="OnEndCallback" />
                             <SettingsContextMenu Enabled="true" />
-                            <SettingsPager Mode="ShowPager" PageSize="20" PageSizeItemSettings-Visible="true" PageSizeItemSettings-Position="Right" />
+                            <SettingsPager Mode="ShowPager" PageSize="20" PageSizeItemSettings-Visible="true" PageSizeItemSettings-Position="Right" Summary-Text="Trang {0} / {1} (Số dòng: {2}):" PageSizeItemSettings-Caption="Số dòng 1 trang:" />
                             <SettingsBehavior EnableRowHotTrack="true" />
-                            <Settings ShowHeaderFilterButton="true" VerticalScrollBarMode="Visible" HorizontalScrollBarMode="Hidden" />
+                            <Settings ShowHeaderFilterButton="false" VerticalScrollBarMode="Visible" HorizontalScrollBarMode="Hidden" />
                             <Templates>
                                 <DetailRow>     
                                     <dx:ASPxGridView ID="GvLevelDA" ClientInstanceName="GvLevelDA" runat="server" Width="100%" DataSourceID="OdsLevelDA" KeyFieldName="DetailId" SettingsEditing-EditFormColumnCount="1"
@@ -365,8 +383,8 @@
                                         <Columns>
                                             <dx:GridViewDataTextColumn VisibleIndex="0" Caption="Num" Width="44" Settings-AllowSort="False" EditFormSettings-Visible="False" UnboundType="String" FixedStyle="Left" />
                                             <dx:GridViewDataTextColumn FieldName="ProjectTaskMoldCode" Caption="Mã số khuôn" MinWidth="188" />
-                                            <dx:GridViewDataTextColumn FieldName="DetailStartTimeM" Caption="Bắt đầu" PropertiesTextEdit-DisplayFormatString="dd/MM/yyyy HH:mm" Width="187"/>
-                                            <dx:GridViewDataTextColumn FieldName="DetailEndTimeM" Caption="Kết thúc" PropertiesTextEdit-DisplayFormatString="dd/MM/yyyy HH:mm" Width="187"/>
+                                            <dx:GridViewDataTextColumn FieldName="DetailStartTimeM" Caption="Bắt đầu" PropertiesTextEdit-DisplayFormatString="dd/MM/yyyy HH:mm" Width="225"/>
+                                            <dx:GridViewDataTextColumn FieldName="DetailEndTimeM" Caption="Kết thúc" PropertiesTextEdit-DisplayFormatString="dd/MM/yyyy HH:mm" Width="127"/>
                                         </Columns>
                                         <ClientSideEvents BeginCallback="OnBeginCallback" EndCallback="OnEndCallback" />
                                         <SettingsBehavior ConfirmDelete="true" EnableCustomizationWindow="true" EnableRowHotTrack="true" />
