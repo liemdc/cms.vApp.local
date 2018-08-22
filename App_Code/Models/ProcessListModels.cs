@@ -157,7 +157,7 @@ public class ProcessListModels {
             }).OrderBy(o => o.MachineryName).ToList();
     }
     public static List<MachineriesObject> MachineriesList(DateTime DeStartD, DateTime DeEndD) {
-        int day = DeEndD.Day - DeStartD.Day;
+        double day = (DeEndD - DeStartD).TotalDays;
         if (day == 0) day = 1;
         List<MachineriesObject> ls = LINQData.db.PM_ProjectMachineries
             .Join(LINQData.db.PM_ProjectProcessDetails, pm => pm.MachineryId, ppd => ppd.DetailMachineId, (pm, ppd) => new { pm, ppd })
@@ -169,7 +169,7 @@ public class ProcessListModels {
                 MachinerySymbol = s.pmppd.pm.MachinerySymbol,
                 MachineryStatus = s.pmppd.pm.MachineryStatus,
                 SumTG = (s.pmppd.ppd.DetailEndTimeM - s.pmppd.ppd.DetailStartTimeM).Value.TotalMinutes,
-                SumHS = 0,
+                SumHS = 0, CalcPE = 0,
                 DateBegin = DeStartD,
                 DateEnd = DeEndD
             }).OrderBy(o => o.MachineryName).ToList();
@@ -181,6 +181,7 @@ public class ProcessListModels {
                 MachineryStatus = s.Select(w => w.MachineryStatus).FirstOrDefault(),
                 SumTG = s.Sum(w => w.SumTG) / 60,
                 SumHS = (s.Sum(w => w.SumTG) / 60)/(day * 24),
+                CalcPE = (s.Sum(w => w.SumTG) / 60) / (day * 24) < 0 ? 0 : ((s.Sum(w => w.SumTG) / 60) / (day * 24)) * 100,
                 DateBegin = DeStartD,
                 DateEnd = DeEndD
             }).ToList();

@@ -113,6 +113,7 @@ public partial class MachineriesObject
     public Nullable<DateTime> DateEnd { get; set; }
     public double SumTG { get; set; }
     public double SumHS { get; set; }
+    public double CalcPE { get; set; }
 }
 public partial class OrdersObject {
     public int ProjectTaskID { get; set; }
