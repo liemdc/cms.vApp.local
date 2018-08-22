@@ -239,7 +239,7 @@
                                                 <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
                                             </PropertiesDateEdit>
                                         </dx:GridViewDataDateColumn>
-                                        <dx:GridViewDataTextColumn FieldName="ProjectTaskKetQuaThoQuaTinh" Caption="Kết quả" Width="118" VisibleIndex="15" EditFormSettings-Visible="False" /> 
+                                        <dx:GridViewDataTextColumn FieldName="ProjectTaskKetQuaThoQuaTinh" Caption="Kết quả" Width="78" VisibleIndex="15" EditFormSettings-Visible="False" /> 
                                     </Columns>
                                     <HeaderStyle HorizontalAlign="Left" />
                                 </dx:GridViewBandColumn>
@@ -466,7 +466,7 @@
                         <table style="width:100%;border-spacing:0">
                             <tr>
                                 <td style="text-align:right;padding-right:3px">
-                                    <dx:ASPxLabel ID="dxLblNotes" runat="server" Text="Chọn [ Trạng thái / Độ ưu tiên ]: " Font-Bold="true" />
+                                    <dx:ASPxLabel ID="dxLblNotes" runat="server" Text="Chọn [ Trạng thái / Độ ưu tiên / Từ ngày / Đến ngày ]: " Font-Bold="true" />
                                 </td>
                                 <td style="width:128px;text-align:right;padding-right:3px">
                                     <dx:ASPxComboBox runat="server" Width="128" Height="25" ID="CbTaskStatus" OnTextChanged="CbTaskData_TextChanged" ClientSideEvents-TextChanged="function(s, e) { GvLevelB.PerformCallback();}">
@@ -488,7 +488,26 @@
                                             <dx:ListEditItem Text="Không ưu tiên" Value="4" />
                                         </Items>
                                     </dx:ASPxComboBox>
-                                </td>                                
+                                </td> 
+                                <td style="width:128px;height:25px;padding-right:3px">
+                                    <dx:ASPxDateEdit ID="DeStartB" ClientInstanceName="DeStartB" runat="server" Width="128" Height="25" DisplayFormatString="dd/MM/yyyy HH:mm" EditFormatString="dd/MM/yyyy HH:mm" OnDateChanged="On_DateChangedB">
+                                        <TimeSectionProperties Visible="true" TimeEditProperties-DisplayFormatString="HH:mm" />
+                                        <ValidationSettings Display="Dynamic" SetFocusOnError="True" CausesValidation="True" ErrorDisplayMode="ImageWithTooltip">
+                                            <RequiredField IsRequired="True" ErrorText="Start date is required" />
+                                        </ValidationSettings>
+                                        <ClientSideEvents DateChanged="function(s, e) { GvLevelB.PerformCallback();}" />
+                                    </dx:ASPxDateEdit>
+                                </td>
+                                <td style="width:128px;height:25px;padding-right:3px">
+                                    <dx:ASPxDateEdit ID="DeEndB" ClientInstanceName="DeEndB" runat="server" Width="128" Height="25" DisplayFormatString="dd/MM/yyyy HH:mm" EditFormatString="dd/MM/yyyy HH:mm" OnDateChanged="On_DateChangedB">
+                                        <DateRangeSettings StartDateEditID="DeStartB" />
+                                        <TimeSectionProperties Visible="true" TimeEditProperties-DisplayFormatString="HH:mm" />
+                                        <ValidationSettings Display="Dynamic" SetFocusOnError="True" CausesValidation="True" ErrorDisplayMode="ImageWithTooltip">
+                                            <RequiredField IsRequired="True" ErrorText="End date is required" />
+                                        </ValidationSettings>
+                                        <ClientSideEvents DateChanged="function(s, e) { GvLevelB.PerformCallback();}" />
+                                    </dx:ASPxDateEdit>
+                                </td>
                                 <td style="width:100px;text-align:right;padding-right:3px">
                                     <dx:ASPxLabel ID="GvLevelCLabelE" runat="server" Text="Xuất dữ liệu: " Font-Bold="true" />
                                 </td>

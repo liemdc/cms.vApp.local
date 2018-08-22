@@ -17,6 +17,8 @@ public partial class CMSTemplates_OrdersList : TemplatePage {
         if (!IsPostBack) {
             CbExportMode.Items.AddRange(Enum.GetNames(typeof(GridViewDetailExportMode)));
             CbExportMode.Text = GridViewDetailExportMode.Expanded.ToString();
+            DeStartB.Date = DateTime.Now.AddMonths(-1);
+            DeEndB.Date = DateTime.Now;
         }
     }
     protected void OnCustomColumnDisplayText(object sender, DevExpress.Web.ASPxGridViewColumnDisplayTextEventArgs e) {
@@ -132,5 +134,9 @@ public partial class CMSTemplates_OrdersList : TemplatePage {
     protected void btnXlsxExport_Click(object sender, EventArgs e) {
         UpdateExportMode();
         GvExport.WriteXlsxToResponse(string.Format("ExportXlsx {0}", DateTime.Now.Date.ToShortDateString()), new XlsxExportOptionsEx() { ExportType = ExportType.WYSIWYG });
+    }
+
+    protected void On_DateChangedB(object sender, EventArgs e) {
+        GvLevelB.DataBind();
     }
 }
