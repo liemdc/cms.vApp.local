@@ -114,8 +114,7 @@ public partial class MachineriesObject
     public double SumTG { get; set; }
     public double SumHS { get; set; }
 }
-public partial class OrdersObject
-{
+public partial class OrdersObject {
     public int ProjectTaskID { get; set; }
     public string ProjectTaskMoldCode { get; set; }
     public string ProjectTaskOverlayNum { get; set; }
@@ -146,6 +145,7 @@ public partial class OrdersObject
     public Nullable<DateTime> CreatedWhen { get; set; }
     public Nullable<DateTime> ProjectTaskDuKienThoQuaTinh { get; set; }
     public Nullable<DateTime> ProjectTaskThucTeThoQuaTinh { get; set; }
+    public string ProjectTaskKetQuaThoQuaTinh { get; set; }
     public Nullable<DateTime> ProjectTaskDuKienTinhQuaQA { get; set; }
     public Nullable<DateTime> ProjectTaskThucTeTinhQuaQA { get; set; }
     public Nullable<DateTime> ProjectTaskDuKienXuatHang { get; set; }
