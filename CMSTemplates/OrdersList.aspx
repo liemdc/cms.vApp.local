@@ -236,7 +236,7 @@
                                                 <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
                                             </PropertiesDateEdit>
                                         </dx:GridViewDataDateColumn>
-                                        <dx:GridViewDataTextColumn FieldName="" Caption="Kết quả" Width="120" VisibleIndex="15" EditFormSettings-Visible="False" /> 
+                                        <dx:GridViewDataTextColumn FieldName="" Caption="Kết quả" Width="118" VisibleIndex="15" EditFormSettings-Visible="False" /> 
                                     </Columns>
                                     <HeaderStyle HorizontalAlign="Left" />
                                 </dx:GridViewBandColumn>
