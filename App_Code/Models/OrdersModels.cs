@@ -50,10 +50,10 @@ public class OrdersModels
                     ProjectTaskThucTeXuatHang = sm.t.ProjectTaskThucTeXuatHang
                 }).OrderBy(o => o.ProjectTaskMoldCode);
     }
-    public static IEnumerable<OrdersObject> OrdersListNd(string TaskStatus, string TaskPriority) {
+    public static IEnumerable<OrdersObject> OrdersListNd(string TaskStatus, string TaskPriority, DateTime DateBeginB, DateTime DateEndB) {
         int[] statusIds = Array.ConvertAll(TaskStatus.Split(';'), s => int.Parse(s));
         int[] priorityIds = Array.ConvertAll(TaskPriority.Split(';'), s => int.Parse(s));
-        return LINQData.db.PM_ProjectTasks.Where(w => statusIds.Contains(w.ProjectTaskStatusID) && priorityIds.Contains(w.ProjectTaskPriorityID))
+        return LINQData.db.PM_ProjectTasks.Where(w => statusIds.Contains(w.ProjectTaskStatusID) && priorityIds.Contains(w.ProjectTaskPriorityID) && w.ProjectTaskDuKienXuatHang >= DateBeginB && w.ProjectTaskDuKienXuatHang <= DateEndB)
                 .GroupJoin(LINQData.db.CMS_Users, t => t.ModifiedByUserId, userc => userc.UserID, (t, userm) => new { t, userm })
                 .SelectMany(sm => sm.userm.DefaultIfEmpty(), (sm, userm) => new OrdersObject {
                     ProjectTaskID = sm.t.ProjectTaskID,

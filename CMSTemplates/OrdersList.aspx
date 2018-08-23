@@ -446,6 +446,8 @@
                             <SelectParameters>
                                 <asp:ControlParameter ControlID="MainPanel$plcMain$PageControl$CbTaskStatus" Name="TaskStatus" Type="String" />
                                 <asp:ControlParameter ControlID="MainPanel$plcMain$PageControl$CbTaskPriority" Name="TaskPriority" Type="String" />
+                                <asp:ControlParameter ControlID="DeStartB" Name="DateBeginB" Type="DateTime" />
+                                <asp:ControlParameter ControlID="DeEndB" Name="DateEndB" Type="DateTime" />
                             </SelectParameters>
                             <UpdateParameters>
                                 <asp:Parameter Name="ProjectTaskID" Type="Int32" />
