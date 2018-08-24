@@ -17,8 +17,8 @@ public partial class CMSTemplates_OrdersList : TemplatePage {
         if (!IsPostBack) {
             CbExportMode.Items.AddRange(Enum.GetNames(typeof(GridViewDetailExportMode)));
             CbExportMode.Text = GridViewDetailExportMode.Expanded.ToString();
-            DeStartB.Date = DateTime.Now.AddMonths(-1);
-            DeEndB.Date = DateTime.Now;
+            DeStartB.Date = Convert.ToDateTime("01/01/2000 00:00");
+            DeEndB.Date = DateTime.Now.AddYears(1);
         }
     }
     protected void OnCustomColumnDisplayText(object sender, DevExpress.Web.ASPxGridViewColumnDisplayTextEventArgs e) {
