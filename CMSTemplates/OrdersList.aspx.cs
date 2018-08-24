@@ -14,11 +14,12 @@ using System.Web.UI.WebControls;
 
 public partial class CMSTemplates_OrdersList : TemplatePage {
     protected void Page_Load(object sender, EventArgs e){
+        int Year = DateTime.Now.Year;
         if (!IsPostBack) {
             CbExportMode.Items.AddRange(Enum.GetNames(typeof(GridViewDetailExportMode)));
             CbExportMode.Text = GridViewDetailExportMode.Expanded.ToString();
-            DeStartB.Date = Convert.ToDateTime("01/01/2000 00:00");
-            DeEndB.Date = DateTime.Now.AddYears(1);
+            DeStartB.Date = Convert.ToDateTime(string.Format("01/01/{0} 00:00", Year - 5));
+            DeEndB.Date = Convert.ToDateTime(string.Format("01/01/{0} 00:00", Year + 5));
         }
     }
     protected void OnCustomColumnDisplayText(object sender, DevExpress.Web.ASPxGridViewColumnDisplayTextEventArgs e) {
