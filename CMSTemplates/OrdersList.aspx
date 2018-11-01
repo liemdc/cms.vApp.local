@@ -205,10 +205,6 @@
                                         <dx:GridViewDataTextColumn VisibleIndex="1" EditFormSettings-VisibleIndex="1" FieldName="ProjectTaskMoldCode" Caption="Mã số khuôn" Width="200" FixedStyle="Left" EditFormSettings-Visible="False" />  
                                         <dx:GridViewDataTextColumn VisibleIndex="2" EditFormSettings-VisibleIndex="2" FieldName="ProjectTaskOverlayNum" Caption="Số phủ" Width="120" FixedStyle="Left" EditFormSettings-Visible="False" /> 
                                         <dx:GridViewDataSpinEditColumn VisibleIndex="3" EditFormSettings-VisibleIndex="3" FieldName="ProjectTaskDiameterOut" Caption="ĐK ngoài" Width="88" PropertiesSpinEdit-NumberType="Float" PropertiesSpinEdit-DecimalPlaces="2" EditFormSettings-Visible="False" />                                        
-                                        <dx:GridViewDataTextColumn VisibleIndex="4" EditFormSettings-VisibleIndex="4" FieldName="ProjectTaskThicknessTotal" Caption="Tổng bề dày" Width="100" EditFormSettings-Visible="False" />
-                                        <dx:GridViewDataComboBoxColumn VisibleIndex="5" EditFormSettings-VisibleIndex="5" FieldName="ProjectTaskHardness" Caption="Độ cứng" Width="88" EditFormSettings-Visible="False">
-                                            <PropertiesComboBox DataSourceID="OdsHardness" TextField="ProjectTaskHardness" ValueField="ProjectTaskHardness" ValueType="System.String" DropDownStyle="DropDown" />
-                                        </dx:GridViewDataComboBoxColumn>
                                         <dx:GridViewDataComboBoxColumn VisibleIndex="7" EditFormSettings-VisibleIndex="7" FieldName="ProjectTaskMoldsId" Caption="Phân loại" Width="88" EditFormSettings-Visible="False">
                                             <PropertiesComboBox DataSourceID="OdsMolds" TextField="MoldsName" ValueField="MoldsId" ValueType="System.Int32" IncrementalFilteringMode="StartsWith" TextFormatString="{0}" EnableSynchronization="False">
                                                 <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
@@ -217,6 +213,10 @@
                                                     <dx:ListBoxColumn FieldName="MoldsFactor" Width="48" Caption="Hệ số" />
                                                 </Columns>
                                             </PropertiesComboBox>
+                                        </dx:GridViewDataComboBoxColumn>   
+                                        <dx:GridViewDataTextColumn VisibleIndex="9" EditFormSettings-VisibleIndex="9" FieldName="ProjectTaskThicknessTotal" Caption="Tổng bề dày" Width="100" EditFormSettings-Visible="False" />
+                                        <dx:GridViewDataComboBoxColumn VisibleIndex="11" EditFormSettings-VisibleIndex="11" FieldName="ProjectTaskHardness" Caption="Độ cứng" Width="88" EditFormSettings-Visible="False">
+                                            <PropertiesComboBox DataSourceID="OdsHardness" TextField="ProjectTaskHardness" ValueField="ProjectTaskHardness" ValueType="System.String" DropDownStyle="DropDown" />
                                         </dx:GridViewDataComboBoxColumn>
                                         <dx:GridViewDataSpinEditColumn VisibleIndex="12" EditFormSettings-VisibleIndex="12" FieldName="ProjectTaskQuantities" Caption="Số lượng" Width="78" PropertiesSpinEdit-NumberType="Integer" EditFormSettings-Visible="False" />
                                         <dx:GridViewDataComboBoxColumn VisibleIndex="14" EditFormSettings-VisibleIndex="0" FieldName="ProjectTaskCustomerId" Caption="Khách hàng" Width="100" EditFormSettings-Visible="False">
