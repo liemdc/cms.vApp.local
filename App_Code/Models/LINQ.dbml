@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="cms.vApp.local" Class="LINQDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=.\SQLEXPRESS;Initial Catalog=cms.vApp.local;Persist Security Info=False;User ID=vApp;Connect Timeout=240;Current Language=English" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="CMSConnectionString" Provider="System.Data.SqlClient" />
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="cms.vapp.local" Class="LINQDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=NICEWEBZ\SQLEXPRESS;Initial Catalog=cms.vapp.local;Persist Security Info=False;User ID=vApp;Connect Timeout=240;Current Language=English" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="CMSConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.PM_Project" Member="PM_Projects">
     <Type Name="PM_Project">
       <Column Name="ProjectID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -380,6 +380,14 @@
       <Column Name="CreatedWhen" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreatedByUserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ProcessNotes" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="DXGioBatDauDuKien" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DXGioKetThucDuKien" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DXMaSanPhamUuTienGiaCong" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DXThoiGianDieuChinh" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="DXGioNhanThucTe" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DXGioBatDauThucTe" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DXGioKetThucThucTe" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DXChuyenQuaCongDoan" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="PM_ProjectProcessList_PM_ProjectProcess" Member="PM_ProjectProcessList" ThisKey="ProcessListId" OtherKey="ProcessListId" Type="PM_ProjectProcessList" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
       <Association Name="PM_ProjectTask_PM_ProjectProcess" Member="PM_ProjectTask" ThisKey="ProcessProjectTaskID" OtherKey="ProjectTaskID" Type="PM_ProjectTask" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>

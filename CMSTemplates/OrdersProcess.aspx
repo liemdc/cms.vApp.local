@@ -62,33 +62,33 @@
                                 <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
                             </PropertiesSpinEdit>
                         </dx:GridViewDataSpinEditColumn>
-                        <dx:GridViewDataDateColumn EditFormSettings-VisibleIndex="10" FieldName="" Caption="Giờ bắt đầu dự kiến" Width="120">
+                        <dx:GridViewDataDateColumn EditFormSettings-VisibleIndex="10" FieldName="DXGioBatDauDuKien" Caption="Giờ bắt đầu dự kiến" Width="120">
                             <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm">
                                 <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
                                 <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
                             </PropertiesDateEdit>
                         </dx:GridViewDataDateColumn>  
-                        <dx:GridViewDataDateColumn EditFormSettings-VisibleIndex="10" FieldName="" Caption="Giờ kết thúc dự kiến" Width="120">
+                        <dx:GridViewDataDateColumn EditFormSettings-VisibleIndex="10" FieldName="DXGioKetThucDuKien" Caption="Giờ kết thúc dự kiến" Width="120">
                             <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm">
                                 <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
                                 <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
                             </PropertiesDateEdit>
                         </dx:GridViewDataDateColumn>  
-                        <dx:GridViewDataTextColumn EditFormSettings-VisibleIndex="1" FieldName="" Caption="Mã sản phẩm ưu tiên gia công" Width="180" />
-                        <dx:GridViewDataTextColumn EditFormSettings-VisibleIndex="1" FieldName="" Caption="Tg điều chỉnh" Width="120" />
-                        <dx:GridViewDataDateColumn EditFormSettings-VisibleIndex="10" FieldName="" Caption="Giờ nhận thực tế" Width="120">
+                        <dx:GridViewDataTextColumn EditFormSettings-VisibleIndex="1" FieldName="DXMaSanPhamUuTienGiaCong" Caption="Mã sản phẩm ưu tiên gia công" Width="180" />
+                        <dx:GridViewDataTextColumn EditFormSettings-VisibleIndex="1" FieldName="DXThoiGianDieuChinh" Caption="Tg điều chỉnh" Width="120" />
+                        <dx:GridViewDataDateColumn EditFormSettings-VisibleIndex="10" FieldName="DXGioNhanThucTe" Caption="Giờ nhận thực tế" Width="120">
                             <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm">
                                 <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
                                 <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
                             </PropertiesDateEdit>
                         </dx:GridViewDataDateColumn>  
-                        <dx:GridViewDataDateColumn EditFormSettings-VisibleIndex="10" FieldName="" Caption="Giờ bắt đầu thực tế" Width="120">
+                        <dx:GridViewDataDateColumn EditFormSettings-VisibleIndex="10" FieldName="DXGioBatDauThucTe" Caption="Giờ bắt đầu thực tế" Width="120">
                             <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm">
                                 <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
                                 <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
                             </PropertiesDateEdit>
                         </dx:GridViewDataDateColumn>  
-                        <dx:GridViewDataDateColumn EditFormSettings-VisibleIndex="10" FieldName="" Caption="Giờ kết thúc thực tế" Width="120">
+                        <dx:GridViewDataDateColumn EditFormSettings-VisibleIndex="10" FieldName="DXGioKetThucThucTe" Caption="Giờ kết thúc thực tế" Width="120">
                             <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm">
                                 <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
                                 <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
@@ -99,7 +99,7 @@
                                 <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
                             </PropertiesSpinEdit>
                         </dx:GridViewDataSpinEditColumn>
-                        <dx:GridViewDataComboBoxColumn EditFormSettings-VisibleIndex="12" FieldName="" Caption="Chuyển qua công đoạn" Width="150">
+                        <dx:GridViewDataComboBoxColumn EditFormSettings-VisibleIndex="12" FieldName="DXChuyenQuaCongDoan" Caption="Chuyển qua công đoạn" Width="150">
                             <PropertiesComboBox DataSourceID="OdsProcessExtraList" ValueField="ProcessListId" TextField="ProcessListName" ValueType="System.Int32" />
                         </dx:GridViewDataComboBoxColumn>
                         <dx:GridViewDataCheckColumn EditFormSettings-VisibleIndex="23" FieldName="ProcessGangerBrowse" Caption="Duyệt" Visible="false" EditFormSettings-Visible="True" />
@@ -267,7 +267,15 @@
                         <asp:Parameter Name="ProcessExpectedTime" Type="Decimal" />
                         <asp:Parameter Name="ProcessExpectedCompletion" Type="DateTime" />
                         <asp:Parameter Name="ProcessPlusBrowse" Type="Int32" />
-                        <asp:Parameter Name="ProcessNotes" Type="String" />   
+                        <asp:Parameter Name="ProcessNotes" Type="String" />                          
+                        <asp:Parameter Name="DXChuyenQuaCongDoan" Type="Int32" />  
+                        <asp:Parameter Name="DXGioBatDauDuKien" Type="DateTime" />  
+                        <asp:Parameter Name="DXGioBatDauThucTe" Type="DateTime" />  
+                        <asp:Parameter Name="DXGioKetThucDuKien" Type="DateTime" />  
+                        <asp:Parameter Name="DXGioKetThucThucTe" Type="DateTime" />  
+                        <asp:Parameter Name="DXGioNhanThucTe" Type="DateTime" />  
+                        <asp:Parameter Name="DXMaSanPhamUuTienGiaCong" Type="String" />  
+                        <asp:Parameter Name="DXThoiGianDieuChinh" Type="Decimal" />  
                     </UpdateParameters>
                 </asp:ObjectDataSource>   
             </DetailRow>

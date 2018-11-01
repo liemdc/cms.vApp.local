@@ -197,6 +197,14 @@ public partial class OrdersProcessObject
     public Nullable<DateTime> ProjectTaskDuKienThoQuaTinh { get; set; }
     public Nullable<DateTime> ProjectTaskDuKienTinhQuaQA { get; set; }
     public string ProcessNotes { get; set; }
+    public Nullable<DateTime> DXGioBatDauDuKien { get; set; }
+    public Nullable<DateTime> DXGioKetThucDuKien { get; set; }
+    public string DXMaSanPhamUuTienGiaCong { get; set; }
+    public Nullable<decimal> DXThoiGianDieuChinh { get; set; }
+    public Nullable<DateTime> DXGioNhanThucTe { get; set; }
+    public Nullable<DateTime> DXGioBatDauThucTe { get; set; }
+    public Nullable<DateTime> DXGioKetThucThucTe { get; set; }
+    public Nullable<int> DXChuyenQuaCongDoan { get; set; }
 }
 public partial class OrdersProcessDetailObject
 {

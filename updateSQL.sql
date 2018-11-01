@@ -57,6 +57,58 @@ BEGIN ALTER TABLE PM_ProjectProcess
 	ADD ProcessNotes NVARCHAR (255);
 	PRINT ('ADD ProcessNotes NVARCHAR (255);');
 END
+-- 20181101
+-- Add Column DXGioBatDauDuKien DATETIME
+IF NOT EXISTS ( SELECT object_id FROM sys.columns WHERE object_id = OBJECT_ID(N'PM_ProjectProcess') AND name = 'DXGioBatDauDuKien' )
+BEGIN ALTER TABLE PM_ProjectProcess
+	ADD DXGioBatDauDuKien DATETIME;
+	PRINT ('ADD DXGioBatDauDuKien DATETIME;');
+END
+-- Add Column DXGioKetThucDuKien DATETIME
+IF NOT EXISTS ( SELECT object_id FROM sys.columns WHERE object_id = OBJECT_ID(N'PM_ProjectProcess') AND name = 'DXGioKetThucDuKien' )
+BEGIN ALTER TABLE PM_ProjectProcess
+	ADD DXGioKetThucDuKien DATETIME;
+	PRINT ('ADD DXGioKetThucDuKien DATETIME;');
+END
+-- Add Column DXMaSanPhamUuTienGiaCong NVARCHAR (50)
+IF NOT EXISTS ( SELECT object_id FROM sys.columns WHERE object_id = OBJECT_ID(N'PM_ProjectProcess') AND name = 'DXMaSanPhamUuTienGiaCong' )
+BEGIN ALTER TABLE PM_ProjectProcess
+	ADD DXMaSanPhamUuTienGiaCong NVARCHAR (50);
+	PRINT ('ADD DXMaSanPhamUuTienGiaCong NVARCHAR (50);');
+END
+-- Add Column DXThoiGianDieuChinh numeric(10, 2)
+IF NOT EXISTS ( SELECT object_id FROM sys.columns WHERE object_id = OBJECT_ID(N'PM_ProjectProcess') AND name = 'DXThoiGianDieuChinh' )
+BEGIN ALTER TABLE PM_ProjectProcess
+	ADD DXThoiGianDieuChinh numeric(10, 2);
+	PRINT ('ADD DXThoiGianDieuChinh numeric(10, 2);');
+END
+-- Add Column DXGioNhanThucTe DATETIME
+IF NOT EXISTS ( SELECT object_id FROM sys.columns WHERE object_id = OBJECT_ID(N'PM_ProjectProcess') AND name = 'DXGioNhanThucTe' )
+BEGIN ALTER TABLE PM_ProjectProcess
+	ADD DXGioNhanThucTe DATETIME;
+	PRINT ('ADD DXGioNhanThucTe DATETIME;');
+END
+-- Add Column DXGioBatDauThucTe DATETIME
+IF NOT EXISTS ( SELECT object_id FROM sys.columns WHERE object_id = OBJECT_ID(N'PM_ProjectProcess') AND name = 'DXGioBatDauThucTe' )
+BEGIN ALTER TABLE PM_ProjectProcess
+	ADD DXGioBatDauThucTe DATETIME;
+	PRINT ('ADD DXGioBatDauThucTe DATETIME;');
+END
+-- Add Column DXGioKetThucThucTe DATETIME
+IF NOT EXISTS ( SELECT object_id FROM sys.columns WHERE object_id = OBJECT_ID(N'PM_ProjectProcess') AND name = 'DXGioKetThucThucTe' )
+BEGIN ALTER TABLE PM_ProjectProcess
+	ADD DXGioKetThucThucTe DATETIME;
+	PRINT ('ADD DXGioKetThucThucTe DATETIME;');
+END
+-- Add Column DXChuyenQuaCongDoan INT
+IF NOT EXISTS ( SELECT object_id FROM sys.columns WHERE object_id = OBJECT_ID(N'PM_ProjectProcess') AND name = 'DXChuyenQuaCongDoan' )
+BEGIN ALTER TABLE PM_ProjectProcess
+	ADD DXChuyenQuaCongDoan INT;
+	PRINT ('ADD DXChuyenQuaCongDoan INT;');
+END
+
+
+
  
 
  

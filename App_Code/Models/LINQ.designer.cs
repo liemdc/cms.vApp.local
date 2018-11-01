@@ -22,7 +22,7 @@ namespace Models
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="cms.vApp.local")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="cms.vapp.local")]
 	public partial class LINQDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -8413,6 +8413,22 @@ namespace Models
 		
 		private string _ProcessNotes;
 		
+		private System.Nullable<System.DateTime> _DXGioBatDauDuKien;
+		
+		private System.Nullable<System.DateTime> _DXGioKetThucDuKien;
+		
+		private string _DXMaSanPhamUuTienGiaCong;
+		
+		private System.Nullable<decimal> _DXThoiGianDieuChinh;
+		
+		private System.Nullable<System.DateTime> _DXGioNhanThucTe;
+		
+		private System.Nullable<System.DateTime> _DXGioBatDauThucTe;
+		
+		private System.Nullable<System.DateTime> _DXGioKetThucThucTe;
+		
+		private System.Nullable<int> _DXChuyenQuaCongDoan;
+		
 		private EntityRef<PM_ProjectProcessList> _PM_ProjectProcessList;
 		
 		private EntityRef<PM_ProjectTask> _PM_ProjectTask;
@@ -8455,6 +8471,22 @@ namespace Models
     partial void OnCreatedByUserIdChanged();
     partial void OnProcessNotesChanging(string value);
     partial void OnProcessNotesChanged();
+    partial void OnDXGioBatDauDuKienChanging(System.Nullable<System.DateTime> value);
+    partial void OnDXGioBatDauDuKienChanged();
+    partial void OnDXGioKetThucDuKienChanging(System.Nullable<System.DateTime> value);
+    partial void OnDXGioKetThucDuKienChanged();
+    partial void OnDXMaSanPhamUuTienGiaCongChanging(string value);
+    partial void OnDXMaSanPhamUuTienGiaCongChanged();
+    partial void OnDXThoiGianDieuChinhChanging(System.Nullable<decimal> value);
+    partial void OnDXThoiGianDieuChinhChanged();
+    partial void OnDXGioNhanThucTeChanging(System.Nullable<System.DateTime> value);
+    partial void OnDXGioNhanThucTeChanged();
+    partial void OnDXGioBatDauThucTeChanging(System.Nullable<System.DateTime> value);
+    partial void OnDXGioBatDauThucTeChanged();
+    partial void OnDXGioKetThucThucTeChanging(System.Nullable<System.DateTime> value);
+    partial void OnDXGioKetThucThucTeChanged();
+    partial void OnDXChuyenQuaCongDoanChanging(System.Nullable<int> value);
+    partial void OnDXChuyenQuaCongDoanChanged();
     #endregion
 		
 		public PM_ProjectProcess()
@@ -8808,6 +8840,166 @@ namespace Models
 					this._ProcessNotes = value;
 					this.SendPropertyChanged("ProcessNotes");
 					this.OnProcessNotesChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DXGioBatDauDuKien", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DXGioBatDauDuKien
+		{
+			get
+			{
+				return this._DXGioBatDauDuKien;
+			}
+			set
+			{
+				if ((this._DXGioBatDauDuKien != value))
+				{
+					this.OnDXGioBatDauDuKienChanging(value);
+					this.SendPropertyChanging();
+					this._DXGioBatDauDuKien = value;
+					this.SendPropertyChanged("DXGioBatDauDuKien");
+					this.OnDXGioBatDauDuKienChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DXGioKetThucDuKien", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DXGioKetThucDuKien
+		{
+			get
+			{
+				return this._DXGioKetThucDuKien;
+			}
+			set
+			{
+				if ((this._DXGioKetThucDuKien != value))
+				{
+					this.OnDXGioKetThucDuKienChanging(value);
+					this.SendPropertyChanging();
+					this._DXGioKetThucDuKien = value;
+					this.SendPropertyChanged("DXGioKetThucDuKien");
+					this.OnDXGioKetThucDuKienChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DXMaSanPhamUuTienGiaCong", DbType="NVarChar(50)")]
+		public string DXMaSanPhamUuTienGiaCong
+		{
+			get
+			{
+				return this._DXMaSanPhamUuTienGiaCong;
+			}
+			set
+			{
+				if ((this._DXMaSanPhamUuTienGiaCong != value))
+				{
+					this.OnDXMaSanPhamUuTienGiaCongChanging(value);
+					this.SendPropertyChanging();
+					this._DXMaSanPhamUuTienGiaCong = value;
+					this.SendPropertyChanged("DXMaSanPhamUuTienGiaCong");
+					this.OnDXMaSanPhamUuTienGiaCongChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DXThoiGianDieuChinh", DbType="Decimal(10,2)")]
+		public System.Nullable<decimal> DXThoiGianDieuChinh
+		{
+			get
+			{
+				return this._DXThoiGianDieuChinh;
+			}
+			set
+			{
+				if ((this._DXThoiGianDieuChinh != value))
+				{
+					this.OnDXThoiGianDieuChinhChanging(value);
+					this.SendPropertyChanging();
+					this._DXThoiGianDieuChinh = value;
+					this.SendPropertyChanged("DXThoiGianDieuChinh");
+					this.OnDXThoiGianDieuChinhChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DXGioNhanThucTe", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DXGioNhanThucTe
+		{
+			get
+			{
+				return this._DXGioNhanThucTe;
+			}
+			set
+			{
+				if ((this._DXGioNhanThucTe != value))
+				{
+					this.OnDXGioNhanThucTeChanging(value);
+					this.SendPropertyChanging();
+					this._DXGioNhanThucTe = value;
+					this.SendPropertyChanged("DXGioNhanThucTe");
+					this.OnDXGioNhanThucTeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DXGioBatDauThucTe", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DXGioBatDauThucTe
+		{
+			get
+			{
+				return this._DXGioBatDauThucTe;
+			}
+			set
+			{
+				if ((this._DXGioBatDauThucTe != value))
+				{
+					this.OnDXGioBatDauThucTeChanging(value);
+					this.SendPropertyChanging();
+					this._DXGioBatDauThucTe = value;
+					this.SendPropertyChanged("DXGioBatDauThucTe");
+					this.OnDXGioBatDauThucTeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DXGioKetThucThucTe", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DXGioKetThucThucTe
+		{
+			get
+			{
+				return this._DXGioKetThucThucTe;
+			}
+			set
+			{
+				if ((this._DXGioKetThucThucTe != value))
+				{
+					this.OnDXGioKetThucThucTeChanging(value);
+					this.SendPropertyChanging();
+					this._DXGioKetThucThucTe = value;
+					this.SendPropertyChanged("DXGioKetThucThucTe");
+					this.OnDXGioKetThucThucTeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DXChuyenQuaCongDoan", DbType="Int")]
+		public System.Nullable<int> DXChuyenQuaCongDoan
+		{
+			get
+			{
+				return this._DXChuyenQuaCongDoan;
+			}
+			set
+			{
+				if ((this._DXChuyenQuaCongDoan != value))
+				{
+					this.OnDXChuyenQuaCongDoanChanging(value);
+					this.SendPropertyChanging();
+					this._DXChuyenQuaCongDoan = value;
+					this.SendPropertyChanged("DXChuyenQuaCongDoan");
+					this.OnDXChuyenQuaCongDoanChanged();
 				}
 			}
 		}

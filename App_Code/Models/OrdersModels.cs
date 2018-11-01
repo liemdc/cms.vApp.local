@@ -350,10 +350,27 @@ public class OrdersModels
                 ProjectTaskDuKienThoQuaTinh = sm.pp.pp.pt.ProjectTaskDuKienThoQuaTinh,
                 ProjectTaskDuKienTinhQuaQA = sm.pp.pp.pt.ProjectTaskDuKienTinhQuaQA,
                 ProcessNotes = sm.pp.pp.pp.ProcessNotes,
+                DXChuyenQuaCongDoan = sm.pp.pp.pp.DXChuyenQuaCongDoan,
+                DXGioBatDauDuKien = sm.pp.pp.pp.DXGioBatDauDuKien,
+                DXGioBatDauThucTe = sm.pp.pp.pp.DXGioBatDauThucTe,
+                DXGioKetThucDuKien = sm.pp.pp.pp.DXGioKetThucDuKien,
+                DXGioKetThucThucTe = sm.pp.pp.pp.DXGioKetThucThucTe,
+                DXGioNhanThucTe = sm.pp.pp.pp.DXGioNhanThucTe,
+                DXMaSanPhamUuTienGiaCong = sm.pp.pp.pp.DXMaSanPhamUuTienGiaCong,
+                DXThoiGianDieuChinh = sm.pp.pp.pp.DXThoiGianDieuChinh,
                 AutoPriority = Convert.ToInt32(((Convert.ToDateTime(sm.pp.pp.pt.ProjectTaskTransmit) - DateTime.Now).Days + (Convert.ToDateTime(sm.pp.pp.pt.ProjectTaskDeadline) - DateTime.Now).Days) - sm.pp.pm.MoldsMinScheduledDays)
             }).OrderBy(o => o.AutoPriority).OrderBy(o1 => o1.ProjectTaskPriorityID).ToList();
     }
-    public static void OrdersProcessUpdated(int ProjectTaskID, int ProcessListId, bool ProcessGangerBrowse, decimal ProcessExpectedTime, DateTime ProcessExpectedCompletion, int ProcessPlusBrowse, string ProcessNotes) {
+    public static void OrdersProcessUpdated(int ProjectTaskID, int ProcessListId, bool ProcessGangerBrowse, decimal ProcessExpectedTime, DateTime ProcessExpectedCompletion, int ProcessPlusBrowse, string ProcessNotes,
+                int DXChuyenQuaCongDoan,
+                DateTime DXGioBatDauDuKien,
+                DateTime DXGioBatDauThucTe,
+                DateTime DXGioKetThucDuKien,
+                DateTime DXGioKetThucThucTe,
+                DateTime DXGioNhanThucTe,
+                string DXMaSanPhamUuTienGiaCong,
+                decimal DXThoiGianDieuChinh
+        ) {
         using (TransactionScope transactionScope = new TransactionScope()) {
             try {
                 bool finish = true;
@@ -367,6 +384,18 @@ public class OrdersModels
                     pp.ProcessNotes = ProcessNotes;
                     pp.ModifiedWhen = DateTime.Now;
                     pp.ModifiedByUserId = CMSContext.CurrentUser.UserID;
+
+                    pp.DXThoiGianDieuChinh = DXThoiGianDieuChinh;
+                    pp.DXMaSanPhamUuTienGiaCong = DXMaSanPhamUuTienGiaCong;
+                    pp.DXGioNhanThucTe = DXGioNhanThucTe;
+                    pp.DXGioKetThucThucTe = DXGioKetThucThucTe;
+                    pp.DXGioKetThucDuKien = DXGioKetThucDuKien;
+                    pp.DXGioBatDauThucTe = DXGioBatDauThucTe;
+                    pp.DXGioBatDauDuKien = DXGioBatDauDuKien;
+                    pp.DXChuyenQuaCongDoan = DXChuyenQuaCongDoan;
+
+
+
                     if (pp.ProcessPlusBrowse == null)
                         pp.ProcessGangerBrowse = ProcessGangerBrowse;
                     if (pp.ProcessListId == pp.ProcessPlusBrowse && ProcessPlusBrowse == 0)
