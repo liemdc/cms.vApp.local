@@ -325,14 +325,13 @@
                                         <Columns>
                                             <dx:GridViewBandColumn Caption="Dữ liệu công đoạn" VisibleIndex="0">
                                                 <Columns>
-                                                    <dx:GridViewDataTextColumn VisibleIndex="0" Caption="Num" Width="34" Settings-AllowSort="False" EditFormSettings-Visible="False" UnboundType="String" FixedStyle="Left" />
-                                                    <dx:GridViewDataComboBoxColumn VisibleIndex="1" EditFormSettings-VisibleIndex="1" FieldName="ProcessListId" Caption="Công đoạn Id" Width="48" Visible="false" EditFormSettings-Visible="True">
+                                                    <dx:GridViewDataComboBoxColumn FieldName="ProcessListId" Caption="Công đoạn Id" Width="48" Visible="false" EditFormSettings-Visible="True">
                                                         <PropertiesComboBox DataSourceID="OdsProcessListNotInTaskId" TextField="ProcessListName" ValueField="ProcessListId" ValueType="System.Int32" IncrementalFilteringMode="StartsWith">
                                                             <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
                                                         </PropertiesComboBox>
                                                     </dx:GridViewDataComboBoxColumn>
-                                                    <dx:GridViewDataTextColumn VisibleIndex="2" EditFormSettings-VisibleIndex="2" FieldName="ProcessListName" Caption="Công đoạn" Width="307" EditFormSettings-Visible="False" /> 
-                                                    <dx:GridViewDataComboBoxColumn VisibleIndex="2" FieldName="ProcessListgroup" Caption="Nhóm công đoạn" Width="253" EditFormSettings-Visible="False" ReadOnly="true">
+                                                    <dx:GridViewDataTextColumn FieldName="ProcessListName" Caption="Công đoạn" Width="128" EditFormSettings-Visible="False" /> 
+                                                    <dx:GridViewDataComboBoxColumn VisibleIndex="2" FieldName="ProcessListgroup" Caption="Nhóm công đoạn" Width="128" EditFormSettings-Visible="False" ReadOnly="true">
                                                         <PropertiesComboBox DropDownStyle="DropDownList">
                                                             <Items>
                                                                 <dx:ListEditItem Value="dataTho" Text="Bộ phận Thô" />
@@ -345,15 +344,61 @@
                                                 </Columns>
                                                 <HeaderStyle HorizontalAlign="Left" />
                                             </dx:GridViewBandColumn>
-                                            <dx:GridViewBandColumn Caption="Dữ liệu trạng thái" VisibleIndex="1">
+                                            <dx:GridViewBandColumn Caption="Dữ liệu đơn hàng" VisibleIndex="1">
                                                 <Columns>
-                                                    <dx:GridViewDataTextColumn VisibleIndex="11" FieldName="ProcessExpectedTime" Caption="Thời gian dự kiến" Width="107" EditFormSettings-Visible="False"> 
-                                                        <PropertiesTextEdit DisplayFormatString="{0} giờ." />
-                                                    </dx:GridViewDataTextColumn>
-                                                    <dx:GridViewDataTextColumn VisibleIndex="11" FieldName="ProcessFactTime" Caption="Thời gian thực tế" Width="107" EditFormSettings-Visible="False"> 
-                                                        <PropertiesTextEdit DisplayFormatString="{0} giờ." />
-                                                    </dx:GridViewDataTextColumn>
-                                                    <dx:GridViewDataComboBoxColumn VisibleIndex="13" FieldName="" Caption="Trạng thái" Width="107" EditFormSettings-Visible="False">
+                                                    <dx:GridViewDataDateColumn FieldName="" Caption="Ngày nhận dự kiến" Width="130">
+                                                        <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm">
+                                                            <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
+                                                            <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
+                                                        </PropertiesDateEdit>
+                                                    </dx:GridViewDataDateColumn>
+                                                    <dx:GridViewDataSpinEditColumn FieldName="ProcessExpectedTime" Caption="Tg dự kiến" Width="88">
+                                                        <PropertiesSpinEdit DecimalPlaces="2" NumberType="Float" DisplayFormatString="{0} giờ.">
+                                                            <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
+                                                        </PropertiesSpinEdit>
+                                                    </dx:GridViewDataSpinEditColumn>
+                                                    <dx:GridViewDataDateColumn FieldName="" Caption="Ngày bắt đầu dự kiến" Width="130">
+                                                        <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm">
+                                                            <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
+                                                            <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
+                                                        </PropertiesDateEdit>
+                                                    </dx:GridViewDataDateColumn>
+                                                    <dx:GridViewDataDateColumn FieldName="" Caption="Ngày kết thúc dự kiến" Width="130">
+                                                        <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm">
+                                                            <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
+                                                            <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
+                                                        </PropertiesDateEdit>
+                                                    </dx:GridViewDataDateColumn>
+                                                     <dx:GridViewDataTextColumn FieldName="" Caption="Mã Sp Ưu tiên" Width="128" EditFormSettings-Visible="False" /> 
+                                                    <dx:GridViewDataSpinEditColumn FieldName="" Caption="Tg điều chỉnh" Width="100">
+                                                        <PropertiesSpinEdit DecimalPlaces="2" NumberType="Float" DisplayFormatString="{0} giờ.">
+                                                            <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
+                                                        </PropertiesSpinEdit>
+                                                    </dx:GridViewDataSpinEditColumn>
+                                                    <dx:GridViewDataDateColumn FieldName="" Caption="Ngày nhận thực tế" Width="130">
+                                                        <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm">
+                                                            <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
+                                                            <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
+                                                        </PropertiesDateEdit>
+                                                    </dx:GridViewDataDateColumn>
+                                                    <dx:GridViewDataDateColumn FieldName="" Caption="Ngày bắt đầu thực tế" Width="130">
+                                                        <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm">
+                                                            <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
+                                                            <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
+                                                        </PropertiesDateEdit>
+                                                    </dx:GridViewDataDateColumn>
+                                                    <dx:GridViewDataDateColumn FieldName="" Caption="Ngày kết thúc thực tế" Width="130">
+                                                        <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm">
+                                                            <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
+                                                            <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
+                                                        </PropertiesDateEdit>
+                                                    </dx:GridViewDataDateColumn>
+                                                    <dx:GridViewDataSpinEditColumn FieldName="" Caption="Tg gia công thực tế" Width="138">
+                                                        <PropertiesSpinEdit DecimalPlaces="2" NumberType="Float" DisplayFormatString="{0} giờ.">
+                                                            <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
+                                                        </PropertiesSpinEdit>
+                                                    </dx:GridViewDataSpinEditColumn>
+                                                    <dx:GridViewDataComboBoxColumn FieldName="" Caption="Trạng thái" Width="107" EditFormSettings-Visible="False">
                                                         <PropertiesComboBox DropDownStyle="DropDownList">
                                                             <Items>
                                                                 <dx:ListEditItem Value="0" Text="Không xác định" Selected="true" />
@@ -364,9 +409,9 @@
                                                             <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
                                                         </PropertiesComboBox>
                                                     </dx:GridViewDataComboBoxColumn> 
-                                                    <dx:GridViewDataTextColumn VisibleIndex="14" FieldName="ProcessNotes" Caption="Ghi chú" MinWidth="348" Width="585" EditFormSettings-Visible="False" /> 
-                                                    <dx:GridViewDataTextColumn VisibleIndex="15" FieldName="UserModified" Caption="Cập nhật bởi" MinWidth="148" EditFormSettings-Visible="False" /> 
-                                                    <dx:GridViewDataDateColumn VisibleIndex="16" FieldName="DateModified" Caption="Cập nhật lúc" Width="120" EditFormSettings-Visible="False"> 
+                                                    <dx:GridViewDataTextColumn FieldName="ProcessNotes" Caption="Ghi chú" MinWidth="348" Width="585" EditFormSettings-Visible="False" /> 
+                                                    <dx:GridViewDataTextColumn FieldName="UserModified" Caption="Cập nhật" MinWidth="128" EditFormSettings-Visible="False" /> 
+                                                    <dx:GridViewDataDateColumn FieldName="DateModified" Caption="Ghi nhận" Width="120" EditFormSettings-Visible="False"> 
                                                         <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm" AllowNull="true">
                                                             <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
                                                         </PropertiesDateEdit>
