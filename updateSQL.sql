@@ -106,6 +106,12 @@ BEGIN ALTER TABLE PM_ProjectProcess
 	ADD DXChuyenQuaCongDoan INT;
 	PRINT ('ADD DXChuyenQuaCongDoan INT;');
 END
+-- 20181107
+-- RENAME Column DXGioNhanThucTe +> DXNgayNhanThucTe
+IF EXISTS ( SELECT object_id FROM sys.columns WHERE object_id = OBJECT_ID(N'PM_ProjectProcess') AND name = 'DXGioNhanThucTe' )
+BEGIN EXEC sp_rename 'PM_ProjectProcess.DXGioNhanThucTe', 'DXNgayNhanThucTe', 'COLUMN'
+	PRINT ('RENAME Column DXGioNhanThucTe +> DXNgayNhanThucTe;');
+END
 
 
 

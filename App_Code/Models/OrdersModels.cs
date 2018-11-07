@@ -350,10 +350,11 @@ public class OrdersModels
                 ProjectTaskDuKienThoQuaTinh = sm.pp.pp.pt.ProjectTaskDuKienThoQuaTinh,
                 ProjectTaskDuKienTinhQuaQA = sm.pp.pp.pt.ProjectTaskDuKienTinhQuaQA,
                 ProcessNotes = sm.pp.pp.pp.ProcessNotes,
+                DXNgayNhanThucTe = sm.pp.pp.pp.DXNgayNhanThucTe,
                 AutoPriority = Convert.ToInt32(((Convert.ToDateTime(sm.pp.pp.pt.ProjectTaskTransmit) - DateTime.Now).Days + (Convert.ToDateTime(sm.pp.pp.pt.ProjectTaskDeadline) - DateTime.Now).Days) - sm.pp.pm.MoldsMinScheduledDays)
             }).OrderBy(o => o.AutoPriority).OrderBy(o1 => o1.ProjectTaskPriorityID).ToList();
     }
-    public static void OrdersProcessUpdated(int ProjectTaskID, int ProcessListId, bool ProcessGangerBrowse, decimal ProcessExpectedTime, DateTime ProcessExpectedCompletion, int ProcessPlusBrowse, string ProcessNotes) {
+    public static void OrdersProcessUpdated(int ProjectTaskID, int ProcessListId, bool ProcessGangerBrowse, decimal ProcessExpectedTime, DateTime ProcessExpectedCompletion, DateTime DXNgayNhanThucTe, int ProcessPlusBrowse, string ProcessNotes) {
         using (TransactionScope transactionScope = new TransactionScope()) {
             try {
                 bool finish = true;
@@ -364,6 +365,7 @@ public class OrdersModels
                 if (pp != null) {
                     pp.ProcessExpectedTime = ProcessExpectedTime;
                     pp.ProcessExpectedCompletion = ProcessExpectedCompletion;
+                    pp.DXNgayNhanThucTe = DXNgayNhanThucTe;
                     pp.ProcessNotes = ProcessNotes;
                     pp.ModifiedWhen = DateTime.Now;
                     pp.ModifiedByUserId = CMSContext.CurrentUser.UserID;

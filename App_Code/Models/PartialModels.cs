@@ -201,7 +201,7 @@ public partial class OrdersProcessObject
     public Nullable<DateTime> DXGioKetThucDuKien { get; set; }
     public string DXMaSanPhamUuTienGiaCong { get; set; }
     public Nullable<decimal> DXThoiGianDieuChinh { get; set; }
-    public Nullable<DateTime> DXGioNhanThucTe { get; set; }
+    public Nullable<DateTime> DXNgayNhanThucTe { get; set; }
     public Nullable<DateTime> DXGioBatDauThucTe { get; set; }
     public Nullable<DateTime> DXGioKetThucThucTe { get; set; }
     public Nullable<int> DXChuyenQuaCongDoan { get; set; }

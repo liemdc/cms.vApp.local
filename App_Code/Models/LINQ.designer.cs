@@ -8421,7 +8421,7 @@ namespace Models
 		
 		private System.Nullable<decimal> _DXThoiGianDieuChinh;
 		
-		private System.Nullable<System.DateTime> _DXGioNhanThucTe;
+		private System.Nullable<System.DateTime> _DXNgayNhanThucTe;
 		
 		private System.Nullable<System.DateTime> _DXGioBatDauThucTe;
 		
@@ -8479,8 +8479,8 @@ namespace Models
     partial void OnDXMaSanPhamUuTienGiaCongChanged();
     partial void OnDXThoiGianDieuChinhChanging(System.Nullable<decimal> value);
     partial void OnDXThoiGianDieuChinhChanged();
-    partial void OnDXGioNhanThucTeChanging(System.Nullable<System.DateTime> value);
-    partial void OnDXGioNhanThucTeChanged();
+    partial void OnDXNgayNhanThucTeChanging(System.Nullable<System.DateTime> value);
+    partial void OnDXNgayNhanThucTeChanged();
     partial void OnDXGioBatDauThucTeChanging(System.Nullable<System.DateTime> value);
     partial void OnDXGioBatDauThucTeChanged();
     partial void OnDXGioKetThucThucTeChanging(System.Nullable<System.DateTime> value);
@@ -8924,22 +8924,22 @@ namespace Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DXGioNhanThucTe", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DXGioNhanThucTe
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DXNgayNhanThucTe", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DXNgayNhanThucTe
 		{
 			get
 			{
-				return this._DXGioNhanThucTe;
+				return this._DXNgayNhanThucTe;
 			}
 			set
 			{
-				if ((this._DXGioNhanThucTe != value))
+				if ((this._DXNgayNhanThucTe != value))
 				{
-					this.OnDXGioNhanThucTeChanging(value);
+					this.OnDXNgayNhanThucTeChanging(value);
 					this.SendPropertyChanging();
-					this._DXGioNhanThucTe = value;
-					this.SendPropertyChanged("DXGioNhanThucTe");
-					this.OnDXGioNhanThucTeChanged();
+					this._DXNgayNhanThucTe = value;
+					this.SendPropertyChanged("DXNgayNhanThucTe");
+					this.OnDXNgayNhanThucTeChanged();
 				}
 			}
 		}
