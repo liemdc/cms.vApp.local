@@ -65,13 +65,13 @@
                             <Columns>
                                 <dx:GridViewDataTextColumn VisibleIndex="8" EditFormSettings-VisibleIndex="8" FieldName="ProjectTaskTransmit" Caption="Ngày đặt hàng" ReadOnly="true" PropertiesTextEdit-DisplayFormatString="dd/MM/yyyy HH:mm" EditFormSettings-Visible="False" Width="120"/>
                                 <dx:GridViewDataTextColumn VisibleIndex="9" EditFormSettings-VisibleIndex="9" FieldName="ProjectTaskDeadline" Caption="Ngày xuất" ReadOnly="true" PropertiesTextEdit-DisplayFormatString="dd/MM/yyyy HH:mm" EditFormSettings-Visible="False" Width="120"/>
-                                <dx:GridViewDataDateColumn VisibleIndex="10" EditFormSettings-VisibleIndex="10" FieldName="ProcessExpectedCompletion" Caption="Ngày nhận dự kiến" Width="130">
+                                <dx:GridViewDataDateColumn VisibleIndex="10" EditFormSettings-VisibleIndex="10" FieldName="ProcessExpectedCompletion" Caption="Tg nhận dự kiến" Width="130">
                                     <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm">
                                         <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
                                         <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
                                     </PropertiesDateEdit>
                                 </dx:GridViewDataDateColumn>
-                                <dx:GridViewDataDateColumn VisibleIndex="10" EditFormSettings-VisibleIndex="10" FieldName="DXNgayNhanThucTe" Caption="Ngày nhận thực tế" Width="130">
+                                <dx:GridViewDataDateColumn VisibleIndex="10" EditFormSettings-VisibleIndex="10" FieldName="DXNgayNhanThucTe" Caption="Tg nhận thực tế" Width="130">
                                     <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm">
                                         <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
                                         <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />

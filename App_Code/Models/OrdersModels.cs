@@ -285,6 +285,7 @@ public class OrdersModels
                     ProcessNotes = sm1.mp1.sm.mp.ProcessNotes,
                     UserModified = userm.FullName,
                     DateModified = sm1.mp1.sm.mp.ModifiedWhen,
+                    DXNgayNhanThucTe = sm1.mp1.sm.mp.DXNgayNhanThucTe
                     
                 }).ToList();
     }

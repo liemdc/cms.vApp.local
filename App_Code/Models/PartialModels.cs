@@ -172,6 +172,7 @@ public partial class ProjectProcessObject
     public string ProcessNotes { get; set; }
     public string UserModified { get; set; }
     public Nullable<DateTime> DateModified { get; set; }
+    public Nullable<DateTime> DXNgayNhanThucTe { get; set; }
 }
 public partial class OrdersProcessObject
 {
