@@ -81,7 +81,7 @@
                                 <dx:GridViewDataComboBoxColumn VisibleIndex="12" EditFormSettings-VisibleIndex="12" FieldName="ProcessPlusBrowse" Caption="Hỗ trợ" Visible="false" EditFormSettings-Visible="True">
                                     <PropertiesComboBox DataSourceID="OdsProcessExtraList" ValueField="ProcessListId" TextField="ProcessListName" ValueType="System.Int32" />
                                 </dx:GridViewDataComboBoxColumn>
-                                <dx:GridViewDataSpinEditColumn VisibleIndex="13" EditFormSettings-VisibleIndex="13" FieldName="ProcessExpectedTime" Caption="Tg dự kiến" Width="88">
+                                <dx:GridViewDataSpinEditColumn VisibleIndex="13" EditFormSettings-VisibleIndex="13" FieldName="ProcessExpectedTime" Caption="Tg gia công dự kiến" Width="138">
                                     <PropertiesSpinEdit DecimalPlaces="2" NumberType="Float" DisplayFormatString="{0} giờ.">
                                         <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
                                     </PropertiesSpinEdit>

@@ -351,7 +351,7 @@
                                                             <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
                                                         </PropertiesDateEdit>
                                                     </dx:GridViewDataDateColumn>
-                                                    <dx:GridViewDataSpinEditColumn FieldName="ProcessExpectedTime" Caption="Tg dự kiến" Width="88" EditFormSettings-Visible="False">
+                                                    <dx:GridViewDataSpinEditColumn FieldName="ProcessExpectedTime" Caption="Tg gia công dự kiến" Width="100" EditFormSettings-Visible="False">
                                                         <PropertiesSpinEdit DecimalPlaces="2" NumberType="Float" DisplayFormatString="{0} giờ.">
                                                         </PropertiesSpinEdit>
                                                     </dx:GridViewDataSpinEditColumn>
