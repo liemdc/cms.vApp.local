@@ -55,6 +55,7 @@ public partial class EmployeeObject
     public Nullable<int> EmployeeGender { get; set; }
     public string EmployeeTel { get; set; }
     public string EmployeeDescription { get; set; }
+    public string EmployeeStatus { get; set; }
     public Nullable<decimal> ProcessTotal { get; set; }
     public Nullable<decimal> TaskTotal { get; set; }
     public Nullable<DateTime> DateBegin { get; set; }

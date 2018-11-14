@@ -7,7 +7,7 @@ using System.Web;
 public class EmployeeModels {
     public static List<EmployeeObject> EmployeeList() {        
         return LINQData.db.PM_ProjectEmployees.Select(s => new EmployeeObject {
-            EmployeeId = s.EmployeeID, EmployeeCode = s.EmployeeCode, EmployeeLastName = s.EmployeeLastName, EmployeeFirstName = s.EmployeeFirstName, EmployeeTel = s.EmployeeTel, EmployeeDateOfBirth = s.EmployeeDateOfBirth, EmployeeGender = s.EmployeeGender, EmployeeDescription = s.EmployeeDescription
+            EmployeeId = s.EmployeeID, EmployeeCode = s.EmployeeCode, EmployeeLastName = s.EmployeeLastName, EmployeeFirstName = s.EmployeeFirstName, EmployeeTel = s.EmployeeTel, EmployeeDateOfBirth = s.EmployeeDateOfBirth, EmployeeGender = s.EmployeeGender, EmployeeStatus = s.EmployeeStatus, EmployeeDescription = s.EmployeeDescription
         }).OrderBy(o => o.EmployeeCode).ToList();
     }
 	public static List<EmployeeObject> MinEmployeeList() {        
@@ -16,13 +16,13 @@ public class EmployeeModels {
         }).OrderBy(o => o.EmployeeFullName).ToList();
     }
 
-    public static void EmployeeCreated(string EmployeeCode, string EmployeeLastName, string EmployeeFirstName, string EmployeeTel, DateTime EmployeeDateOfBirth, int EmployeeGender, string EmployeeDescription) {
+    public static void EmployeeCreated(string EmployeeCode, string EmployeeLastName, string EmployeeFirstName, string EmployeeTel, DateTime EmployeeDateOfBirth, int EmployeeGender, string EmployeeStatus, string EmployeeDescription) {
         LINQData.db.PM_ProjectEmployees.InsertOnSubmit(new PM_ProjectEmployee() { 
-            EmployeeCode = EmployeeCode, EmployeeLastName = EmployeeLastName, EmployeeFirstName = EmployeeFirstName, EmployeeFullName = string.Format("{0} {1}", EmployeeLastName, EmployeeFirstName), EmployeeTel = EmployeeTel, EmployeeDateOfBirth = EmployeeDateOfBirth, EmployeeGender = EmployeeGender, EmployeeDescription = EmployeeDescription
+            EmployeeCode = EmployeeCode, EmployeeLastName = EmployeeLastName, EmployeeFirstName = EmployeeFirstName, EmployeeFullName = string.Format("{0} {1}", EmployeeLastName, EmployeeFirstName), EmployeeTel = EmployeeTel, EmployeeDateOfBirth = EmployeeDateOfBirth, EmployeeGender = EmployeeGender, EmployeeStatus = EmployeeStatus, EmployeeDescription = EmployeeDescription
         });
         LINQData.db.SubmitChanges();
     }
-    public static void EmployeeUpdated(int EmployeeId, string EmployeeCode, string EmployeeLastName, string EmployeeFirstName, string EmployeeTel, DateTime EmployeeDateOfBirth, int EmployeeGender, string EmployeeDescription) {
+    public static void EmployeeUpdated(int EmployeeId, string EmployeeCode, string EmployeeLastName, string EmployeeFirstName, string EmployeeTel, DateTime EmployeeDateOfBirth, int EmployeeGender, string EmployeeStatus, string EmployeeDescription) {
         PM_ProjectEmployee Employee = LINQData.db.PM_ProjectEmployees.FirstOrDefault(fod => fod.EmployeeID == EmployeeId);
         if (Employee != null) {
             Employee.EmployeeCode = EmployeeCode;
@@ -32,6 +32,7 @@ public class EmployeeModels {
             Employee.EmployeeTel = EmployeeTel;
             Employee.EmployeeDateOfBirth = EmployeeDateOfBirth;
             Employee.EmployeeGender = EmployeeGender;
+            Employee.EmployeeStatus = EmployeeStatus;
             Employee.EmployeeDescription = EmployeeDescription;
             LINQData.db.SubmitChanges();
         }
@@ -87,7 +88,7 @@ public class EmployeeModels {
     public static List<EmployeeObject> MinEmployeeListBySubListId(int SubProcessListID) {
         List<int> NotIn = LINQData.db.PM_ProjectEmployeeProcesses.Where(w => w.ProcessListID == SubProcessListID).Select(s => s.EmployeeID).ToList();
         return LINQData.db.PM_ProjectEmployees.Where(w => !NotIn.Contains(w.EmployeeID)).Select(s => new EmployeeObject {
-            EmployeeId = s.EmployeeID, EmployeeCode = s.EmployeeCode, EmployeeFullName = s.EmployeeFullName
+            EmployeeId = s.EmployeeID, EmployeeCode = s.EmployeeCode, EmployeeFullName = s.EmployeeFullName, EmployeeStatus = s.EmployeeStatus
         }).OrderBy(o => o.EmployeeFullName).ToList();
     }
     public static List<EmployeeObject> EmployeeProcessList(int SubProcessListID) {

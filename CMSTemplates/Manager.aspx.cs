@@ -37,7 +37,7 @@ public partial class CMSTemplates_Manager : TemplatePage {
                 e.Items.Remove(e.Items.FindByCommand(GridViewContextMenuCommand.NewRow));
             if (!CMSContext.CurrentUser.IsAuthorizedPerResource("NhanVien", "Sua"))
                 e.Items.Remove(e.Items.FindByCommand(GridViewContextMenuCommand.EditRow));
-            if (!CMSContext.CurrentUser.IsAuthorizedPerResource("NhanVien", "Xoa"))
+            //if (!CMSContext.CurrentUser.IsAuthorizedPerResource("NhanVien", "Xoa"))
                 e.Items.Remove(e.Items.FindByCommand(GridViewContextMenuCommand.DeleteRow));
         }
     }

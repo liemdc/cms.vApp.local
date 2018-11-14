@@ -224,7 +224,8 @@
                                                                     <PropertiesComboBox DataSourceID="MinEmployeeList" TextField="EmployeeFullName" ValueField="EmployeeId" TextFormatString="{0}">
                                                                         <Columns>
                                                                             <dx:ListBoxColumn FieldName="EmployeeCode" Caption="Mã số" Width="38" />
-                                                                            <dx:ListBoxColumn FieldName="EmployeeFullName" Caption="Họ tên" />                                            
+                                                                            <dx:ListBoxColumn FieldName="EmployeeFullName" Caption="Họ tên" />   
+                                                                            <dx:ListBoxColumn FieldName="EmployeeStatus" Caption="Hiện tại" />                                                                            
                                                                         </Columns>
                                                                         <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
                                                                     </PropertiesComboBox>
@@ -320,7 +321,16 @@
                                         </Items>
                                     </PropertiesComboBox>
                                 </dx:GridViewDataComboBoxColumn>
-                                <dx:GridViewDataDateColumn VisibleIndex="7" EditFormSettings-ColumnSpan="3" FieldName="EmployeeDescription" Caption="Giới thiệu" />
+                                <dx:GridViewDataComboBoxColumn VisibleIndex="7" FieldName="EmployeeStatus" Caption="Hiện tại" Width="100">
+                                    <PropertiesComboBox DropDownStyle="DropDownList">
+                                        <Items>
+                                            <dx:ListEditItem Value="Đang làm" Text="Đang làm" />
+                                            <dx:ListEditItem Value="Đã Nghỉ việc" Text="Đã Nghỉ việc" />
+                                            <dx:ListEditItem Value="Không xác định" Text="Không xác định" />
+                                        </Items>
+                                    </PropertiesComboBox>
+                                </dx:GridViewDataComboBoxColumn>
+                                <dx:GridViewDataTextColumn VisibleIndex="7" EditFormSettings-ColumnSpan="2" FieldName="EmployeeDescription" Caption="Giới thiệu" />
                             </Columns>
                             <ClientSideEvents Init="OnInit" BeginCallback="OnBeginCallback" EndCallback="OnEndCallback" />
                             <SettingsContextMenu Enabled="true" />
@@ -336,6 +346,7 @@
                                 <asp:Parameter Name="EmployeeTel" Type="String" />  
                                 <asp:Parameter Name="EmployeeDateOfBirth" Type="DateTime" />
                                 <asp:Parameter Name="EmployeeGender" Type="Int32" />
+                                <asp:Parameter Name="EmployeeStatus" Type="String" />
                                 <asp:Parameter Name="EmployeeDescription" Type="String" />                  
                             </InsertParameters>
                             <UpdateParameters>
@@ -346,6 +357,7 @@
                                 <asp:Parameter Name="EmployeeTel" Type="String" />  
                                 <asp:Parameter Name="EmployeeDateOfBirth" Type="DateTime" />
                                 <asp:Parameter Name="EmployeeGender" Type="Int32" />
+                                <asp:Parameter Name="EmployeeStatus" Type="String" />
                                 <asp:Parameter Name="EmployeeDescription" Type="String" />         
                             </UpdateParameters>
                             <DeleteParameters>

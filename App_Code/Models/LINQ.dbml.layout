@@ -26,12 +26,6 @@
         <elementListCompartment Id="da7262bb-d632-44a5-9c9b-462a5bb0674a" absoluteBounds="6.265, 7.71, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="695306dd-c97d-49de-8431-fcdedc42dcc7" absoluteBounds="9.25, 15.5, 2, 2.7324039713541666">
-      <DataClassMoniker Name="/LINQDataContext/PM_ProjectEmployee" />
-      <nestedChildShapes>
-        <elementListCompartment Id="6687bbb6-e002-4ae3-8301-57f5e942e384" absoluteBounds="9.265, 15.96, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
     <classShape Id="ee7ff818-17e8-421e-9958-0c9de49b0b8d" absoluteBounds="18, 9.75, 2, 1.3862939453125023">
       <DataClassMoniker Name="/LINQDataContext/PM_ProjectEmployeeProcess" />
       <nestedChildShapes>
@@ -111,34 +105,6 @@
         <classShapeMoniker Id="ce283550-669f-43f8-a25f-4e566650ef11" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(11.25 : 15.5); (11.625 : 15.125); (19 : 15.125); (19 : 11.1362939453125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/LINQDataContext/PM_ProjectEmployee/PM_ProjectEmployee_PM_ProjectEmployeeProcess" />
-      <nodes>
-        <classShapeMoniker Id="695306dd-c97d-49de-8431-fcdedc42dcc7" />
-        <classShapeMoniker Id="ee7ff818-17e8-421e-9958-0c9de49b0b8d" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(11.25 : 15.5169220769231); (11.6285744349011 : 15.138347642022 : JumpStart); (11.7464255650989 : 15.0204965118242 : JumpEnd); (11.84375 : 14.9231720769231); (11.84375 : 8.92385986328125); (12 : 8.92385986328125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/LINQDataContext/PM_ProjectEmployee/PM_ProjectEmployee_PM_ProjectProcessDetail" />
-      <nodes>
-        <classShapeMoniker Id="695306dd-c97d-49de-8431-fcdedc42dcc7" />
-        <classShapeMoniker Id="b28833d3-e3da-4968-8bf2-9b452e45b7c9" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(11.25 : 15.5092297692308); (11.6285744349011 : 15.1306553343297 : JumpStart); (11.7464255650989 : 15.0128042041319 : JumpEnd); (11.78125 : 14.9779797692308); (11.78125 : 8.92385986328125); (12 : 8.92385986328125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/LINQDataContext/PM_ProjectEmployee/PM_ProjectEmployee_PM_ProjectProcessDetail1" />
-      <nodes>
-        <classShapeMoniker Id="695306dd-c97d-49de-8431-fcdedc42dcc7" />
-        <classShapeMoniker Id="b28833d3-e3da-4968-8bf2-9b452e45b7c9" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(11.19 : 15.5); (11.625 : 15.065); (11.625 : 8.92385986328125); (12 : 8.92385986328125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/LINQDataContext/PM_ProjectEmployee/PM_ProjectEmployee_PM_ProjectProcessDetail2" />
-      <nodes>
-        <classShapeMoniker Id="695306dd-c97d-49de-8431-fcdedc42dcc7" />
-        <classShapeMoniker Id="b28833d3-e3da-4968-8bf2-9b452e45b7c9" />
-      </nodes>
-    </associationConnector>
     <associationConnector edgePoints="[(5.5 : 9.81814697265625); (6.25 : 9.81814697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/LINQDataContext/PM_Project/PM_Project_PM_ProjectRolePermission" />
       <nodes>
@@ -160,13 +126,6 @@
         <classShapeMoniker Id="b28833d3-e3da-4968-8bf2-9b452e45b7c9" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(11.25 : 16.9251462933694); (12 : 16.9251462933694)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/LINQDataContext/PM_ProjectEmployee/PM_ProjectEmployee_IV_tblTaskHistory" />
-      <nodes>
-        <classShapeMoniker Id="695306dd-c97d-49de-8431-fcdedc42dcc7" />
-        <classShapeMoniker Id="d80f7e36-7b0a-41bb-b483-c74562cb8274" />
-      </nodes>
-    </associationConnector>
     <associationConnector edgePoints="[(11.25 : 22.9527498372396); (13 : 22.9527498372396); (13 : 18.2324039713542)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/LINQDataContext/IV_tblTask/IV_tblTask_IV_tblTaskHistory" />
       <nodes>
@@ -174,7 +133,7 @@
         <classShapeMoniker Id="d80f7e36-7b0a-41bb-b483-c74562cb8274" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(8.5 : 15.28125); (11.3854166666667 : 15.28125 : JumpStart); (11.5613131025641 : 15.28125 : JumpEnd); (16.125 : 15.28125); (16.125 : 14.6554996744792)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(7.5 : 15); (7.5 : 14.4917626953125); (8.79166666666667 : 14.4917626953125 : JumpStart); (8.95833333333333 : 14.4917626953125 : JumpEnd); (8.97916666666667 : 14.4917626953125 : JumpStart); (9.14583333333333 : 14.4917626953125 : JumpEnd); (11.5416666666667 : 14.4917626953125 : JumpStart); (11.8908004072516 : 14.4917626953125 : JumpEnd); (14.0416641666667 : 14.4917626953125 : JumpStart); (14.2083308333333 : 14.4917626953125 : JumpEnd); (14.75 : 14.4917626953125); (14.75 : 13.5777498372396); (15.125 : 13.5777498372396)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/LINQDataContext/PM_ProjectMold/PM_ProjectMold_IV_tblMoldsProcess" />
       <nodes>
         <classShapeMoniker Id="c794bf28-916e-40e1-983d-bdcd395421eb" />
@@ -208,7 +167,7 @@
         <classShapeMoniker Id="ee7ff818-17e8-421e-9958-0c9de49b0b8d" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(13.25 : 2.75); (13.25 : 2.32812700009003); (12.1770833333333 : 2.32812700009003 : JumpStart); (12.0104166666667 : 2.32812700009003 : JumpEnd); (11.25 : 2.32812700009003)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(13.25 : 2.75); (13.25 : 2.32812700009003); (11.25 : 2.32812700009003)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/LINQDataContext/PM_ProjectProcessList/PM_ProjectProcessList_PM_ProjectSubProcess" />
       <nodes>
         <classShapeMoniker Id="52e51bc0-3ded-4fd1-81b7-2f5f95c54b02" />
@@ -228,7 +187,7 @@
         <elementListCompartment Id="15ed0bc4-4fca-4e79-9a8d-43994e84ca79" absoluteBounds="9.265, 19.46, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(11.25 : 19.0612992741887); (11.6875 : 18.6237992741887); (11.6875 : 10.1670417949219); (11.6979166666667 : 10.1670417949219 : JumpStart); (11.9270833333333 : 10.1670417949219 : JumpEnd); (12 : 10.1670417949219)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(11.25 : 19); (11.625 : 18.625); (11.625 : 8.92385986328125); (12 : 8.92385986328125)]" fixedFrom="NotFixed" fixedTo="Algorithm">
       <AssociationMoniker Name="/LINQDataContext/PM_ProjectMachinery/PM_ProjectMachinery_PM_ProjectProcessDetail" />
       <nodes>
         <classShapeMoniker Id="ebb4d5a9-f584-4e6d-b153-1ac4e8a90434" />
@@ -255,35 +214,35 @@
         <classShapeMoniker Id="b28833d3-e3da-4968-8bf2-9b452e45b7c9" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(8.5 : 12.9958813476563); (9.25 : 12.9958813476563)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(8.5 : 12.9958813476563); (8.79166666666667 : 12.9958813476563 : JumpStart); (8.95833333333333 : 12.9958813476563 : JumpEnd); (8.97916666666667 : 12.9958813476563 : JumpStart); (9.14583333333333 : 12.9958813476563 : JumpEnd); (9.25 : 12.9958813476563)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/LINQDataContext/PM_ProjectCustomer/PM_ProjectCustomer_PM_ProjectTask" />
       <nodes>
         <classShapeMoniker Id="feb7b1eb-2576-49e1-9026-29c0c98c0925" />
         <classShapeMoniker Id="19610a7c-278a-44cd-a485-f731ce46f235" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(8.5 : 15); (8.875 : 14.625); (8.875 : 8.27918867382813); (9.25 : 8.27918867382813)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(8.5 : 15); (8.875 : 14.625); (8.875 : 8.93338134765625); (9.25 : 8.93338134765625)]" fixedFrom="NotFixed" fixedTo="Algorithm">
       <AssociationMoniker Name="/LINQDataContext/PM_ProjectMold/PM_ProjectMold_PM_ProjectTask" />
       <nodes>
         <classShapeMoniker Id="c794bf28-916e-40e1-983d-bdcd395421eb" />
         <classShapeMoniker Id="19610a7c-278a-44cd-a485-f731ce46f235" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 6.46875); (4.41666666666667 : 6.46875 : JumpStart); (4.58333333333333 : 6.46875 : JumpEnd); (9.25 : 6.46875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 6.46875); (4.41666666666667 : 6.46875 : JumpStart); (4.58333333333333 : 6.46875 : JumpEnd); (9.25 : 6.46875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/LINQDataContext/CMS_User/CMS_User_PM_ProjectTask" />
       <nodes>
         <classShapeMoniker Id="eaebb0de-95a0-4537-a6d8-1bd8e67c6c43" />
         <classShapeMoniker Id="19610a7c-278a-44cd-a485-f731ce46f235" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 11.3181062825521); (9.25 : 11.3181062825521)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(2.75 : 11.3181062825521); (8.79166666666667 : 11.3181062825521 : JumpStart); (8.95833333333333 : 11.3181062825521 : JumpEnd); (9.25 : 11.3181062825521)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/LINQDataContext/CMS_User/CMS_User_PM_ProjectTask1" />
       <nodes>
         <classShapeMoniker Id="eaebb0de-95a0-4537-a6d8-1bd8e67c6c43" />
         <classShapeMoniker Id="19610a7c-278a-44cd-a485-f731ce46f235" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 6.765625); (4.41666666666667 : 6.765625 : JumpStart); (4.58333333333333 : 6.765625 : JumpEnd); (9.25 : 6.765625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 6.765625); (4.41666666666667 : 6.765625 : JumpStart); (4.58333333333333 : 6.765625 : JumpEnd); (9.25 : 6.765625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/LINQDataContext/CMS_User/CMS_User_PM_ProjectTask2" />
       <nodes>
         <classShapeMoniker Id="eaebb0de-95a0-4537-a6d8-1bd8e67c6c43" />
@@ -304,7 +263,7 @@
         <classShapeMoniker Id="19610a7c-278a-44cd-a485-f731ce46f235" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(8.5 : 18.3115374615385); (9.0625 : 17.7490374615385); (9.0625 : 10.0513012695313); (9.25 : 10.0513012695313)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(8.5 : 18.3115374615385); (9.0625 : 17.7490374615385); (9.0625 : 11.6188240214844); (9.25 : 11.6188240214844)]" fixedFrom="NotFixed" fixedTo="Algorithm">
       <AssociationMoniker Name="/LINQDataContext/PM_ProjectTaskStatus/PM_ProjectTaskStatus_PM_ProjectTask" />
       <nodes>
         <classShapeMoniker Id="a5b88bde-ae2b-46bb-8dc2-99d57e3cf3d3" />
@@ -317,18 +276,59 @@
         <elementListCompartment Id="69f0b5db-896f-4c01-8b48-541257f2df2c" absoluteBounds="15.64, 7.21, 1.9700000000000002, 5.0569254557291661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(14.1875025 : 5.09780110677083); (14.1875025 : 11.8885725911458); (15.625 : 11.8885725911458)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(14.1875025 : 5.09780110677083); (14.1875025 : 11.8885725911458); (15.625 : 11.8885725911458)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/LINQDataContext/PM_ProjectProcessList/PM_ProjectProcessList_PM_ProjectProcess" />
       <nodes>
         <classShapeMoniker Id="52e51bc0-3ded-4fd1-81b7-2f5f95c54b02" />
         <classShapeMoniker Id="c850fa6c-6671-4cd0-9dde-a2583152da16" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(11.25 : 11.5868961588542); (11.5416666666667 : 11.5868961588542 : JumpStart); (11.9270833333333 : 11.5868961588542 : JumpEnd); (14.0416641666667 : 11.5868961588542 : JumpStart); (14.2708358333333 : 11.5868961588542 : JumpEnd); (15.625 : 11.5868961588542)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(11.25 : 11.5868961588542); (11.5416666666667 : 11.5868961588542 : JumpStart); (12.0208333333333 : 11.5868961588542 : JumpEnd); (14.0416641666667 : 11.5868961588542 : JumpStart); (14.2708358333333 : 11.5868961588542 : JumpEnd); (15.625 : 11.5868961588542)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/LINQDataContext/PM_ProjectTask/PM_ProjectTask_PM_ProjectProcess" />
       <nodes>
         <classShapeMoniker Id="19610a7c-278a-44cd-a485-f731ce46f235" />
         <classShapeMoniker Id="c850fa6c-6671-4cd0-9dde-a2583152da16" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="231c23cc-2927-4a92-b615-7560f48712f1" absoluteBounds="9.25, 15, 2, 2.9247054036458331">
+      <DataClassMoniker Name="/LINQDataContext/PM_ProjectEmployee" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5e117361-44a0-48b7-9133-c91f30509a54" absoluteBounds="9.265, 15.46, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(11.25 : 15.21875); (11.5416666666667 : 15.21875 : JumpStart); (11.7083333333333 : 15.21875 : JumpEnd); (14.0416641666667 : 15.21875 : JumpStart); (14.2083308333333 : 15.21875 : JumpEnd); (19 : 15.21875); (19 : 11.1362939453125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/LINQDataContext/PM_ProjectEmployee/PM_ProjectEmployee_PM_ProjectEmployeeProcess" />
+      <nodes>
+        <classShapeMoniker Id="231c23cc-2927-4a92-b615-7560f48712f1" />
+        <classShapeMoniker Id="ee7ff818-17e8-421e-9958-0c9de49b0b8d" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11.25 : 15.0492297692308); (11.5660744349011 : 14.7331553343296 : JumpStart); (11.6839255650989 : 14.6153042041319 : JumpEnd); (11.9375 : 14.3617297692308); (11.9375 : 10.1670417949219); (12 : 10.1670417949219)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/LINQDataContext/PM_ProjectEmployee/PM_ProjectEmployee_PM_ProjectProcessDetail" />
+      <nodes>
+        <classShapeMoniker Id="231c23cc-2927-4a92-b615-7560f48712f1" />
+        <classShapeMoniker Id="b28833d3-e3da-4968-8bf2-9b452e45b7c9" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11.25 : 15); (11.5660744349011 : 14.6839255650989 : JumpStart); (11.6839255650989 : 14.5660744349011 : JumpEnd); (11.875 : 14.375); (11.875 : 10.1670417949219); (12 : 10.1670417949219)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/LINQDataContext/PM_ProjectEmployee/PM_ProjectEmployee_PM_ProjectProcessDetail1" />
+      <nodes>
+        <classShapeMoniker Id="231c23cc-2927-4a92-b615-7560f48712f1" />
+        <classShapeMoniker Id="b28833d3-e3da-4968-8bf2-9b452e45b7c9" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11.2315384615385 : 15); (11.5660744349011 : 14.6654640266373 : JumpStart); (11.6839255650989 : 14.5476128964396 : JumpEnd); (11.78125 : 14.4502884615385); (11.78125 : 10.1670417949219); (12 : 10.1670417949219)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/LINQDataContext/PM_ProjectEmployee/PM_ProjectEmployee_PM_ProjectProcessDetail2" />
+      <nodes>
+        <classShapeMoniker Id="231c23cc-2927-4a92-b615-7560f48712f1" />
+        <classShapeMoniker Id="b28833d3-e3da-4968-8bf2-9b452e45b7c9" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11.25 : 16.7123527018229); (11.5416666666667 : 16.7123527018229 : JumpStart); (11.7083333333333 : 16.7123527018229 : JumpEnd); (12 : 16.7123527018229)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/LINQDataContext/PM_ProjectEmployee/PM_ProjectEmployee_IV_tblTaskHistory" />
+      <nodes>
+        <classShapeMoniker Id="231c23cc-2927-4a92-b615-7560f48712f1" />
+        <classShapeMoniker Id="d80f7e36-7b0a-41bb-b483-c74562cb8274" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>

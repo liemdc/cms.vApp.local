@@ -112,6 +112,13 @@ IF EXISTS ( SELECT object_id FROM sys.columns WHERE object_id = OBJECT_ID(N'PM_P
 BEGIN EXEC sp_rename 'PM_ProjectProcess.DXGioNhanThucTe', 'DXNgayNhanThucTe', 'COLUMN'
 	PRINT ('RENAME Column DXGioNhanThucTe +> DXNgayNhanThucTe;');
 END
+-- 20181114
+-- Add Column EmployeeStatus NVARCHAR (25)
+IF NOT EXISTS ( SELECT object_id FROM sys.columns WHERE object_id = OBJECT_ID(N'PM_ProjectEmployee') AND name = 'EmployeeStatus' )
+BEGIN ALTER TABLE PM_ProjectEmployee
+	ADD EmployeeStatus NVARCHAR (25);
+	PRINT ('ADD EmployeeStatus NVARCHAR (25);');
+END
 
 
 

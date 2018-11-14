@@ -22,7 +22,7 @@ namespace Models
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="cms.vapp.local")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="Final.vApp.Local")]
 	public partial class LINQDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -42,9 +42,6 @@ namespace Models
     partial void InsertPM_ProjectDetail(PM_ProjectDetail instance);
     partial void UpdatePM_ProjectDetail(PM_ProjectDetail instance);
     partial void DeletePM_ProjectDetail(PM_ProjectDetail instance);
-    partial void InsertPM_ProjectEmployee(PM_ProjectEmployee instance);
-    partial void UpdatePM_ProjectEmployee(PM_ProjectEmployee instance);
-    partial void DeletePM_ProjectEmployee(PM_ProjectEmployee instance);
     partial void InsertPM_ProjectEmployeeProcess(PM_ProjectEmployeeProcess instance);
     partial void UpdatePM_ProjectEmployeeProcess(PM_ProjectEmployeeProcess instance);
     partial void DeletePM_ProjectEmployeeProcess(PM_ProjectEmployeeProcess instance);
@@ -93,6 +90,9 @@ namespace Models
     partial void InsertPM_ProjectProcess(PM_ProjectProcess instance);
     partial void UpdatePM_ProjectProcess(PM_ProjectProcess instance);
     partial void DeletePM_ProjectProcess(PM_ProjectProcess instance);
+    partial void InsertPM_ProjectEmployee(PM_ProjectEmployee instance);
+    partial void UpdatePM_ProjectEmployee(PM_ProjectEmployee instance);
+    partial void DeletePM_ProjectEmployee(PM_ProjectEmployee instance);
     #endregion
 		
 		public LINQDataContext() : 
@@ -154,14 +154,6 @@ namespace Models
 			get
 			{
 				return this.GetTable<PM_ProjectDetail>();
-			}
-		}
-		
-		public System.Data.Linq.Table<PM_ProjectEmployee> PM_ProjectEmployees
-		{
-			get
-			{
-				return this.GetTable<PM_ProjectEmployee>();
 			}
 		}
 		
@@ -290,6 +282,14 @@ namespace Models
 			get
 			{
 				return this.GetTable<PM_ProjectProcess>();
+			}
+		}
+		
+		public System.Data.Linq.Table<PM_ProjectEmployee> PM_ProjectEmployees
+		{
+			get
+			{
+				return this.GetTable<PM_ProjectEmployee>();
 			}
 		}
 	}
@@ -1442,424 +1442,6 @@ namespace Models
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PM_ProjectEmployee")]
-	public partial class PM_ProjectEmployee : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _EmployeeID;
-		
-		private string _EmployeeCode;
-		
-		private string _EmployeeFullName;
-		
-		private string _EmployeeFirstName;
-		
-		private string _EmployeeLastName;
-		
-		private System.Nullable<System.DateTime> _EmployeeDateOfBirth;
-		
-		private System.Nullable<int> _EmployeeGender;
-		
-		private string _EmployeeTel;
-		
-		private System.Nullable<int> _EmployeeAvatar;
-		
-		private string _EmployeeDescription;
-		
-		private EntitySet<PM_ProjectEmployeeProcess> _PM_ProjectEmployeeProcesses;
-		
-		private EntitySet<PM_ProjectProcessDetail> _PM_ProjectProcessDetails;
-		
-		private EntitySet<PM_ProjectProcessDetail> _PM_ProjectProcessDetails1;
-		
-		private EntitySet<PM_ProjectProcessDetail> _PM_ProjectProcessDetails2;
-		
-		private EntitySet<IV_tblTaskHistory> _IV_tblTaskHistories;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnEmployeeIDChanging(int value);
-    partial void OnEmployeeIDChanged();
-    partial void OnEmployeeCodeChanging(string value);
-    partial void OnEmployeeCodeChanged();
-    partial void OnEmployeeFullNameChanging(string value);
-    partial void OnEmployeeFullNameChanged();
-    partial void OnEmployeeFirstNameChanging(string value);
-    partial void OnEmployeeFirstNameChanged();
-    partial void OnEmployeeLastNameChanging(string value);
-    partial void OnEmployeeLastNameChanged();
-    partial void OnEmployeeDateOfBirthChanging(System.Nullable<System.DateTime> value);
-    partial void OnEmployeeDateOfBirthChanged();
-    partial void OnEmployeeGenderChanging(System.Nullable<int> value);
-    partial void OnEmployeeGenderChanged();
-    partial void OnEmployeeTelChanging(string value);
-    partial void OnEmployeeTelChanged();
-    partial void OnEmployeeAvatarChanging(System.Nullable<int> value);
-    partial void OnEmployeeAvatarChanged();
-    partial void OnEmployeeDescriptionChanging(string value);
-    partial void OnEmployeeDescriptionChanged();
-    #endregion
-		
-		public PM_ProjectEmployee()
-		{
-			this._PM_ProjectEmployeeProcesses = new EntitySet<PM_ProjectEmployeeProcess>(new Action<PM_ProjectEmployeeProcess>(this.attach_PM_ProjectEmployeeProcesses), new Action<PM_ProjectEmployeeProcess>(this.detach_PM_ProjectEmployeeProcesses));
-			this._PM_ProjectProcessDetails = new EntitySet<PM_ProjectProcessDetail>(new Action<PM_ProjectProcessDetail>(this.attach_PM_ProjectProcessDetails), new Action<PM_ProjectProcessDetail>(this.detach_PM_ProjectProcessDetails));
-			this._PM_ProjectProcessDetails1 = new EntitySet<PM_ProjectProcessDetail>(new Action<PM_ProjectProcessDetail>(this.attach_PM_ProjectProcessDetails1), new Action<PM_ProjectProcessDetail>(this.detach_PM_ProjectProcessDetails1));
-			this._PM_ProjectProcessDetails2 = new EntitySet<PM_ProjectProcessDetail>(new Action<PM_ProjectProcessDetail>(this.attach_PM_ProjectProcessDetails2), new Action<PM_ProjectProcessDetail>(this.detach_PM_ProjectProcessDetails2));
-			this._IV_tblTaskHistories = new EntitySet<IV_tblTaskHistory>(new Action<IV_tblTaskHistory>(this.attach_IV_tblTaskHistories), new Action<IV_tblTaskHistory>(this.detach_IV_tblTaskHistories));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int EmployeeID
-		{
-			get
-			{
-				return this._EmployeeID;
-			}
-			set
-			{
-				if ((this._EmployeeID != value))
-				{
-					this.OnEmployeeIDChanging(value);
-					this.SendPropertyChanging();
-					this._EmployeeID = value;
-					this.SendPropertyChanged("EmployeeID");
-					this.OnEmployeeIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeCode", DbType="VarChar(25)")]
-		public string EmployeeCode
-		{
-			get
-			{
-				return this._EmployeeCode;
-			}
-			set
-			{
-				if ((this._EmployeeCode != value))
-				{
-					this.OnEmployeeCodeChanging(value);
-					this.SendPropertyChanging();
-					this._EmployeeCode = value;
-					this.SendPropertyChanged("EmployeeCode");
-					this.OnEmployeeCodeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeFullName", DbType="NVarChar(100)")]
-		public string EmployeeFullName
-		{
-			get
-			{
-				return this._EmployeeFullName;
-			}
-			set
-			{
-				if ((this._EmployeeFullName != value))
-				{
-					this.OnEmployeeFullNameChanging(value);
-					this.SendPropertyChanging();
-					this._EmployeeFullName = value;
-					this.SendPropertyChanged("EmployeeFullName");
-					this.OnEmployeeFullNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeFirstName", DbType="NVarChar(50)")]
-		public string EmployeeFirstName
-		{
-			get
-			{
-				return this._EmployeeFirstName;
-			}
-			set
-			{
-				if ((this._EmployeeFirstName != value))
-				{
-					this.OnEmployeeFirstNameChanging(value);
-					this.SendPropertyChanging();
-					this._EmployeeFirstName = value;
-					this.SendPropertyChanged("EmployeeFirstName");
-					this.OnEmployeeFirstNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeLastName", DbType="NVarChar(50)")]
-		public string EmployeeLastName
-		{
-			get
-			{
-				return this._EmployeeLastName;
-			}
-			set
-			{
-				if ((this._EmployeeLastName != value))
-				{
-					this.OnEmployeeLastNameChanging(value);
-					this.SendPropertyChanging();
-					this._EmployeeLastName = value;
-					this.SendPropertyChanged("EmployeeLastName");
-					this.OnEmployeeLastNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeDateOfBirth", DbType="Date")]
-		public System.Nullable<System.DateTime> EmployeeDateOfBirth
-		{
-			get
-			{
-				return this._EmployeeDateOfBirth;
-			}
-			set
-			{
-				if ((this._EmployeeDateOfBirth != value))
-				{
-					this.OnEmployeeDateOfBirthChanging(value);
-					this.SendPropertyChanging();
-					this._EmployeeDateOfBirth = value;
-					this.SendPropertyChanged("EmployeeDateOfBirth");
-					this.OnEmployeeDateOfBirthChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeGender", DbType="Int")]
-		public System.Nullable<int> EmployeeGender
-		{
-			get
-			{
-				return this._EmployeeGender;
-			}
-			set
-			{
-				if ((this._EmployeeGender != value))
-				{
-					this.OnEmployeeGenderChanging(value);
-					this.SendPropertyChanging();
-					this._EmployeeGender = value;
-					this.SendPropertyChanged("EmployeeGender");
-					this.OnEmployeeGenderChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeTel", DbType="NVarChar(50)")]
-		public string EmployeeTel
-		{
-			get
-			{
-				return this._EmployeeTel;
-			}
-			set
-			{
-				if ((this._EmployeeTel != value))
-				{
-					this.OnEmployeeTelChanging(value);
-					this.SendPropertyChanging();
-					this._EmployeeTel = value;
-					this.SendPropertyChanged("EmployeeTel");
-					this.OnEmployeeTelChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeAvatar", DbType="Int")]
-		public System.Nullable<int> EmployeeAvatar
-		{
-			get
-			{
-				return this._EmployeeAvatar;
-			}
-			set
-			{
-				if ((this._EmployeeAvatar != value))
-				{
-					this.OnEmployeeAvatarChanging(value);
-					this.SendPropertyChanging();
-					this._EmployeeAvatar = value;
-					this.SendPropertyChanged("EmployeeAvatar");
-					this.OnEmployeeAvatarChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeDescription", DbType="NVarChar(MAX)")]
-		public string EmployeeDescription
-		{
-			get
-			{
-				return this._EmployeeDescription;
-			}
-			set
-			{
-				if ((this._EmployeeDescription != value))
-				{
-					this.OnEmployeeDescriptionChanging(value);
-					this.SendPropertyChanging();
-					this._EmployeeDescription = value;
-					this.SendPropertyChanged("EmployeeDescription");
-					this.OnEmployeeDescriptionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PM_ProjectEmployee_PM_ProjectEmployeeProcess", Storage="_PM_ProjectEmployeeProcesses", ThisKey="EmployeeID", OtherKey="EmployeeID")]
-		public EntitySet<PM_ProjectEmployeeProcess> PM_ProjectEmployeeProcesses
-		{
-			get
-			{
-				return this._PM_ProjectEmployeeProcesses;
-			}
-			set
-			{
-				this._PM_ProjectEmployeeProcesses.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PM_ProjectEmployee_PM_ProjectProcessDetail", Storage="_PM_ProjectProcessDetails", ThisKey="EmployeeID", OtherKey="DetailOwnerM")]
-		public EntitySet<PM_ProjectProcessDetail> PM_ProjectProcessDetails
-		{
-			get
-			{
-				return this._PM_ProjectProcessDetails;
-			}
-			set
-			{
-				this._PM_ProjectProcessDetails.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PM_ProjectEmployee_PM_ProjectProcessDetail1", Storage="_PM_ProjectProcessDetails1", ThisKey="EmployeeID", OtherKey="DetailOwnerP")]
-		public EntitySet<PM_ProjectProcessDetail> PM_ProjectProcessDetails1
-		{
-			get
-			{
-				return this._PM_ProjectProcessDetails1;
-			}
-			set
-			{
-				this._PM_ProjectProcessDetails1.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PM_ProjectEmployee_PM_ProjectProcessDetail2", Storage="_PM_ProjectProcessDetails2", ThisKey="EmployeeID", OtherKey="DetailOwner")]
-		public EntitySet<PM_ProjectProcessDetail> PM_ProjectProcessDetails2
-		{
-			get
-			{
-				return this._PM_ProjectProcessDetails2;
-			}
-			set
-			{
-				this._PM_ProjectProcessDetails2.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PM_ProjectEmployee_IV_tblTaskHistory", Storage="_IV_tblTaskHistories", ThisKey="EmployeeID", OtherKey="HistoryEmployeeId")]
-		public EntitySet<IV_tblTaskHistory> IV_tblTaskHistories
-		{
-			get
-			{
-				return this._IV_tblTaskHistories;
-			}
-			set
-			{
-				this._IV_tblTaskHistories.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_PM_ProjectEmployeeProcesses(PM_ProjectEmployeeProcess entity)
-		{
-			this.SendPropertyChanging();
-			entity.PM_ProjectEmployee = this;
-		}
-		
-		private void detach_PM_ProjectEmployeeProcesses(PM_ProjectEmployeeProcess entity)
-		{
-			this.SendPropertyChanging();
-			entity.PM_ProjectEmployee = null;
-		}
-		
-		private void attach_PM_ProjectProcessDetails(PM_ProjectProcessDetail entity)
-		{
-			this.SendPropertyChanging();
-			entity.PM_ProjectEmployee = this;
-		}
-		
-		private void detach_PM_ProjectProcessDetails(PM_ProjectProcessDetail entity)
-		{
-			this.SendPropertyChanging();
-			entity.PM_ProjectEmployee = null;
-		}
-		
-		private void attach_PM_ProjectProcessDetails1(PM_ProjectProcessDetail entity)
-		{
-			this.SendPropertyChanging();
-			entity.PM_ProjectEmployee1 = this;
-		}
-		
-		private void detach_PM_ProjectProcessDetails1(PM_ProjectProcessDetail entity)
-		{
-			this.SendPropertyChanging();
-			entity.PM_ProjectEmployee1 = null;
-		}
-		
-		private void attach_PM_ProjectProcessDetails2(PM_ProjectProcessDetail entity)
-		{
-			this.SendPropertyChanging();
-			entity.PM_ProjectEmployee2 = this;
-		}
-		
-		private void detach_PM_ProjectProcessDetails2(PM_ProjectProcessDetail entity)
-		{
-			this.SendPropertyChanging();
-			entity.PM_ProjectEmployee2 = null;
-		}
-		
-		private void attach_IV_tblTaskHistories(IV_tblTaskHistory entity)
-		{
-			this.SendPropertyChanging();
-			entity.PM_ProjectEmployee = this;
-		}
-		
-		private void detach_IV_tblTaskHistories(IV_tblTaskHistory entity)
-		{
-			this.SendPropertyChanging();
-			entity.PM_ProjectEmployee = null;
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PM_ProjectEmployeeProcess")]
 	public partial class PM_ProjectEmployeeProcess : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -1872,9 +1454,9 @@ namespace Models
 		
 		private int _ProcessListID;
 		
-		private EntityRef<PM_ProjectEmployee> _PM_ProjectEmployee;
-		
 		private EntityRef<PM_ProjectProcessList> _PM_ProjectProcessList;
+		
+		private EntityRef<PM_ProjectEmployee> _PM_ProjectEmployee;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1890,8 +1472,8 @@ namespace Models
 		
 		public PM_ProjectEmployeeProcess()
 		{
-			this._PM_ProjectEmployee = default(EntityRef<PM_ProjectEmployee>);
 			this._PM_ProjectProcessList = default(EntityRef<PM_ProjectProcessList>);
+			this._PM_ProjectEmployee = default(EntityRef<PM_ProjectEmployee>);
 			OnCreated();
 		}
 		
@@ -1963,40 +1545,6 @@ namespace Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PM_ProjectEmployee_PM_ProjectEmployeeProcess", Storage="_PM_ProjectEmployee", ThisKey="EmployeeID", OtherKey="EmployeeID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public PM_ProjectEmployee PM_ProjectEmployee
-		{
-			get
-			{
-				return this._PM_ProjectEmployee.Entity;
-			}
-			set
-			{
-				PM_ProjectEmployee previousValue = this._PM_ProjectEmployee.Entity;
-				if (((previousValue != value) 
-							|| (this._PM_ProjectEmployee.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._PM_ProjectEmployee.Entity = null;
-						previousValue.PM_ProjectEmployeeProcesses.Remove(this);
-					}
-					this._PM_ProjectEmployee.Entity = value;
-					if ((value != null))
-					{
-						value.PM_ProjectEmployeeProcesses.Add(this);
-						this._EmployeeID = value.EmployeeID;
-					}
-					else
-					{
-						this._EmployeeID = default(int);
-					}
-					this.SendPropertyChanged("PM_ProjectEmployee");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PM_ProjectProcessList_PM_ProjectEmployeeProcess", Storage="_PM_ProjectProcessList", ThisKey="ProcessListID", OtherKey="ProcessListId", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
 		public PM_ProjectProcessList PM_ProjectProcessList
 		{
@@ -2027,6 +1575,40 @@ namespace Models
 						this._ProcessListID = default(int);
 					}
 					this.SendPropertyChanged("PM_ProjectProcessList");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PM_ProjectEmployee_PM_ProjectEmployeeProcess", Storage="_PM_ProjectEmployee", ThisKey="EmployeeID", OtherKey="EmployeeID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public PM_ProjectEmployee PM_ProjectEmployee
+		{
+			get
+			{
+				return this._PM_ProjectEmployee.Entity;
+			}
+			set
+			{
+				PM_ProjectEmployee previousValue = this._PM_ProjectEmployee.Entity;
+				if (((previousValue != value) 
+							|| (this._PM_ProjectEmployee.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._PM_ProjectEmployee.Entity = null;
+						previousValue.PM_ProjectEmployeeProcesses.Remove(this);
+					}
+					this._PM_ProjectEmployee.Entity = value;
+					if ((value != null))
+					{
+						value.PM_ProjectEmployeeProcesses.Add(this);
+						this._EmployeeID = value.EmployeeID;
+					}
+					else
+					{
+						this._EmployeeID = default(int);
+					}
+					this.SendPropertyChanged("PM_ProjectEmployee");
 				}
 			}
 		}
@@ -2410,17 +1992,17 @@ namespace Models
 		
 		private System.Nullable<int> _CreatedByUserId;
 		
-		private EntityRef<PM_ProjectEmployee> _PM_ProjectEmployee;
-		
-		private EntityRef<PM_ProjectEmployee> _PM_ProjectEmployee1;
-		
-		private EntityRef<PM_ProjectEmployee> _PM_ProjectEmployee2;
-		
 		private EntityRef<PM_ProjectSubProcess> _PM_ProjectSubProcess;
 		
 		private EntityRef<PM_ProjectMachinery> _PM_ProjectMachinery;
 		
 		private EntityRef<PM_ProjectTask> _PM_ProjectTask;
+		
+		private EntityRef<PM_ProjectEmployee> _PM_ProjectEmployee;
+		
+		private EntityRef<PM_ProjectEmployee> _PM_ProjectEmployee1;
+		
+		private EntityRef<PM_ProjectEmployee> _PM_ProjectEmployee2;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -2472,12 +2054,12 @@ namespace Models
 		
 		public PM_ProjectProcessDetail()
 		{
-			this._PM_ProjectEmployee = default(EntityRef<PM_ProjectEmployee>);
-			this._PM_ProjectEmployee1 = default(EntityRef<PM_ProjectEmployee>);
-			this._PM_ProjectEmployee2 = default(EntityRef<PM_ProjectEmployee>);
 			this._PM_ProjectSubProcess = default(EntityRef<PM_ProjectSubProcess>);
 			this._PM_ProjectMachinery = default(EntityRef<PM_ProjectMachinery>);
 			this._PM_ProjectTask = default(EntityRef<PM_ProjectTask>);
+			this._PM_ProjectEmployee = default(EntityRef<PM_ProjectEmployee>);
+			this._PM_ProjectEmployee1 = default(EntityRef<PM_ProjectEmployee>);
+			this._PM_ProjectEmployee2 = default(EntityRef<PM_ProjectEmployee>);
 			OnCreated();
 		}
 		
@@ -2925,108 +2507,6 @@ namespace Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PM_ProjectEmployee_PM_ProjectProcessDetail", Storage="_PM_ProjectEmployee", ThisKey="DetailOwnerM", OtherKey="EmployeeID", IsForeignKey=true)]
-		public PM_ProjectEmployee PM_ProjectEmployee
-		{
-			get
-			{
-				return this._PM_ProjectEmployee.Entity;
-			}
-			set
-			{
-				PM_ProjectEmployee previousValue = this._PM_ProjectEmployee.Entity;
-				if (((previousValue != value) 
-							|| (this._PM_ProjectEmployee.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._PM_ProjectEmployee.Entity = null;
-						previousValue.PM_ProjectProcessDetails.Remove(this);
-					}
-					this._PM_ProjectEmployee.Entity = value;
-					if ((value != null))
-					{
-						value.PM_ProjectProcessDetails.Add(this);
-						this._DetailOwnerM = value.EmployeeID;
-					}
-					else
-					{
-						this._DetailOwnerM = default(int);
-					}
-					this.SendPropertyChanged("PM_ProjectEmployee");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PM_ProjectEmployee_PM_ProjectProcessDetail1", Storage="_PM_ProjectEmployee1", ThisKey="DetailOwnerP", OtherKey="EmployeeID", IsForeignKey=true)]
-		public PM_ProjectEmployee PM_ProjectEmployee1
-		{
-			get
-			{
-				return this._PM_ProjectEmployee1.Entity;
-			}
-			set
-			{
-				PM_ProjectEmployee previousValue = this._PM_ProjectEmployee1.Entity;
-				if (((previousValue != value) 
-							|| (this._PM_ProjectEmployee1.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._PM_ProjectEmployee1.Entity = null;
-						previousValue.PM_ProjectProcessDetails1.Remove(this);
-					}
-					this._PM_ProjectEmployee1.Entity = value;
-					if ((value != null))
-					{
-						value.PM_ProjectProcessDetails1.Add(this);
-						this._DetailOwnerP = value.EmployeeID;
-					}
-					else
-					{
-						this._DetailOwnerP = default(int);
-					}
-					this.SendPropertyChanged("PM_ProjectEmployee1");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PM_ProjectEmployee_PM_ProjectProcessDetail2", Storage="_PM_ProjectEmployee2", ThisKey="DetailOwner", OtherKey="EmployeeID", IsForeignKey=true)]
-		public PM_ProjectEmployee PM_ProjectEmployee2
-		{
-			get
-			{
-				return this._PM_ProjectEmployee2.Entity;
-			}
-			set
-			{
-				PM_ProjectEmployee previousValue = this._PM_ProjectEmployee2.Entity;
-				if (((previousValue != value) 
-							|| (this._PM_ProjectEmployee2.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._PM_ProjectEmployee2.Entity = null;
-						previousValue.PM_ProjectProcessDetails2.Remove(this);
-					}
-					this._PM_ProjectEmployee2.Entity = value;
-					if ((value != null))
-					{
-						value.PM_ProjectProcessDetails2.Add(this);
-						this._DetailOwner = value.EmployeeID;
-					}
-					else
-					{
-						this._DetailOwner = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("PM_ProjectEmployee2");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PM_ProjectSubProcess_PM_ProjectProcessDetail", Storage="_PM_ProjectSubProcess", ThisKey="DetailSubProcessId", OtherKey="SubProcessId", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
 		public PM_ProjectSubProcess PM_ProjectSubProcess
 		{
@@ -3125,6 +2605,108 @@ namespace Models
 						this._DetailProjectTaskID = default(int);
 					}
 					this.SendPropertyChanged("PM_ProjectTask");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PM_ProjectEmployee_PM_ProjectProcessDetail", Storage="_PM_ProjectEmployee", ThisKey="DetailOwnerM", OtherKey="EmployeeID", IsForeignKey=true)]
+		public PM_ProjectEmployee PM_ProjectEmployee
+		{
+			get
+			{
+				return this._PM_ProjectEmployee.Entity;
+			}
+			set
+			{
+				PM_ProjectEmployee previousValue = this._PM_ProjectEmployee.Entity;
+				if (((previousValue != value) 
+							|| (this._PM_ProjectEmployee.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._PM_ProjectEmployee.Entity = null;
+						previousValue.PM_ProjectProcessDetails.Remove(this);
+					}
+					this._PM_ProjectEmployee.Entity = value;
+					if ((value != null))
+					{
+						value.PM_ProjectProcessDetails.Add(this);
+						this._DetailOwnerM = value.EmployeeID;
+					}
+					else
+					{
+						this._DetailOwnerM = default(int);
+					}
+					this.SendPropertyChanged("PM_ProjectEmployee");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PM_ProjectEmployee_PM_ProjectProcessDetail1", Storage="_PM_ProjectEmployee1", ThisKey="DetailOwnerP", OtherKey="EmployeeID", IsForeignKey=true)]
+		public PM_ProjectEmployee PM_ProjectEmployee1
+		{
+			get
+			{
+				return this._PM_ProjectEmployee1.Entity;
+			}
+			set
+			{
+				PM_ProjectEmployee previousValue = this._PM_ProjectEmployee1.Entity;
+				if (((previousValue != value) 
+							|| (this._PM_ProjectEmployee1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._PM_ProjectEmployee1.Entity = null;
+						previousValue.PM_ProjectProcessDetails1.Remove(this);
+					}
+					this._PM_ProjectEmployee1.Entity = value;
+					if ((value != null))
+					{
+						value.PM_ProjectProcessDetails1.Add(this);
+						this._DetailOwnerP = value.EmployeeID;
+					}
+					else
+					{
+						this._DetailOwnerP = default(int);
+					}
+					this.SendPropertyChanged("PM_ProjectEmployee1");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PM_ProjectEmployee_PM_ProjectProcessDetail2", Storage="_PM_ProjectEmployee2", ThisKey="DetailOwner", OtherKey="EmployeeID", IsForeignKey=true)]
+		public PM_ProjectEmployee PM_ProjectEmployee2
+		{
+			get
+			{
+				return this._PM_ProjectEmployee2.Entity;
+			}
+			set
+			{
+				PM_ProjectEmployee previousValue = this._PM_ProjectEmployee2.Entity;
+				if (((previousValue != value) 
+							|| (this._PM_ProjectEmployee2.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._PM_ProjectEmployee2.Entity = null;
+						previousValue.PM_ProjectProcessDetails2.Remove(this);
+					}
+					this._PM_ProjectEmployee2.Entity = value;
+					if ((value != null))
+					{
+						value.PM_ProjectProcessDetails2.Add(this);
+						this._DetailOwner = value.EmployeeID;
+					}
+					else
+					{
+						this._DetailOwner = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("PM_ProjectEmployee2");
 				}
 			}
 		}
@@ -4472,9 +4054,9 @@ namespace Models
 		
 		private System.Nullable<int> _CreatedByUserId;
 		
-		private EntityRef<PM_ProjectEmployee> _PM_ProjectEmployee;
-		
 		private EntityRef<IV_tblTask> _IV_tblTask;
+		
+		private EntityRef<PM_ProjectEmployee> _PM_ProjectEmployee;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -4504,8 +4086,8 @@ namespace Models
 		
 		public IV_tblTaskHistory()
 		{
-			this._PM_ProjectEmployee = default(EntityRef<PM_ProjectEmployee>);
 			this._IV_tblTask = default(EntityRef<IV_tblTask>);
+			this._PM_ProjectEmployee = default(EntityRef<PM_ProjectEmployee>);
 			OnCreated();
 		}
 		
@@ -4717,40 +4299,6 @@ namespace Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PM_ProjectEmployee_IV_tblTaskHistory", Storage="_PM_ProjectEmployee", ThisKey="HistoryEmployeeId", OtherKey="EmployeeID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public PM_ProjectEmployee PM_ProjectEmployee
-		{
-			get
-			{
-				return this._PM_ProjectEmployee.Entity;
-			}
-			set
-			{
-				PM_ProjectEmployee previousValue = this._PM_ProjectEmployee.Entity;
-				if (((previousValue != value) 
-							|| (this._PM_ProjectEmployee.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._PM_ProjectEmployee.Entity = null;
-						previousValue.IV_tblTaskHistories.Remove(this);
-					}
-					this._PM_ProjectEmployee.Entity = value;
-					if ((value != null))
-					{
-						value.IV_tblTaskHistories.Add(this);
-						this._HistoryEmployeeId = value.EmployeeID;
-					}
-					else
-					{
-						this._HistoryEmployeeId = default(int);
-					}
-					this.SendPropertyChanged("PM_ProjectEmployee");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="IV_tblTask_IV_tblTaskHistory", Storage="_IV_tblTask", ThisKey="HistoryTaskId", OtherKey="TaskId", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
 		public IV_tblTask IV_tblTask
 		{
@@ -4781,6 +4329,40 @@ namespace Models
 						this._HistoryTaskId = default(int);
 					}
 					this.SendPropertyChanged("IV_tblTask");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PM_ProjectEmployee_IV_tblTaskHistory", Storage="_PM_ProjectEmployee", ThisKey="HistoryEmployeeId", OtherKey="EmployeeID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public PM_ProjectEmployee PM_ProjectEmployee
+		{
+			get
+			{
+				return this._PM_ProjectEmployee.Entity;
+			}
+			set
+			{
+				PM_ProjectEmployee previousValue = this._PM_ProjectEmployee.Entity;
+				if (((previousValue != value) 
+							|| (this._PM_ProjectEmployee.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._PM_ProjectEmployee.Entity = null;
+						previousValue.IV_tblTaskHistories.Remove(this);
+					}
+					this._PM_ProjectEmployee.Entity = value;
+					if ((value != null))
+					{
+						value.IV_tblTaskHistories.Add(this);
+						this._HistoryEmployeeId = value.EmployeeID;
+					}
+					else
+					{
+						this._HistoryEmployeeId = default(int);
+					}
+					this.SendPropertyChanged("PM_ProjectEmployee");
 				}
 			}
 		}
@@ -9090,6 +8672,448 @@ namespace Models
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PM_ProjectEmployee")]
+	public partial class PM_ProjectEmployee : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _EmployeeID;
+		
+		private string _EmployeeCode;
+		
+		private string _EmployeeFullName;
+		
+		private string _EmployeeFirstName;
+		
+		private string _EmployeeLastName;
+		
+		private System.Nullable<System.DateTime> _EmployeeDateOfBirth;
+		
+		private System.Nullable<int> _EmployeeGender;
+		
+		private string _EmployeeTel;
+		
+		private System.Nullable<int> _EmployeeAvatar;
+		
+		private string _EmployeeDescription;
+		
+		private string _EmployeeStatus;
+		
+		private EntitySet<PM_ProjectEmployeeProcess> _PM_ProjectEmployeeProcesses;
+		
+		private EntitySet<PM_ProjectProcessDetail> _PM_ProjectProcessDetails;
+		
+		private EntitySet<PM_ProjectProcessDetail> _PM_ProjectProcessDetails1;
+		
+		private EntitySet<PM_ProjectProcessDetail> _PM_ProjectProcessDetails2;
+		
+		private EntitySet<IV_tblTaskHistory> _IV_tblTaskHistories;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnEmployeeIDChanging(int value);
+    partial void OnEmployeeIDChanged();
+    partial void OnEmployeeCodeChanging(string value);
+    partial void OnEmployeeCodeChanged();
+    partial void OnEmployeeFullNameChanging(string value);
+    partial void OnEmployeeFullNameChanged();
+    partial void OnEmployeeFirstNameChanging(string value);
+    partial void OnEmployeeFirstNameChanged();
+    partial void OnEmployeeLastNameChanging(string value);
+    partial void OnEmployeeLastNameChanged();
+    partial void OnEmployeeDateOfBirthChanging(System.Nullable<System.DateTime> value);
+    partial void OnEmployeeDateOfBirthChanged();
+    partial void OnEmployeeGenderChanging(System.Nullable<int> value);
+    partial void OnEmployeeGenderChanged();
+    partial void OnEmployeeTelChanging(string value);
+    partial void OnEmployeeTelChanged();
+    partial void OnEmployeeAvatarChanging(System.Nullable<int> value);
+    partial void OnEmployeeAvatarChanged();
+    partial void OnEmployeeDescriptionChanging(string value);
+    partial void OnEmployeeDescriptionChanged();
+    partial void OnEmployeeStatusChanging(string value);
+    partial void OnEmployeeStatusChanged();
+    #endregion
+		
+		public PM_ProjectEmployee()
+		{
+			this._PM_ProjectEmployeeProcesses = new EntitySet<PM_ProjectEmployeeProcess>(new Action<PM_ProjectEmployeeProcess>(this.attach_PM_ProjectEmployeeProcesses), new Action<PM_ProjectEmployeeProcess>(this.detach_PM_ProjectEmployeeProcesses));
+			this._PM_ProjectProcessDetails = new EntitySet<PM_ProjectProcessDetail>(new Action<PM_ProjectProcessDetail>(this.attach_PM_ProjectProcessDetails), new Action<PM_ProjectProcessDetail>(this.detach_PM_ProjectProcessDetails));
+			this._PM_ProjectProcessDetails1 = new EntitySet<PM_ProjectProcessDetail>(new Action<PM_ProjectProcessDetail>(this.attach_PM_ProjectProcessDetails1), new Action<PM_ProjectProcessDetail>(this.detach_PM_ProjectProcessDetails1));
+			this._PM_ProjectProcessDetails2 = new EntitySet<PM_ProjectProcessDetail>(new Action<PM_ProjectProcessDetail>(this.attach_PM_ProjectProcessDetails2), new Action<PM_ProjectProcessDetail>(this.detach_PM_ProjectProcessDetails2));
+			this._IV_tblTaskHistories = new EntitySet<IV_tblTaskHistory>(new Action<IV_tblTaskHistory>(this.attach_IV_tblTaskHistories), new Action<IV_tblTaskHistory>(this.detach_IV_tblTaskHistories));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int EmployeeID
+		{
+			get
+			{
+				return this._EmployeeID;
+			}
+			set
+			{
+				if ((this._EmployeeID != value))
+				{
+					this.OnEmployeeIDChanging(value);
+					this.SendPropertyChanging();
+					this._EmployeeID = value;
+					this.SendPropertyChanged("EmployeeID");
+					this.OnEmployeeIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeCode", DbType="VarChar(25)")]
+		public string EmployeeCode
+		{
+			get
+			{
+				return this._EmployeeCode;
+			}
+			set
+			{
+				if ((this._EmployeeCode != value))
+				{
+					this.OnEmployeeCodeChanging(value);
+					this.SendPropertyChanging();
+					this._EmployeeCode = value;
+					this.SendPropertyChanged("EmployeeCode");
+					this.OnEmployeeCodeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeFullName", DbType="NVarChar(100)")]
+		public string EmployeeFullName
+		{
+			get
+			{
+				return this._EmployeeFullName;
+			}
+			set
+			{
+				if ((this._EmployeeFullName != value))
+				{
+					this.OnEmployeeFullNameChanging(value);
+					this.SendPropertyChanging();
+					this._EmployeeFullName = value;
+					this.SendPropertyChanged("EmployeeFullName");
+					this.OnEmployeeFullNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeFirstName", DbType="NVarChar(50)")]
+		public string EmployeeFirstName
+		{
+			get
+			{
+				return this._EmployeeFirstName;
+			}
+			set
+			{
+				if ((this._EmployeeFirstName != value))
+				{
+					this.OnEmployeeFirstNameChanging(value);
+					this.SendPropertyChanging();
+					this._EmployeeFirstName = value;
+					this.SendPropertyChanged("EmployeeFirstName");
+					this.OnEmployeeFirstNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeLastName", DbType="NVarChar(50)")]
+		public string EmployeeLastName
+		{
+			get
+			{
+				return this._EmployeeLastName;
+			}
+			set
+			{
+				if ((this._EmployeeLastName != value))
+				{
+					this.OnEmployeeLastNameChanging(value);
+					this.SendPropertyChanging();
+					this._EmployeeLastName = value;
+					this.SendPropertyChanged("EmployeeLastName");
+					this.OnEmployeeLastNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeDateOfBirth", DbType="Date")]
+		public System.Nullable<System.DateTime> EmployeeDateOfBirth
+		{
+			get
+			{
+				return this._EmployeeDateOfBirth;
+			}
+			set
+			{
+				if ((this._EmployeeDateOfBirth != value))
+				{
+					this.OnEmployeeDateOfBirthChanging(value);
+					this.SendPropertyChanging();
+					this._EmployeeDateOfBirth = value;
+					this.SendPropertyChanged("EmployeeDateOfBirth");
+					this.OnEmployeeDateOfBirthChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeGender", DbType="Int")]
+		public System.Nullable<int> EmployeeGender
+		{
+			get
+			{
+				return this._EmployeeGender;
+			}
+			set
+			{
+				if ((this._EmployeeGender != value))
+				{
+					this.OnEmployeeGenderChanging(value);
+					this.SendPropertyChanging();
+					this._EmployeeGender = value;
+					this.SendPropertyChanged("EmployeeGender");
+					this.OnEmployeeGenderChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeTel", DbType="NVarChar(50)")]
+		public string EmployeeTel
+		{
+			get
+			{
+				return this._EmployeeTel;
+			}
+			set
+			{
+				if ((this._EmployeeTel != value))
+				{
+					this.OnEmployeeTelChanging(value);
+					this.SendPropertyChanging();
+					this._EmployeeTel = value;
+					this.SendPropertyChanged("EmployeeTel");
+					this.OnEmployeeTelChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeAvatar", DbType="Int")]
+		public System.Nullable<int> EmployeeAvatar
+		{
+			get
+			{
+				return this._EmployeeAvatar;
+			}
+			set
+			{
+				if ((this._EmployeeAvatar != value))
+				{
+					this.OnEmployeeAvatarChanging(value);
+					this.SendPropertyChanging();
+					this._EmployeeAvatar = value;
+					this.SendPropertyChanged("EmployeeAvatar");
+					this.OnEmployeeAvatarChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeDescription", DbType="NVarChar(MAX)")]
+		public string EmployeeDescription
+		{
+			get
+			{
+				return this._EmployeeDescription;
+			}
+			set
+			{
+				if ((this._EmployeeDescription != value))
+				{
+					this.OnEmployeeDescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._EmployeeDescription = value;
+					this.SendPropertyChanged("EmployeeDescription");
+					this.OnEmployeeDescriptionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeStatus", DbType="NVarChar(25)")]
+		public string EmployeeStatus
+		{
+			get
+			{
+				return this._EmployeeStatus;
+			}
+			set
+			{
+				if ((this._EmployeeStatus != value))
+				{
+					this.OnEmployeeStatusChanging(value);
+					this.SendPropertyChanging();
+					this._EmployeeStatus = value;
+					this.SendPropertyChanged("EmployeeStatus");
+					this.OnEmployeeStatusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PM_ProjectEmployee_PM_ProjectEmployeeProcess", Storage="_PM_ProjectEmployeeProcesses", ThisKey="EmployeeID", OtherKey="EmployeeID")]
+		public EntitySet<PM_ProjectEmployeeProcess> PM_ProjectEmployeeProcesses
+		{
+			get
+			{
+				return this._PM_ProjectEmployeeProcesses;
+			}
+			set
+			{
+				this._PM_ProjectEmployeeProcesses.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PM_ProjectEmployee_PM_ProjectProcessDetail", Storage="_PM_ProjectProcessDetails", ThisKey="EmployeeID", OtherKey="DetailOwnerM")]
+		public EntitySet<PM_ProjectProcessDetail> PM_ProjectProcessDetails
+		{
+			get
+			{
+				return this._PM_ProjectProcessDetails;
+			}
+			set
+			{
+				this._PM_ProjectProcessDetails.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PM_ProjectEmployee_PM_ProjectProcessDetail1", Storage="_PM_ProjectProcessDetails1", ThisKey="EmployeeID", OtherKey="DetailOwnerP")]
+		public EntitySet<PM_ProjectProcessDetail> PM_ProjectProcessDetails1
+		{
+			get
+			{
+				return this._PM_ProjectProcessDetails1;
+			}
+			set
+			{
+				this._PM_ProjectProcessDetails1.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PM_ProjectEmployee_PM_ProjectProcessDetail2", Storage="_PM_ProjectProcessDetails2", ThisKey="EmployeeID", OtherKey="DetailOwner")]
+		public EntitySet<PM_ProjectProcessDetail> PM_ProjectProcessDetails2
+		{
+			get
+			{
+				return this._PM_ProjectProcessDetails2;
+			}
+			set
+			{
+				this._PM_ProjectProcessDetails2.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PM_ProjectEmployee_IV_tblTaskHistory", Storage="_IV_tblTaskHistories", ThisKey="EmployeeID", OtherKey="HistoryEmployeeId")]
+		public EntitySet<IV_tblTaskHistory> IV_tblTaskHistories
+		{
+			get
+			{
+				return this._IV_tblTaskHistories;
+			}
+			set
+			{
+				this._IV_tblTaskHistories.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_PM_ProjectEmployeeProcesses(PM_ProjectEmployeeProcess entity)
+		{
+			this.SendPropertyChanging();
+			entity.PM_ProjectEmployee = this;
+		}
+		
+		private void detach_PM_ProjectEmployeeProcesses(PM_ProjectEmployeeProcess entity)
+		{
+			this.SendPropertyChanging();
+			entity.PM_ProjectEmployee = null;
+		}
+		
+		private void attach_PM_ProjectProcessDetails(PM_ProjectProcessDetail entity)
+		{
+			this.SendPropertyChanging();
+			entity.PM_ProjectEmployee = this;
+		}
+		
+		private void detach_PM_ProjectProcessDetails(PM_ProjectProcessDetail entity)
+		{
+			this.SendPropertyChanging();
+			entity.PM_ProjectEmployee = null;
+		}
+		
+		private void attach_PM_ProjectProcessDetails1(PM_ProjectProcessDetail entity)
+		{
+			this.SendPropertyChanging();
+			entity.PM_ProjectEmployee1 = this;
+		}
+		
+		private void detach_PM_ProjectProcessDetails1(PM_ProjectProcessDetail entity)
+		{
+			this.SendPropertyChanging();
+			entity.PM_ProjectEmployee1 = null;
+		}
+		
+		private void attach_PM_ProjectProcessDetails2(PM_ProjectProcessDetail entity)
+		{
+			this.SendPropertyChanging();
+			entity.PM_ProjectEmployee2 = this;
+		}
+		
+		private void detach_PM_ProjectProcessDetails2(PM_ProjectProcessDetail entity)
+		{
+			this.SendPropertyChanging();
+			entity.PM_ProjectEmployee2 = null;
+		}
+		
+		private void attach_IV_tblTaskHistories(IV_tblTaskHistory entity)
+		{
+			this.SendPropertyChanging();
+			entity.PM_ProjectEmployee = this;
+		}
+		
+		private void detach_IV_tblTaskHistories(IV_tblTaskHistory entity)
+		{
+			this.SendPropertyChanging();
+			entity.PM_ProjectEmployee = null;
 		}
 	}
 }
