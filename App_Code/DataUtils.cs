@@ -6,8 +6,27 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Web;
+using System.IO;
 
 public class DataUtils {
+
+    public static bool WriteLog(string strMessage) {
+        string appPath = HttpContext.Current.Request.ApplicationPath;
+        string physicalPath = HttpContext.Current.Request.MapPath(appPath);
+        string strFileName = "WriteLog";
+        try {
+            FileStream objFilestream = new FileStream(string.Format("{0}\\{1}", physicalPath, strFileName), FileMode.Append, FileAccess.Write);
+            StreamWriter objStreamWriter = new StreamWriter((Stream)objFilestream);
+            objStreamWriter.WriteLine(string.Format("Date: {0}", DateTime.Now));
+            objStreamWriter.WriteLine(strMessage);
+            objStreamWriter.Close();
+            objFilestream.Close();
+            return true;
+        }
+        catch (Exception ex) {
+            return false;
+        }
+    }
     public static DataTable LINQToDataTable<T>(IEnumerable<T> varlist){
         DataTable dtReturn = new DataTable();
         System.Reflection.PropertyInfo[] oProps = null;

@@ -1,4 +1,4 @@
--- Add Column ProcessListGroup NVARCHAR (255)
+﻿-- Add Column ProcessListGroup NVARCHAR (255)
 IF NOT EXISTS ( SELECT object_id FROM sys.columns WHERE object_id = OBJECT_ID(N'PM_ProjectProcessList') AND name = 'ProcessListGroup' )
 BEGIN ALTER TABLE PM_ProjectProcessList
 	ADD ProcessListGroup NVARCHAR (255);
@@ -119,6 +119,14 @@ BEGIN ALTER TABLE PM_ProjectEmployee
 	ADD EmployeeStatus NVARCHAR (25);
 	PRINT ('ADD EmployeeStatus NVARCHAR (25);');
 END
+-- 20181115
+-- Add Column ProcessListStatus NVARCHAR (25)
+IF NOT EXISTS ( SELECT object_id FROM sys.columns WHERE object_id = OBJECT_ID(N'PM_ProjectProcessList') AND name = 'ProcessListStatus' )
+BEGIN ALTER TABLE PM_ProjectProcessList
+	ADD ProcessListStatus NVARCHAR (25);
+	PRINT ('ADD ProcessListStatus NVARCHAR (25);');
+END
+UPDATE PM_ProjectProcessList SET ProcessListStatus = 'Enable'
 
 
 

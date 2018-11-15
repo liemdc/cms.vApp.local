@@ -371,6 +371,7 @@ public class OrdersModels
                     pp.ProcessNotes = ProcessNotes;
                     pp.ModifiedWhen = DateTime.Now;
                     pp.ModifiedByUserId = CMSContext.CurrentUser.UserID;
+                    //DataUtils.WriteLog(pp.ProcessListId + "|" + pp.ProcessPlusBrowse + "|" + ProcessPlusBrowse);
                     if (pp.ProcessPlusBrowse == null)
                         pp.ProcessGangerBrowse = ProcessGangerBrowse;
                     if (pp.ProcessListId == pp.ProcessPlusBrowse && ProcessPlusBrowse == 0)
@@ -407,10 +408,10 @@ public class OrdersModels
                     pt.ProjectTaskThucTeThoQuaTinh = DateTime.Now;
                 if (pt != null && !pt.ProjectTaskThucTeTinhQuaQA.HasValue && finishTinh)
                     pt.ProjectTaskThucTeTinhQuaQA = DateTime.Now;
-                LINQData.db.SubmitChanges();                
-                transactionScope.Complete();
+                LINQData.db.SubmitChanges();
+                transactionScope.Complete();                
             }
-            catch { }
+            catch (TransactionAbortedException ex) { DataUtils.WriteLog(ex.Message); }
         }
     }
     public static List<OrdersProcessDetailObject> OrdersProcessListDetail(int ProjectTaskID, int ProcessListId)

@@ -11,15 +11,16 @@ using System.Web;
 public class ProcessListModels {
 	public static List<ProcessListObject> MinProcessList() {        
         return LINQData.db.PM_ProjectProcessLists.Select(s => new ProcessListObject { 
-            ProcessListId = s.ProcessListId, ProcessListName = s.ProcessListName, ProcessListGroup = s.ProcessListGroup, ProcessListOrder = s.ProcessListOrder
+            ProcessListId = s.ProcessListId, ProcessListIds = string.Format("PL-{0}", s.ProcessListId), ProcessListName = s.ProcessListName, ProcessListGroup = s.ProcessListGroup, ProcessListStatus = s.ProcessListStatus, ProcessListOrder = s.ProcessListOrder
         }).OrderBy(o => o.ProcessListOrder).ToList();
     }
-    public static void ProcessListCreated(string ProcessListName, string ProcessListGroup) {
+    public static void ProcessListCreated(string ProcessListName, string ProcessListGroup, string ProcessListStatus) {
         using (TransactionScope transactionScope = new TransactionScope()) {
             try { 
                 PM_ProjectProcessList ProcessList = new PM_ProjectProcessList();
                 ProcessList.ProcessListName = ProcessListName;
                 ProcessList.ProcessListGroup = ProcessListGroup;
+                ProcessList.ProcessListStatus = ProcessListStatus;
                 ProcessList.ProcessListOrder = LINQData.db.PM_ProjectProcessLists.Max(max => max.ProcessListOrder) + 1;
                 LINQData.db.PM_ProjectProcessLists.InsertOnSubmit(ProcessList);
                 LINQData.db.SubmitChanges();
@@ -29,15 +30,16 @@ public class ProcessListModels {
                     DataUtils.CreatePermission("Cập nhật sản phẩm", "CapNhatSanPham", "CongDoan" + ProcessList.ProcessListId);
                 }
                 transactionScope.Complete();
-            } catch { }
+            } catch (Exception ex) { DataUtils.WriteLog(ex.StackTrace); }
         }
     }
-    public static void ProcessListUpdated(int ProcessListId, string ProcessListName, string ProcessListGroup) {
+    public static void ProcessListUpdated(int ProcessListId, string ProcessListName, string ProcessListGroup, string ProcessListStatus) {
         using (TransactionScope transactionScope = new TransactionScope()) {
             try {
                 PM_ProjectProcessList ProcessList = LINQData.db.PM_ProjectProcessLists.FirstOrDefault(fod => fod.ProcessListId == ProcessListId);
                 ProcessList.ProcessListName = ProcessListName;
                 ProcessList.ProcessListGroup = ProcessListGroup;
+                ProcessList.ProcessListStatus = ProcessListStatus;
                 LINQData.db.SubmitChanges();
                 if (ProcessList != null) {
                     ResourceInfo rsInfo = ResourceInfoProvider.GetResourceInfo("CongDoan" + ProcessListId.ToString());
@@ -48,7 +50,7 @@ public class ProcessListModels {
                     PermissionNameInfoProvider.SetPermissionInfo(pnInfo);
                 }
                 transactionScope.Complete();
-            } catch { }
+            } catch (Exception ex) { DataUtils.WriteLog(ex.StackTrace); }
         }
     }
     public static void ProcessListDeleted(int ProcessListId){
@@ -66,7 +68,7 @@ public class ProcessListModels {
                 LINQData.db.PM_ProjectProcessLists.DeleteOnSubmit(ProcessList);
                 LINQData.db.SubmitChanges();
                 transactionScope.Complete();
-            } catch (Exception ex ) { System.Diagnostics.Debug.WriteLine(ex.Message); }
+            } catch (Exception ex) { DataUtils.WriteLog(ex.StackTrace); }
         }
     } 
     public static List<OrdersProcessDetailObject> ProjectProcessDetailByMachineId(int MachineryId){
@@ -98,7 +100,7 @@ public class ProcessListModels {
             }).OrderBy(o => o.ProcessListOrder).ToList();
     }
     public static List<ProcessListObject> MinProcessListForUserId() {
-        List<ProcessListObject> ProcessList = LINQData.db.PM_ProjectProcessLists.Select(s => new ProcessListObject { ProcessListId = s.ProcessListId, ProcessListName = s.ProcessListName, ProcessListGroup = s.ProcessListGroup, ProcessListOrder = s.ProcessListOrder }).OrderBy(o => o.ProcessListOrder).ToList();
+        List<ProcessListObject> ProcessList = LINQData.db.PM_ProjectProcessLists.Select(s => new ProcessListObject { ProcessListId = s.ProcessListId, ProcessListIds = string.Format("PL-{0}", s.ProcessListId), ProcessListName = s.ProcessListName, ProcessListGroup = s.ProcessListGroup, ProcessListStatus = s.ProcessListStatus, ProcessListOrder = s.ProcessListOrder }).OrderBy(o => o.ProcessListOrder).ToList();
         List<ProcessListObject> UsProcessList = new List<ProcessListObject>();
         foreach (ProcessListObject Process in ProcessList) {
             if (CMSContext.CurrentUser.IsAuthorizedPerResource("Functions", "CongDoan" + Process.ProcessListId))

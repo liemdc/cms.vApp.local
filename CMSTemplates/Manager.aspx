@@ -74,6 +74,16 @@
                                                 <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
                                             </PropertiesComboBox>
                                         </dx:GridViewDataComboBoxColumn>
+                                        <dx:GridViewDataTextColumn FieldName="ProcessListIds" Caption="Mã hiệu" EditFormSettings-Visible="False" Width="148" />
+                                        <dx:GridViewDataComboBoxColumn FieldName="ProcessListStatus" Caption="Hiện tại" Width="178">
+                                            <PropertiesComboBox DropDownStyle="DropDownList">
+                                                <Items>
+                                                    <dx:ListEditItem Value="Enable" Text="Đang sử dụng" />
+                                                    <dx:ListEditItem Value="Disable" Text="Ngưng hoạt động" />
+                                                    <dx:ListEditItem Value="Maintenance" Text="Bảo trì" />
+                                                </Items>
+                                            </PropertiesComboBox>
+                                        </dx:GridViewDataComboBoxColumn>
                                     </Columns>
                                     <HeaderStyle HorizontalAlign="Left" />
                                 </dx:GridViewBandColumn>
@@ -287,11 +297,13 @@
                             <InsertParameters>
                                 <asp:Parameter Name="ProcessListName" Type="String" />
                                 <asp:Parameter Name="ProcessListGroup" Type="String" />
+                                <asp:Parameter Name="ProcessListStatus" Type="String" />                                
                             </InsertParameters>
                             <UpdateParameters>
                                 <asp:Parameter Name="ProcessListId" Type="Int32" />
                                 <asp:Parameter Name="ProcessListName" Type="String" />
                                 <asp:Parameter Name="ProcessListGroup" Type="String" />
+                                <asp:Parameter Name="ProcessListStatus" Type="String" />
                             </UpdateParameters>
                             <DeleteParameters>
                                 <asp:Parameter Name="ProcessListId" Type="Int32" />

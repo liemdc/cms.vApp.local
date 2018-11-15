@@ -32,6 +32,16 @@
                             </Items>
                         </PropertiesComboBox>
                     </dx:GridViewDataComboBoxColumn>
+                    <dx:GridViewDataTextColumn FieldName="ProcessListIds" Caption="Mã hiệu" Width="148" />
+                    <dx:GridViewDataComboBoxColumn FieldName="ProcessListStatus" Caption="Hiện tại" Width="178">
+                        <PropertiesComboBox DropDownStyle="DropDownList">
+                            <Items>
+                                <dx:ListEditItem Value="Enable" Text="Đang sử dụng" />
+                                <dx:ListEditItem Value="Disable" Text="Ngưng hoạt động" />
+                                <dx:ListEditItem Value="Maintenance" Text="Bảo trì" />
+                            </Items>
+                        </PropertiesComboBox>
+                    </dx:GridViewDataComboBoxColumn>
                 </Columns>
                 <HeaderStyle HorizontalAlign="Left" />
             </dx:GridViewBandColumn>

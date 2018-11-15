@@ -96,6 +96,8 @@ public partial class ProcessListObject
     public int ProcessListId { get; set; }
     public string ProcessListName { get; set; }
     public string ProcessListGroup { get; set; }
+    public string ProcessListIds { get; set; }
+    public string ProcessListStatus { get; set; }
     public Nullable<int> ProcessListOrder { get; set; }
 }
 public partial class SubProcessObject
