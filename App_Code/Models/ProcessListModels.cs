@@ -11,16 +11,17 @@ using System.Web;
 public class ProcessListModels {
 	public static List<ProcessListObject> MinProcessList() {        
         return LINQData.db.PM_ProjectProcessLists.Select(s => new ProcessListObject { 
-            ProcessListId = s.ProcessListId, ProcessListIds = string.Format("PL-{0}", s.ProcessListId), ProcessListName = s.ProcessListName, ProcessListGroup = s.ProcessListGroup, ProcessListStatus = s.ProcessListStatus, ProcessListOrder = s.ProcessListOrder
+            ProcessListId = s.ProcessListId, ProcessListIds = string.Format("PL-{0}", s.ProcessListId), ProcessListName = s.ProcessListName, ProcessListGroup = s.ProcessListGroup, ProcessListStatus = s.ProcessListStatus, DXNhanDuKien = s.DXNhanDuKien, ProcessListOrder = s.ProcessListOrder
         }).OrderBy(o => o.ProcessListOrder).ToList();
     }
-    public static void ProcessListCreated(string ProcessListName, string ProcessListGroup, string ProcessListStatus) {
+    public static void ProcessListCreated(string ProcessListName, string ProcessListGroup, string ProcessListStatus, bool DXNhanDuKien) {
         using (TransactionScope transactionScope = new TransactionScope()) {
             try { 
                 PM_ProjectProcessList ProcessList = new PM_ProjectProcessList();
                 ProcessList.ProcessListName = ProcessListName;
                 ProcessList.ProcessListGroup = ProcessListGroup;
                 ProcessList.ProcessListStatus = ProcessListStatus;
+                ProcessList.DXNhanDuKien = DXNhanDuKien;
                 ProcessList.ProcessListOrder = LINQData.db.PM_ProjectProcessLists.Max(max => max.ProcessListOrder) + 1;
                 LINQData.db.PM_ProjectProcessLists.InsertOnSubmit(ProcessList);
                 LINQData.db.SubmitChanges();
@@ -33,13 +34,14 @@ public class ProcessListModels {
             } catch (Exception ex) { DataUtils.WriteLog(ex.StackTrace); }
         }
     }
-    public static void ProcessListUpdated(int ProcessListId, string ProcessListName, string ProcessListGroup, string ProcessListStatus) {
+    public static void ProcessListUpdated(int ProcessListId, string ProcessListName, string ProcessListGroup, string ProcessListStatus, bool DXNhanDuKien) {
         using (TransactionScope transactionScope = new TransactionScope()) {
             try {
                 PM_ProjectProcessList ProcessList = LINQData.db.PM_ProjectProcessLists.FirstOrDefault(fod => fod.ProcessListId == ProcessListId);
                 ProcessList.ProcessListName = ProcessListName;
                 ProcessList.ProcessListGroup = ProcessListGroup;
                 ProcessList.ProcessListStatus = ProcessListStatus;
+                ProcessList.DXNhanDuKien = DXNhanDuKien;
                 LINQData.db.SubmitChanges();
                 if (ProcessList != null) {
                     ResourceInfo rsInfo = ResourceInfoProvider.GetResourceInfo("CongDoan" + ProcessListId.ToString());

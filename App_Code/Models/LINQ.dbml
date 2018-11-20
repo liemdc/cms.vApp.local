@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Final.vApp.Local" Class="LINQDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=172.16.2.245,2008;Initial Catalog=Final.vApp.Local;Persist Security Info=False;User ID=vApp;Connect Timeout=240;Current Language=English" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="CMSConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.\SQL2008R2;Initial Catalog=Final.vApp.Local;Persist Security Info=False;User ID=vApp;Connect Timeout=240;Current Language=English" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="CMSConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.PM_Project" Member="PM_Projects">
     <Type Name="PM_Project">
       <Column Name="ProjectID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -387,6 +387,7 @@
       <Column Name="CreatedWhen" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreatedByUserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ProcessListStatus" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="DXNhanDuKien" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Association Name="PM_ProjectProcessList_PM_ProjectEmployeeProcess" Member="PM_ProjectEmployeeProcesses" ThisKey="ProcessListId" OtherKey="ProcessListID" Type="PM_ProjectEmployeeProcess" />
       <Association Name="PM_ProjectProcessList_PM_ProjectSubProcess" Member="PM_ProjectSubProcesses" ThisKey="ProcessListId" OtherKey="SubProcessListId" Type="PM_ProjectSubProcess" />
       <Association Name="PM_ProjectProcessList_IV_tblMoldsProcess" Member="IV_tblMoldsProcesses" ThisKey="ProcessListId" OtherKey="ProcessListId" Type="IV_tblMoldsProcess" />

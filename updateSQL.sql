@@ -127,6 +127,13 @@ BEGIN ALTER TABLE PM_ProjectProcessList
 	PRINT ('ADD ProcessListStatus NVARCHAR (25);');
 END
 UPDATE PM_ProjectProcessList SET ProcessListStatus = 'Enable'
+-- 20181120
+-- Add Column DXNhanDuKien BIT
+IF NOT EXISTS ( SELECT object_id FROM sys.columns WHERE object_id = OBJECT_ID(N'PM_ProjectProcessList') AND name = 'DXNhanDuKien' )
+BEGIN ALTER TABLE PM_ProjectProcessList
+	ADD DXNhanDuKien BIT;
+	PRINT ('ADD DXNhanDuKien BIT;');
+END
 
 
 

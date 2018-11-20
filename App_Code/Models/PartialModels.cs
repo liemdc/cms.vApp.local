@@ -98,6 +98,7 @@ public partial class ProcessListObject
     public string ProcessListGroup { get; set; }
     public string ProcessListIds { get; set; }
     public string ProcessListStatus { get; set; }
+    public Nullable<bool> DXNhanDuKien { get; set; }
     public Nullable<int> ProcessListOrder { get; set; }
 }
 public partial class SubProcessObject

@@ -8771,6 +8771,8 @@ namespace Models
 		
 		private string _ProcessListStatus;
 		
+		private System.Nullable<bool> _DXNhanDuKien;
+		
 		private EntitySet<PM_ProjectEmployeeProcess> _PM_ProjectEmployeeProcesses;
 		
 		private EntitySet<PM_ProjectSubProcess> _PM_ProjectSubProcesses;
@@ -8803,6 +8805,8 @@ namespace Models
     partial void OnCreatedByUserIdChanged();
     partial void OnProcessListStatusChanging(string value);
     partial void OnProcessListStatusChanged();
+    partial void OnDXNhanDuKienChanging(System.Nullable<bool> value);
+    partial void OnDXNhanDuKienChanged();
     #endregion
 		
 		public PM_ProjectProcessList()
@@ -8991,6 +8995,26 @@ namespace Models
 					this._ProcessListStatus = value;
 					this.SendPropertyChanged("ProcessListStatus");
 					this.OnProcessListStatusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DXNhanDuKien", DbType="Bit")]
+		public System.Nullable<bool> DXNhanDuKien
+		{
+			get
+			{
+				return this._DXNhanDuKien;
+			}
+			set
+			{
+				if ((this._DXNhanDuKien != value))
+				{
+					this.OnDXNhanDuKienChanging(value);
+					this.SendPropertyChanging();
+					this._DXNhanDuKien = value;
+					this.SendPropertyChanged("DXNhanDuKien");
+					this.OnDXNhanDuKienChanged();
 				}
 			}
 		}
