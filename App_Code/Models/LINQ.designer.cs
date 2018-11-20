@@ -84,15 +84,15 @@ namespace Models
     partial void InsertPM_ProjectTask(PM_ProjectTask instance);
     partial void UpdatePM_ProjectTask(PM_ProjectTask instance);
     partial void DeletePM_ProjectTask(PM_ProjectTask instance);
-    partial void InsertPM_ProjectProcess(PM_ProjectProcess instance);
-    partial void UpdatePM_ProjectProcess(PM_ProjectProcess instance);
-    partial void DeletePM_ProjectProcess(PM_ProjectProcess instance);
     partial void InsertPM_ProjectEmployee(PM_ProjectEmployee instance);
     partial void UpdatePM_ProjectEmployee(PM_ProjectEmployee instance);
     partial void DeletePM_ProjectEmployee(PM_ProjectEmployee instance);
     partial void InsertPM_ProjectProcessList(PM_ProjectProcessList instance);
     partial void UpdatePM_ProjectProcessList(PM_ProjectProcessList instance);
     partial void DeletePM_ProjectProcessList(PM_ProjectProcessList instance);
+    partial void InsertPM_ProjectProcess(PM_ProjectProcess instance);
+    partial void UpdatePM_ProjectProcess(PM_ProjectProcess instance);
+    partial void DeletePM_ProjectProcess(PM_ProjectProcess instance);
     #endregion
 		
 		public LINQDataContext() : 
@@ -269,14 +269,6 @@ namespace Models
 			}
 		}
 		
-		public System.Data.Linq.Table<PM_ProjectProcess> PM_ProjectProcesses
-		{
-			get
-			{
-				return this.GetTable<PM_ProjectProcess>();
-			}
-		}
-		
 		public System.Data.Linq.Table<PM_ProjectEmployee> PM_ProjectEmployees
 		{
 			get
@@ -290,6 +282,14 @@ namespace Models
 			get
 			{
 				return this.GetTable<PM_ProjectProcessList>();
+			}
+		}
+		
+		public System.Data.Linq.Table<PM_ProjectProcess> PM_ProjectProcesses
+		{
+			get
+			{
+				return this.GetTable<PM_ProjectProcess>();
 			}
 		}
 	}
@@ -7585,726 +7585,6 @@ namespace Models
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PM_ProjectProcess")]
-	public partial class PM_ProjectProcess : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ProcessId;
-		
-		private int _ProcessProjectTaskID;
-		
-		private int _ProcessListId;
-		
-		private System.Nullable<decimal> _ProcessExpectedTime;
-		
-		private System.Nullable<System.DateTime> _ProcessExpectedCompletion;
-		
-		private System.Nullable<decimal> _ProcessFactTime;
-		
-		private System.Nullable<System.DateTime> _ProcessCompletion;
-		
-		private System.Nullable<int> _ProcessPriority;
-		
-		private System.Nullable<bool> _ProcessRequired;
-		
-		private System.Nullable<bool> _ProcessSMGangerBrowse;
-		
-		private System.Nullable<int> _ProcessPlusBrowse;
-		
-		private System.Nullable<bool> _ProcessGangerBrowse;
-		
-		private System.Nullable<System.DateTime> _ModifiedWhen;
-		
-		private System.Nullable<int> _ModifiedByUserId;
-		
-		private System.Nullable<System.DateTime> _CreatedWhen;
-		
-		private System.Nullable<int> _CreatedByUserId;
-		
-		private string _ProcessNotes;
-		
-		private System.Nullable<System.DateTime> _DXGioBatDauDuKien;
-		
-		private System.Nullable<System.DateTime> _DXGioKetThucDuKien;
-		
-		private string _DXMaSanPhamUuTienGiaCong;
-		
-		private System.Nullable<decimal> _DXThoiGianDieuChinh;
-		
-		private System.Nullable<System.DateTime> _DXNgayNhanThucTe;
-		
-		private System.Nullable<System.DateTime> _DXGioBatDauThucTe;
-		
-		private System.Nullable<System.DateTime> _DXGioKetThucThucTe;
-		
-		private System.Nullable<int> _DXChuyenQuaCongDoan;
-		
-		private EntityRef<PM_ProjectTask> _PM_ProjectTask;
-		
-		private EntityRef<PM_ProjectProcessList> _PM_ProjectProcessList;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnProcessIdChanging(int value);
-    partial void OnProcessIdChanged();
-    partial void OnProcessProjectTaskIDChanging(int value);
-    partial void OnProcessProjectTaskIDChanged();
-    partial void OnProcessListIdChanging(int value);
-    partial void OnProcessListIdChanged();
-    partial void OnProcessExpectedTimeChanging(System.Nullable<decimal> value);
-    partial void OnProcessExpectedTimeChanged();
-    partial void OnProcessExpectedCompletionChanging(System.Nullable<System.DateTime> value);
-    partial void OnProcessExpectedCompletionChanged();
-    partial void OnProcessFactTimeChanging(System.Nullable<decimal> value);
-    partial void OnProcessFactTimeChanged();
-    partial void OnProcessCompletionChanging(System.Nullable<System.DateTime> value);
-    partial void OnProcessCompletionChanged();
-    partial void OnProcessPriorityChanging(System.Nullable<int> value);
-    partial void OnProcessPriorityChanged();
-    partial void OnProcessRequiredChanging(System.Nullable<bool> value);
-    partial void OnProcessRequiredChanged();
-    partial void OnProcessSMGangerBrowseChanging(System.Nullable<bool> value);
-    partial void OnProcessSMGangerBrowseChanged();
-    partial void OnProcessPlusBrowseChanging(System.Nullable<int> value);
-    partial void OnProcessPlusBrowseChanged();
-    partial void OnProcessGangerBrowseChanging(System.Nullable<bool> value);
-    partial void OnProcessGangerBrowseChanged();
-    partial void OnModifiedWhenChanging(System.Nullable<System.DateTime> value);
-    partial void OnModifiedWhenChanged();
-    partial void OnModifiedByUserIdChanging(System.Nullable<int> value);
-    partial void OnModifiedByUserIdChanged();
-    partial void OnCreatedWhenChanging(System.Nullable<System.DateTime> value);
-    partial void OnCreatedWhenChanged();
-    partial void OnCreatedByUserIdChanging(System.Nullable<int> value);
-    partial void OnCreatedByUserIdChanged();
-    partial void OnProcessNotesChanging(string value);
-    partial void OnProcessNotesChanged();
-    partial void OnDXGioBatDauDuKienChanging(System.Nullable<System.DateTime> value);
-    partial void OnDXGioBatDauDuKienChanged();
-    partial void OnDXGioKetThucDuKienChanging(System.Nullable<System.DateTime> value);
-    partial void OnDXGioKetThucDuKienChanged();
-    partial void OnDXMaSanPhamUuTienGiaCongChanging(string value);
-    partial void OnDXMaSanPhamUuTienGiaCongChanged();
-    partial void OnDXThoiGianDieuChinhChanging(System.Nullable<decimal> value);
-    partial void OnDXThoiGianDieuChinhChanged();
-    partial void OnDXNgayNhanThucTeChanging(System.Nullable<System.DateTime> value);
-    partial void OnDXNgayNhanThucTeChanged();
-    partial void OnDXGioBatDauThucTeChanging(System.Nullable<System.DateTime> value);
-    partial void OnDXGioBatDauThucTeChanged();
-    partial void OnDXGioKetThucThucTeChanging(System.Nullable<System.DateTime> value);
-    partial void OnDXGioKetThucThucTeChanged();
-    partial void OnDXChuyenQuaCongDoanChanging(System.Nullable<int> value);
-    partial void OnDXChuyenQuaCongDoanChanged();
-    #endregion
-		
-		public PM_ProjectProcess()
-		{
-			this._PM_ProjectTask = default(EntityRef<PM_ProjectTask>);
-			this._PM_ProjectProcessList = default(EntityRef<PM_ProjectProcessList>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProcessId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ProcessId
-		{
-			get
-			{
-				return this._ProcessId;
-			}
-			set
-			{
-				if ((this._ProcessId != value))
-				{
-					this.OnProcessIdChanging(value);
-					this.SendPropertyChanging();
-					this._ProcessId = value;
-					this.SendPropertyChanged("ProcessId");
-					this.OnProcessIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProcessProjectTaskID", DbType="Int NOT NULL")]
-		public int ProcessProjectTaskID
-		{
-			get
-			{
-				return this._ProcessProjectTaskID;
-			}
-			set
-			{
-				if ((this._ProcessProjectTaskID != value))
-				{
-					if (this._PM_ProjectTask.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnProcessProjectTaskIDChanging(value);
-					this.SendPropertyChanging();
-					this._ProcessProjectTaskID = value;
-					this.SendPropertyChanged("ProcessProjectTaskID");
-					this.OnProcessProjectTaskIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProcessListId", DbType="Int NOT NULL")]
-		public int ProcessListId
-		{
-			get
-			{
-				return this._ProcessListId;
-			}
-			set
-			{
-				if ((this._ProcessListId != value))
-				{
-					if (this._PM_ProjectProcessList.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnProcessListIdChanging(value);
-					this.SendPropertyChanging();
-					this._ProcessListId = value;
-					this.SendPropertyChanged("ProcessListId");
-					this.OnProcessListIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProcessExpectedTime", DbType="Decimal(10,2)")]
-		public System.Nullable<decimal> ProcessExpectedTime
-		{
-			get
-			{
-				return this._ProcessExpectedTime;
-			}
-			set
-			{
-				if ((this._ProcessExpectedTime != value))
-				{
-					this.OnProcessExpectedTimeChanging(value);
-					this.SendPropertyChanging();
-					this._ProcessExpectedTime = value;
-					this.SendPropertyChanged("ProcessExpectedTime");
-					this.OnProcessExpectedTimeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProcessExpectedCompletion", DbType="DateTime")]
-		public System.Nullable<System.DateTime> ProcessExpectedCompletion
-		{
-			get
-			{
-				return this._ProcessExpectedCompletion;
-			}
-			set
-			{
-				if ((this._ProcessExpectedCompletion != value))
-				{
-					this.OnProcessExpectedCompletionChanging(value);
-					this.SendPropertyChanging();
-					this._ProcessExpectedCompletion = value;
-					this.SendPropertyChanged("ProcessExpectedCompletion");
-					this.OnProcessExpectedCompletionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProcessFactTime", DbType="Decimal(10,2)")]
-		public System.Nullable<decimal> ProcessFactTime
-		{
-			get
-			{
-				return this._ProcessFactTime;
-			}
-			set
-			{
-				if ((this._ProcessFactTime != value))
-				{
-					this.OnProcessFactTimeChanging(value);
-					this.SendPropertyChanging();
-					this._ProcessFactTime = value;
-					this.SendPropertyChanged("ProcessFactTime");
-					this.OnProcessFactTimeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProcessCompletion", DbType="DateTime")]
-		public System.Nullable<System.DateTime> ProcessCompletion
-		{
-			get
-			{
-				return this._ProcessCompletion;
-			}
-			set
-			{
-				if ((this._ProcessCompletion != value))
-				{
-					this.OnProcessCompletionChanging(value);
-					this.SendPropertyChanging();
-					this._ProcessCompletion = value;
-					this.SendPropertyChanged("ProcessCompletion");
-					this.OnProcessCompletionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProcessPriority", DbType="Int")]
-		public System.Nullable<int> ProcessPriority
-		{
-			get
-			{
-				return this._ProcessPriority;
-			}
-			set
-			{
-				if ((this._ProcessPriority != value))
-				{
-					this.OnProcessPriorityChanging(value);
-					this.SendPropertyChanging();
-					this._ProcessPriority = value;
-					this.SendPropertyChanged("ProcessPriority");
-					this.OnProcessPriorityChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProcessRequired", DbType="Bit")]
-		public System.Nullable<bool> ProcessRequired
-		{
-			get
-			{
-				return this._ProcessRequired;
-			}
-			set
-			{
-				if ((this._ProcessRequired != value))
-				{
-					this.OnProcessRequiredChanging(value);
-					this.SendPropertyChanging();
-					this._ProcessRequired = value;
-					this.SendPropertyChanged("ProcessRequired");
-					this.OnProcessRequiredChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProcessSMGangerBrowse", DbType="Bit")]
-		public System.Nullable<bool> ProcessSMGangerBrowse
-		{
-			get
-			{
-				return this._ProcessSMGangerBrowse;
-			}
-			set
-			{
-				if ((this._ProcessSMGangerBrowse != value))
-				{
-					this.OnProcessSMGangerBrowseChanging(value);
-					this.SendPropertyChanging();
-					this._ProcessSMGangerBrowse = value;
-					this.SendPropertyChanged("ProcessSMGangerBrowse");
-					this.OnProcessSMGangerBrowseChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProcessPlusBrowse", DbType="Int")]
-		public System.Nullable<int> ProcessPlusBrowse
-		{
-			get
-			{
-				return this._ProcessPlusBrowse;
-			}
-			set
-			{
-				if ((this._ProcessPlusBrowse != value))
-				{
-					this.OnProcessPlusBrowseChanging(value);
-					this.SendPropertyChanging();
-					this._ProcessPlusBrowse = value;
-					this.SendPropertyChanged("ProcessPlusBrowse");
-					this.OnProcessPlusBrowseChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProcessGangerBrowse", DbType="Bit")]
-		public System.Nullable<bool> ProcessGangerBrowse
-		{
-			get
-			{
-				return this._ProcessGangerBrowse;
-			}
-			set
-			{
-				if ((this._ProcessGangerBrowse != value))
-				{
-					this.OnProcessGangerBrowseChanging(value);
-					this.SendPropertyChanging();
-					this._ProcessGangerBrowse = value;
-					this.SendPropertyChanged("ProcessGangerBrowse");
-					this.OnProcessGangerBrowseChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifiedWhen", DbType="DateTime")]
-		public System.Nullable<System.DateTime> ModifiedWhen
-		{
-			get
-			{
-				return this._ModifiedWhen;
-			}
-			set
-			{
-				if ((this._ModifiedWhen != value))
-				{
-					this.OnModifiedWhenChanging(value);
-					this.SendPropertyChanging();
-					this._ModifiedWhen = value;
-					this.SendPropertyChanged("ModifiedWhen");
-					this.OnModifiedWhenChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifiedByUserId", DbType="Int")]
-		public System.Nullable<int> ModifiedByUserId
-		{
-			get
-			{
-				return this._ModifiedByUserId;
-			}
-			set
-			{
-				if ((this._ModifiedByUserId != value))
-				{
-					this.OnModifiedByUserIdChanging(value);
-					this.SendPropertyChanging();
-					this._ModifiedByUserId = value;
-					this.SendPropertyChanged("ModifiedByUserId");
-					this.OnModifiedByUserIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedWhen", DbType="DateTime")]
-		public System.Nullable<System.DateTime> CreatedWhen
-		{
-			get
-			{
-				return this._CreatedWhen;
-			}
-			set
-			{
-				if ((this._CreatedWhen != value))
-				{
-					this.OnCreatedWhenChanging(value);
-					this.SendPropertyChanging();
-					this._CreatedWhen = value;
-					this.SendPropertyChanged("CreatedWhen");
-					this.OnCreatedWhenChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedByUserId", DbType="Int")]
-		public System.Nullable<int> CreatedByUserId
-		{
-			get
-			{
-				return this._CreatedByUserId;
-			}
-			set
-			{
-				if ((this._CreatedByUserId != value))
-				{
-					this.OnCreatedByUserIdChanging(value);
-					this.SendPropertyChanging();
-					this._CreatedByUserId = value;
-					this.SendPropertyChanged("CreatedByUserId");
-					this.OnCreatedByUserIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProcessNotes", DbType="NVarChar(255)")]
-		public string ProcessNotes
-		{
-			get
-			{
-				return this._ProcessNotes;
-			}
-			set
-			{
-				if ((this._ProcessNotes != value))
-				{
-					this.OnProcessNotesChanging(value);
-					this.SendPropertyChanging();
-					this._ProcessNotes = value;
-					this.SendPropertyChanged("ProcessNotes");
-					this.OnProcessNotesChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DXGioBatDauDuKien", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DXGioBatDauDuKien
-		{
-			get
-			{
-				return this._DXGioBatDauDuKien;
-			}
-			set
-			{
-				if ((this._DXGioBatDauDuKien != value))
-				{
-					this.OnDXGioBatDauDuKienChanging(value);
-					this.SendPropertyChanging();
-					this._DXGioBatDauDuKien = value;
-					this.SendPropertyChanged("DXGioBatDauDuKien");
-					this.OnDXGioBatDauDuKienChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DXGioKetThucDuKien", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DXGioKetThucDuKien
-		{
-			get
-			{
-				return this._DXGioKetThucDuKien;
-			}
-			set
-			{
-				if ((this._DXGioKetThucDuKien != value))
-				{
-					this.OnDXGioKetThucDuKienChanging(value);
-					this.SendPropertyChanging();
-					this._DXGioKetThucDuKien = value;
-					this.SendPropertyChanged("DXGioKetThucDuKien");
-					this.OnDXGioKetThucDuKienChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DXMaSanPhamUuTienGiaCong", DbType="NVarChar(50)")]
-		public string DXMaSanPhamUuTienGiaCong
-		{
-			get
-			{
-				return this._DXMaSanPhamUuTienGiaCong;
-			}
-			set
-			{
-				if ((this._DXMaSanPhamUuTienGiaCong != value))
-				{
-					this.OnDXMaSanPhamUuTienGiaCongChanging(value);
-					this.SendPropertyChanging();
-					this._DXMaSanPhamUuTienGiaCong = value;
-					this.SendPropertyChanged("DXMaSanPhamUuTienGiaCong");
-					this.OnDXMaSanPhamUuTienGiaCongChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DXThoiGianDieuChinh", DbType="Decimal(10,2)")]
-		public System.Nullable<decimal> DXThoiGianDieuChinh
-		{
-			get
-			{
-				return this._DXThoiGianDieuChinh;
-			}
-			set
-			{
-				if ((this._DXThoiGianDieuChinh != value))
-				{
-					this.OnDXThoiGianDieuChinhChanging(value);
-					this.SendPropertyChanging();
-					this._DXThoiGianDieuChinh = value;
-					this.SendPropertyChanged("DXThoiGianDieuChinh");
-					this.OnDXThoiGianDieuChinhChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DXNgayNhanThucTe", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DXNgayNhanThucTe
-		{
-			get
-			{
-				return this._DXNgayNhanThucTe;
-			}
-			set
-			{
-				if ((this._DXNgayNhanThucTe != value))
-				{
-					this.OnDXNgayNhanThucTeChanging(value);
-					this.SendPropertyChanging();
-					this._DXNgayNhanThucTe = value;
-					this.SendPropertyChanged("DXNgayNhanThucTe");
-					this.OnDXNgayNhanThucTeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DXGioBatDauThucTe", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DXGioBatDauThucTe
-		{
-			get
-			{
-				return this._DXGioBatDauThucTe;
-			}
-			set
-			{
-				if ((this._DXGioBatDauThucTe != value))
-				{
-					this.OnDXGioBatDauThucTeChanging(value);
-					this.SendPropertyChanging();
-					this._DXGioBatDauThucTe = value;
-					this.SendPropertyChanged("DXGioBatDauThucTe");
-					this.OnDXGioBatDauThucTeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DXGioKetThucThucTe", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DXGioKetThucThucTe
-		{
-			get
-			{
-				return this._DXGioKetThucThucTe;
-			}
-			set
-			{
-				if ((this._DXGioKetThucThucTe != value))
-				{
-					this.OnDXGioKetThucThucTeChanging(value);
-					this.SendPropertyChanging();
-					this._DXGioKetThucThucTe = value;
-					this.SendPropertyChanged("DXGioKetThucThucTe");
-					this.OnDXGioKetThucThucTeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DXChuyenQuaCongDoan", DbType="Int")]
-		public System.Nullable<int> DXChuyenQuaCongDoan
-		{
-			get
-			{
-				return this._DXChuyenQuaCongDoan;
-			}
-			set
-			{
-				if ((this._DXChuyenQuaCongDoan != value))
-				{
-					this.OnDXChuyenQuaCongDoanChanging(value);
-					this.SendPropertyChanging();
-					this._DXChuyenQuaCongDoan = value;
-					this.SendPropertyChanged("DXChuyenQuaCongDoan");
-					this.OnDXChuyenQuaCongDoanChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PM_ProjectTask_PM_ProjectProcess", Storage="_PM_ProjectTask", ThisKey="ProcessProjectTaskID", OtherKey="ProjectTaskID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public PM_ProjectTask PM_ProjectTask
-		{
-			get
-			{
-				return this._PM_ProjectTask.Entity;
-			}
-			set
-			{
-				PM_ProjectTask previousValue = this._PM_ProjectTask.Entity;
-				if (((previousValue != value) 
-							|| (this._PM_ProjectTask.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._PM_ProjectTask.Entity = null;
-						previousValue.PM_ProjectProcesses.Remove(this);
-					}
-					this._PM_ProjectTask.Entity = value;
-					if ((value != null))
-					{
-						value.PM_ProjectProcesses.Add(this);
-						this._ProcessProjectTaskID = value.ProjectTaskID;
-					}
-					else
-					{
-						this._ProcessProjectTaskID = default(int);
-					}
-					this.SendPropertyChanged("PM_ProjectTask");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PM_ProjectProcessList_PM_ProjectProcess", Storage="_PM_ProjectProcessList", ThisKey="ProcessListId", OtherKey="ProcessListId", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public PM_ProjectProcessList PM_ProjectProcessList
-		{
-			get
-			{
-				return this._PM_ProjectProcessList.Entity;
-			}
-			set
-			{
-				PM_ProjectProcessList previousValue = this._PM_ProjectProcessList.Entity;
-				if (((previousValue != value) 
-							|| (this._PM_ProjectProcessList.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._PM_ProjectProcessList.Entity = null;
-						previousValue.PM_ProjectProcesses.Remove(this);
-					}
-					this._PM_ProjectProcessList.Entity = value;
-					if ((value != null))
-					{
-						value.PM_ProjectProcesses.Add(this);
-						this._ProcessListId = value.ProcessListId;
-					}
-					else
-					{
-						this._ProcessListId = default(int);
-					}
-					this.SendPropertyChanged("PM_ProjectProcessList");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PM_ProjectEmployee")]
 	public partial class PM_ProjectEmployee : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -9162,6 +8442,726 @@ namespace Models
 		{
 			this.SendPropertyChanging();
 			entity.PM_ProjectProcessList = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PM_ProjectProcess")]
+	public partial class PM_ProjectProcess : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ProcessId;
+		
+		private int _ProcessProjectTaskID;
+		
+		private int _ProcessListId;
+		
+		private System.Nullable<decimal> _ProcessExpectedTime;
+		
+		private System.Nullable<System.DateTime> _ProcessExpectedCompletion;
+		
+		private System.Nullable<decimal> _ProcessFactTime;
+		
+		private System.Nullable<System.DateTime> _ProcessCompletion;
+		
+		private System.Nullable<int> _ProcessPriority;
+		
+		private System.Nullable<bool> _ProcessRequired;
+		
+		private System.Nullable<bool> _ProcessSMGangerBrowse;
+		
+		private System.Nullable<int> _ProcessPlusBrowse;
+		
+		private System.Nullable<bool> _ProcessGangerBrowse;
+		
+		private System.Nullable<System.DateTime> _ModifiedWhen;
+		
+		private System.Nullable<int> _ModifiedByUserId;
+		
+		private System.Nullable<System.DateTime> _CreatedWhen;
+		
+		private System.Nullable<int> _CreatedByUserId;
+		
+		private string _ProcessNotes;
+		
+		private System.Nullable<System.DateTime> _DXNgayNhanDuKien;
+		
+		private System.Nullable<System.DateTime> _DXGioKetThucDuKien;
+		
+		private string _DXMaSanPhamUuTienGiaCong;
+		
+		private System.Nullable<decimal> _DXThoiGianDieuChinh;
+		
+		private System.Nullable<System.DateTime> _DXNgayNhanThucTe;
+		
+		private System.Nullable<System.DateTime> _DXGioBatDauThucTe;
+		
+		private System.Nullable<System.DateTime> _DXGioKetThucThucTe;
+		
+		private System.Nullable<int> _DXChuyenQuaCongDoan;
+		
+		private EntityRef<PM_ProjectProcessList> _PM_ProjectProcessList;
+		
+		private EntityRef<PM_ProjectTask> _PM_ProjectTask;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnProcessIdChanging(int value);
+    partial void OnProcessIdChanged();
+    partial void OnProcessProjectTaskIDChanging(int value);
+    partial void OnProcessProjectTaskIDChanged();
+    partial void OnProcessListIdChanging(int value);
+    partial void OnProcessListIdChanged();
+    partial void OnProcessExpectedTimeChanging(System.Nullable<decimal> value);
+    partial void OnProcessExpectedTimeChanged();
+    partial void OnProcessExpectedCompletionChanging(System.Nullable<System.DateTime> value);
+    partial void OnProcessExpectedCompletionChanged();
+    partial void OnProcessFactTimeChanging(System.Nullable<decimal> value);
+    partial void OnProcessFactTimeChanged();
+    partial void OnProcessCompletionChanging(System.Nullable<System.DateTime> value);
+    partial void OnProcessCompletionChanged();
+    partial void OnProcessPriorityChanging(System.Nullable<int> value);
+    partial void OnProcessPriorityChanged();
+    partial void OnProcessRequiredChanging(System.Nullable<bool> value);
+    partial void OnProcessRequiredChanged();
+    partial void OnProcessSMGangerBrowseChanging(System.Nullable<bool> value);
+    partial void OnProcessSMGangerBrowseChanged();
+    partial void OnProcessPlusBrowseChanging(System.Nullable<int> value);
+    partial void OnProcessPlusBrowseChanged();
+    partial void OnProcessGangerBrowseChanging(System.Nullable<bool> value);
+    partial void OnProcessGangerBrowseChanged();
+    partial void OnModifiedWhenChanging(System.Nullable<System.DateTime> value);
+    partial void OnModifiedWhenChanged();
+    partial void OnModifiedByUserIdChanging(System.Nullable<int> value);
+    partial void OnModifiedByUserIdChanged();
+    partial void OnCreatedWhenChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreatedWhenChanged();
+    partial void OnCreatedByUserIdChanging(System.Nullable<int> value);
+    partial void OnCreatedByUserIdChanged();
+    partial void OnProcessNotesChanging(string value);
+    partial void OnProcessNotesChanged();
+    partial void OnDXNgayNhanDuKienChanging(System.Nullable<System.DateTime> value);
+    partial void OnDXNgayNhanDuKienChanged();
+    partial void OnDXGioKetThucDuKienChanging(System.Nullable<System.DateTime> value);
+    partial void OnDXGioKetThucDuKienChanged();
+    partial void OnDXMaSanPhamUuTienGiaCongChanging(string value);
+    partial void OnDXMaSanPhamUuTienGiaCongChanged();
+    partial void OnDXThoiGianDieuChinhChanging(System.Nullable<decimal> value);
+    partial void OnDXThoiGianDieuChinhChanged();
+    partial void OnDXNgayNhanThucTeChanging(System.Nullable<System.DateTime> value);
+    partial void OnDXNgayNhanThucTeChanged();
+    partial void OnDXGioBatDauThucTeChanging(System.Nullable<System.DateTime> value);
+    partial void OnDXGioBatDauThucTeChanged();
+    partial void OnDXGioKetThucThucTeChanging(System.Nullable<System.DateTime> value);
+    partial void OnDXGioKetThucThucTeChanged();
+    partial void OnDXChuyenQuaCongDoanChanging(System.Nullable<int> value);
+    partial void OnDXChuyenQuaCongDoanChanged();
+    #endregion
+		
+		public PM_ProjectProcess()
+		{
+			this._PM_ProjectProcessList = default(EntityRef<PM_ProjectProcessList>);
+			this._PM_ProjectTask = default(EntityRef<PM_ProjectTask>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProcessId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ProcessId
+		{
+			get
+			{
+				return this._ProcessId;
+			}
+			set
+			{
+				if ((this._ProcessId != value))
+				{
+					this.OnProcessIdChanging(value);
+					this.SendPropertyChanging();
+					this._ProcessId = value;
+					this.SendPropertyChanged("ProcessId");
+					this.OnProcessIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProcessProjectTaskID", DbType="Int NOT NULL")]
+		public int ProcessProjectTaskID
+		{
+			get
+			{
+				return this._ProcessProjectTaskID;
+			}
+			set
+			{
+				if ((this._ProcessProjectTaskID != value))
+				{
+					if (this._PM_ProjectTask.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnProcessProjectTaskIDChanging(value);
+					this.SendPropertyChanging();
+					this._ProcessProjectTaskID = value;
+					this.SendPropertyChanged("ProcessProjectTaskID");
+					this.OnProcessProjectTaskIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProcessListId", DbType="Int NOT NULL")]
+		public int ProcessListId
+		{
+			get
+			{
+				return this._ProcessListId;
+			}
+			set
+			{
+				if ((this._ProcessListId != value))
+				{
+					if (this._PM_ProjectProcessList.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnProcessListIdChanging(value);
+					this.SendPropertyChanging();
+					this._ProcessListId = value;
+					this.SendPropertyChanged("ProcessListId");
+					this.OnProcessListIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProcessExpectedTime", DbType="Decimal(10,2)")]
+		public System.Nullable<decimal> ProcessExpectedTime
+		{
+			get
+			{
+				return this._ProcessExpectedTime;
+			}
+			set
+			{
+				if ((this._ProcessExpectedTime != value))
+				{
+					this.OnProcessExpectedTimeChanging(value);
+					this.SendPropertyChanging();
+					this._ProcessExpectedTime = value;
+					this.SendPropertyChanged("ProcessExpectedTime");
+					this.OnProcessExpectedTimeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProcessExpectedCompletion", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ProcessExpectedCompletion
+		{
+			get
+			{
+				return this._ProcessExpectedCompletion;
+			}
+			set
+			{
+				if ((this._ProcessExpectedCompletion != value))
+				{
+					this.OnProcessExpectedCompletionChanging(value);
+					this.SendPropertyChanging();
+					this._ProcessExpectedCompletion = value;
+					this.SendPropertyChanged("ProcessExpectedCompletion");
+					this.OnProcessExpectedCompletionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProcessFactTime", DbType="Decimal(10,2)")]
+		public System.Nullable<decimal> ProcessFactTime
+		{
+			get
+			{
+				return this._ProcessFactTime;
+			}
+			set
+			{
+				if ((this._ProcessFactTime != value))
+				{
+					this.OnProcessFactTimeChanging(value);
+					this.SendPropertyChanging();
+					this._ProcessFactTime = value;
+					this.SendPropertyChanged("ProcessFactTime");
+					this.OnProcessFactTimeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProcessCompletion", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ProcessCompletion
+		{
+			get
+			{
+				return this._ProcessCompletion;
+			}
+			set
+			{
+				if ((this._ProcessCompletion != value))
+				{
+					this.OnProcessCompletionChanging(value);
+					this.SendPropertyChanging();
+					this._ProcessCompletion = value;
+					this.SendPropertyChanged("ProcessCompletion");
+					this.OnProcessCompletionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProcessPriority", DbType="Int")]
+		public System.Nullable<int> ProcessPriority
+		{
+			get
+			{
+				return this._ProcessPriority;
+			}
+			set
+			{
+				if ((this._ProcessPriority != value))
+				{
+					this.OnProcessPriorityChanging(value);
+					this.SendPropertyChanging();
+					this._ProcessPriority = value;
+					this.SendPropertyChanged("ProcessPriority");
+					this.OnProcessPriorityChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProcessRequired", DbType="Bit")]
+		public System.Nullable<bool> ProcessRequired
+		{
+			get
+			{
+				return this._ProcessRequired;
+			}
+			set
+			{
+				if ((this._ProcessRequired != value))
+				{
+					this.OnProcessRequiredChanging(value);
+					this.SendPropertyChanging();
+					this._ProcessRequired = value;
+					this.SendPropertyChanged("ProcessRequired");
+					this.OnProcessRequiredChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProcessSMGangerBrowse", DbType="Bit")]
+		public System.Nullable<bool> ProcessSMGangerBrowse
+		{
+			get
+			{
+				return this._ProcessSMGangerBrowse;
+			}
+			set
+			{
+				if ((this._ProcessSMGangerBrowse != value))
+				{
+					this.OnProcessSMGangerBrowseChanging(value);
+					this.SendPropertyChanging();
+					this._ProcessSMGangerBrowse = value;
+					this.SendPropertyChanged("ProcessSMGangerBrowse");
+					this.OnProcessSMGangerBrowseChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProcessPlusBrowse", DbType="Int")]
+		public System.Nullable<int> ProcessPlusBrowse
+		{
+			get
+			{
+				return this._ProcessPlusBrowse;
+			}
+			set
+			{
+				if ((this._ProcessPlusBrowse != value))
+				{
+					this.OnProcessPlusBrowseChanging(value);
+					this.SendPropertyChanging();
+					this._ProcessPlusBrowse = value;
+					this.SendPropertyChanged("ProcessPlusBrowse");
+					this.OnProcessPlusBrowseChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProcessGangerBrowse", DbType="Bit")]
+		public System.Nullable<bool> ProcessGangerBrowse
+		{
+			get
+			{
+				return this._ProcessGangerBrowse;
+			}
+			set
+			{
+				if ((this._ProcessGangerBrowse != value))
+				{
+					this.OnProcessGangerBrowseChanging(value);
+					this.SendPropertyChanging();
+					this._ProcessGangerBrowse = value;
+					this.SendPropertyChanged("ProcessGangerBrowse");
+					this.OnProcessGangerBrowseChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifiedWhen", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ModifiedWhen
+		{
+			get
+			{
+				return this._ModifiedWhen;
+			}
+			set
+			{
+				if ((this._ModifiedWhen != value))
+				{
+					this.OnModifiedWhenChanging(value);
+					this.SendPropertyChanging();
+					this._ModifiedWhen = value;
+					this.SendPropertyChanged("ModifiedWhen");
+					this.OnModifiedWhenChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifiedByUserId", DbType="Int")]
+		public System.Nullable<int> ModifiedByUserId
+		{
+			get
+			{
+				return this._ModifiedByUserId;
+			}
+			set
+			{
+				if ((this._ModifiedByUserId != value))
+				{
+					this.OnModifiedByUserIdChanging(value);
+					this.SendPropertyChanging();
+					this._ModifiedByUserId = value;
+					this.SendPropertyChanged("ModifiedByUserId");
+					this.OnModifiedByUserIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedWhen", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreatedWhen
+		{
+			get
+			{
+				return this._CreatedWhen;
+			}
+			set
+			{
+				if ((this._CreatedWhen != value))
+				{
+					this.OnCreatedWhenChanging(value);
+					this.SendPropertyChanging();
+					this._CreatedWhen = value;
+					this.SendPropertyChanged("CreatedWhen");
+					this.OnCreatedWhenChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedByUserId", DbType="Int")]
+		public System.Nullable<int> CreatedByUserId
+		{
+			get
+			{
+				return this._CreatedByUserId;
+			}
+			set
+			{
+				if ((this._CreatedByUserId != value))
+				{
+					this.OnCreatedByUserIdChanging(value);
+					this.SendPropertyChanging();
+					this._CreatedByUserId = value;
+					this.SendPropertyChanged("CreatedByUserId");
+					this.OnCreatedByUserIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProcessNotes", DbType="NVarChar(255)")]
+		public string ProcessNotes
+		{
+			get
+			{
+				return this._ProcessNotes;
+			}
+			set
+			{
+				if ((this._ProcessNotes != value))
+				{
+					this.OnProcessNotesChanging(value);
+					this.SendPropertyChanging();
+					this._ProcessNotes = value;
+					this.SendPropertyChanged("ProcessNotes");
+					this.OnProcessNotesChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DXNgayNhanDuKien", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DXNgayNhanDuKien
+		{
+			get
+			{
+				return this._DXNgayNhanDuKien;
+			}
+			set
+			{
+				if ((this._DXNgayNhanDuKien != value))
+				{
+					this.OnDXNgayNhanDuKienChanging(value);
+					this.SendPropertyChanging();
+					this._DXNgayNhanDuKien = value;
+					this.SendPropertyChanged("DXNgayNhanDuKien");
+					this.OnDXNgayNhanDuKienChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DXGioKetThucDuKien", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DXGioKetThucDuKien
+		{
+			get
+			{
+				return this._DXGioKetThucDuKien;
+			}
+			set
+			{
+				if ((this._DXGioKetThucDuKien != value))
+				{
+					this.OnDXGioKetThucDuKienChanging(value);
+					this.SendPropertyChanging();
+					this._DXGioKetThucDuKien = value;
+					this.SendPropertyChanged("DXGioKetThucDuKien");
+					this.OnDXGioKetThucDuKienChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DXMaSanPhamUuTienGiaCong", DbType="NVarChar(50)")]
+		public string DXMaSanPhamUuTienGiaCong
+		{
+			get
+			{
+				return this._DXMaSanPhamUuTienGiaCong;
+			}
+			set
+			{
+				if ((this._DXMaSanPhamUuTienGiaCong != value))
+				{
+					this.OnDXMaSanPhamUuTienGiaCongChanging(value);
+					this.SendPropertyChanging();
+					this._DXMaSanPhamUuTienGiaCong = value;
+					this.SendPropertyChanged("DXMaSanPhamUuTienGiaCong");
+					this.OnDXMaSanPhamUuTienGiaCongChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DXThoiGianDieuChinh", DbType="Decimal(10,2)")]
+		public System.Nullable<decimal> DXThoiGianDieuChinh
+		{
+			get
+			{
+				return this._DXThoiGianDieuChinh;
+			}
+			set
+			{
+				if ((this._DXThoiGianDieuChinh != value))
+				{
+					this.OnDXThoiGianDieuChinhChanging(value);
+					this.SendPropertyChanging();
+					this._DXThoiGianDieuChinh = value;
+					this.SendPropertyChanged("DXThoiGianDieuChinh");
+					this.OnDXThoiGianDieuChinhChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DXNgayNhanThucTe", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DXNgayNhanThucTe
+		{
+			get
+			{
+				return this._DXNgayNhanThucTe;
+			}
+			set
+			{
+				if ((this._DXNgayNhanThucTe != value))
+				{
+					this.OnDXNgayNhanThucTeChanging(value);
+					this.SendPropertyChanging();
+					this._DXNgayNhanThucTe = value;
+					this.SendPropertyChanged("DXNgayNhanThucTe");
+					this.OnDXNgayNhanThucTeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DXGioBatDauThucTe", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DXGioBatDauThucTe
+		{
+			get
+			{
+				return this._DXGioBatDauThucTe;
+			}
+			set
+			{
+				if ((this._DXGioBatDauThucTe != value))
+				{
+					this.OnDXGioBatDauThucTeChanging(value);
+					this.SendPropertyChanging();
+					this._DXGioBatDauThucTe = value;
+					this.SendPropertyChanged("DXGioBatDauThucTe");
+					this.OnDXGioBatDauThucTeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DXGioKetThucThucTe", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DXGioKetThucThucTe
+		{
+			get
+			{
+				return this._DXGioKetThucThucTe;
+			}
+			set
+			{
+				if ((this._DXGioKetThucThucTe != value))
+				{
+					this.OnDXGioKetThucThucTeChanging(value);
+					this.SendPropertyChanging();
+					this._DXGioKetThucThucTe = value;
+					this.SendPropertyChanged("DXGioKetThucThucTe");
+					this.OnDXGioKetThucThucTeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DXChuyenQuaCongDoan", DbType="Int")]
+		public System.Nullable<int> DXChuyenQuaCongDoan
+		{
+			get
+			{
+				return this._DXChuyenQuaCongDoan;
+			}
+			set
+			{
+				if ((this._DXChuyenQuaCongDoan != value))
+				{
+					this.OnDXChuyenQuaCongDoanChanging(value);
+					this.SendPropertyChanging();
+					this._DXChuyenQuaCongDoan = value;
+					this.SendPropertyChanged("DXChuyenQuaCongDoan");
+					this.OnDXChuyenQuaCongDoanChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PM_ProjectProcessList_PM_ProjectProcess", Storage="_PM_ProjectProcessList", ThisKey="ProcessListId", OtherKey="ProcessListId", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public PM_ProjectProcessList PM_ProjectProcessList
+		{
+			get
+			{
+				return this._PM_ProjectProcessList.Entity;
+			}
+			set
+			{
+				PM_ProjectProcessList previousValue = this._PM_ProjectProcessList.Entity;
+				if (((previousValue != value) 
+							|| (this._PM_ProjectProcessList.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._PM_ProjectProcessList.Entity = null;
+						previousValue.PM_ProjectProcesses.Remove(this);
+					}
+					this._PM_ProjectProcessList.Entity = value;
+					if ((value != null))
+					{
+						value.PM_ProjectProcesses.Add(this);
+						this._ProcessListId = value.ProcessListId;
+					}
+					else
+					{
+						this._ProcessListId = default(int);
+					}
+					this.SendPropertyChanged("PM_ProjectProcessList");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PM_ProjectTask_PM_ProjectProcess", Storage="_PM_ProjectTask", ThisKey="ProcessProjectTaskID", OtherKey="ProjectTaskID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public PM_ProjectTask PM_ProjectTask
+		{
+			get
+			{
+				return this._PM_ProjectTask.Entity;
+			}
+			set
+			{
+				PM_ProjectTask previousValue = this._PM_ProjectTask.Entity;
+				if (((previousValue != value) 
+							|| (this._PM_ProjectTask.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._PM_ProjectTask.Entity = null;
+						previousValue.PM_ProjectProcesses.Remove(this);
+					}
+					this._PM_ProjectTask.Entity = value;
+					if ((value != null))
+					{
+						value.PM_ProjectProcesses.Add(this);
+						this._ProcessProjectTaskID = value.ProjectTaskID;
+					}
+					else
+					{
+						this._ProcessProjectTaskID = default(int);
+					}
+					this.SendPropertyChanged("PM_ProjectTask");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 }

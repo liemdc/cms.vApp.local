@@ -141,15 +141,16 @@ public class OrdersModels
                 }
 
                 List<IV_tblMoldsProcess> ListMoldsProcess = LINQData.db.IV_tblMoldsProcesses.Where(w => w.MoldsId == ProjectTaskMoldsId).ToList();
-                foreach (var MoldsProcess in ListMoldsProcess)
-                {
-                    LINQData.db.PM_ProjectProcesses.InsertOnSubmit(new PM_ProjectProcess()
-                    {
+                foreach (var MoldsProcess in ListMoldsProcess) {
+                    Nullable<Boolean> DXNhanDuKien = LINQData.db.PM_ProjectProcessLists.FirstOrDefault(fod => fod.ProcessListId == MoldsProcess.ProcessListId).DXNhanDuKien;
+                    Nullable<DateTime> DXNgayNhanDuKien = (DXNhanDuKien == true ? ProjectTaskTransmit.AddHours(1) : (DateTime?)null);
+                    LINQData.db.PM_ProjectProcesses.InsertOnSubmit(new PM_ProjectProcess(){
                         ProcessProjectTaskID = newTask.ProjectTaskID,
                         ProcessListId = MoldsProcess.ProcessListId,
                         ProcessRequired = true,
                         ProcessGangerBrowse = false,
                         ProcessSMGangerBrowse = false,
+                        DXNgayNhanDuKien = DXNgayNhanDuKien,
                         CreatedWhen = DateTime.Now,
                         CreatedByUserId = CMSContext.CurrentUser.UserID,
                         ModifiedWhen = DateTime.Now,
@@ -285,6 +286,7 @@ public class OrdersModels
                     ProcessNotes = sm1.mp1.sm.mp.ProcessNotes,
                     UserModified = userm.FullName,
                     DateModified = sm1.mp1.sm.mp.ModifiedWhen,
+                    DXNgayNhanDuKien = sm1.mp1.sm.mp.DXNgayNhanDuKien,
                     DXNgayNhanThucTe = sm1.mp1.sm.mp.DXNgayNhanThucTe
                     
                 }).ToList();

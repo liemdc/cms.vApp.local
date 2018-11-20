@@ -134,6 +134,12 @@ BEGIN ALTER TABLE PM_ProjectProcessList
 	ADD DXNhanDuKien BIT;
 	PRINT ('ADD DXNhanDuKien BIT;');
 END
+UPDATE PM_ProjectProcessList SET DXNhanDuKien = 0
+-- RENAME Column DXGioBatDauDuKien +> DXNgayNhanDuKien
+IF EXISTS ( SELECT object_id FROM sys.columns WHERE object_id = OBJECT_ID(N'PM_ProjectProcess') AND name = 'DXGioBatDauDuKien' )
+BEGIN EXEC sp_rename 'PM_ProjectProcess.DXGioBatDauDuKien', 'DXNgayNhanDuKien', 'COLUMN'
+	PRINT ('RENAME Column DXGioBatDauDuKien +> DXNgayNhanDuKien;');
+END
 
 
 
