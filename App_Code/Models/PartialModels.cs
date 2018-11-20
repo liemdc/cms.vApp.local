@@ -90,6 +90,7 @@ public partial class MoldsObject
     public Nullable<decimal> MoldsMinScheduledDays { get; set; }
     public Nullable<decimal> MoldsFactor { get; set; }
     public string UserModified { get; set; }
+    public Nullable<DateTime> DateModified { get; set; }
 }
 public partial class ProcessListObject
 {
@@ -163,6 +164,7 @@ public partial class MoldsProcessObject
     public int ProcessListId { get; set; }
     public string ProcessListName { get; set; }
     public string UserModified { get; set; }
+    public Nullable<DateTime> DateModified { get; set; }
 }
 public partial class ProjectProcessObject
 {

@@ -70,7 +70,7 @@ public partial class CMSTemplates_OrdersList : TemplatePage {
                 e.Items.Remove(e.Items.FindByCommand(GridViewContextMenuCommand.NewRow));
             if (!CMSContext.CurrentUser.IsAuthorizedPerResource("LoaiKhuon", "Sua"))
                 e.Items.Remove(e.Items.FindByCommand(GridViewContextMenuCommand.EditRow));
-            if (!CMSContext.CurrentUser.IsAuthorizedPerResource("LoaiKhuon", "Xoa"))
+            //if (!CMSContext.CurrentUser.IsAuthorizedPerResource("LoaiKhuon", "Xoa"))
                 e.Items.Remove(e.Items.FindByCommand(GridViewContextMenuCommand.DeleteRow));
         }
     }

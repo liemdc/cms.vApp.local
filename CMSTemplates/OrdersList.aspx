@@ -575,7 +575,7 @@
                                 <dx:GridViewDataTextColumn VisibleIndex="2" EditFormSettings-VisibleIndex="2" FieldName="CustomerPhone" Caption="Điện thoại" Width="128" />  
                                 <dx:GridViewDataTextColumn VisibleIndex="3" EditFormSettings-VisibleIndex="3" FieldName="CustomerEmail" Caption="E-mail" Width="128" />                                  
                                 <dx:GridViewDataTextColumn VisibleIndex="4" EditFormSettings-VisibleIndex="4" FieldName="CustomerAddress" Caption="Địa chỉ" MinWidth="288" />  
-                                <dx:GridViewDataTextColumn VisibleIndex="5" EditFormSettings-VisibleIndex="5" FieldName="UserModified" Caption="Cập nhật bởi" Width="188" EditFormSettings-Visible="False" />                                                             
+                                <dx:GridViewDataTextColumn VisibleIndex="5" EditFormSettings-VisibleIndex="5" FieldName="UserModified" Caption="Cập nhật" Width="188" EditFormSettings-Visible="False" />                                                             
                             </Columns>
                             <ClientSideEvents Init="OnInit" BeginCallback="OnBeginCallback" EndCallback="OnEndCallback" ColumnResized="function(s, e) { OnColumnResized(s, e, 0); }" />
                             <SettingsContextMenu Enabled="true" />
@@ -610,23 +610,28 @@
                         <dx:ASPxGridView ID="GvLevelD" ClientInstanceName="GvLevelD" runat="server" Width="100%" DataSourceID="OdsLevelD" KeyFieldName="MoldsId"
                             Border-BorderWidth="0" SettingsEditing-EditFormColumnCount="3" OnFillContextMenuItems="GvLevelD_FillContextMenuItems" OnCustomColumnDisplayText="OnCustomColumnDisplayText">                                    
                             <Columns>
-                                <dx:GridViewDataTextColumn VisibleIndex="0" Caption="Num" Width="58" Settings-AllowSort="False" Settings-AllowHeaderFilter="False" EditFormSettings-Visible="False" UnboundType="String" FixedStyle="Left" />
-                                <dx:GridViewDataTextColumn VisibleIndex="1" EditFormSettings-VisibleIndex="1" FieldName="MoldsName" Caption="Loại khuôn" MinWidth="188">
+                                <dx:GridViewDataTextColumn Caption="Num" Width="58" Settings-AllowSort="False" Settings-AllowHeaderFilter="False" EditFormSettings-Visible="False" UnboundType="String" FixedStyle="Left" />
+                                <dx:GridViewDataTextColumn FieldName="MoldsName" Caption="Loại khuôn" MinWidth="188">
                                     <PropertiesTextEdit ValidationSettings-Display="Dynamic" ValidationSettings-RequiredField-IsRequired="true" ValidationSettings-RequiredField-ErrorText="Data is required." />
                                 </dx:GridViewDataTextColumn>
-                                <dx:GridViewDataSpinEditColumn VisibleIndex="2" EditFormSettings-VisibleIndex="2" FieldName="MoldsMinScheduledDays" Caption="Ngày dự kiến tối thiểu" Width="188">
-                                    <PropertiesSpinEdit NumberType="Integer" MaxValue="30" ValidationSettings-Display="Dynamic" ValidationSettings-RequiredField-IsRequired="true" ValidationSettings-RequiredField-ErrorText="Data is required." />
+                                <dx:GridViewDataSpinEditColumn FieldName="MoldsMinScheduledDays" Caption="Dự kiến tối thiểu" Width="128">
+                                    <PropertiesSpinEdit NumberType="Integer" MaxValue="30" DisplayFormatString="{0} ngày." ValidationSettings-Display="Dynamic" ValidationSettings-RequiredField-IsRequired="true" ValidationSettings-RequiredField-ErrorText="Data is required." />
                                 </dx:GridViewDataSpinEditColumn>
-                                <dx:GridViewDataSpinEditColumn VisibleIndex="3" EditFormSettings-VisibleIndex="3" FieldName="MoldsFactor" Caption="Hệ số" Width="188">
+                                <dx:GridViewDataSpinEditColumn FieldName="MoldsFactor" Caption="Hệ số" Width="128">
                                     <PropertiesSpinEdit DecimalPlaces="2" MaxValue="30" ValidationSettings-Display="Dynamic" ValidationSettings-RequiredField-IsRequired="true" ValidationSettings-RequiredField-ErrorText="Data is required." />
                                 </dx:GridViewDataSpinEditColumn>
-                                <dx:GridViewDataTextColumn VisibleIndex="5" EditFormSettings-VisibleIndex="5" FieldName="UserModified" Caption="Cập nhật bởi" Width="188" EditFormSettings-Visible="False" />
+                                <dx:GridViewDataTextColumn FieldName="UserModified" Caption="Cập nhật" Width="191" EditFormSettings-Visible="False" />
+                                <dx:GridViewDataDateColumn FieldName="DateModified" Caption="Ghi nhận" Width="141" EditFormSettings-Visible="False"> 
+                                    <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm" AllowNull="true">
+                                        <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
+                                    </PropertiesDateEdit>
+                                </dx:GridViewDataDateColumn>
                             </Columns>
                             <ClientSideEvents Init="OnInit" BeginCallback="OnBeginCallback" EndCallback="OnEndCallback" ColumnResized="function(s, e) { OnColumnResized(s, e, 0); }" />
                             <SettingsContextMenu Enabled="true" />
                             <SettingsPager Mode="ShowPager" PageSize="20" FirstPageButton-Visible="true" LastPageButton-Visible="true" PageSizeItemSettings-Visible="true" PageSizeItemSettings-Position="Right" Summary-Text="Trang {0} / {1} (Số dòng: {2}):" PageSizeItemSettings-Caption="Số dòng 1 trang:" />
                             <SettingsBehavior AllowDragDrop="true" ConfirmDelete="true" ColumnResizeMode="Control" EnableCustomizationWindow="true" EnableRowHotTrack="true" />
-                            <Settings ShowHeaderFilterButton="true" VerticalScrollBarMode="Visible" HorizontalScrollBarMode="Hidden" />
+                            <Settings VerticalScrollBarMode="Visible" HorizontalScrollBarMode="Hidden" />
                             <SettingsDetail ShowDetailRow="True" AllowOnlyOneMasterRowExpanded="true"/>
                             <Styles DetailCell-Paddings-Padding="0" DetailCell-Paddings-PaddingBottom="8" />
                             <Templates>
@@ -635,14 +640,19 @@
                                         Border-BorderColor="#CFCFCF" Styles-Header-Border-BorderColor="#CFCFCF" Styles-Header-BackColor="#F2F2F2" BorderTop-BorderWidth="0" 
                                         OnFillContextMenuItems="GvLevelDA_FillContextMenuItems" OnBeforePerformDataSelect="GvLevelDA_BeforePerformDataSelect" OnCustomColumnDisplayText="OnCustomColumnDisplayText">                                    
                                         <Columns>
-                                            <dx:GridViewDataTextColumn VisibleIndex="0" Caption="Num" Width="44" Settings-AllowSort="False" EditFormSettings-Visible="False" UnboundType="String" FixedStyle="Left" />
-                                            <dx:GridViewDataComboBoxColumn VisibleIndex="1" EditFormSettings-VisibleIndex="1" FieldName="ProcessListId" Caption="Công đoạn đơn hàng" MinWidth="228" Visible="false" EditFormSettings-Visible="True">
+                                            <dx:GridViewDataTextColumn Caption="Num" Width="44" Settings-AllowSort="False" EditFormSettings-Visible="False" UnboundType="String" FixedStyle="Left" />
+                                            <dx:GridViewDataComboBoxColumn FieldName="ProcessListId" Caption="Công đoạn đơn hàng" MinWidth="228" Visible="false" EditFormSettings-Visible="True">
                                                 <PropertiesComboBox DataSourceID="OdsProcessListNotInMoldsId" TextField="ProcessListName" ValueField="ProcessListId" ValueType="System.Int32" IncrementalFilteringMode="StartsWith">
                                                     <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
                                                 </PropertiesComboBox>
                                             </dx:GridViewDataComboBoxColumn>
-                                            <dx:GridViewDataTextColumn VisibleIndex="2" EditFormSettings-VisibleIndex="2" FieldName="ProcessListName" Caption="Công đoạn đơn hàng" MinWidth="228" EditFormSettings-Visible="False" />                                                             
-                                            <dx:GridViewDataTextColumn VisibleIndex="2" EditFormSettings-VisibleIndex="2" FieldName="UserModified" Caption="Cập nhật bởi" Width="175" EditFormSettings-Visible="False" />                                                             
+                                            <dx:GridViewDataTextColumn FieldName="ProcessListName" Caption="Công đoạn đơn hàng" MinWidth="228" EditFormSettings-Visible="False" />                                                             
+                                            <dx:GridViewDataTextColumn FieldName="UserModified" Caption="Cập nhật" Width="178" EditFormSettings-Visible="False" /> 
+                                            <dx:GridViewDataDateColumn FieldName="DateModified" Caption="Ghi nhận" Width="128" EditFormSettings-Visible="False"> 
+                                                <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm" AllowNull="true">
+                                                    <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
+                                                </PropertiesDateEdit>
+                                            </dx:GridViewDataDateColumn>
                                         </Columns>
                                         <ClientSideEvents BeginCallback="OnBeginCallback" EndCallback="OnEndCallback" />
                                         <SettingsContextMenu Enabled="true" EnableColumnMenu="False" />

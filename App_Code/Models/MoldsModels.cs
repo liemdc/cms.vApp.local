@@ -10,7 +10,7 @@ public class MoldsModels {
         return LINQData.db.PM_ProjectMolds
                 .GroupJoin(LINQData.db.CMS_Users, m => m.ModifiedByUserId, userc => userc.UserID, (m, userm) => new { m, userm })
                 .SelectMany(sm => sm.userm.DefaultIfEmpty(), (sm, userm) => new MoldsObject { 
-                    MoldsId = sm.m.MoldsId, MoldsName = sm.m.MoldsName, MoldsMinScheduledDays = sm.m.MoldsMinScheduledDays, MoldsFactor = sm.m.MoldsFactor, UserModified = userm.FullName
+                    MoldsId = sm.m.MoldsId, MoldsName = sm.m.MoldsName, MoldsMinScheduledDays = sm.m.MoldsMinScheduledDays, MoldsFactor = sm.m.MoldsFactor, UserModified = userm.FullName, DateModified = sm.m.ModifiedWhen
                 }).OrderBy(o => o.MoldsName).ToList();
     }	
     public static List<MoldsObject> MinMoldsList() {        
@@ -48,7 +48,7 @@ public class MoldsModels {
                 .SelectMany(sm => sm.pl.DefaultIfEmpty(), (sm, pl) => new { sm, pl })
                 .GroupJoin(LINQData.db.CMS_Users, mp1 => mp1.sm.mp.ModifiedByUserId, userc => userc.UserID, (mp1, userm) => new { mp1, userm })
                 .SelectMany(sm1 => sm1.userm.DefaultIfEmpty(), (sm1, userm) => new MoldsProcessObject { 
-                    MoldsProcessId = sm1.mp1.sm.mp.MoldsProcessId, MoldsId = sm1.mp1.sm.mp.MoldsId, ProcessListId = sm1.mp1.sm.mp.ProcessListId, ProcessListName = sm1.mp1.pl.ProcessListName, UserModified = userm.FullName
+                    MoldsProcessId = sm1.mp1.sm.mp.MoldsProcessId, MoldsId = sm1.mp1.sm.mp.MoldsId, ProcessListId = sm1.mp1.sm.mp.ProcessListId, ProcessListName = sm1.mp1.pl.ProcessListName, UserModified = userm.FullName, DateModified = sm1.mp1.sm.mp.ModifiedWhen
                 }).ToList();
     }
     public static void MoldsProcessCreated(int MoldsId, int ProcessListId) {
