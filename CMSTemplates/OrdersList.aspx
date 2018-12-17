@@ -355,18 +355,18 @@
                                                         <PropertiesSpinEdit DecimalPlaces="2" NumberType="Float" DisplayFormatString="{0} giờ.">
                                                         </PropertiesSpinEdit>
                                                     </dx:GridViewDataSpinEditColumn>
-                                                    <dx:GridViewDataDateColumn FieldName="" Caption="Tg bắt đầu dự kiến" Width="128" EditFormSettings-Visible="False">
+                                                    <dx:GridViewDataDateColumn FieldName="DXNgayBatDauDuKien" Caption="Tg bắt đầu dự kiến" Width="128" EditFormSettings-Visible="False">
                                                         <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm">
                                                             <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
                                                         </PropertiesDateEdit>
                                                     </dx:GridViewDataDateColumn>
-                                                    <dx:GridViewDataDateColumn FieldName="" Caption="Tg kết thúc dự kiến" Width="128" EditFormSettings-Visible="False">
+                                                    <dx:GridViewDataDateColumn FieldName="DXNgayKetThucDuKien" Caption="Tg kết thúc dự kiến" Width="128" EditFormSettings-Visible="False">
                                                         <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm">
                                                             <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
                                                         </PropertiesDateEdit>
                                                     </dx:GridViewDataDateColumn>
-                                                    <dx:GridViewDataTextColumn FieldName="" Caption="Mã Sp Ưu tiên" Width="128" EditFormSettings-Visible="False" /> 
-                                                    <dx:GridViewDataSpinEditColumn FieldName="" Caption="Tg điều chỉnh" Width="128" EditFormSettings-Visible="False">
+                                                    <dx:GridViewDataTextColumn FieldName="DXMaSanPhamUuTienGiaCong" Caption="Mã Sp Ưu tiên" Width="258" EditFormSettings-Visible="False" /> 
+                                                    <dx:GridViewDataSpinEditColumn FieldName="DXThoiGianDieuChinh" Caption="Tg điều chỉnh" Width="128" EditFormSettings-Visible="False">
                                                         <PropertiesSpinEdit DecimalPlaces="2" NumberType="Float" DisplayFormatString="{0} giờ.">
                                                         </PropertiesSpinEdit>
                                                     </dx:GridViewDataSpinEditColumn>
@@ -385,11 +385,11 @@
                                                             <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
                                                         </PropertiesDateEdit>
                                                     </dx:GridViewDataDateColumn>
-                                                    <dx:GridViewDataSpinEditColumn FieldName="" Caption="Tg gia công thực tế" Width="128" EditFormSettings-Visible="False">
+                                                    <dx:GridViewDataSpinEditColumn FieldName="ProcessFactTime" Caption="Tg gia công thực tế" Width="128" EditFormSettings-Visible="False">
                                                         <PropertiesSpinEdit DecimalPlaces="2" NumberType="Float" DisplayFormatString="{0} giờ.">
                                                         </PropertiesSpinEdit>
                                                     </dx:GridViewDataSpinEditColumn>
-                                                    <dx:GridViewDataComboBoxColumn FieldName="" Caption="Trạng thái" Width="108" EditFormSettings-Visible="False">
+                                                    <dx:GridViewDataComboBoxColumn FieldName="DXTrangThai" Caption="Trạng thái" Width="108" EditFormSettings-Visible="False">
                                                         <PropertiesComboBox DropDownStyle="DropDownList">
                                                             <Items>
                                                                 <dx:ListEditItem Value="0" Text="Không xác định" Selected="true" />

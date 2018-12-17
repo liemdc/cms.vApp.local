@@ -8487,7 +8487,7 @@ namespace Models
 		
 		private System.Nullable<System.DateTime> _DXNgayNhanDuKien;
 		
-		private System.Nullable<System.DateTime> _DXGioKetThucDuKien;
+		private System.Nullable<System.DateTime> _DXNgayBatDauDuKien;
 		
 		private string _DXMaSanPhamUuTienGiaCong;
 		
@@ -8545,8 +8545,8 @@ namespace Models
     partial void OnProcessNotesChanged();
     partial void OnDXNgayNhanDuKienChanging(System.Nullable<System.DateTime> value);
     partial void OnDXNgayNhanDuKienChanged();
-    partial void OnDXGioKetThucDuKienChanging(System.Nullable<System.DateTime> value);
-    partial void OnDXGioKetThucDuKienChanged();
+    partial void OnDXNgayBatDauDuKienChanging(System.Nullable<System.DateTime> value);
+    partial void OnDXNgayBatDauDuKienChanged();
     partial void OnDXMaSanPhamUuTienGiaCongChanging(string value);
     partial void OnDXMaSanPhamUuTienGiaCongChanged();
     partial void OnDXThoiGianDieuChinhChanging(System.Nullable<decimal> value);
@@ -8936,22 +8936,22 @@ namespace Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DXGioKetThucDuKien", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DXGioKetThucDuKien
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DXNgayBatDauDuKien", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DXNgayBatDauDuKien
 		{
 			get
 			{
-				return this._DXGioKetThucDuKien;
+				return this._DXNgayBatDauDuKien;
 			}
 			set
 			{
-				if ((this._DXGioKetThucDuKien != value))
+				if ((this._DXNgayBatDauDuKien != value))
 				{
-					this.OnDXGioKetThucDuKienChanging(value);
+					this.OnDXNgayBatDauDuKienChanging(value);
 					this.SendPropertyChanging();
-					this._DXGioKetThucDuKien = value;
-					this.SendPropertyChanged("DXGioKetThucDuKien");
-					this.OnDXGioKetThucDuKienChanged();
+					this._DXNgayBatDauDuKien = value;
+					this.SendPropertyChanged("DXNgayBatDauDuKien");
+					this.OnDXNgayBatDauDuKienChanged();
 				}
 			}
 		}

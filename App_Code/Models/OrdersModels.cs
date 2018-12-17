@@ -275,8 +275,7 @@ public class OrdersModels
                 .GroupJoin(LINQData.db.PM_ProjectProcessLists, mp => mp.ProcessListId, pl => pl.ProcessListId, (mp, pl) => new { mp, pl })
                 .SelectMany(sm => sm.pl.DefaultIfEmpty(), (sm, pl) => new { sm, pl })
                 .GroupJoin(LINQData.db.CMS_Users, mp1 => mp1.sm.mp.ModifiedByUserId, userc => userc.UserID, (mp1, userm) => new { mp1, userm })
-                .SelectMany(sm1 => sm1.userm.DefaultIfEmpty(), (sm1, userm) => new ProjectProcessObject
-                {
+                .SelectMany(sm1 => sm1.userm.DefaultIfEmpty(), (sm1, userm) => new ProjectProcessObject {
                     ProcessId = sm1.mp1.sm.mp.ProcessId,
                     ProcessListId = sm1.mp1.sm.mp.ProcessListId,
                     ProcessListName = sm1.mp1.pl.ProcessListName,
@@ -287,8 +286,12 @@ public class OrdersModels
                     UserModified = userm.FullName,
                     DateModified = sm1.mp1.sm.mp.ModifiedWhen,
                     DXNgayNhanDuKien = sm1.mp1.sm.mp.DXNgayNhanDuKien,
-                    DXNgayNhanThucTe = sm1.mp1.sm.mp.DXNgayNhanThucTe
-                    
+                    DXNgayNhanThucTe = sm1.mp1.sm.mp.DXNgayNhanThucTe,
+                    DXNgayBatDauDuKien = sm1.mp1.sm.mp.DXNgayBatDauDuKien,
+                    DXNgayKetThucDuKien = Convert.ToDateTime(sm1.mp1.sm.mp.DXNgayBatDauDuKien).AddHours(Convert.ToDouble(sm1.mp1.sm.mp.ProcessExpectedTime)).AddHours(Convert.ToDouble(sm1.mp1.sm.mp.DXThoiGianDieuChinh)),
+                    DXThoiGianDieuChinh = sm1.mp1.sm.mp.DXThoiGianDieuChinh,
+                    DXMaSanPhamUuTienGiaCong = sm1.mp1.sm.mp.DXMaSanPhamUuTienGiaCong,
+                    DXTrangThai = sm1.mp1.sm.mp.ProcessGangerBrowse == true ? "Hoàn thành" : "Chưa hoàn thành",
                 }).ToList();
     }
     public static void ProjectProcessCreated(int ProjectTaskID, int ProcessListId)
@@ -355,10 +358,13 @@ public class OrdersModels
                 ProjectTaskDuKienTinhQuaQA = sm.pp.pp.pt.ProjectTaskDuKienTinhQuaQA,
                 ProcessNotes = sm.pp.pp.pp.ProcessNotes,
                 DXNgayNhanThucTe = sm.pp.pp.pp.DXNgayNhanThucTe,
+                DXNgayBatDauDuKien = sm.pp.pp.pp.DXNgayBatDauDuKien,
+                DXThoiGianDieuChinh = sm.pp.pp.pp.DXThoiGianDieuChinh,
+                DXMaSanPhamUuTienGiaCong = sm.pp.pp.pp.DXMaSanPhamUuTienGiaCong,
                 AutoPriority = Convert.ToInt32(((Convert.ToDateTime(sm.pp.pp.pt.ProjectTaskTransmit) - DateTime.Now).Days + (Convert.ToDateTime(sm.pp.pp.pt.ProjectTaskDeadline) - DateTime.Now).Days) - sm.pp.pm.MoldsMinScheduledDays)
             }).OrderBy(o => o.AutoPriority).OrderBy(o1 => o1.ProjectTaskPriorityID).ToList();
     }
-    public static void OrdersProcessUpdated(int ProjectTaskID, int ProcessListId, bool ProcessGangerBrowse, decimal ProcessExpectedTime, DateTime ProcessExpectedCompletion, DateTime DXNgayNhanThucTe, int ProcessPlusBrowse, string ProcessNotes) {
+    public static void OrdersProcessUpdated(int ProjectTaskID, int ProcessListId, bool ProcessGangerBrowse, decimal ProcessExpectedTime, decimal DXThoiGianDieuChinh, DateTime ProcessExpectedCompletion, DateTime DXNgayNhanThucTe, DateTime DXNgayBatDauDuKien, int ProcessPlusBrowse, string DXMaSanPhamUuTienGiaCong, string ProcessNotes) {
         using (TransactionScope transactionScope = new TransactionScope()) {
             try {
                 bool finish = true;
@@ -370,6 +376,9 @@ public class OrdersModels
                     pp.ProcessExpectedTime = ProcessExpectedTime;
                     pp.ProcessExpectedCompletion = ProcessExpectedCompletion;
                     pp.DXNgayNhanThucTe = DXNgayNhanThucTe;
+                    pp.DXNgayBatDauDuKien = DXNgayBatDauDuKien;
+                    pp.DXThoiGianDieuChinh = DXThoiGianDieuChinh;
+                    pp.DXMaSanPhamUuTienGiaCong = DXMaSanPhamUuTienGiaCong;
                     pp.ProcessNotes = ProcessNotes;
                     pp.ModifiedWhen = DateTime.Now;
                     pp.ModifiedByUserId = CMSContext.CurrentUser.UserID;

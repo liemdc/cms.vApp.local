@@ -179,7 +179,12 @@ public partial class ProjectProcessObject
     public string UserModified { get; set; }
     public Nullable<DateTime> DateModified { get; set; }
     public Nullable<DateTime> DXNgayNhanDuKien { get; set; }
+    public Nullable<DateTime> DXNgayBatDauDuKien { get; set; }
+    public Nullable<DateTime> DXNgayKetThucDuKien { get; set; }
     public Nullable<DateTime> DXNgayNhanThucTe { get; set; }
+    public Nullable<decimal> DXThoiGianDieuChinh { get; set; }
+    public string DXMaSanPhamUuTienGiaCong { get; set; }
+    public string DXTrangThai { get; set; }
 }
 public partial class OrdersProcessObject
 {
@@ -205,7 +210,7 @@ public partial class OrdersProcessObject
     public Nullable<DateTime> ProjectTaskDuKienThoQuaTinh { get; set; }
     public Nullable<DateTime> ProjectTaskDuKienTinhQuaQA { get; set; }
     public string ProcessNotes { get; set; }
-    public Nullable<DateTime> DXGioBatDauDuKien { get; set; }
+    public Nullable<DateTime> DXNgayBatDauDuKien { get; set; }
     public Nullable<DateTime> DXGioKetThucDuKien { get; set; }
     public string DXMaSanPhamUuTienGiaCong { get; set; }
     public Nullable<decimal> DXThoiGianDieuChinh { get; set; }

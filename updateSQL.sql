@@ -140,6 +140,12 @@ IF EXISTS ( SELECT object_id FROM sys.columns WHERE object_id = OBJECT_ID(N'PM_P
 BEGIN EXEC sp_rename 'PM_ProjectProcess.DXGioBatDauDuKien', 'DXNgayNhanDuKien', 'COLUMN'
 	PRINT ('RENAME Column DXGioBatDauDuKien +> DXNgayNhanDuKien;');
 END
+-- 20181217
+-- RENAME Column DXGioKetThucDuKien +> DXNgayBatDauDuKien
+IF EXISTS ( SELECT object_id FROM sys.columns WHERE object_id = OBJECT_ID(N'PM_ProjectProcess') AND name = 'DXGioKetThucDuKien' )
+BEGIN EXEC sp_rename 'PM_ProjectProcess.DXGioKetThucDuKien', 'DXNgayBatDauDuKien', 'COLUMN'
+	PRINT ('RENAME Column DXGioKetThucDuKien +> DXNgayBatDauDuKien;');
+END
 
 
 
