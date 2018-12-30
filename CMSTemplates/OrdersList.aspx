@@ -346,7 +346,7 @@
                                             </dx:GridViewBandColumn>
                                             <dx:GridViewBandColumn Caption="Dữ liệu đơn hàng" VisibleIndex="1">
                                                 <Columns>
-                                                    <dx:GridViewDataDateColumn FieldName="DXNgayNhanDuKien" Caption="Tg nhận dự kiến" Width="128" EditFormSettings-Visible="False">
+                                                    <dx:GridViewDataDateColumn FieldName="ProcessExpectedCompletion" Caption="Tg nhận dự kiến" Width="128" EditFormSettings-Visible="False">
                                                         <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm">
                                                             <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
                                                         </PropertiesDateEdit>

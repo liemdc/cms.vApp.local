@@ -142,15 +142,17 @@ public class OrdersModels
 
                 List<IV_tblMoldsProcess> ListMoldsProcess = LINQData.db.IV_tblMoldsProcesses.Where(w => w.MoldsId == ProjectTaskMoldsId).ToList();
                 foreach (var MoldsProcess in ListMoldsProcess) {
+                    int dataQA = LINQData.db.PM_ProjectProcessLists.FirstOrDefault(fod => fod.ProcessListGroup.Equals("dataQA")).ProcessListId;
                     Nullable<Boolean> DXNhanDuKien = LINQData.db.PM_ProjectProcessLists.FirstOrDefault(fod => fod.ProcessListId == MoldsProcess.ProcessListId).DXNhanDuKien;
                     Nullable<DateTime> DXNgayNhanDuKien = (DXNhanDuKien == true ? ProjectTaskTransmit.AddHours(1) : (DateTime?)null);
-                    LINQData.db.PM_ProjectProcesses.InsertOnSubmit(new PM_ProjectProcess(){
+                    Nullable<DateTime> DXNgayNhanDuKienQA = (MoldsProcess.ProcessListId == dataQA ? ProjectTaskDuKienTinhQuaQA : (DateTime?)null);
+                    LINQData.db.PM_ProjectProcesses.InsertOnSubmit(new PM_ProjectProcess() {
                         ProcessProjectTaskID = newTask.ProjectTaskID,
                         ProcessListId = MoldsProcess.ProcessListId,
                         ProcessRequired = true,
                         ProcessGangerBrowse = false,
                         ProcessSMGangerBrowse = false,
-                        DXNgayNhanDuKien = DXNgayNhanDuKien,
+                        ProcessExpectedCompletion = (MoldsProcess.ProcessListId == dataQA ? DXNgayNhanDuKienQA : DXNgayNhanDuKien),
                         CreatedWhen = DateTime.Now,
                         CreatedByUserId = CMSContext.CurrentUser.UserID,
                         ModifiedWhen = DateTime.Now,
@@ -285,7 +287,7 @@ public class OrdersModels
                     ProcessNotes = sm1.mp1.sm.mp.ProcessNotes,
                     UserModified = userm.FullName,
                     DateModified = sm1.mp1.sm.mp.ModifiedWhen,
-                    DXNgayNhanDuKien = sm1.mp1.sm.mp.DXNgayNhanDuKien,
+                    ProcessExpectedCompletion = sm1.mp1.sm.mp.ProcessExpectedCompletion,
                     DXNgayNhanThucTe = sm1.mp1.sm.mp.DXNgayNhanThucTe,
                     DXNgayBatDauDuKien = sm1.mp1.sm.mp.DXNgayBatDauDuKien,
                     DXNgayKetThucDuKien = Convert.ToDateTime(sm1.mp1.sm.mp.DXNgayBatDauDuKien).AddHours(Convert.ToDouble(sm1.mp1.sm.mp.ProcessExpectedTime)).AddHours(Convert.ToDouble(sm1.mp1.sm.mp.DXThoiGianDieuChinh)),
