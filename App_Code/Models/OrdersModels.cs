@@ -140,7 +140,17 @@ public class OrdersModels
                     pt.ProjectTaskWeight = Convert.ToDecimal(Convert.ToDouble(ProjectTaskDiameterOut) * Convert.ToDouble(ProjectTaskDiameterOut) * 0.785 * 7.8 * Convert.ToDouble(ProjectTaskThickness) * Convert.ToDouble(factor)) / 1000000;
                 }
 
-                List<IV_tblMoldsProcess> ListMoldsProcess = LINQData.db.IV_tblMoldsProcesses.Where(w => w.MoldsId == ProjectTaskMoldsId).ToList();
+                List<MoldsProcessObject> ListMoldsProcess = LINQData.db.IV_tblMoldsProcesses.Where(w => w.MoldsId == ProjectTaskMoldsId)
+                                                                    .GroupJoin(LINQData.db.PM_ProjectProcessLists, mp => mp.ProcessListId, pl => pl.ProcessListId, (mp, pl) => new { mp, pl })
+                                                                    .SelectMany(sm => sm.pl.DefaultIfEmpty(), (sm, pl) => new MoldsProcessObject {
+                                                                        MoldsProcessId = sm.mp.MoldsProcessId,
+                                                                        MoldsId = sm.mp.MoldsId,
+                                                                        ProcessListId = sm.mp.ProcessListId,
+                                                                        ProcessListName = pl.ProcessListName,
+                                                                        ProcessListGroup = pl.ProcessListGroup,
+                                                                        ItemPos = pl.ProcessListOrder
+                                                                    }).OrderByDescending(o => o.ItemPos).ToList();
+                int ProcessTo = 0;
                 foreach (var MoldsProcess in ListMoldsProcess) {
                     int dataQA = LINQData.db.PM_ProjectProcessLists.FirstOrDefault(fod => fod.ProcessListGroup.Equals("dataQA")).ProcessListId;
                     Nullable<Boolean> DXNhanDuKien = LINQData.db.PM_ProjectProcessLists.FirstOrDefault(fod => fod.ProcessListId == MoldsProcess.ProcessListId).DXNhanDuKien;
@@ -153,11 +163,13 @@ public class OrdersModels
                         ProcessGangerBrowse = false,
                         ProcessSMGangerBrowse = false,
                         ProcessExpectedCompletion = (MoldsProcess.ProcessListId == dataQA ? DXNgayNhanDuKienQA : DXNgayNhanDuKien),
+                        DXChuyenQuaCongDoan = ProcessTo,
                         CreatedWhen = DateTime.Now,
                         CreatedByUserId = CMSContext.CurrentUser.UserID,
                         ModifiedWhen = DateTime.Now,
                         ModifiedByUserId = CMSContext.CurrentUser.UserID
                     });
+                    ProcessTo = MoldsProcess.ProcessListId;
                 }
 
                 LINQData.db.SubmitChanges();
@@ -275,13 +287,16 @@ public class OrdersModels
     public static List<ProjectProcessObject> ProjectProcessListByProjectTaskID(int ProjectTaskID) {
         return LINQData.db.PM_ProjectProcesses.Where(w => w.ProcessProjectTaskID == ProjectTaskID)
                 .GroupJoin(LINQData.db.PM_ProjectProcessLists, mp => mp.ProcessListId, pl => pl.ProcessListId, (mp, pl) => new { mp, pl })
-                .SelectMany(sm => sm.pl.DefaultIfEmpty(), (sm, pl) => new { sm, pl })
+                .SelectMany(sm => sm.pl.DefaultIfEmpty(), (sm, pl) => new { sm, pl })                
                 .GroupJoin(LINQData.db.CMS_Users, mp1 => mp1.sm.mp.ModifiedByUserId, userc => userc.UserID, (mp1, userm) => new { mp1, userm })
                 .SelectMany(sm1 => sm1.userm.DefaultIfEmpty(), (sm1, userm) => new ProjectProcessObject {
                     ProcessId = sm1.mp1.sm.mp.ProcessId,
                     ProcessListId = sm1.mp1.sm.mp.ProcessListId,
+                    ProcessListIds = string.Format("PL-{0}", sm1.mp1.sm.mp.ProcessListId),
                     ProcessListName = sm1.mp1.pl.ProcessListName,
                     ProcessListgroup = sm1.mp1.pl.ProcessListGroup,
+                    ItemPos = sm1.mp1.pl.ProcessListOrder,
+                    DXChuyenCongDoan = string.IsNullOrEmpty(LINQData.db.PM_ProjectProcessLists.FirstOrDefault(fd => fd.ProcessListId == sm1.mp1.sm.mp.DXChuyenQuaCongDoan).ProcessListName) ? "Không xác định" : LINQData.db.PM_ProjectProcessLists.FirstOrDefault(fd => fd.ProcessListId == sm1.mp1.sm.mp.DXChuyenQuaCongDoan).ProcessListName,
                     ProcessExpectedTime = sm1.mp1.sm.mp.ProcessExpectedTime,
                     ProcessFactTime = sm1.mp1.sm.mp.ProcessFactTime,
                     ProcessNotes = sm1.mp1.sm.mp.ProcessNotes,
@@ -294,7 +309,7 @@ public class OrdersModels
                     DXThoiGianDieuChinh = sm1.mp1.sm.mp.DXThoiGianDieuChinh,
                     DXMaSanPhamUuTienGiaCong = sm1.mp1.sm.mp.DXMaSanPhamUuTienGiaCong,
                     DXTrangThai = sm1.mp1.sm.mp.ProcessGangerBrowse == true ? "Hoàn thành" : "Chưa hoàn thành",
-                }).ToList();
+                }).OrderBy(o => o.ItemPos).ToList();
     }
     public static void ProjectProcessCreated(int ProjectTaskID, int ProcessListId)
     {

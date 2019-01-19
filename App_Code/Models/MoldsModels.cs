@@ -48,8 +48,16 @@ public class MoldsModels {
                 .SelectMany(sm => sm.pl.DefaultIfEmpty(), (sm, pl) => new { sm, pl })
                 .GroupJoin(LINQData.db.CMS_Users, mp1 => mp1.sm.mp.ModifiedByUserId, userc => userc.UserID, (mp1, userm) => new { mp1, userm })
                 .SelectMany(sm1 => sm1.userm.DefaultIfEmpty(), (sm1, userm) => new MoldsProcessObject { 
-                    MoldsProcessId = sm1.mp1.sm.mp.MoldsProcessId, MoldsId = sm1.mp1.sm.mp.MoldsId, ProcessListId = sm1.mp1.sm.mp.ProcessListId, ProcessListName = sm1.mp1.pl.ProcessListName, UserModified = userm.FullName, DateModified = sm1.mp1.sm.mp.ModifiedWhen
-                }).ToList();
+                    MoldsProcessId = sm1.mp1.sm.mp.MoldsProcessId,
+                    MoldsId = sm1.mp1.sm.mp.MoldsId,
+                    ProcessListId = sm1.mp1.sm.mp.ProcessListId,
+                    ProcessListIds = string.Format("PL-{0}", sm1.mp1.sm.mp.ProcessListId),
+                    ProcessListName = sm1.mp1.pl.ProcessListName,
+                    ProcessListGroup = sm1.mp1.pl.ProcessListGroup,
+                    ItemPos = sm1.mp1.pl.ProcessListOrder,
+                    UserModified = userm.FullName,
+                    DateModified = sm1.mp1.sm.mp.ModifiedWhen
+                }).OrderBy(o => o.ItemPos).ToList();
     }
     public static void MoldsProcessCreated(int MoldsId, int ProcessListId) {
         LINQData.db.IV_tblMoldsProcesses.InsertOnSubmit(new IV_tblMoldsProcess() { 

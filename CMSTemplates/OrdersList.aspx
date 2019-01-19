@@ -331,7 +331,7 @@
                                                         </PropertiesComboBox>
                                                     </dx:GridViewDataComboBoxColumn>
                                                     <dx:GridViewDataTextColumn FieldName="ProcessListName" Caption="Công đoạn" Width="128" EditFormSettings-Visible="False" /> 
-                                                    <dx:GridViewDataComboBoxColumn VisibleIndex="2" FieldName="ProcessListgroup" Caption="Nhóm công đoạn" Width="123" EditFormSettings-Visible="False" ReadOnly="true">
+                                                    <dx:GridViewDataComboBoxColumn FieldName="ProcessListgroup" Caption="Nhóm công đoạn" Width="123" EditFormSettings-Visible="False" ReadOnly="true">
                                                         <PropertiesComboBox DropDownStyle="DropDownList">
                                                             <Items>
                                                                 <dx:ListEditItem Value="dataTho" Text="Bộ phận Thô" />
@@ -341,6 +341,9 @@
                                                             <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
                                                         </PropertiesComboBox>
                                                     </dx:GridViewDataComboBoxColumn>
+                                                    <dx:GridViewDataTextColumn FieldName="ProcessListIds" Caption="Mã hiệu" EditFormSettings-Visible="False" Width="108" />
+                                                    <dx:GridViewDataTextColumn FieldName="ItemPos" Caption="ItemPos" EditFormSettings-Visible="False" Width="48" />
+                                                    <dx:GridViewDataTextColumn FieldName="DXChuyenCongDoan" Caption="Công đoạn sau" EditFormSettings-Visible="False" Width="128" />
                                                 </Columns>
                                                 <HeaderStyle HorizontalAlign="Left" />
                                             </dx:GridViewBandColumn>
@@ -646,7 +649,19 @@
                                                     <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
                                                 </PropertiesComboBox>
                                             </dx:GridViewDataComboBoxColumn>
-                                            <dx:GridViewDataTextColumn FieldName="ProcessListName" Caption="Công đoạn đơn hàng" MinWidth="228" EditFormSettings-Visible="False" />                                                             
+                                            <dx:GridViewDataTextColumn FieldName="ProcessListName" Caption="Công đoạn đơn hàng" MinWidth="228" EditFormSettings-Visible="False" />   
+                                            <dx:GridViewDataComboBoxColumn FieldName="ProcessListGroup" Caption="Nhóm công đoạn" CellStyle-Paddings-PaddingLeft="8px" EditFormSettings-Visible="False" Width="328">
+                                                <PropertiesComboBox DropDownStyle="DropDownList">
+                                                    <Items>
+                                                        <dx:ListEditItem Value="dataTho" Text="Bộ phận Thô" />
+                                                        <dx:ListEditItem Value="dataTinh" Text="Bộ phận Tinh" />
+                                                        <dx:ListEditItem Value="dataQA" Text="Bộ phận QA" />
+                                                    </Items>
+                                                    <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
+                                                </PropertiesComboBox>
+                                            </dx:GridViewDataComboBoxColumn>
+                                            <dx:GridViewDataTextColumn FieldName="ProcessListIds" Caption="Mã hiệu" EditFormSettings-Visible="False" Width="108" />
+                                            <dx:GridViewDataTextColumn FieldName="ItemPos" Caption="ItemPos" EditFormSettings-Visible="False" Width="48" />
                                             <dx:GridViewDataTextColumn FieldName="UserModified" Caption="Cập nhật" Width="178" EditFormSettings-Visible="False" /> 
                                             <dx:GridViewDataDateColumn FieldName="DateModified" Caption="Ghi nhận" Width="128" EditFormSettings-Visible="False"> 
                                                 <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm" AllowNull="true">

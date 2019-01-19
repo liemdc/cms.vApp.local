@@ -65,7 +65,7 @@
                     <dx:PanelContent runat="server" SupportsDisabledAttribute="True">                        
                         <dx:ASPxLabel runat="server" ID="CommandLabel" ClientInstanceName="CommandLabel" Text="Command: BEGIN" />
                         <dx:ASPxLabel runat="server" ID="ClientTimeLabel" ClientInstanceName="ClientTimeLabel" Text="Loading: BEGIN" />                        
-                        <span style="float:right;color:#428bca;font-weight:bold;font-family:Arial">Vina Mold & Metal Products Copyright © <%: DateTime.Now.Year %> Viet Tri.</span>
+                        <span style="float:right;color:#428bca;font-weight:bold;font-family:Arial">Vina Mold & Metal Products Copyright © <%: DateTime.Now.Year %> Viet Tri. Cập nhật: 4.235.011</span>
                     </dx:PanelContent>
                 </PanelCollection>
             </dx:ASPxPanel>

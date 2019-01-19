@@ -163,6 +163,9 @@ public partial class MoldsProcessObject
     public int MoldsId { get; set; }
     public int ProcessListId { get; set; }
     public string ProcessListName { get; set; }
+    public string ProcessListGroup { get; set; }
+    public string ProcessListIds { get; set; }
+    public Nullable<int> ItemPos { get; set; }
     public string UserModified { get; set; }
     public Nullable<DateTime> DateModified { get; set; }
 }
@@ -172,6 +175,8 @@ public partial class ProjectProcessObject
     public int ProcessListId { get; set; }
     public string ProcessListName { get; set; }
     public string ProcessListgroup { get; set; }
+    public string ProcessListIds { get; set; }
+    public Nullable<int> ItemPos { get; set; }
     public Nullable<bool> ProcessGangerBrowse { get; set; }
     public Nullable<decimal> ProcessExpectedTime { get; set; }
     public Nullable<decimal> ProcessFactTime { get; set; }
@@ -184,6 +189,7 @@ public partial class ProjectProcessObject
     public Nullable<DateTime> DXNgayNhanThucTe { get; set; }
     public Nullable<decimal> DXThoiGianDieuChinh { get; set; }
     public string DXMaSanPhamUuTienGiaCong { get; set; }
+    public string DXChuyenCongDoan { get; set; }
     public string DXTrangThai { get; set; }
 }
 public partial class OrdersProcessObject
