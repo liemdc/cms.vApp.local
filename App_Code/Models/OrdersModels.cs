@@ -387,7 +387,7 @@ public class OrdersModels
                 bool finish = true;
                 bool finishTho = true;
                 bool finishTinh = true;
-                PM_ProjectProcess pp = LINQData.db.PM_ProjectProcesses.FirstOrDefault(x => x.ProcessProjectTaskID == ProjectTaskID && x.ProcessListId == ProcessListId);
+                PM_ProjectProcess pp = LINQData.db.PM_ProjectProcesses.FirstOrDefault(x => x.ProcessProjectTaskID == ProjectTaskID && x.ProcessListId == ProcessListId);                
                 List<PM_ProjectProcess> ppl = LINQData.db.PM_ProjectProcesses.Where(w => w.ProcessProjectTaskID == ProjectTaskID).ToList();
                 if (pp != null) {
                     pp.ProcessExpectedTime = ProcessExpectedTime;
@@ -416,6 +416,9 @@ public class OrdersModels
                                                         .Join(LINQData.db.PM_ProjectSubProcesses.Where(w => w.SubProcessListId == ProcessListId), ppd => ppd.DetailSubProcessId, psp => psp.SubProcessId, (ppd, psp) => new { ppd, psp })
                                                         .Sum(s => s.ppd.DetailTotalTimeM);
                     }
+                    PM_ProjectProcess ppTo = LINQData.db.PM_ProjectProcesses.FirstOrDefault(x => x.ProcessProjectTaskID == ProjectTaskID && x.ProcessListId == pp.DXChuyenQuaCongDoan);
+                    if (ppTo != null)
+                        ppTo.ProcessExpectedCompletion = Convert.ToDateTime(pp.DXNgayBatDauDuKien).AddHours(Convert.ToDouble(pp.ProcessExpectedTime)).AddHours(Convert.ToDouble(pp.DXThoiGianDieuChinh));
                 }
                 if (ppl.FirstOrDefault(fod => fod.ProcessGangerBrowse == false) != null)
                     finish = false;
