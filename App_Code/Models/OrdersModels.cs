@@ -392,7 +392,8 @@ public class OrdersModels
                 if (pp != null) {
                     pp.ProcessExpectedTime = ProcessExpectedTime;
                     pp.ProcessExpectedCompletion = ProcessExpectedCompletion;
-                    pp.DXNgayNhanThucTe = DXNgayNhanThucTe;
+                    if (DXNgayNhanThucTe.GetHashCode() > 0)
+                        pp.DXNgayNhanThucTe = DXNgayNhanThucTe;
                     pp.DXNgayBatDauDuKien = DXNgayBatDauDuKien;
                     pp.DXThoiGianDieuChinh = DXThoiGianDieuChinh;
                     pp.DXMaSanPhamUuTienGiaCong = DXMaSanPhamUuTienGiaCong;
