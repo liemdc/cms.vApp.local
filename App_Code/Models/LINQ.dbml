@@ -395,4 +395,29 @@
       <Association Name="PM_ProjectTask_PM_ProjectProcess" Member="PM_ProjectTask" ThisKey="ProcessProjectTaskID" OtherKey="ProjectTaskID" Type="PM_ProjectTask" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.TimeCongDoan" Member="TimeCongDoans">
+    <Type Name="TimeCongDoan">
+      <Column Name="ProjectTaskID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PhayMCDK" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PhayMCHT" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PhayTayDK" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PhayTayHT" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="BoPhanQADK" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="BoPhanQAHT" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EDMDK" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EDMHT" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="WEDMDK" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="WEDMHT" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TienNCDK" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TienNCHT" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="NhietLuyenDK" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="NhietLuyenHT" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="MaiBongVaLapRapDK" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="MaiBongVaLapRapHT" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TienTinhNCDK" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TienTinhNCHT" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="MaiPhangKhuonDapDK" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="MaiPhangKhuonDapHT" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
 </Database>

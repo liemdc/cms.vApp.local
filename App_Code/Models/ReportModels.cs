@@ -15,20 +15,44 @@ public class ReportModels {
             .GroupJoin(LINQData.db.PM_ProjectMolds, pt => pt.pt.ProjectTaskMoldsId, pm => pm.MoldsId, (pt, pm) => new { pt, pm })
             .SelectMany(sm => sm.pm, (sm, pm) => new { sm.pt, pm })
             .GroupJoin(LINQData.db.PM_ProjectTaskStatus, pt => pt.pt.pt.ProjectTaskStatusID, pts => pts.TaskStatusID, (pt, pts) => new { pt, pts })
-            .SelectMany(sm => sm.pts, (sm, pts) => new {
-                ProjectTaskID = sm.pt.pt.pt.ProjectTaskID,
-                ProjectTaskMoldCode = sm.pt.pt.pt.ProjectTaskMoldCode,
-                ProjectTaskOverlayNum = sm.pt.pt.pt.ProjectTaskOverlayNum,
-                MoldsName = sm.pt.pm.MoldsName,
-                ProjectTaskQuantities = sm.pt.pt.pt.ProjectTaskQuantities,
-                ProjectTaskDiameterOut = sm.pt.pt.pt.ProjectTaskDiameterOut,
-                ProjectTaskWeight = sm.pt.pt.pt.ProjectTaskWeight,
-                CustomerName = sm.pt.pt.pc.CustomerName,
-                ProjectTaskTransmit = sm.pt.pt.pt.ProjectTaskTransmit,
-                ProjectTaskDeadline = sm.pt.pt.pt.ProjectTaskDeadline,
-                ProjectTaskStatusID = sm.pt.pt.pt.ProjectTaskStatusID,
-                TaskStatusDisplayName = pts.TaskStatusDisplayName,
-                ProjectTaskDescription = sm.pt.pt.pt.ProjectTaskDescription
+            .SelectMany(sm => sm.pts, (sm, pts) => new { sm.pt, pts })
+            .GroupJoin(LINQData.db.TimeCongDoans, pt => pt.pt.pt.pt.ProjectTaskID, tcd => tcd.ProjectTaskID, (pt, tcd) => new { pt, tcd })
+            .SelectMany(sm => sm.tcd, (sm, tcd) => new {
+                ProjectTaskID = sm.pt.pt.pt.pt.ProjectTaskID,
+                ProjectTaskMoldCode = sm.pt.pt.pt.pt.ProjectTaskMoldCode,
+                ProjectTaskOverlayNum = sm.pt.pt.pt.pt.ProjectTaskOverlayNum,
+                MoldsName = sm.pt.pt.pm.MoldsName,
+                ProjectTaskQuantities = sm.pt.pt.pt.pt.ProjectTaskQuantities,
+                ProjectTaskDiameterOut = sm.pt.pt.pt.pt.ProjectTaskDiameterOut,
+                ProjectTaskWeight = sm.pt.pt.pt.pt.ProjectTaskWeight,
+                CustomerName = sm.pt.pt.pt.pc.CustomerName,
+                ProjectTaskTransmit = sm.pt.pt.pt.pt.ProjectTaskTransmit,
+                ProjectTaskDeadline = sm.pt.pt.pt.pt.ProjectTaskDeadline,
+                ProjectTaskStatusID = sm.pt.pt.pt.pt.ProjectTaskStatusID,
+                TaskStatusDisplayName = sm.pt.pts.TaskStatusDisplayName,
+                ProjectTaskDescription = sm.pt.pt.pt.pt.ProjectTaskDescription,
+                TienNCDK = tcd.TienNCDK,
+                TienNCHT = tcd.TienNCHT,
+                EDMDK = tcd.EDMDK,
+                EDMHT = tcd.EDMHT,
+                MaiBongVaLapRapDK = tcd.MaiBongVaLapRapDK,
+                MaiBongVaLapRapHT = tcd.MaiBongVaLapRapHT,
+                MaiPhangKhuonDapDK = tcd.MaiPhangKhuonDapDK,
+                MaiPhangKhuonDapHT = tcd.MaiPhangKhuonDapHT,
+                NhietLuyenDK = tcd.NhietLuyenDK,
+                NhietLuyenHT = tcd.NhietLuyenHT,
+                PhayMCDK = tcd.PhayMCDK,
+                PhayMCHT = tcd.PhayMCHT,
+                PhayTayDH = tcd.PhayTayDK,
+                PhayTayHT = tcd.PhayTayHT,
+                TienTinhNCDK = tcd.TienTinhNCDK,
+                TienTinhNCHT = tcd.TienTinhNCHT,
+                WEDMDK = tcd.WEDMDK,
+                WEDMHT = tcd.WEDMHT,
+                BoPhanQADK = tcd.BoPhanQADK,
+                BoPhanQAHT = tcd.BoPhanQAHT,
+                ProjectTaskDuKienXuatHang = sm.pt.pt.pt.pt.ProjectTaskDuKienXuatHang,
+                ProjectTaskThucTeXuatHang = sm.pt.pt.pt.pt.ProjectTaskThucTeXuatHang
             }).ToList();
     }
     public static IEnumerable ReportTotalDetailList(int ProjectTaskID) {

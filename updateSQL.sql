@@ -146,6 +146,91 @@ IF EXISTS ( SELECT object_id FROM sys.columns WHERE object_id = OBJECT_ID(N'PM_P
 BEGIN EXEC sp_rename 'PM_ProjectProcess.DXGioKetThucDuKien', 'DXNgayBatDauDuKien', 'COLUMN'
 	PRINT ('RENAME Column DXGioKetThucDuKien +> DXNgayBatDauDuKien;');
 END
+-- 20190224
+CREATE VIEW TimeCongDoan AS
+SELECT DISTINCT
+	pt.ProjectTaskID, 
+	ps1.ProcessExpectedCompletion AS PhayMCDK, 
+	ps1.ProcessCompletion AS PhayMCHT,
+	--ps2.ProcessExpectedCompletion AS Ex2, 
+	--ps2.ProcessCompletion AS Co2,
+	ps3.ProcessExpectedCompletion AS PhayTayDK,
+	ps3.ProcessCompletion AS PhayTayHT,
+	ps4.ProcessExpectedCompletion AS BoPhanQADK,
+	ps4.ProcessCompletion AS BoPhanQAHT,
+	--ps5.ProcessExpectedCompletion AS Ex5,
+	--ps5.ProcessCompletion AS Co5,
+	ps6.ProcessExpectedCompletion AS EDMDK,
+	ps6.ProcessCompletion AS EDMHT,
+	ps7.ProcessExpectedCompletion AS WEDMDK,
+	ps7.ProcessCompletion AS WEDMHT,
+	ps8.ProcessExpectedCompletion AS TienNCDK,
+	ps8.ProcessCompletion AS TienNCHT,
+	ps9.ProcessExpectedCompletion AS NhietLuyenDK,
+	ps9.ProcessCompletion AS NhietLuyenHT,
+	--ps10.ProcessExpectedCompletion AS Ex10,
+	--ps10.ProcessCompletion AS Co10,
+	--ps11.ProcessExpectedCompletion AS Ex11,
+	--ps11.ProcessCompletion AS Co11,
+	--ps12.ProcessExpectedCompletion AS Ex12,
+	--ps12.ProcessCompletion AS Co12,
+	--ps13.ProcessExpectedCompletion AS Ex13,
+	--ps13.ProcessCompletion AS Co13,
+	--ps14.ProcessExpectedCompletion AS Ex14,
+	--ps14.ProcessCompletion AS Co14,
+	ps15.ProcessExpectedCompletion AS MaiBongVaLapRapDK,
+	ps15.ProcessCompletion AS MaiBongVaLapRapHT,
+	ps16.ProcessExpectedCompletion AS TienTinhNCDK,
+	ps16.ProcessCompletion AS TienTinhNCHT,
+	--ps17.ProcessExpectedCompletion AS Ex17,
+	--ps17.ProcessCompletion AS Co17,
+	--ps18.ProcessExpectedCompletion AS Ex18,
+	--ps18.ProcessCompletion AS Co18,
+	ps19.ProcessExpectedCompletion AS MaiPhangKhuonDapDK,
+	ps19.ProcessCompletion AS MaiPhangKhuonDapHT
+	--ps20.ProcessExpectedCompletion AS Ex20,
+	--ps20.ProcessCompletion AS Co20
+FROM PM_ProjectTask pt
+LEFT JOIN PM_ProjectProcess ps1
+ON pt.ProjectTaskID = ps1.ProcessProjectTaskID and ps1.ProcessListId = 74
+--LEFT JOIN PM_ProjectProcess ps2
+--ON pt.ProjectTaskID = ps2.ProcessProjectTaskID and ps2.ProcessListId = 75
+LEFT JOIN PM_ProjectProcess ps3
+ON pt.ProjectTaskID = ps3.ProcessProjectTaskID and ps3.ProcessListId = 76
+LEFT JOIN PM_ProjectProcess ps4
+ON pt.ProjectTaskID = ps4.ProcessProjectTaskID and ps4.ProcessListId = 77
+--LEFT JOIN PM_ProjectProcess ps5
+--ON pt.ProjectTaskID = ps5.ProcessProjectTaskID and ps5.ProcessListId = 81
+LEFT JOIN PM_ProjectProcess ps6
+ON pt.ProjectTaskID = ps6.ProcessProjectTaskID and ps6.ProcessListId = 82
+LEFT JOIN PM_ProjectProcess ps7
+ON pt.ProjectTaskID = ps7.ProcessProjectTaskID and ps7.ProcessListId = 83
+LEFT JOIN PM_ProjectProcess ps8
+ON pt.ProjectTaskID = ps8.ProcessProjectTaskID and ps8.ProcessListId = 85
+LEFT JOIN PM_ProjectProcess ps9
+ON pt.ProjectTaskID = ps9.ProcessProjectTaskID and ps9.ProcessListId = 91
+--LEFT JOIN PM_ProjectProcess ps10
+--ON pt.ProjectTaskID = ps10.ProcessProjectTaskID and ps10.ProcessListId = 94
+--LEFT JOIN PM_ProjectProcess ps11
+--ON pt.ProjectTaskID = ps11.ProcessProjectTaskID and ps11.ProcessListId = 95
+--LEFT JOIN PM_ProjectProcess ps12
+--ON pt.ProjectTaskID = ps12.ProcessProjectTaskID and ps12.ProcessListId = 96
+--LEFT JOIN PM_ProjectProcess ps13
+--ON pt.ProjectTaskID = ps13.ProcessProjectTaskID and ps13.ProcessListId = 97
+--LEFT JOIN PM_ProjectProcess ps14
+--ON pt.ProjectTaskID = ps14.ProcessProjectTaskID and ps14.ProcessListId = 98
+LEFT JOIN PM_ProjectProcess ps15
+ON pt.ProjectTaskID = ps15.ProcessProjectTaskID and ps15.ProcessListId = 100
+LEFT JOIN PM_ProjectProcess ps16
+ON pt.ProjectTaskID = ps16.ProcessProjectTaskID and ps16.ProcessListId = 101
+--LEFT JOIN PM_ProjectProcess ps17
+--ON pt.ProjectTaskID = ps17.ProcessProjectTaskID and ps17.ProcessListId = 102
+--LEFT JOIN PM_ProjectProcess ps18
+--ON pt.ProjectTaskID = ps18.ProcessProjectTaskID and ps18.ProcessListId = 103
+LEFT JOIN PM_ProjectProcess ps19
+ON pt.ProjectTaskID = ps19.ProcessProjectTaskID and ps19.ProcessListId = 108
+--LEFT JOIN PM_ProjectProcess ps20
+--ON pt.ProjectTaskID = ps20.ProcessProjectTaskID and ps20.ProcessListId = 111
 
 
 

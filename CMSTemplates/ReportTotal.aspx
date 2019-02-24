@@ -28,6 +28,171 @@
         <dx:GridViewDataTextColumn VisibleIndex="10" FieldName="TaskStatusDisplayName" Caption="Trạng thái" Width="88" />
         <dx:GridViewDataTextColumn VisibleIndex="11" FieldName="ProjectTaskStatusID" Width="0" />
         <dx:GridViewDataTextColumn VisibleIndex="12" FieldName="ProjectTaskDescription" Caption="Ghi chú" Width="142" />
+        <dx:GridViewBandColumn Caption="Tiện NC" VisibleIndex="16">
+            <Columns>
+                <dx:GridViewDataDateColumn FieldName="TienNCDK" Caption="Dự kiến hoàn thành" Width="120" VisibleIndex="16"> 
+                    <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm" AllowNull="true">
+                        <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
+                    </PropertiesDateEdit>
+                </dx:GridViewDataDateColumn>
+                <dx:GridViewDataDateColumn FieldName="TienNCHT" Caption="Thực tế hoàn thành" EditFormSettings-Caption="Thực tế Tinh qua QA" Width="120" VisibleIndex="16"> 
+                    <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm" AllowNull="true">
+                        <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
+                    </PropertiesDateEdit>
+                </dx:GridViewDataDateColumn>
+            </Columns>
+            <HeaderStyle HorizontalAlign="Center" />
+        </dx:GridViewBandColumn>
+        <dx:GridViewBandColumn Caption="Phay Tay" VisibleIndex="16">
+            <Columns>
+                <dx:GridViewDataDateColumn FieldName="PhayTayDH" Caption="Dự kiến hoàn thành" Width="120" VisibleIndex="16"> 
+                    <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm" AllowNull="true">
+                        <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
+                    </PropertiesDateEdit>
+                </dx:GridViewDataDateColumn>
+                <dx:GridViewDataDateColumn FieldName="PhayTayHT" Caption="Thực tế hoàn thành" EditFormSettings-Caption="Thực tế Tinh qua QA" Width="120" VisibleIndex="16"> 
+                    <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm" AllowNull="true">
+                        <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
+                    </PropertiesDateEdit>
+                </dx:GridViewDataDateColumn>
+            </Columns>
+            <HeaderStyle HorizontalAlign="Center" />
+        </dx:GridViewBandColumn>
+        <dx:GridViewBandColumn Caption="Phay MC" VisibleIndex="16">
+            <Columns>
+                <dx:GridViewDataDateColumn FieldName="PhayMCDK" Caption="Dự kiến hoàn thành" Width="120" VisibleIndex="16"> 
+                    <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm" AllowNull="true">
+                        <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
+                    </PropertiesDateEdit>
+                </dx:GridViewDataDateColumn>
+                <dx:GridViewDataDateColumn FieldName="PhayMCHT" Caption="Thực tế hoàn thành" EditFormSettings-Caption="Thực tế Tinh qua QA" Width="120" VisibleIndex="16"> 
+                    <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm" AllowNull="true">
+                        <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
+                    </PropertiesDateEdit>
+                </dx:GridViewDataDateColumn>
+            </Columns>
+            <HeaderStyle HorizontalAlign="Center" />
+        </dx:GridViewBandColumn>
+        <dx:GridViewBandColumn Caption="Nhiệt luyện" VisibleIndex="16">
+            <Columns>
+                <dx:GridViewDataDateColumn FieldName="NhietLuyenDK" Caption="Dự kiến hoàn thành" Width="120" VisibleIndex="16"> 
+                    <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm" AllowNull="true">
+                        <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
+                    </PropertiesDateEdit>
+                </dx:GridViewDataDateColumn>
+                <dx:GridViewDataDateColumn FieldName="NhietLuyenHT" Caption="Thực tế hoàn thành" EditFormSettings-Caption="Thực tế Tinh qua QA" Width="120" VisibleIndex="16"> 
+                    <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm" AllowNull="true">
+                        <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
+                    </PropertiesDateEdit>
+                </dx:GridViewDataDateColumn>
+            </Columns>
+            <HeaderStyle HorizontalAlign="Center" />
+        </dx:GridViewBandColumn>
+        <dx:GridViewBandColumn Caption="Tiện tinh NC" VisibleIndex="16">
+            <Columns>
+                <dx:GridViewDataDateColumn FieldName="TienTinhNCDK" Caption="Dự kiến hoàn thành" Width="120" VisibleIndex="16"> 
+                    <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm" AllowNull="true">
+                        <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
+                    </PropertiesDateEdit>
+                </dx:GridViewDataDateColumn>
+                <dx:GridViewDataDateColumn FieldName="TienTinhNCHT" Caption="Thực tế hoàn thành" EditFormSettings-Caption="Thực tế Tinh qua QA" Width="120" VisibleIndex="16"> 
+                    <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm" AllowNull="true">
+                        <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
+                    </PropertiesDateEdit>
+                </dx:GridViewDataDateColumn>
+            </Columns>
+            <HeaderStyle HorizontalAlign="Center" />
+        </dx:GridViewBandColumn>
+        <dx:GridViewBandColumn Caption="Mài phẳng khuôn dập" VisibleIndex="16">
+            <Columns>
+                <dx:GridViewDataDateColumn FieldName="MaiPhangKhuonDapDK" Caption="Dự kiến hoàn thành" Width="120" VisibleIndex="16"> 
+                    <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm" AllowNull="true">
+                        <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
+                    </PropertiesDateEdit>
+                </dx:GridViewDataDateColumn>
+                <dx:GridViewDataDateColumn FieldName="MaiPhangKhuonDapHT" Caption="Thực tế hoàn thành" EditFormSettings-Caption="Thực tế Tinh qua QA" Width="120" VisibleIndex="16"> 
+                    <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm" AllowNull="true">
+                        <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
+                    </PropertiesDateEdit>
+                </dx:GridViewDataDateColumn>
+            </Columns>
+            <HeaderStyle HorizontalAlign="Center" />
+        </dx:GridViewBandColumn>
+        <dx:GridViewBandColumn Caption="EDM" VisibleIndex="16">
+            <Columns>
+                <dx:GridViewDataDateColumn FieldName="EDMDK" Caption="Dự kiến hoàn thành" Width="120" VisibleIndex="16"> 
+                    <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm" AllowNull="true">
+                        <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
+                    </PropertiesDateEdit>
+                </dx:GridViewDataDateColumn>
+                <dx:GridViewDataDateColumn FieldName="EDMHT" Caption="Thực tế hoàn thành" EditFormSettings-Caption="Thực tế Tinh qua QA" Width="120" VisibleIndex="16"> 
+                    <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm" AllowNull="true">
+                        <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
+                    </PropertiesDateEdit>
+                </dx:GridViewDataDateColumn>
+            </Columns>
+            <HeaderStyle HorizontalAlign="Center" />
+        </dx:GridViewBandColumn>
+        <dx:GridViewBandColumn Caption="WEDM" VisibleIndex="16">
+            <Columns>
+                <dx:GridViewDataDateColumn FieldName="WEDMDK" Caption="Dự kiến hoàn thành" Width="120" VisibleIndex="16"> 
+                    <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm" AllowNull="true">
+                        <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
+                    </PropertiesDateEdit>
+                </dx:GridViewDataDateColumn>
+                <dx:GridViewDataDateColumn FieldName="WEDMHT" Caption="Thực tế hoàn thành" EditFormSettings-Caption="Thực tế Tinh qua QA" Width="120" VisibleIndex="16"> 
+                    <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm" AllowNull="true">
+                        <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
+                    </PropertiesDateEdit>
+                </dx:GridViewDataDateColumn>
+            </Columns>
+            <HeaderStyle HorizontalAlign="Center" />
+        </dx:GridViewBandColumn>
+        <dx:GridViewBandColumn Caption="Mài bóng & Lắp ráp" VisibleIndex="16">
+            <Columns>
+                <dx:GridViewDataDateColumn FieldName="MaiBongVaLapRapDK" Caption="Dự kiến hoàn thành" Width="120" VisibleIndex="16"> 
+                    <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm" AllowNull="true">
+                        <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
+                    </PropertiesDateEdit>
+                </dx:GridViewDataDateColumn>
+                <dx:GridViewDataDateColumn FieldName="MaiBongVaLapRapHT" Caption="Thực tế hoàn thành" EditFormSettings-Caption="Thực tế Tinh qua QA" Width="120" VisibleIndex="16"> 
+                    <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm" AllowNull="true">
+                        <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
+                    </PropertiesDateEdit>
+                </dx:GridViewDataDateColumn>
+            </Columns>
+            <HeaderStyle HorizontalAlign="Center" />
+        </dx:GridViewBandColumn>
+        <dx:GridViewBandColumn Caption="Bộ phận QA" VisibleIndex="16">
+            <Columns>
+                <dx:GridViewDataDateColumn FieldName="BoPhanQADK" Caption="Dự kiến hoàn thành" Width="120" VisibleIndex="16"> 
+                    <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm" AllowNull="true">
+                        <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
+                    </PropertiesDateEdit>
+                </dx:GridViewDataDateColumn>
+                <dx:GridViewDataDateColumn FieldName="BoPhanQAHT" Caption="Thực tế hoàn thành" EditFormSettings-Caption="Thực tế Tinh qua QA" Width="120" VisibleIndex="16"> 
+                    <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm" AllowNull="true">
+                        <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
+                    </PropertiesDateEdit>
+                </dx:GridViewDataDateColumn>
+            </Columns>
+            <HeaderStyle HorizontalAlign="Center" />
+        </dx:GridViewBandColumn>
+        <dx:GridViewBandColumn Caption="Xuất hàng" VisibleIndex="16">
+            <Columns>
+                <dx:GridViewDataDateColumn FieldName="ProjectTaskDuKienXuatHang" Caption="Dự kiến hoàn thành" Width="120" VisibleIndex="16"> 
+                    <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm" AllowNull="true">
+                        <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
+                    </PropertiesDateEdit>
+                </dx:GridViewDataDateColumn>
+                <dx:GridViewDataDateColumn FieldName="ProjectTaskThucTeXuatHang" Caption="Thực tế hoàn thành" EditFormSettings-Caption="Thực tế Tinh qua QA" Width="120" VisibleIndex="16"> 
+                    <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm" AllowNull="true">
+                        <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
+                    </PropertiesDateEdit>
+                </dx:GridViewDataDateColumn>
+            </Columns>
+            <HeaderStyle HorizontalAlign="Center" />
+        </dx:GridViewBandColumn>
     </Columns>
     <SettingsDetail ShowDetailRow="True" />
     <Styles DetailCell-Paddings-Padding="0" />
@@ -37,7 +202,7 @@
     <ClientSideEvents Init="OnInit" BeginCallback="OnBeginCallback" EndCallback="OnEndCallback" />
     <SettingsPager Mode="ShowPager" PageSize="20" PageSizeItemSettings-Visible="true" PageSizeItemSettings-Position="Right" />
     <SettingsBehavior EnableRowHotTrack="true" />
-    <Settings ShowHeaderFilterButton="true" VerticalScrollBarMode="Visible" HorizontalScrollBarMode="Hidden" />
+    <Settings ShowHeaderFilterButton="false" VerticalScrollBarMode="Visible" HorizontalScrollBarMode="Visible" />
     <Templates>
         <DetailRow>
             <dx:ASPxGridView ID="GvLevelAA" ClientInstanceName="GvLevelAA" runat="server" DataSourceID="OdsGvLevelAA" KeyFieldName="ProcessListId" Width="100%"
