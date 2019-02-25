@@ -11,7 +11,7 @@ public class ReportModels {
         if (Filter == "Transmit") ProjectTask = LINQData.db.PM_ProjectTasks.Where(w => w.ProjectTaskTransmit >= RTDateBegin && w.ProjectTaskTransmit <= RTDateEnd);
         else ProjectTask = LINQData.db.PM_ProjectTasks.Where(w => w.ProjectTaskDeadline >= RTDateBegin && w.ProjectTaskDeadline <= RTDateEnd);
         return ProjectTask.GroupJoin(LINQData.db.PM_ProjectCustomers, pt => pt.ProjectTaskCustomerId, pc => pc.CustomerId, (pt, pc) => new { pt, pc })
-            .SelectMany(sm => sm.pc, (sm, pc) => new {sm.pt, pc})
+            .SelectMany(sm => sm.pc, (sm, pc) => new { sm.pt, pc })
             .GroupJoin(LINQData.db.PM_ProjectMolds, pt => pt.pt.ProjectTaskMoldsId, pm => pm.MoldsId, (pt, pm) => new { pt, pm })
             .SelectMany(sm => sm.pm, (sm, pm) => new { sm.pt, pm })
             .GroupJoin(LINQData.db.PM_ProjectTaskStatus, pt => pt.pt.pt.ProjectTaskStatusID, pts => pts.TaskStatusID, (pt, pts) => new { pt, pts })
@@ -33,26 +33,37 @@ public class ReportModels {
                 ProjectTaskDescription = sm.pt.pt.pt.pt.ProjectTaskDescription,
                 TienNCDK = tcd.TienNCDK,
                 TienNCHT = tcd.TienNCHT,
+                TienNCKQ = (tcd.TienNCHT <= tcd.TienNCDK) ? "Đạt" : !tcd.TienNCHT.HasValue ? "" : "Không đạt",
                 EDMDK = tcd.EDMDK,
                 EDMHT = tcd.EDMHT,
+                EDMKQ = (tcd.EDMHT <= tcd.EDMDK) ? "Đạt" : !tcd.EDMHT.HasValue ? "" : "Không đạt",
                 MaiBongVaLapRapDK = tcd.MaiBongVaLapRapDK,
                 MaiBongVaLapRapHT = tcd.MaiBongVaLapRapHT,
+                MaiBongVaLapRapKQ = (tcd.MaiBongVaLapRapHT <= tcd.MaiBongVaLapRapDK) ? "Đạt" : !tcd.MaiBongVaLapRapHT.HasValue ? "" : "Không đạt",
                 MaiPhangKhuonDapDK = tcd.MaiPhangKhuonDapDK,
                 MaiPhangKhuonDapHT = tcd.MaiPhangKhuonDapHT,
+                MaiPhangKhuonDapKQ = (tcd.MaiPhangKhuonDapHT <= tcd.MaiPhangKhuonDapDK) ? "Đạt" : !tcd.MaiPhangKhuonDapHT.HasValue ? "" : "Không đạt",
                 NhietLuyenDK = tcd.NhietLuyenDK,
                 NhietLuyenHT = tcd.NhietLuyenHT,
+                NhietLuyenKQ = (tcd.NhietLuyenHT <= tcd.NhietLuyenDK) ? "Đạt" : !tcd.NhietLuyenHT.HasValue ? "" : "Không đạt",
                 PhayMCDK = tcd.PhayMCDK,
                 PhayMCHT = tcd.PhayMCHT,
+                PhayMCKQ = (tcd.PhayMCHT <= tcd.PhayMCDK) ? "Đạt" : !tcd.PhayMCHT.HasValue ? "" : "Không đạt",
                 PhayTayDH = tcd.PhayTayDK,
                 PhayTayHT = tcd.PhayTayHT,
+                PhayTayKQ = (tcd.PhayTayHT <= tcd.PhayTayDK) ? "Đạt" : !tcd.PhayTayHT.HasValue ? "" : "Không đạt",
                 TienTinhNCDK = tcd.TienTinhNCDK,
                 TienTinhNCHT = tcd.TienTinhNCHT,
+                TienTinhNCKQ = (tcd.TienTinhNCHT <= tcd.TienTinhNCDK) ? "Đạt" : !tcd.TienTinhNCHT.HasValue ? "" : "Không đạt",
                 WEDMDK = tcd.WEDMDK,
                 WEDMHT = tcd.WEDMHT,
+                WEDMKQ = (tcd.WEDMHT <= tcd.WEDMDK) ? "Đạt" : !tcd.WEDMHT.HasValue ? "" : "Không đạt",
                 BoPhanQADK = tcd.BoPhanQADK,
                 BoPhanQAHT = tcd.BoPhanQAHT,
+                BoPhanQAKQ = (tcd.BoPhanQAHT <= tcd.BoPhanQADK) ? "Đạt" : !tcd.BoPhanQAHT.HasValue ? "" : "Không đạt",
                 ProjectTaskDuKienXuatHang = sm.pt.pt.pt.pt.ProjectTaskDuKienXuatHang,
-                ProjectTaskThucTeXuatHang = sm.pt.pt.pt.pt.ProjectTaskThucTeXuatHang
+                ProjectTaskThucTeXuatHang = sm.pt.pt.pt.pt.ProjectTaskThucTeXuatHang,
+                ProjectTaskXuatHangKQ = (sm.pt.pt.pt.pt.ProjectTaskThucTeXuatHang <= sm.pt.pt.pt.pt.ProjectTaskDuKienXuatHang) ? "Đạt" : !sm.pt.pt.pt.pt.ProjectTaskThucTeXuatHang.HasValue ? "" : "Không đạt"
             }).ToList();
     }
     public static IEnumerable ReportTotalDetailList(int ProjectTaskID) {

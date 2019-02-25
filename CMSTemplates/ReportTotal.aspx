@@ -16,7 +16,7 @@
     Border-BorderWidth="0" BorderBottom-BorderWidth="1" OnCustomColumnDisplayText="OnCustomColumnDisplayText" OnHtmlDataCellPrepared="GvLevelA_HtmlDataCellPrepared">
     <Columns>
         <dx:GridViewDataTextColumn VisibleIndex="0" Caption="Num" Width="48" Settings-AllowSort="False" Settings-AllowHeaderFilter="False" EditFormSettings-Visible="False" UnboundType="String" />
-        <dx:GridViewDataTextColumn VisibleIndex="1" FieldName="ProjectTaskMoldCode" Caption="Mã số khuôn" />
+        <dx:GridViewDataTextColumn VisibleIndex="1" FieldName="ProjectTaskMoldCode" Caption="Mã số khuôn" Width="228" />
         <dx:GridViewDataTextColumn VisibleIndex="2" FieldName="ProjectTaskOverlayNum" Caption="Số phủ" Width="88" />
         <dx:GridViewDataTextColumn VisibleIndex="3" FieldName="MoldsName" Caption="Phân loại" Width="100" />
         <dx:GridViewDataTextColumn VisibleIndex="4" FieldName="ProjectTaskQuantities" Caption="Số lượng" Width="88" />
@@ -40,6 +40,7 @@
                         <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
                     </PropertiesDateEdit>
                 </dx:GridViewDataDateColumn>
+                <dx:GridViewDataTextColumn FieldName="TienNCKQ" Caption="Kết quả" Width="78" VisibleIndex="16" EditFormSettings-Visible="False" /> 
             </Columns>
             <HeaderStyle HorizontalAlign="Center" />
         </dx:GridViewBandColumn>
@@ -55,6 +56,7 @@
                         <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
                     </PropertiesDateEdit>
                 </dx:GridViewDataDateColumn>
+                <dx:GridViewDataTextColumn FieldName="PhayTayKQ" Caption="Kết quả" Width="78" VisibleIndex="16" EditFormSettings-Visible="False" /> 
             </Columns>
             <HeaderStyle HorizontalAlign="Center" />
         </dx:GridViewBandColumn>
@@ -70,6 +72,7 @@
                         <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
                     </PropertiesDateEdit>
                 </dx:GridViewDataDateColumn>
+                <dx:GridViewDataTextColumn FieldName="PhayMCKQ" Caption="Kết quả" Width="78" VisibleIndex="16" EditFormSettings-Visible="False" /> 
             </Columns>
             <HeaderStyle HorizontalAlign="Center" />
         </dx:GridViewBandColumn>
@@ -85,6 +88,7 @@
                         <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
                     </PropertiesDateEdit>
                 </dx:GridViewDataDateColumn>
+                <dx:GridViewDataTextColumn FieldName="NhietLuyenKQ" Caption="Kết quả" Width="78" VisibleIndex="16" EditFormSettings-Visible="False" /> 
             </Columns>
             <HeaderStyle HorizontalAlign="Center" />
         </dx:GridViewBandColumn>
@@ -100,6 +104,7 @@
                         <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
                     </PropertiesDateEdit>
                 </dx:GridViewDataDateColumn>
+                <dx:GridViewDataTextColumn FieldName="TienTinhNCKQ" Caption="Kết quả" Width="78" VisibleIndex="16" EditFormSettings-Visible="False" /> 
             </Columns>
             <HeaderStyle HorizontalAlign="Center" />
         </dx:GridViewBandColumn>
@@ -115,6 +120,7 @@
                         <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
                     </PropertiesDateEdit>
                 </dx:GridViewDataDateColumn>
+                <dx:GridViewDataTextColumn FieldName="MaiPhangKhuonDapKQ" Caption="Kết quả" Width="78" VisibleIndex="16" EditFormSettings-Visible="False" /> 
             </Columns>
             <HeaderStyle HorizontalAlign="Center" />
         </dx:GridViewBandColumn>
@@ -130,6 +136,7 @@
                         <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
                     </PropertiesDateEdit>
                 </dx:GridViewDataDateColumn>
+                <dx:GridViewDataTextColumn FieldName="EDMKQ" Caption="Kết quả" Width="78" VisibleIndex="16" EditFormSettings-Visible="False" /> 
             </Columns>
             <HeaderStyle HorizontalAlign="Center" />
         </dx:GridViewBandColumn>
@@ -145,6 +152,7 @@
                         <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
                     </PropertiesDateEdit>
                 </dx:GridViewDataDateColumn>
+                <dx:GridViewDataTextColumn FieldName="WEDMKQ" Caption="Kết quả" Width="78" VisibleIndex="16" EditFormSettings-Visible="False" /> 
             </Columns>
             <HeaderStyle HorizontalAlign="Center" />
         </dx:GridViewBandColumn>
@@ -160,6 +168,7 @@
                         <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
                     </PropertiesDateEdit>
                 </dx:GridViewDataDateColumn>
+                <dx:GridViewDataTextColumn FieldName="MaiBongVaLapRapKQ" Caption="Kết quả" Width="78" VisibleIndex="16" EditFormSettings-Visible="False" /> 
             </Columns>
             <HeaderStyle HorizontalAlign="Center" />
         </dx:GridViewBandColumn>
@@ -175,6 +184,7 @@
                         <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
                     </PropertiesDateEdit>
                 </dx:GridViewDataDateColumn>
+                <dx:GridViewDataTextColumn FieldName="BoPhanQAKQ" Caption="Kết quả" Width="78" VisibleIndex="16" EditFormSettings-Visible="False" /> 
             </Columns>
             <HeaderStyle HorizontalAlign="Center" />
         </dx:GridViewBandColumn>
@@ -190,12 +200,13 @@
                         <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
                     </PropertiesDateEdit>
                 </dx:GridViewDataDateColumn>
+                <dx:GridViewDataTextColumn FieldName="ProjectTaskXuatHangKQ" Caption="Kết quả" Width="78" VisibleIndex="16" EditFormSettings-Visible="False" /> 
             </Columns>
             <HeaderStyle HorizontalAlign="Center" />
         </dx:GridViewBandColumn>
     </Columns>
     <SettingsDetail ShowDetailRow="True" />
-    <Styles DetailCell-Paddings-Padding="0" />
+    <Styles DetailCell-Paddings-Padding="0" Header-VerticalAlign="Bottom" />
     <SettingsContextMenu Enabled="true" EnableRowMenu="False">
         <ColumnMenuItemVisibility GroupByColumn="false" ShowGroupPanel="false" ShowFooter="false"/>
     </SettingsContextMenu>
