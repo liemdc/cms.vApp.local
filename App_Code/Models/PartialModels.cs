@@ -191,6 +191,8 @@ public partial class ProjectProcessObject
     public string DXMaSanPhamUuTienGiaCong { get; set; }
     public string DXChuyenCongDoan { get; set; }
     public string DXTrangThai { get; set; }
+    public Nullable<DateTime> DXNgayBatDauThucTe { get; set; }
+    public Nullable<DateTime> DXNgayKetThucThucTe { get; set; }
 }
 public partial class OrdersProcessObject
 {

@@ -378,12 +378,12 @@
                                                             <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
                                                         </PropertiesDateEdit>
                                                     </dx:GridViewDataDateColumn>
-                                                    <dx:GridViewDataDateColumn FieldName="" Caption="Tg bắt đầu thực tế" Width="128" EditFormSettings-Visible="False">
+                                                    <dx:GridViewDataDateColumn FieldName="DXNgayBatDauThucTe" Caption="Tg bắt đầu thực tế" Width="128" EditFormSettings-Visible="False">
                                                         <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm">
                                                             <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
                                                         </PropertiesDateEdit>
                                                     </dx:GridViewDataDateColumn>
-                                                    <dx:GridViewDataDateColumn FieldName="" Caption="Tg kết thúc thực tế" Width="128" EditFormSettings-Visible="False">
+                                                    <dx:GridViewDataDateColumn FieldName="DXNgayKetThucThucTe" Caption="Tg kết thúc thực tế" Width="128" EditFormSettings-Visible="False">
                                                         <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm">
                                                             <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
                                                         </PropertiesDateEdit>

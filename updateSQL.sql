@@ -150,23 +150,23 @@ END
 CREATE VIEW TimeCongDoan AS
 SELECT DISTINCT
 	pt.ProjectTaskID, 
-	ps1.ProcessExpectedCompletion AS PhayMCDK, 
+	ps1.DXNgayKetThucDuKien AS PhayMCDK, 
 	ps1.ProcessCompletion AS PhayMCHT,
-	--ps2.ProcessExpectedCompletion AS Ex2, 
+	--ps2.DXNgayKetThucDuKien AS Ex2, 
 	--ps2.ProcessCompletion AS Co2,
-	ps3.ProcessExpectedCompletion AS PhayTayDK,
+	ps3.DXNgayKetThucDuKien AS PhayTayDK,
 	ps3.ProcessCompletion AS PhayTayHT,
-	ps4.ProcessExpectedCompletion AS BoPhanQADK,
+	ps4.DXNgayKetThucDuKien AS BoPhanQADK,
 	ps4.ProcessCompletion AS BoPhanQAHT,
 	--ps5.ProcessExpectedCompletion AS Ex5,
 	--ps5.ProcessCompletion AS Co5,
-	ps6.ProcessExpectedCompletion AS EDMDK,
+	ps6.DXNgayKetThucDuKien AS EDMDK,
 	ps6.ProcessCompletion AS EDMHT,
-	ps7.ProcessExpectedCompletion AS WEDMDK,
+	ps7.DXNgayKetThucDuKien AS WEDMDK,
 	ps7.ProcessCompletion AS WEDMHT,
-	ps8.ProcessExpectedCompletion AS TienNCDK,
+	ps8.DXNgayKetThucDuKien AS TienNCDK,
 	ps8.ProcessCompletion AS TienNCHT,
-	ps9.ProcessExpectedCompletion AS NhietLuyenDK,
+	ps9.DXNgayKetThucDuKien AS NhietLuyenDK,
 	ps9.ProcessCompletion AS NhietLuyenHT,
 	--ps10.ProcessExpectedCompletion AS Ex10,
 	--ps10.ProcessCompletion AS Co10,
@@ -178,15 +178,15 @@ SELECT DISTINCT
 	--ps13.ProcessCompletion AS Co13,
 	--ps14.ProcessExpectedCompletion AS Ex14,
 	--ps14.ProcessCompletion AS Co14,
-	ps15.ProcessExpectedCompletion AS MaiBongVaLapRapDK,
+	ps15.DXNgayKetThucDuKien AS MaiBongVaLapRapDK,
 	ps15.ProcessCompletion AS MaiBongVaLapRapHT,
-	ps16.ProcessExpectedCompletion AS TienTinhNCDK,
+	ps16.DXNgayKetThucDuKien AS TienTinhNCDK,
 	ps16.ProcessCompletion AS TienTinhNCHT,
 	--ps17.ProcessExpectedCompletion AS Ex17,
 	--ps17.ProcessCompletion AS Co17,
 	--ps18.ProcessExpectedCompletion AS Ex18,
 	--ps18.ProcessCompletion AS Co18,
-	ps19.ProcessExpectedCompletion AS MaiPhangKhuonDapDK,
+	ps19.DXNgayKetThucDuKien AS MaiPhangKhuonDapDK,
 	ps19.ProcessCompletion AS MaiPhangKhuonDapHT
 	--ps20.ProcessExpectedCompletion AS Ex20,
 	--ps20.ProcessCompletion AS Co20
@@ -233,7 +233,9 @@ ON pt.ProjectTaskID = ps19.ProcessProjectTaskID and ps19.ProcessListId = 108
 --ON pt.ProjectTaskID = ps20.ProcessProjectTaskID and ps20.ProcessListId = 111
 
 
-
- 
-
- 
+-- Add Column DXNgayKetThucDuKien DATETIME
+IF NOT EXISTS ( SELECT object_id FROM sys.columns WHERE object_id = OBJECT_ID(N'PM_ProjectProcess') AND name = 'DXNgayKetThucDuKien' )
+BEGIN ALTER TABLE PM_ProjectProcess
+	ADD DXNgayKetThucDuKien DATETIME;
+	PRINT ('ADD DXNgayKetThucDuKien DATETIME;');
+END

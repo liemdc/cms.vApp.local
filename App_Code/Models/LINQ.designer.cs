@@ -285,19 +285,19 @@ namespace Models
 			}
 		}
 		
-		public System.Data.Linq.Table<PM_ProjectProcess> PM_ProjectProcesses
-		{
-			get
-			{
-				return this.GetTable<PM_ProjectProcess>();
-			}
-		}
-		
 		public System.Data.Linq.Table<TimeCongDoan> TimeCongDoans
 		{
 			get
 			{
 				return this.GetTable<TimeCongDoan>();
+			}
+		}
+		
+		public System.Data.Linq.Table<PM_ProjectProcess> PM_ProjectProcesses
+		{
+			get
+			{
+				return this.GetTable<PM_ProjectProcess>();
 			}
 		}
 	}
@@ -8453,6 +8453,393 @@ namespace Models
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TimeCongDoan")]
+	public partial class TimeCongDoan
+	{
+		
+		private int _ProjectTaskID;
+		
+		private System.Nullable<System.DateTime> _PhayMCDK;
+		
+		private System.Nullable<System.DateTime> _PhayMCHT;
+		
+		private System.Nullable<System.DateTime> _PhayTayDK;
+		
+		private System.Nullable<System.DateTime> _PhayTayHT;
+		
+		private System.Nullable<System.DateTime> _BoPhanQADK;
+		
+		private System.Nullable<System.DateTime> _BoPhanQAHT;
+		
+		private System.Nullable<System.DateTime> _EDMDK;
+		
+		private System.Nullable<System.DateTime> _EDMHT;
+		
+		private System.Nullable<System.DateTime> _WEDMDK;
+		
+		private System.Nullable<System.DateTime> _WEDMHT;
+		
+		private System.Nullable<System.DateTime> _TienNCDK;
+		
+		private System.Nullable<System.DateTime> _TienNCHT;
+		
+		private System.Nullable<System.DateTime> _NhietLuyenDK;
+		
+		private System.Nullable<System.DateTime> _NhietLuyenHT;
+		
+		private System.Nullable<System.DateTime> _MaiBongVaLapRapDK;
+		
+		private System.Nullable<System.DateTime> _MaiBongVaLapRapHT;
+		
+		private System.Nullable<System.DateTime> _TienTinhNCDK;
+		
+		private System.Nullable<System.DateTime> _TienTinhNCHT;
+		
+		private System.Nullable<System.DateTime> _MaiPhangKhuonDapDK;
+		
+		private System.Nullable<System.DateTime> _MaiPhangKhuonDapHT;
+		
+		public TimeCongDoan()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskID", DbType="Int NOT NULL")]
+		public int ProjectTaskID
+		{
+			get
+			{
+				return this._ProjectTaskID;
+			}
+			set
+			{
+				if ((this._ProjectTaskID != value))
+				{
+					this._ProjectTaskID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhayMCDK", DbType="DateTime")]
+		public System.Nullable<System.DateTime> PhayMCDK
+		{
+			get
+			{
+				return this._PhayMCDK;
+			}
+			set
+			{
+				if ((this._PhayMCDK != value))
+				{
+					this._PhayMCDK = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhayMCHT", DbType="DateTime")]
+		public System.Nullable<System.DateTime> PhayMCHT
+		{
+			get
+			{
+				return this._PhayMCHT;
+			}
+			set
+			{
+				if ((this._PhayMCHT != value))
+				{
+					this._PhayMCHT = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhayTayDK", DbType="DateTime")]
+		public System.Nullable<System.DateTime> PhayTayDK
+		{
+			get
+			{
+				return this._PhayTayDK;
+			}
+			set
+			{
+				if ((this._PhayTayDK != value))
+				{
+					this._PhayTayDK = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhayTayHT", DbType="DateTime")]
+		public System.Nullable<System.DateTime> PhayTayHT
+		{
+			get
+			{
+				return this._PhayTayHT;
+			}
+			set
+			{
+				if ((this._PhayTayHT != value))
+				{
+					this._PhayTayHT = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BoPhanQADK", DbType="DateTime")]
+		public System.Nullable<System.DateTime> BoPhanQADK
+		{
+			get
+			{
+				return this._BoPhanQADK;
+			}
+			set
+			{
+				if ((this._BoPhanQADK != value))
+				{
+					this._BoPhanQADK = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BoPhanQAHT", DbType="DateTime")]
+		public System.Nullable<System.DateTime> BoPhanQAHT
+		{
+			get
+			{
+				return this._BoPhanQAHT;
+			}
+			set
+			{
+				if ((this._BoPhanQAHT != value))
+				{
+					this._BoPhanQAHT = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EDMDK", DbType="DateTime")]
+		public System.Nullable<System.DateTime> EDMDK
+		{
+			get
+			{
+				return this._EDMDK;
+			}
+			set
+			{
+				if ((this._EDMDK != value))
+				{
+					this._EDMDK = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EDMHT", DbType="DateTime")]
+		public System.Nullable<System.DateTime> EDMHT
+		{
+			get
+			{
+				return this._EDMHT;
+			}
+			set
+			{
+				if ((this._EDMHT != value))
+				{
+					this._EDMHT = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WEDMDK", DbType="DateTime")]
+		public System.Nullable<System.DateTime> WEDMDK
+		{
+			get
+			{
+				return this._WEDMDK;
+			}
+			set
+			{
+				if ((this._WEDMDK != value))
+				{
+					this._WEDMDK = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WEDMHT", DbType="DateTime")]
+		public System.Nullable<System.DateTime> WEDMHT
+		{
+			get
+			{
+				return this._WEDMHT;
+			}
+			set
+			{
+				if ((this._WEDMHT != value))
+				{
+					this._WEDMHT = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TienNCDK", DbType="DateTime")]
+		public System.Nullable<System.DateTime> TienNCDK
+		{
+			get
+			{
+				return this._TienNCDK;
+			}
+			set
+			{
+				if ((this._TienNCDK != value))
+				{
+					this._TienNCDK = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TienNCHT", DbType="DateTime")]
+		public System.Nullable<System.DateTime> TienNCHT
+		{
+			get
+			{
+				return this._TienNCHT;
+			}
+			set
+			{
+				if ((this._TienNCHT != value))
+				{
+					this._TienNCHT = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NhietLuyenDK", DbType="DateTime")]
+		public System.Nullable<System.DateTime> NhietLuyenDK
+		{
+			get
+			{
+				return this._NhietLuyenDK;
+			}
+			set
+			{
+				if ((this._NhietLuyenDK != value))
+				{
+					this._NhietLuyenDK = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NhietLuyenHT", DbType="DateTime")]
+		public System.Nullable<System.DateTime> NhietLuyenHT
+		{
+			get
+			{
+				return this._NhietLuyenHT;
+			}
+			set
+			{
+				if ((this._NhietLuyenHT != value))
+				{
+					this._NhietLuyenHT = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaiBongVaLapRapDK", DbType="DateTime")]
+		public System.Nullable<System.DateTime> MaiBongVaLapRapDK
+		{
+			get
+			{
+				return this._MaiBongVaLapRapDK;
+			}
+			set
+			{
+				if ((this._MaiBongVaLapRapDK != value))
+				{
+					this._MaiBongVaLapRapDK = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaiBongVaLapRapHT", DbType="DateTime")]
+		public System.Nullable<System.DateTime> MaiBongVaLapRapHT
+		{
+			get
+			{
+				return this._MaiBongVaLapRapHT;
+			}
+			set
+			{
+				if ((this._MaiBongVaLapRapHT != value))
+				{
+					this._MaiBongVaLapRapHT = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TienTinhNCDK", DbType="DateTime")]
+		public System.Nullable<System.DateTime> TienTinhNCDK
+		{
+			get
+			{
+				return this._TienTinhNCDK;
+			}
+			set
+			{
+				if ((this._TienTinhNCDK != value))
+				{
+					this._TienTinhNCDK = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TienTinhNCHT", DbType="DateTime")]
+		public System.Nullable<System.DateTime> TienTinhNCHT
+		{
+			get
+			{
+				return this._TienTinhNCHT;
+			}
+			set
+			{
+				if ((this._TienTinhNCHT != value))
+				{
+					this._TienTinhNCHT = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaiPhangKhuonDapDK", DbType="DateTime")]
+		public System.Nullable<System.DateTime> MaiPhangKhuonDapDK
+		{
+			get
+			{
+				return this._MaiPhangKhuonDapDK;
+			}
+			set
+			{
+				if ((this._MaiPhangKhuonDapDK != value))
+				{
+					this._MaiPhangKhuonDapDK = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaiPhangKhuonDapHT", DbType="DateTime")]
+		public System.Nullable<System.DateTime> MaiPhangKhuonDapHT
+		{
+			get
+			{
+				return this._MaiPhangKhuonDapHT;
+			}
+			set
+			{
+				if ((this._MaiPhangKhuonDapHT != value))
+				{
+					this._MaiPhangKhuonDapHT = value;
+				}
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PM_ProjectProcess")]
 	public partial class PM_ProjectProcess : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -8508,6 +8895,8 @@ namespace Models
 		private System.Nullable<System.DateTime> _DXGioKetThucThucTe;
 		
 		private System.Nullable<int> _DXChuyenQuaCongDoan;
+		
+		private System.Nullable<System.DateTime> _DXNgayKetThucDuKien;
 		
 		private EntityRef<PM_ProjectProcessList> _PM_ProjectProcessList;
 		
@@ -8567,6 +8956,8 @@ namespace Models
     partial void OnDXGioKetThucThucTeChanged();
     partial void OnDXChuyenQuaCongDoanChanging(System.Nullable<int> value);
     partial void OnDXChuyenQuaCongDoanChanged();
+    partial void OnDXNgayKetThucDuKienChanging(System.Nullable<System.DateTime> value);
+    partial void OnDXNgayKetThucDuKienChanged();
     #endregion
 		
 		public PM_ProjectProcess()
@@ -9084,6 +9475,26 @@ namespace Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DXNgayKetThucDuKien", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DXNgayKetThucDuKien
+		{
+			get
+			{
+				return this._DXNgayKetThucDuKien;
+			}
+			set
+			{
+				if ((this._DXNgayKetThucDuKien != value))
+				{
+					this.OnDXNgayKetThucDuKienChanging(value);
+					this.SendPropertyChanging();
+					this._DXNgayKetThucDuKien = value;
+					this.SendPropertyChanged("DXNgayKetThucDuKien");
+					this.OnDXNgayKetThucDuKienChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PM_ProjectProcessList_PM_ProjectProcess", Storage="_PM_ProjectProcessList", ThisKey="ProcessListId", OtherKey="ProcessListId", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
 		public PM_ProjectProcessList PM_ProjectProcessList
 		{
@@ -9169,393 +9580,6 @@ namespace Models
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TimeCongDoan")]
-	public partial class TimeCongDoan
-	{
-		
-		private int _ProjectTaskID;
-		
-		private System.Nullable<System.DateTime> _PhayMCDK;
-		
-		private System.Nullable<System.DateTime> _PhayMCHT;
-		
-		private System.Nullable<System.DateTime> _PhayTayDK;
-		
-		private System.Nullable<System.DateTime> _PhayTayHT;
-		
-		private System.Nullable<System.DateTime> _BoPhanQADK;
-		
-		private System.Nullable<System.DateTime> _BoPhanQAHT;
-		
-		private System.Nullable<System.DateTime> _EDMDK;
-		
-		private System.Nullable<System.DateTime> _EDMHT;
-		
-		private System.Nullable<System.DateTime> _WEDMDK;
-		
-		private System.Nullable<System.DateTime> _WEDMHT;
-		
-		private System.Nullable<System.DateTime> _TienNCDK;
-		
-		private System.Nullable<System.DateTime> _TienNCHT;
-		
-		private System.Nullable<System.DateTime> _NhietLuyenDK;
-		
-		private System.Nullable<System.DateTime> _NhietLuyenHT;
-		
-		private System.Nullable<System.DateTime> _MaiBongVaLapRapDK;
-		
-		private System.Nullable<System.DateTime> _MaiBongVaLapRapHT;
-		
-		private System.Nullable<System.DateTime> _TienTinhNCDK;
-		
-		private System.Nullable<System.DateTime> _TienTinhNCHT;
-		
-		private System.Nullable<System.DateTime> _MaiPhangKhuonDapDK;
-		
-		private System.Nullable<System.DateTime> _MaiPhangKhuonDapHT;
-		
-		public TimeCongDoan()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskID", DbType="Int NOT NULL")]
-		public int ProjectTaskID
-		{
-			get
-			{
-				return this._ProjectTaskID;
-			}
-			set
-			{
-				if ((this._ProjectTaskID != value))
-				{
-					this._ProjectTaskID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhayMCDK", DbType="DateTime")]
-		public System.Nullable<System.DateTime> PhayMCDK
-		{
-			get
-			{
-				return this._PhayMCDK;
-			}
-			set
-			{
-				if ((this._PhayMCDK != value))
-				{
-					this._PhayMCDK = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhayMCHT", DbType="DateTime")]
-		public System.Nullable<System.DateTime> PhayMCHT
-		{
-			get
-			{
-				return this._PhayMCHT;
-			}
-			set
-			{
-				if ((this._PhayMCHT != value))
-				{
-					this._PhayMCHT = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhayTayDK", DbType="DateTime")]
-		public System.Nullable<System.DateTime> PhayTayDK
-		{
-			get
-			{
-				return this._PhayTayDK;
-			}
-			set
-			{
-				if ((this._PhayTayDK != value))
-				{
-					this._PhayTayDK = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhayTayHT", DbType="DateTime")]
-		public System.Nullable<System.DateTime> PhayTayHT
-		{
-			get
-			{
-				return this._PhayTayHT;
-			}
-			set
-			{
-				if ((this._PhayTayHT != value))
-				{
-					this._PhayTayHT = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BoPhanQADK", DbType="DateTime")]
-		public System.Nullable<System.DateTime> BoPhanQADK
-		{
-			get
-			{
-				return this._BoPhanQADK;
-			}
-			set
-			{
-				if ((this._BoPhanQADK != value))
-				{
-					this._BoPhanQADK = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BoPhanQAHT", DbType="DateTime")]
-		public System.Nullable<System.DateTime> BoPhanQAHT
-		{
-			get
-			{
-				return this._BoPhanQAHT;
-			}
-			set
-			{
-				if ((this._BoPhanQAHT != value))
-				{
-					this._BoPhanQAHT = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EDMDK", DbType="DateTime")]
-		public System.Nullable<System.DateTime> EDMDK
-		{
-			get
-			{
-				return this._EDMDK;
-			}
-			set
-			{
-				if ((this._EDMDK != value))
-				{
-					this._EDMDK = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EDMHT", DbType="DateTime")]
-		public System.Nullable<System.DateTime> EDMHT
-		{
-			get
-			{
-				return this._EDMHT;
-			}
-			set
-			{
-				if ((this._EDMHT != value))
-				{
-					this._EDMHT = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WEDMDK", DbType="DateTime")]
-		public System.Nullable<System.DateTime> WEDMDK
-		{
-			get
-			{
-				return this._WEDMDK;
-			}
-			set
-			{
-				if ((this._WEDMDK != value))
-				{
-					this._WEDMDK = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WEDMHT", DbType="DateTime")]
-		public System.Nullable<System.DateTime> WEDMHT
-		{
-			get
-			{
-				return this._WEDMHT;
-			}
-			set
-			{
-				if ((this._WEDMHT != value))
-				{
-					this._WEDMHT = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TienNCDK", DbType="DateTime")]
-		public System.Nullable<System.DateTime> TienNCDK
-		{
-			get
-			{
-				return this._TienNCDK;
-			}
-			set
-			{
-				if ((this._TienNCDK != value))
-				{
-					this._TienNCDK = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TienNCHT", DbType="DateTime")]
-		public System.Nullable<System.DateTime> TienNCHT
-		{
-			get
-			{
-				return this._TienNCHT;
-			}
-			set
-			{
-				if ((this._TienNCHT != value))
-				{
-					this._TienNCHT = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NhietLuyenDK", DbType="DateTime")]
-		public System.Nullable<System.DateTime> NhietLuyenDK
-		{
-			get
-			{
-				return this._NhietLuyenDK;
-			}
-			set
-			{
-				if ((this._NhietLuyenDK != value))
-				{
-					this._NhietLuyenDK = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NhietLuyenHT", DbType="DateTime")]
-		public System.Nullable<System.DateTime> NhietLuyenHT
-		{
-			get
-			{
-				return this._NhietLuyenHT;
-			}
-			set
-			{
-				if ((this._NhietLuyenHT != value))
-				{
-					this._NhietLuyenHT = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaiBongVaLapRapDK", DbType="DateTime")]
-		public System.Nullable<System.DateTime> MaiBongVaLapRapDK
-		{
-			get
-			{
-				return this._MaiBongVaLapRapDK;
-			}
-			set
-			{
-				if ((this._MaiBongVaLapRapDK != value))
-				{
-					this._MaiBongVaLapRapDK = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaiBongVaLapRapHT", DbType="DateTime")]
-		public System.Nullable<System.DateTime> MaiBongVaLapRapHT
-		{
-			get
-			{
-				return this._MaiBongVaLapRapHT;
-			}
-			set
-			{
-				if ((this._MaiBongVaLapRapHT != value))
-				{
-					this._MaiBongVaLapRapHT = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TienTinhNCDK", DbType="DateTime")]
-		public System.Nullable<System.DateTime> TienTinhNCDK
-		{
-			get
-			{
-				return this._TienTinhNCDK;
-			}
-			set
-			{
-				if ((this._TienTinhNCDK != value))
-				{
-					this._TienTinhNCDK = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TienTinhNCHT", DbType="DateTime")]
-		public System.Nullable<System.DateTime> TienTinhNCHT
-		{
-			get
-			{
-				return this._TienTinhNCHT;
-			}
-			set
-			{
-				if ((this._TienTinhNCHT != value))
-				{
-					this._TienTinhNCHT = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaiPhangKhuonDapDK", DbType="DateTime")]
-		public System.Nullable<System.DateTime> MaiPhangKhuonDapDK
-		{
-			get
-			{
-				return this._MaiPhangKhuonDapDK;
-			}
-			set
-			{
-				if ((this._MaiPhangKhuonDapDK != value))
-				{
-					this._MaiPhangKhuonDapDK = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaiPhangKhuonDapHT", DbType="DateTime")]
-		public System.Nullable<System.DateTime> MaiPhangKhuonDapHT
-		{
-			get
-			{
-				return this._MaiPhangKhuonDapHT;
-			}
-			set
-			{
-				if ((this._MaiPhangKhuonDapHT != value))
-				{
-					this._MaiPhangKhuonDapHT = value;
-				}
 			}
 		}
 	}

@@ -309,6 +309,8 @@ public class OrdersModels
                     DXThoiGianDieuChinh = sm1.mp1.sm.mp.DXThoiGianDieuChinh,
                     DXMaSanPhamUuTienGiaCong = sm1.mp1.sm.mp.DXMaSanPhamUuTienGiaCong,
                     DXTrangThai = sm1.mp1.sm.mp.ProcessGangerBrowse == true ? "Hoàn thành" : "Chưa hoàn thành",
+                    DXNgayBatDauThucTe = sm1.mp1.sm.mp.DXGioBatDauThucTe,
+                    DXNgayKetThucThucTe = sm1.mp1.sm.mp.ProcessCompletion
                 }).OrderBy(o => o.ItemPos).ToList();
     }
     public static void ProjectProcessCreated(int ProjectTaskID, int ProcessListId)
@@ -396,6 +398,7 @@ public class OrdersModels
                         pp.DXNgayNhanThucTe = DXNgayNhanThucTe;
                     pp.DXNgayBatDauDuKien = DXNgayBatDauDuKien;
                     pp.DXThoiGianDieuChinh = DXThoiGianDieuChinh;
+                    pp.DXNgayKetThucDuKien = Convert.ToDateTime(DXNgayBatDauDuKien).AddHours(Convert.ToDouble(ProcessExpectedTime)).AddHours(Convert.ToDouble(DXThoiGianDieuChinh));     
                     pp.DXMaSanPhamUuTienGiaCong = DXMaSanPhamUuTienGiaCong;
                     pp.ProcessNotes = ProcessNotes;
                     pp.ModifiedWhen = DateTime.Now;
@@ -416,6 +419,7 @@ public class OrdersModels
                         pp.ProcessFactTime = LINQData.db.PM_ProjectProcessDetails.Where(w => w.DetailProjectTaskID == ProjectTaskID)
                                                         .Join(LINQData.db.PM_ProjectSubProcesses.Where(w => w.SubProcessListId == ProcessListId), ppd => ppd.DetailSubProcessId, psp => psp.SubProcessId, (ppd, psp) => new { ppd, psp })
                                                         .Sum(s => s.ppd.DetailTotalTimeM);
+                        pp.ProcessCompletion = DateTime.Now;
                     }
                     PM_ProjectProcess ppTo = LINQData.db.PM_ProjectProcesses.FirstOrDefault(x => x.ProcessProjectTaskID == ProjectTaskID && x.ProcessListId == pp.DXChuyenQuaCongDoan);
                     if (ppTo != null)
@@ -476,10 +480,11 @@ public class OrdersModels
             DetailOwnerP = DetailOwnerM
         });
         PM_ProjectSubProcess psp = LINQData.db.PM_ProjectSubProcesses.FirstOrDefault(fod => fod.SubProcessId == SubProcessID);
-        if (psp != null && psp.SubProcessFinish == true)
-        {
+        if (psp != null) {
             PM_ProjectProcess pp = LINQData.db.PM_ProjectProcesses.FirstOrDefault(fod => fod.ProcessListId == psp.SubProcessListId && fod.ProcessProjectTaskID == ProjectTaskID);
-            pp.ProcessCompletion = DateTime.Now;
+            pp.DXGioBatDauThucTe = DateTime.Now;
+            if (psp.SubProcessFinish == true)                
+                pp.ProcessCompletion = DateTime.Now;
         }
         LINQData.db.SubmitChanges();
     }
