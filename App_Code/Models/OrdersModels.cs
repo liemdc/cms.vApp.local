@@ -383,7 +383,7 @@ public class OrdersModels
                 AutoPriority = Convert.ToInt32(((Convert.ToDateTime(sm.pp.pp.pt.ProjectTaskTransmit) - DateTime.Now).Days + (Convert.ToDateTime(sm.pp.pp.pt.ProjectTaskDeadline) - DateTime.Now).Days) - sm.pp.pm.MoldsMinScheduledDays)
             }).OrderBy(o => o.AutoPriority).OrderBy(o1 => o1.ProjectTaskPriorityID).ToList();
     }
-    public static void OrdersProcessUpdated(int ProjectTaskID, int ProcessListId, bool ProcessGangerBrowse, decimal ProcessExpectedTime, decimal DXThoiGianDieuChinh, DateTime ProcessExpectedCompletion, DateTime DXNgayNhanThucTe, DateTime DXNgayBatDauDuKien, int ProcessPlusBrowse, string DXMaSanPhamUuTienGiaCong, string ProcessNotes) {
+    public static void OrdersProcessUpdated(int ProjectTaskID, int ProcessListId, bool ProcessGangerBrowse, decimal ProcessExpectedTime, decimal DXThoiGianDieuChinh, DateTime ProcessExpectedCompletion, DateTime? DXNgayNhanThucTe, DateTime DXNgayBatDauDuKien, int ProcessPlusBrowse, string DXMaSanPhamUuTienGiaCong, string ProcessNotes) {
         using (TransactionScope transactionScope = new TransactionScope()) {
             try {
                 bool finish = true;
@@ -394,7 +394,7 @@ public class OrdersModels
                 if (pp != null) {
                     pp.ProcessExpectedTime = ProcessExpectedTime;
                     pp.ProcessExpectedCompletion = ProcessExpectedCompletion;
-                    if (DXNgayNhanThucTe.GetHashCode() > 0)
+                    if (DXNgayNhanThucTe.HasValue)
                         pp.DXNgayNhanThucTe = DXNgayNhanThucTe;
                     pp.DXNgayBatDauDuKien = DXNgayBatDauDuKien;
                     pp.DXThoiGianDieuChinh = DXThoiGianDieuChinh;
@@ -482,7 +482,8 @@ public class OrdersModels
         PM_ProjectSubProcess psp = LINQData.db.PM_ProjectSubProcesses.FirstOrDefault(fod => fod.SubProcessId == SubProcessID);
         if (psp != null) {
             PM_ProjectProcess pp = LINQData.db.PM_ProjectProcesses.FirstOrDefault(fod => fod.ProcessListId == psp.SubProcessListId && fod.ProcessProjectTaskID == ProjectTaskID);
-            pp.DXGioBatDauThucTe = DateTime.Now;
+            if(!pp.DXGioBatDauThucTe.HasValue)
+                pp.DXGioBatDauThucTe = DateTime.Now;
             if (psp.SubProcessFinish == true)                
                 pp.ProcessCompletion = DateTime.Now;
         }
