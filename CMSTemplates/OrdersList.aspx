@@ -349,6 +349,16 @@
                                             </dx:GridViewBandColumn>
                                             <dx:GridViewBandColumn Caption="Dữ liệu đơn hàng" VisibleIndex="1">
                                                 <Columns>
+                                                    <dx:GridViewDataDateColumn FieldName="ProcessExpectedCompletion" Caption="Tg Bắt đầu chờ" Width="128" EditFormSettings-Visible="False">
+                                                        <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm">
+                                                            <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
+                                                        </PropertiesDateEdit>
+                                                    </dx:GridViewDataDateColumn>
+                                                    <dx:GridViewDataDateColumn FieldName="DXNgayNhanThucTe" Caption="Tg Kết thúc chờ" Width="128" EditFormSettings-Visible="False">
+                                                        <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm">
+                                                            <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
+                                                        </PropertiesDateEdit>
+                                                    </dx:GridViewDataDateColumn>
                                                     <dx:GridViewDataDateColumn FieldName="ProcessExpectedCompletion" Caption="Tg nhận dự kiến" Width="128" EditFormSettings-Visible="False">
                                                         <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm">
                                                             <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
