@@ -419,7 +419,8 @@ public class OrdersModels
                         pp.ProcessFactTime = LINQData.db.PM_ProjectProcessDetails.Where(w => w.DetailProjectTaskID == ProjectTaskID)
                                                         .Join(LINQData.db.PM_ProjectSubProcesses.Where(w => w.SubProcessListId == ProcessListId), ppd => ppd.DetailSubProcessId, psp => psp.SubProcessId, (ppd, psp) => new { ppd, psp })
                                                         .Sum(s => s.ppd.DetailTotalTimeM);
-                        pp.ProcessCompletion = DateTime.Now;
+                        if(!pp.ProcessCompletion.HasValue)
+                            pp.ProcessCompletion = DateTime.Now;
                     }
                     PM_ProjectProcess ppTo = LINQData.db.PM_ProjectProcesses.FirstOrDefault(x => x.ProcessProjectTaskID == ProjectTaskID && x.ProcessListId == pp.DXChuyenQuaCongDoan);
                     if (ppTo != null)
@@ -483,9 +484,11 @@ public class OrdersModels
         if (psp != null) {
             PM_ProjectProcess pp = LINQData.db.PM_ProjectProcesses.FirstOrDefault(fod => fod.ProcessListId == psp.SubProcessListId && fod.ProcessProjectTaskID == ProjectTaskID);
             if(!pp.DXGioBatDauThucTe.HasValue)
-                pp.DXGioBatDauThucTe = DateTime.Now;
-            if (psp.SubProcessFinish == true)                
-                pp.ProcessCompletion = DateTime.Now;
+                pp.DXGioBatDauThucTe = DetailStartTimeM;
+            if (psp.SubProcessFinish == true && !pp.ProcessCompletion.HasValue)                
+                pp.ProcessCompletion = DetailEndTimeM;
+            if (pp.ProcessCompletion.HasValue && pp.ProcessCompletion < DetailEndTimeM)
+                pp.ProcessCompletion = DetailEndTimeM;
         }
         LINQData.db.SubmitChanges();
     }
@@ -504,7 +507,8 @@ public class OrdersModels
             if (psp != null && psp.SubProcessFinish == true)
             {
                 PM_ProjectProcess pp = LINQData.db.PM_ProjectProcesses.FirstOrDefault(fod => fod.ProcessListId == psp.SubProcessListId && fod.ProcessProjectTaskID == ppd.DetailProjectTaskID);
-                pp.ProcessCompletion = DateTime.Now;
+                if (pp.ProcessCompletion.HasValue && pp.ProcessCompletion < DetailEndTimeM)
+                    pp.ProcessCompletion = DetailEndTimeM;
             }
             LINQData.db.SubmitChanges();
         }
