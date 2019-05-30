@@ -1,10 +1,10 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "KenticoCMS", ".", "{420F4FED-2F28-4BE5-8CEA-9A6B9A57558B}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "cms.vApp.local", ".", "{420F4FED-2F28-4BE5-8CEA-9A6B9A57558B}"
 	ProjectSection(WebsiteProperties) = preProject
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv3.5"
 		Debug.AspNetCompiler.VirtualPath = "/KenticoCMS"
 		Debug.AspNetCompiler.PhysicalPath = "..\KenticoCMS\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\KenticoCMS\"
@@ -46,5 +46,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4AA64CB8-39B1-49FC-B3C9-DC9FC23B0EC8}
 	EndGlobalSection
 EndGlobal
