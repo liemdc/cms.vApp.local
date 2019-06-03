@@ -295,7 +295,8 @@ public class OrdersModels
                     ProcessListIds = string.Format("PL-{0}", sm1.mp1.sm.mp.ProcessListId),
                     ProcessListName = sm1.mp1.pl.ProcessListName,
                     ProcessListgroup = sm1.mp1.pl.ProcessListGroup,
-                    ItemPos = sm1.mp1.pl.ProcessListOrder,
+                    ItemPos = sm1.mp1.sm.mp.ProcessId,
+                    //ItemPos = sm1.mp1.pl.ProcessListOrder,
                     DXChuyenCongDoan = string.IsNullOrEmpty(LINQData.db.PM_ProjectProcessLists.FirstOrDefault(fd => fd.ProcessListId == sm1.mp1.sm.mp.DXChuyenQuaCongDoan).ProcessListName) ? "Không xác định" : LINQData.db.PM_ProjectProcessLists.FirstOrDefault(fd => fd.ProcessListId == sm1.mp1.sm.mp.DXChuyenQuaCongDoan).ProcessListName,
                     ProcessExpectedTime = sm1.mp1.sm.mp.ProcessExpectedTime,
                     ProcessFactTime = sm1.mp1.sm.mp.ProcessFactTime,
@@ -311,7 +312,7 @@ public class OrdersModels
                     DXTrangThai = sm1.mp1.sm.mp.ProcessGangerBrowse == true ? "Hoàn thành" : "Chưa hoàn thành",
                     DXNgayBatDauThucTe = sm1.mp1.sm.mp.DXGioBatDauThucTe,
                     DXNgayKetThucThucTe = sm1.mp1.sm.mp.ProcessCompletion
-                }).OrderBy(o => o.ItemPos).ToList();
+                }).OrderByDescending(o => o.ItemPos).ToList();
     }
     public static void ProjectProcessCreated(int ProjectTaskID, int ProcessListId)
     {
@@ -396,9 +397,9 @@ public class OrdersModels
                     pp.ProcessExpectedCompletion = ProcessExpectedCompletion;
                     if (DXNgayNhanThucTe.HasValue)
                         pp.DXNgayNhanThucTe = DXNgayNhanThucTe;
-                    pp.DXNgayBatDauDuKien = DXNgayBatDauDuKien;
+                    //pp.DXNgayBatDauDuKien = DXNgayBatDauDuKien;
                     pp.DXThoiGianDieuChinh = DXThoiGianDieuChinh;
-                    pp.DXNgayKetThucDuKien = Convert.ToDateTime(DXNgayBatDauDuKien).AddHours(Convert.ToDouble(ProcessExpectedTime)).AddHours(Convert.ToDouble(DXThoiGianDieuChinh));     
+                    //pp.DXNgayKetThucDuKien = Convert.ToDateTime(DXNgayBatDauDuKien).AddHours(Convert.ToDouble(ProcessExpectedTime)).AddHours(Convert.ToDouble(DXThoiGianDieuChinh));     
                     pp.DXMaSanPhamUuTienGiaCong = DXMaSanPhamUuTienGiaCong;
                     pp.ProcessNotes = ProcessNotes;
                     pp.ModifiedWhen = DateTime.Now;

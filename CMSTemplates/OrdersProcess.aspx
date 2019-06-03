@@ -98,7 +98,7 @@
                                 <dx:GridViewDataDateColumn EditFormSettings-VisibleIndex="14" FieldName="DXNgayBatDauDuKien" Caption="Tg bắt đầu dự kiến" Width="130">
                                     <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm">
                                         <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
-                                        <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
+                                        <ValidationSettings Display="Dynamic" RequiredField-IsRequired="false" RequiredField-ErrorText="Data is required." />
                                     </PropertiesDateEdit>
                                 </dx:GridViewDataDateColumn>
                                 <dx:GridViewDataSpinEditColumn EditFormSettings-VisibleIndex="15" FieldName="DXThoiGianDieuChinh" Caption="Tg điều chỉnh" Width="128">

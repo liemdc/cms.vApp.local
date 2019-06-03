@@ -364,7 +364,8 @@
                                 <dx:GridViewDataTextColumn VisibleIndex="2" FieldName="MachinerySymbol" Caption="Kí hiệu" Width="188" />
                                 <dx:GridViewDataTextColumn VisibleIndex="3" FieldName="SumTG" Caption="T/g máy chạy" Width="188" PropertiesTextEdit-DisplayFormatString="0,0.00 giờ" />
                                 <dx:GridViewDataTextColumn VisibleIndex="4" FieldName="SumHS" Caption="Hiệu suất [T/g máy chạy/Số ngày*24]" Width="238"  PropertiesTextEdit-DisplayFormatString="0.0000" />
-                                <dx:GridViewDataProgressBarColumn VisibleIndex="5" FieldName="CalcPE" Caption="Hiệu suất" Width="140" CellStyle-Paddings-Padding="0" PropertiesProgressBar-Style-Border-BorderWidth="0" />
+                                <%--<dx:GridViewDataProgressBarColumn VisibleIndex="5" FieldName="CalcPE" Caption="Hiệu suất" Width="140" CellStyle-Paddings-Padding="0" PropertiesProgressBar-Style-Border-BorderWidth="0" />--%>
+                                <dx:GridViewDataTextColumn FieldName="CalcPE" Caption="Hiệu suất" Width="140" PropertiesTextEdit-DisplayFormatString="0 '%'" />
                                 <dx:GridViewDataDateColumn Visible="false" FieldName="DateBegin" Caption="Bắt đầu" />
                                 <dx:GridViewDataDateColumn Visible="false" FieldName="DateEnd" Caption="Kết thúc" /> 
                             </Columns>
