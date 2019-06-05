@@ -424,8 +424,8 @@ public class OrdersModels
                             pp.ProcessCompletion = DateTime.Now;
                     }
                     PM_ProjectProcess ppTo = LINQData.db.PM_ProjectProcesses.FirstOrDefault(x => x.ProcessProjectTaskID == ProjectTaskID && x.ProcessListId == pp.DXChuyenQuaCongDoan);
-                    if (ppTo != null)
-                        ppTo.ProcessExpectedCompletion = Convert.ToDateTime(pp.DXNgayBatDauDuKien).AddHours(Convert.ToDouble(pp.ProcessExpectedTime)).AddHours(Convert.ToDouble(pp.DXThoiGianDieuChinh));
+                    //if (ppTo != null)
+                        //ppTo.ProcessExpectedCompletion = Convert.ToDateTime(pp.DXNgayBatDauDuKien).AddHours(Convert.ToDouble(pp.ProcessExpectedTime)).AddHours(Convert.ToDouble(pp.DXThoiGianDieuChinh));
                 }
                 if (ppl.FirstOrDefault(fod => fod.ProcessGangerBrowse == false) != null)
                     finish = false;
