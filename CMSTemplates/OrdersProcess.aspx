@@ -78,7 +78,7 @@
                                 <dx:GridViewDataDateColumn EditFormSettings-VisibleIndex="10" FieldName="ProcessExpectedCompletion" Caption="Tg nhận dự kiến" Width="130">
                                     <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm">
                                         <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
-                                        <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
+                                        <ValidationSettings Display="Dynamic" RequiredField-IsRequired="false" RequiredField-ErrorText="Data is required." />
                                     </PropertiesDateEdit>
                                 </dx:GridViewDataDateColumn>
                                 <dx:GridViewDataDateColumn EditFormSettings-VisibleIndex="10" FieldName="DXNgayNhanThucTe" Caption="Tg nhận thực tế" Width="130">

@@ -394,7 +394,7 @@ public class OrdersModels
                 List<PM_ProjectProcess> ppl = LINQData.db.PM_ProjectProcesses.Where(w => w.ProcessProjectTaskID == ProjectTaskID).ToList();
                 if (pp != null) {
                     pp.ProcessExpectedTime = ProcessExpectedTime;
-                    pp.ProcessExpectedCompletion = ProcessExpectedCompletion;
+                    //pp.ProcessExpectedCompletion = ProcessExpectedCompletion;
                     if (DXNgayNhanThucTe.HasValue)
                         pp.DXNgayNhanThucTe = DXNgayNhanThucTe;
                     //pp.DXNgayBatDauDuKien = DXNgayBatDauDuKien;
