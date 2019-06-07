@@ -11,9 +11,10 @@ public class EmployeeModels {
         }).OrderBy(o => o.EmployeeCode).ToList();
     }
 	public static List<EmployeeObject> MinEmployeeList() {        
-        return LINQData.db.PM_ProjectEmployees.Select(s => new EmployeeObject {
-            EmployeeId = s.EmployeeID, EmployeeCode = s.EmployeeCode, EmployeeFullName = s.EmployeeFullName
-        }).OrderBy(o => o.EmployeeFullName).ToList();
+        return LINQData.db.PM_ProjectEmployees
+            .Select(s => new EmployeeObject {
+                EmployeeId = s.EmployeeID, EmployeeCode = s.EmployeeCode, EmployeeFullName = s.EmployeeFullName
+            }).OrderBy(o => o.EmployeeFullName).ToList();
     }
 
     public static void EmployeeCreated(string EmployeeCode, string EmployeeLastName, string EmployeeFirstName, string EmployeeTel, DateTime EmployeeDateOfBirth, int EmployeeGender, string EmployeeStatus, string EmployeeDescription) {
@@ -87,7 +88,7 @@ public class EmployeeModels {
     }
     public static List<EmployeeObject> MinEmployeeListBySubListId(int SubProcessListID) {
         List<int> NotIn = LINQData.db.PM_ProjectEmployeeProcesses.Where(w => w.ProcessListID == SubProcessListID).Select(s => s.EmployeeID).ToList();
-        return LINQData.db.PM_ProjectEmployees.Where(w => !NotIn.Contains(w.EmployeeID)).Select(s => new EmployeeObject {
+        return LINQData.db.PM_ProjectEmployees.Where(w => !NotIn.Contains(w.EmployeeID) && !w.EmployeeStatus.Equals("Đã Nghỉ việc")).Select(s => new EmployeeObject {
             EmployeeId = s.EmployeeID, EmployeeCode = s.EmployeeCode, EmployeeFullName = s.EmployeeFullName, EmployeeStatus = s.EmployeeStatus
         }).OrderBy(o => o.EmployeeFullName).ToList();
     }

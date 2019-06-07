@@ -6,21 +6,21 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "cms.vApp.local", ".", "{420
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5.1"
 		Debug.AspNetCompiler.VirtualPath = "/KenticoCMS"
-		Debug.AspNetCompiler.PhysicalPath = "..\KenticoCMS\"
+		Debug.AspNetCompiler.PhysicalPath = "..\cms.vApp.local\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\KenticoCMS\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
 		Release.AspNetCompiler.VirtualPath = "/KenticoCMS"
-		Release.AspNetCompiler.PhysicalPath = "..\KenticoCMS\"
+		Release.AspNetCompiler.PhysicalPath = "..\cms.vApp.local\"
 		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\KenticoCMS\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "1469"
-		SlnRelativePath = "..\KenticoCMS\"
+		SlnRelativePath = "..\cms.vApp.local\"
 	EndProjectSection
 EndProject
 Global
