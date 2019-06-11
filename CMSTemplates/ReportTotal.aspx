@@ -221,7 +221,7 @@
                 OnBeforePerformDataSelect="GvLevelAA_BeforePerformDataSelect" OnCustomColumnDisplayText="OnCustomColumnDisplayText">
                 <Columns>
                     <dx:GridViewDataTextColumn VisibleIndex="0" Caption="Num" Width="34" Settings-AllowSort="False" Settings-AllowHeaderFilter="False" EditFormSettings-Visible="False" UnboundType="String" />
-                    <dx:GridViewDataTextColumn VisibleIndex="1" FieldName="ProcessListName" Caption="Công đoạn" />
+                    <dx:GridViewDataTextColumn VisibleIndex="1" FieldName="ProcessListName" Caption="Công đoạn" Width="303" />
                     <dx:GridViewDataTextColumn VisibleIndex="2" FieldName="ProcessExpectedTime" Caption="KH Giờ" Width="115" PropertiesTextEdit-DisplayFormatString="{0} giờ." />
                     <dx:GridViewDataDateColumn VisibleIndex="2" FieldName="ProcessExpectedCompletion" Caption="KH Ngày" Width="115" >
                         <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="Custom" EditFormatString="dd/MM/yyyy HH:mm">
@@ -229,11 +229,12 @@
                         </PropertiesDateEdit>
                     </dx:GridViewDataDateColumn>
                     <dx:GridViewDataTextColumn VisibleIndex="2" FieldName="ProcessFactTime" Caption="TH Giờ" Width="115" PropertiesTextEdit-DisplayFormatString="{0} giờ." />
-                    <dx:GridViewDataDateColumn VisibleIndex="3" FieldName="ProcessCompletion" Caption="TH Ngày" Width="115">
+                    <dx:GridViewDataDateColumn VisibleIndex="3" FieldName="ProcessCompletion" Caption="TH Ngày"  Width="115">
                         <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="Custom" EditFormatString="dd/MM/yyyy HH:mm">
                             <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
                         </PropertiesDateEdit>
                     </dx:GridViewDataDateColumn>
+                    <dx:GridViewDataTextColumn FieldName="" />
                 </Columns>
                 <TotalSummary>
                     <dx:ASPxSummaryItem SummaryType="Count" FieldName="ProcessListName" ShowInColumn="ProcessListName" DisplayFormat="Count: {0} công đoạn." />
