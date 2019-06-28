@@ -218,6 +218,7 @@ public partial class OrdersProcessObject
     public Nullable<DateTime> ProjectTaskDuKienThoQuaTinh { get; set; }
     public Nullable<DateTime> ProjectTaskDuKienTinhQuaQA { get; set; }
     public string ProcessNotes { get; set; }
+    public string DXMoTa { get; set; }
     public Nullable<DateTime> DXNgayBatDauDuKien { get; set; }
     public Nullable<DateTime> DXGioKetThucDuKien { get; set; }
     public string DXMaSanPhamUuTienGiaCong { get; set; }
