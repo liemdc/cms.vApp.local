@@ -122,7 +122,7 @@
                                 <dx:GridViewDataCheckColumn VisibleIndex="23" EditFormSettings-VisibleIndex="23" FieldName="ProcessGangerBrowse" Caption="Duyệt" Visible="false" EditFormSettings-Visible="True" />
                                 <dx:GridViewDataMemoColumn VisibleIndex="24" EditFormSettings-VisibleIndex="24" FieldName="DXMaSanPhamUuTienGiaCong" Caption="Mã Sp Ưu tiên" PropertiesMemoEdit-Rows="1" EditFormSettings-ColumnSpan="2" Width="380" MinWidth="255" />
                                 <dx:GridViewDataMemoColumn VisibleIndex="24" EditFormSettings-VisibleIndex="24" FieldName="ProcessNotes" Caption="Mô tả công đoạn" PropertiesMemoEdit-Rows="2" EditFormSettings-ColumnSpan="2" Width="380" MinWidth="255" />
-                                <dx:GridViewDataMemoColumn VisibleIndex="24" EditFormSettings-VisibleIndex="24" FieldName="DXMoTa" Caption="Mô tả đơn hàng" PropertiesMemoEdit-Rows="2" EditFormSettings-ColumnSpan="2" Width="380" MinWidth="255" EditFormSettings-Visible="False" />
+                                <dx:GridViewDataMemoColumn VisibleIndex="25" EditFormSettings-VisibleIndex="25" FieldName="DXMoTa" Caption="Mô tả đơn hàng" PropertiesMemoEdit-Rows="2" EditFormSettings-ColumnSpan="2" Width="380" MinWidth="255" EditFormSettings-Visible="False" />
                             </Columns>
                             <HeaderStyle HorizontalAlign="Left" />
                         </dx:GridViewBandColumn>

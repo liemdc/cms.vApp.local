@@ -377,7 +377,7 @@ public class OrdersModels
                 ProjectTaskDuKienThoQuaTinh = sm.pp.pp.pt.ProjectTaskDuKienThoQuaTinh,
                 ProjectTaskDuKienTinhQuaQA = sm.pp.pp.pt.ProjectTaskDuKienTinhQuaQA,
                 ProcessNotes = sm.pp.pp.pp.ProcessNotes,
-                DXMoTa = sm.pp.pp.pt.ProjectTaskDescription,
+                DXMoTa = sm.pp.pp.pt.ProjectTaskDescription,  
                 DXNgayNhanThucTe = sm.pp.pp.pp.DXNgayNhanThucTe,
                 DXNgayBatDauDuKien = sm.pp.pp.pp.DXNgayBatDauDuKien,
                 DXThoiGianDieuChinh = sm.pp.pp.pp.DXThoiGianDieuChinh,
