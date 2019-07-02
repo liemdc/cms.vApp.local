@@ -107,7 +107,8 @@
                             </Columns>
                             <HeaderStyle HorizontalAlign="Left" />
                         </dx:GridViewBandColumn> 
-                        <dx:GridViewBandColumn Caption="Dự kiến / Mô tả công đoạn / Mô tả đơn hàng" VisibleIndex="2">
+                        <%--<dx:GridViewBandColumn Caption="Dự kiến / Mô tả công đoạn / Mô tả đơn hàng" VisibleIndex="2">--%>
+                        <dx:GridViewBandColumn Caption="Dự kiến / Mô tả" VisibleIndex="2">
                             <Columns>
                                 <dx:GridViewDataDateColumn FieldName="ProjectTaskDuKienThoQuaTinh" Caption="Thô qua Tinh" Width="120" VisibleIndex="21" EditFormSettings-Visible="False"> 
                                     <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm" AllowNull="true">
@@ -121,8 +122,8 @@
                                 </dx:GridViewDataDateColumn>
                                 <dx:GridViewDataCheckColumn VisibleIndex="23" EditFormSettings-VisibleIndex="23" FieldName="ProcessGangerBrowse" Caption="Duyệt" Visible="false" EditFormSettings-Visible="True" />
                                 <dx:GridViewDataMemoColumn VisibleIndex="24" EditFormSettings-VisibleIndex="24" FieldName="DXMaSanPhamUuTienGiaCong" Caption="Mã Sp Ưu tiên" PropertiesMemoEdit-Rows="1" EditFormSettings-ColumnSpan="2" Width="380" MinWidth="255" />
-                                <dx:GridViewDataMemoColumn VisibleIndex="24" EditFormSettings-VisibleIndex="24" FieldName="ProcessNotes" Caption="Mô tả công đoạn" PropertiesMemoEdit-Rows="2" EditFormSettings-ColumnSpan="2" Width="380" MinWidth="255" />
-                                <dx:GridViewDataMemoColumn VisibleIndex="26" EditFormSettings-VisibleIndex="26" FieldName="DXMoTa" Caption="Mô tả đơn hàng" PropertiesMemoEdit-Rows="2" EditFormSettings-ColumnSpan="2" Width="380" MinWidth="255" EditFormSettings-Visible="False" />
+                                <%--<dx:GridViewDataMemoColumn VisibleIndex="24" EditFormSettings-VisibleIndex="24" FieldName="ProcessNotes" Caption="Mô tả công đoạn" PropertiesMemoEdit-Rows="2" EditFormSettings-ColumnSpan="2" Width="380" MinWidth="255" />--%>
+                                <dx:GridViewDataMemoColumn VisibleIndex="26" EditFormSettings-VisibleIndex="26" FieldName="DXMoTa" Caption="Mô tả" PropertiesMemoEdit-Rows="2" EditFormSettings-ColumnSpan="2" Width="380" MinWidth="255" EditFormSettings-Visible="False" />
                             </Columns>
                             <HeaderStyle HorizontalAlign="Left" />
                         </dx:GridViewBandColumn>
