@@ -2,6 +2,8 @@
 using CMS.GlobalHelper;
 using CMS.SettingsProvider;
 using CMS.SiteProvider;
+using Models;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -15,7 +17,29 @@ public partial class CMSTemplates_DevNext : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        
+        //List<PM_ProjectTask> listPt = LINQData.db.PM_ProjectTasks.ToList();
+        ////foreach (var item in listPt)
+        ////{
+        ////    item.DX_MaDonHang = SystemModels.Fn_Get_MaDinhDanh(item.ProjectTaskLastModified.Year.ToString(), "DH", 6, "Mã đơn hàng");
+        ////}
+        ////LINQData.db.SubmitChanges();
+        //foreach (var item in listPt)
+        //{
+        //    DataUtils.WriteLog(item.DX_MaDonHang);
+        //}
+        CustomTableItemProvider customTableProvider = new CustomTableItemProvider(CMSContext.CurrentUser);
+        string MaLuuTru = "DX.MaLuuTru";
+        DataClassInfo DX_MaLuuTru = DataClassInfoProvider.GetDataClass(MaLuuTru);
+
+        if (DX_MaLuuTru != null) {
+            DataSet dataSet = customTableProvider.GetItems(MaLuuTru, null, null);
+            var IList = dataSet.Tables[0].AsEnumerable().ToList();
+            for (int i = 0; i < IList.Count; i++)
+            {
+                DataUtils.WriteLog(IList[i].Field<string>("MaTXT").ToString());
+            }
+        }
+
     }
 
     protected void btnUpdate_Click(object sender, EventArgs e)

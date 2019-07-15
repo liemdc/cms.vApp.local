@@ -61,9 +61,9 @@ public class ReportModels {
                 BoPhanQADK = tcd.BoPhanQADK,
                 BoPhanQAHT = tcd.BoPhanQAHT,
                 BoPhanQAKQ = (tcd.BoPhanQAHT <= tcd.BoPhanQADK) ? "Đạt" : !tcd.BoPhanQAHT.HasValue ? "" : "Không đạt",
-                ProjectTaskDuKienXuatHang = sm.pt.pt.pt.pt.ProjectTaskDuKienXuatHang,
-                ProjectTaskThucTeXuatHang = sm.pt.pt.pt.pt.ProjectTaskThucTeXuatHang,
-                ProjectTaskXuatHangKQ = (sm.pt.pt.pt.pt.ProjectTaskThucTeXuatHang <= sm.pt.pt.pt.pt.ProjectTaskDuKienXuatHang) ? "Đạt" : !sm.pt.pt.pt.pt.ProjectTaskThucTeXuatHang.HasValue ? "" : "Không đạt"
+                ProjectTaskDuKienXuatHang = sm.pt.pt.pt.pt.DX_XuatHang_DuKien,
+                ProjectTaskThucTeXuatHang = sm.pt.pt.pt.pt.DX_XuatHang_ThucTe,
+                ProjectTaskXuatHangKQ = (sm.pt.pt.pt.pt.DX_XuatHang_ThucTe <= sm.pt.pt.pt.pt.DX_XuatHang_DuKien) ? "Đạt" : !sm.pt.pt.pt.pt.DX_XuatHang_ThucTe.HasValue ? "" : "Không đạt"
             }).ToList();
     }
     public static IEnumerable ReportTotalDetailList(int ProjectTaskID) {

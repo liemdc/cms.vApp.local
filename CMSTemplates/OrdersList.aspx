@@ -26,7 +26,7 @@
                         <dx:ASPxGridView ID="GvLevelA" ClientInstanceName="GvLevelA" runat="server" Width="100%" DataSourceID="OdsLevelA" KeyFieldName="ProjectTaskID"
                             Border-BorderWidth="0" OnFillContextMenuItems="GvLevelA_FillContextMenuItems" SettingsEditing-EditFormColumnCount="3" OnCustomColumnDisplayText="OnCustomColumnDisplayText" OnContextMenuItemClick="GvLevelA_ContextMenuItemClick" OnInitNewRow="GvLevelA_InitNewRow">                                    
                             <Columns>
-                                <dx:GridViewDataTextColumn VisibleIndex="0" Caption="Num" Width="58" Settings-AllowSort="False" Settings-AllowHeaderFilter="False" EditFormSettings-Visible="False" UnboundType="String" FixedStyle="Left" />
+                                <dx:GridViewDataTextColumn VisibleIndex="0" FieldName="DX_MaDonHang" Caption="Mã đơn hàng" Width="100" Settings-AllowHeaderFilter="False" EditFormSettings-Visible="False" FixedStyle="Left" />
                                 <dx:GridViewDataTextColumn VisibleIndex="1" EditFormSettings-VisibleIndex="1" FieldName="ProjectTaskMoldCode" Caption="Mã số khuôn" Width="200" FixedStyle="Left" />  
                                 <dx:GridViewDataTextColumn VisibleIndex="2" EditFormSettings-VisibleIndex="2" FieldName="ProjectTaskOverlayNum" Caption="Số phủ" Width="120" FixedStyle="Left" /> 
                                 <dx:GridViewDataSpinEditColumn VisibleIndex="3" EditFormSettings-VisibleIndex="3" FieldName="ProjectTaskHoleNum" Caption="Số lỗ" Width="88" PropertiesSpinEdit-NumberType="Integer" />
@@ -59,19 +59,47 @@
                                         <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
                                     </PropertiesComboBox>
                                 </dx:GridViewDataComboBoxColumn>   
-                                <dx:GridViewDataDateColumn FieldName="ProjectTaskDuKienThoQuaTinh" Caption="Dự kiến: Thô qua Tinh" VisibleIndex="17" Width="148"> 
+                                <dx:GridViewDataDateColumn FieldName="DX_DuKienHT_NC" Caption="Dự kiến HT: NC" VisibleIndex="17" Width="148"> 
                                     <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm">
                                         <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
-                                        <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
                                     </PropertiesDateEdit>
                                 </dx:GridViewDataDateColumn>
-                                <dx:GridViewDataDateColumn FieldName="ProjectTaskDuKienTinhQuaQA" Caption="Dự kiến: Tinh qua QA" VisibleIndex="17" Width="148"> 
+                                <dx:GridViewDataDateColumn FieldName="DX_DuKienHT_MC" Caption="Dự kiến HT: MC" VisibleIndex="17" Width="148"> 
                                     <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm">
                                         <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
-                                        <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
                                     </PropertiesDateEdit>
                                 </dx:GridViewDataDateColumn>
-                                <dx:GridViewDataDateColumn FieldName="ProjectTaskDuKienXuatHang" Caption="Dự kiến: Xuất hàng" VisibleIndex="17" Width="148"> 
+                                <dx:GridViewDataDateColumn FieldName="DX_DuKienHT_PhayTay" Caption="Dự kiến HT: Phay tay" VisibleIndex="17" Width="148"> 
+                                    <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm">
+                                        <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
+                                    </PropertiesDateEdit>
+                                </dx:GridViewDataDateColumn>
+                                <dx:GridViewDataDateColumn FieldName="DX_DuKienHT_Nhiet" Caption="Dự kiến HT: Nhiệt" VisibleIndex="17" Width="148"> 
+                                    <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm">
+                                        <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
+                                    </PropertiesDateEdit>
+                                </dx:GridViewDataDateColumn>
+                                <dx:GridViewDataDateColumn FieldName="DX_DuKienHT_Mai" Caption="Dự kiến HT: Mài" VisibleIndex="17" Width="148"> 
+                                    <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm">
+                                        <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
+                                    </PropertiesDateEdit>
+                                </dx:GridViewDataDateColumn>
+                                <dx:GridViewDataDateColumn FieldName="DX_DuKienHT_WEDM" Caption="Dự kiến HT: WEDM" VisibleIndex="17" Width="148"> 
+                                    <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm">
+                                        <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
+                                    </PropertiesDateEdit>
+                                </dx:GridViewDataDateColumn>
+                                <dx:GridViewDataDateColumn FieldName="DX_DuKienHT_EDM" Caption="Dự kiến HT: EDM" VisibleIndex="17" Width="148"> 
+                                    <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm">
+                                        <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
+                                    </PropertiesDateEdit>
+                                </dx:GridViewDataDateColumn>
+                                <dx:GridViewDataDateColumn FieldName="DX_DuKienHT_QA" Caption="Dự kiến HT: QA" VisibleIndex="17" Width="148"> 
+                                    <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm">
+                                        <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
+                                    </PropertiesDateEdit>
+                                </dx:GridViewDataDateColumn>
+                                <dx:GridViewDataDateColumn FieldName="DX_XuatHang_DuKien" Caption="Dự kiến: Xuất hàng" VisibleIndex="17" Width="148"> 
                                     <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm">
                                         <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
                                         <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
@@ -153,9 +181,15 @@
                                 <asp:Parameter Name="ProjectTaskHorikomi" Type="String" />
                                 <asp:Parameter Name="ProjectTaskHardness" Type="String" />
                                 <asp:Parameter Name="ProjectTaskCustomerId" Type="Int32" />
-                                <asp:Parameter Name="ProjectTaskDuKienThoQuaTinh" Type="DateTime" />
-                                <asp:Parameter Name="ProjectTaskDuKienTinhQuaQA" Type="DateTime" />
-                                <asp:Parameter Name="ProjectTaskDuKienXuatHang" Type="DateTime" />
+                                <asp:Parameter Name="DX_XuatHang_DuKien" Type="DateTime" />
+                                <asp:Parameter Name="DX_DuKienHT_EDM" Type="DateTime" />
+                                <asp:Parameter Name="DX_DuKienHT_Mai" Type="DateTime" />
+                                <asp:Parameter Name="DX_DuKienHT_MC" Type="DateTime" />
+                                <asp:Parameter Name="DX_DuKienHT_NC" Type="DateTime" />
+                                <asp:Parameter Name="DX_DuKienHT_Nhiet" Type="DateTime" />
+                                <asp:Parameter Name="DX_DuKienHT_PhayTay" Type="DateTime" />
+                                <asp:Parameter Name="DX_DuKienHT_QA" Type="DateTime" />
+                                <asp:Parameter Name="DX_DuKienHT_WEDM" Type="DateTime" />
                                 <asp:Parameter Name="ProjectTaskDeadline" Type="DateTime" />
                                 <asp:Parameter Name="ProjectTaskTransmit" Type="DateTime" />
                                 <asp:Parameter Name="ProjectTaskDescription" Type="String" /> 
@@ -179,9 +213,15 @@
                                 <asp:Parameter Name="ProjectTaskHorikomi" Type="String" />
                                 <asp:Parameter Name="ProjectTaskHardness" Type="String" />
                                 <asp:Parameter Name="ProjectTaskCustomerId" Type="Int32" />
-                                <asp:Parameter Name="ProjectTaskDuKienThoQuaTinh" Type="DateTime" />
-                                <asp:Parameter Name="ProjectTaskDuKienTinhQuaQA" Type="DateTime" />
-                                <asp:Parameter Name="ProjectTaskDuKienXuatHang" Type="DateTime" />
+                                <asp:Parameter Name="DX_XuatHang_DuKien" Type="DateTime" />
+                                <asp:Parameter Name="DX_DuKienHT_EDM" Type="DateTime" />
+                                <asp:Parameter Name="DX_DuKienHT_Mai" Type="DateTime" />
+                                <asp:Parameter Name="DX_DuKienHT_MC" Type="DateTime" />
+                                <asp:Parameter Name="DX_DuKienHT_NC" Type="DateTime" />
+                                <asp:Parameter Name="DX_DuKienHT_Nhiet" Type="DateTime" />
+                                <asp:Parameter Name="DX_DuKienHT_PhayTay" Type="DateTime" />
+                                <asp:Parameter Name="DX_DuKienHT_QA" Type="DateTime" />
+                                <asp:Parameter Name="DX_DuKienHT_WEDM" Type="DateTime" />
                                 <asp:Parameter Name="ProjectTaskDeadline" Type="DateTime" />
                                 <asp:Parameter Name="ProjectTaskTransmit" Type="DateTime" />
                                 <asp:Parameter Name="ProjectTaskDescription" Type="String" />     
@@ -201,7 +241,7 @@
                             <Columns>                                
                                 <dx:GridViewBandColumn Caption="Dữ liệu thông tin đơn hàng" VisibleIndex="0">
                                     <Columns>
-                                        <dx:GridViewDataTextColumn VisibleIndex="0" Caption="Num" Width="48" Settings-AllowSort="False" Settings-AllowHeaderFilter="False" EditFormSettings-Visible="False" UnboundType="String" FixedStyle="Left" />
+                                        <dx:GridViewDataTextColumn VisibleIndex="0" FieldName="DX_MaDonHang" Caption="Mã đơn hàng" Width="100" Settings-AllowHeaderFilter="False" EditFormSettings-Visible="False" FixedStyle="Left" />
                                         <dx:GridViewDataTextColumn VisibleIndex="1" EditFormSettings-VisibleIndex="1" FieldName="ProjectTaskMoldCode" Caption="Mã số khuôn" Width="230" FixedStyle="Left" EditFormSettings-Visible="False" />  
                                         <dx:GridViewDataTextColumn VisibleIndex="2" EditFormSettings-VisibleIndex="2" FieldName="ProjectTaskOverlayNum" Caption="Số phủ" Width="120" FixedStyle="Left" EditFormSettings-Visible="False" /> 
                                         <dx:GridViewDataSpinEditColumn VisibleIndex="3" EditFormSettings-VisibleIndex="3" FieldName="ProjectTaskDiameterOut" Caption="ĐK ngoài" Width="88" PropertiesSpinEdit-NumberType="Float" PropertiesSpinEdit-DecimalPlaces="2" EditFormSettings-Visible="False" />                                        
@@ -226,46 +266,60 @@
                                         </dx:GridViewDataComboBoxColumn>  
                                     </Columns>
                                     <HeaderStyle HorizontalAlign="Left" />
-                                </dx:GridViewBandColumn> 
-                                <dx:GridViewBandColumn Caption="Dự kiến / Thực tế: Thô qua Tinh" VisibleIndex="15">
+                                </dx:GridViewBandColumn>                                 
+                                <dx:GridViewBandColumn Caption="Dự kiến hoàn thành" VisibleIndex="16">
                                     <Columns>
-                                        <dx:GridViewDataDateColumn FieldName="ProjectTaskDuKienThoQuaTinh" Caption="Dự kiến" EditFormSettings-Caption="Dự kiến Thô qua Tinh" Width="120" VisibleIndex="15"> 
-                                            <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm" AllowNull="true">
+                                        <dx:GridViewDataDateColumn FieldName="DX_DuKienHT_NC" Caption="Dự kiến HT: NC" VisibleIndex="17" Width="148"> 
+                                            <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm">
                                                 <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
                                             </PropertiesDateEdit>
                                         </dx:GridViewDataDateColumn>
-                                        <dx:GridViewDataDateColumn FieldName="ProjectTaskThucTeThoQuaTinh" Caption="Thực tế" EditFormSettings-Caption="Thực tế Thô qua Tinh" Width="120" VisibleIndex="15">
-                                            <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm" AllowNull="true">
+                                        <dx:GridViewDataDateColumn FieldName="DX_DuKienHT_MC" Caption="Dự kiến HT: MC" VisibleIndex="17" Width="148"> 
+                                            <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm">
                                                 <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
                                             </PropertiesDateEdit>
                                         </dx:GridViewDataDateColumn>
-                                        <dx:GridViewDataTextColumn FieldName="ProjectTaskKetQuaThoQuaTinh" Caption="Kết quả" Width="78" VisibleIndex="15" EditFormSettings-Visible="False" /> 
-                                    </Columns>
-                                    <HeaderStyle HorizontalAlign="Left" />
-                                </dx:GridViewBandColumn>
-                                <dx:GridViewBandColumn Caption="Dự kiến / Thực tế: Tinh qua QA" VisibleIndex="16">
-                                    <Columns>
-                                        <dx:GridViewDataDateColumn FieldName="ProjectTaskDuKienTinhQuaQA" Caption="Dự kiến" EditFormSettings-Caption="Dự kiến Tinh qua QA" Width="120" VisibleIndex="16"> 
-                                            <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm" AllowNull="true">
+                                        <dx:GridViewDataDateColumn FieldName="DX_DuKienHT_PhayTay" Caption="Dự kiến HT: Phay tay" VisibleIndex="17" Width="148"> 
+                                            <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm">
                                                 <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
                                             </PropertiesDateEdit>
                                         </dx:GridViewDataDateColumn>
-                                        <dx:GridViewDataDateColumn FieldName="ProjectTaskThucTeTinhQuaQA" Caption="Thực tế" EditFormSettings-Caption="Thực tế Tinh qua QA" Width="120" VisibleIndex="16"> 
-                                            <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm" AllowNull="true">
+                                        <dx:GridViewDataDateColumn FieldName="DX_DuKienHT_Nhiet" Caption="Dự kiến HT: Nhiệt" VisibleIndex="17" Width="148"> 
+                                            <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm">
                                                 <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
                                             </PropertiesDateEdit>
                                         </dx:GridViewDataDateColumn>
+                                        <dx:GridViewDataDateColumn FieldName="DX_DuKienHT_Mai" Caption="Dự kiến HT: Mài" VisibleIndex="17" Width="148"> 
+                                            <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm">
+                                                <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
+                                            </PropertiesDateEdit>
+                                        </dx:GridViewDataDateColumn>
+                                        <dx:GridViewDataDateColumn FieldName="DX_DuKienHT_WEDM" Caption="Dự kiến HT: WEDM" VisibleIndex="17" Width="148"> 
+                                            <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm">
+                                                <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
+                                            </PropertiesDateEdit>
+                                        </dx:GridViewDataDateColumn>
+                                        <dx:GridViewDataDateColumn FieldName="DX_DuKienHT_EDM" Caption="Dự kiến HT: EDM" VisibleIndex="17" Width="148"> 
+                                            <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm">
+                                                <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
+                                            </PropertiesDateEdit>
+                                        </dx:GridViewDataDateColumn>
+                                        <dx:GridViewDataDateColumn FieldName="DX_DuKienHT_QA" Caption="Dự kiến HT: QA" VisibleIndex="17" Width="148"> 
+                                            <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm">
+                                                <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
+                                            </PropertiesDateEdit>
+                                        </dx:GridViewDataDateColumn>                                        
                                     </Columns>
                                     <HeaderStyle HorizontalAlign="Left" />
                                 </dx:GridViewBandColumn>
                                 <dx:GridViewBandColumn Caption="Dự kiến / Thực tế: Xuất hàng" VisibleIndex="17">
                                     <Columns>
-                                        <dx:GridViewDataDateColumn FieldName="ProjectTaskDuKienXuatHang" Caption="Dự kiến" EditFormSettings-Caption="Dự kiến Xuất hàng" Width="120" VisibleIndex="17"> 
+                                        <dx:GridViewDataDateColumn FieldName="DX_XuatHang_DuKien" Caption="Dự kiến" EditFormSettings-Caption="Dự kiến Xuất hàng" Width="120" VisibleIndex="17"> 
                                             <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm" AllowNull="true">
                                                 <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
                                             </PropertiesDateEdit>
                                         </dx:GridViewDataDateColumn>
-                                        <dx:GridViewDataDateColumn FieldName="ProjectTaskThucTeXuatHang" Caption="Thực tế" EditFormSettings-Caption="Thực tế Xuất hàng" Width="120" VisibleIndex="17"> 
+                                        <dx:GridViewDataDateColumn FieldName="DX_XuatHang_ThucTe" Caption="Thực tế" EditFormSettings-Caption="Thực tế Xuất hàng" Width="120" VisibleIndex="17"> 
                                             <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm" AllowNull="true">
                                                 <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
                                             </PropertiesDateEdit>
@@ -300,10 +354,10 @@
                                                 <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
                                             </PropertiesComboBox>
                                         </dx:GridViewDataComboBoxColumn>
+                                        <dx:GridViewDataMemoColumn FieldName="ProjectTaskDescription" Caption="Mô tả" VisibleIndex="23" MinWidth="348" />
                                     </Columns>
                                 <HeaderStyle HorizontalAlign="Left" />
-                                </dx:GridViewBandColumn>
-                                <dx:GridViewDataMemoColumn FieldName="ProjectTaskDescription" Caption="Mô tả" VisibleIndex="23" MinWidth="348" /> 
+                                </dx:GridViewBandColumn>                                 
                             </Columns>
                             <ClientSideEvents Init="OnInit" BeginCallback="OnBeginCallback" EndCallback="OnEndCallback" ColumnResized="function(s, e) { OnColumnResized(s, e, 0); }" />
                             <SettingsContextMenu Enabled="true" />
@@ -505,12 +559,16 @@
                                 <asp:Parameter Name="ProjectTaskDeadline" Type="DateTime" />
                                 <asp:Parameter Name="ProjectTaskTransmit" Type="DateTime" />
                                 <asp:Parameter Name="ProjectTaskDescription" Type="String" />    
-                                <asp:Parameter Name="ProjectTaskDuKienThoQuaTinh" Type="DateTime" />
-                                <asp:Parameter Name="ProjectTaskThucTeThoQuaTinh" Type="DateTime" />
-                                <asp:Parameter Name="ProjectTaskDuKienTinhQuaQA" Type="DateTime" />
-                                <asp:Parameter Name="ProjectTaskThucTeTinhQuaQA" Type="DateTime" /> 
-                                <asp:Parameter Name="ProjectTaskDuKienXuatHang" Type="DateTime" />
-                                <asp:Parameter Name="ProjectTaskThucTeXuatHang" Type="DateTime" /> 
+                                <asp:Parameter Name="DX_XuatHang_ThucTe" Type="DateTime" />
+                                <asp:Parameter Name="DX_XuatHang_DuKien" Type="DateTime" />
+                                <asp:Parameter Name="DX_DuKienHT_EDM" Type="DateTime" />
+                                <asp:Parameter Name="DX_DuKienHT_Mai" Type="DateTime" />
+                                <asp:Parameter Name="DX_DuKienHT_MC" Type="DateTime" />
+                                <asp:Parameter Name="DX_DuKienHT_NC" Type="DateTime" />
+                                <asp:Parameter Name="DX_DuKienHT_Nhiet" Type="DateTime" />
+                                <asp:Parameter Name="DX_DuKienHT_PhayTay" Type="DateTime" />
+                                <asp:Parameter Name="DX_DuKienHT_QA" Type="DateTime" />
+                                <asp:Parameter Name="DX_DuKienHT_WEDM" Type="DateTime" />
                             </UpdateParameters>
                         </asp:ObjectDataSource>
                         <table style="width:100%;border-spacing:0">

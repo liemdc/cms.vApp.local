@@ -149,13 +149,17 @@ public partial class OrdersObject {
     public string ProjectTaskDescription { get; set; }
     public string UserModified { get; set; }
     public Nullable<DateTime> CreatedWhen { get; set; }
-    public Nullable<DateTime> ProjectTaskDuKienThoQuaTinh { get; set; }
-    public Nullable<DateTime> ProjectTaskThucTeThoQuaTinh { get; set; }
-    public string ProjectTaskKetQuaThoQuaTinh { get; set; }
-    public Nullable<DateTime> ProjectTaskDuKienTinhQuaQA { get; set; }
-    public Nullable<DateTime> ProjectTaskThucTeTinhQuaQA { get; set; }
-    public Nullable<DateTime> ProjectTaskDuKienXuatHang { get; set; }
-    public Nullable<DateTime> ProjectTaskThucTeXuatHang { get; set; }
+    public string               DX_MaDonHang { get; set; }
+    public Nullable<DateTime>   DX_XuatHang_DuKien { get; set; }
+    public Nullable<DateTime>   DX_XuatHang_ThucTe { get; set; }
+    public Nullable<DateTime>   DX_DuKienHT_NC { get; set; }
+    public Nullable<DateTime>   DX_DuKienHT_MC { get; set; }
+    public Nullable<DateTime>   DX_DuKienHT_PhayTay { get; set; }
+    public Nullable<DateTime>   DX_DuKienHT_Nhiet { get; set; }
+    public Nullable<DateTime>   DX_DuKienHT_Mai { get; set; }
+    public Nullable<DateTime>   DX_DuKienHT_WEDM { get; set; }
+    public Nullable<DateTime>   DX_DuKienHT_EDM { get; set; }
+    public Nullable<DateTime>   DX_DuKienHT_QA { get; set; }
 }
 public partial class MoldsProcessObject
 {
@@ -261,4 +265,16 @@ public partial class PermissionsObject
     public int PermissionID { get; set; }
     public string PermissionDisplayName { get; set; }
     public bool PermissionAllow { get; set; }
+}
+
+public partial class DonHangObject {
+    public string MaDonHang { get; set; }
+    public Nullable<DateTime> DX_DuKienHT_NC { get; set; }
+    public Nullable<DateTime> DX_DuKienHT_MC { get; set; }
+    public Nullable<DateTime> DX_DuKienHT_PhayTay { get; set; }
+    public Nullable<DateTime> DX_DuKienHT_Nhiet { get; set; }
+    public Nullable<DateTime> DX_DuKienHT_Mai { get; set; }
+    public Nullable<DateTime> DX_DuKienHT_WEDM { get; set; }
+    public Nullable<DateTime> DX_DuKienHT_EDM { get; set; }
+    public Nullable<DateTime> DX_DuKienHT_QA { get; set; }
 }

@@ -81,9 +81,6 @@ namespace Models
     partial void InsertPM_ProjectMachinery(PM_ProjectMachinery instance);
     partial void UpdatePM_ProjectMachinery(PM_ProjectMachinery instance);
     partial void DeletePM_ProjectMachinery(PM_ProjectMachinery instance);
-    partial void InsertPM_ProjectTask(PM_ProjectTask instance);
-    partial void UpdatePM_ProjectTask(PM_ProjectTask instance);
-    partial void DeletePM_ProjectTask(PM_ProjectTask instance);
     partial void InsertPM_ProjectEmployee(PM_ProjectEmployee instance);
     partial void UpdatePM_ProjectEmployee(PM_ProjectEmployee instance);
     partial void DeletePM_ProjectEmployee(PM_ProjectEmployee instance);
@@ -93,6 +90,9 @@ namespace Models
     partial void InsertPM_ProjectProcess(PM_ProjectProcess instance);
     partial void UpdatePM_ProjectProcess(PM_ProjectProcess instance);
     partial void DeletePM_ProjectProcess(PM_ProjectProcess instance);
+    partial void InsertPM_ProjectTask(PM_ProjectTask instance);
+    partial void UpdatePM_ProjectTask(PM_ProjectTask instance);
+    partial void DeletePM_ProjectTask(PM_ProjectTask instance);
     #endregion
 		
 		public LINQDataContext() : 
@@ -261,14 +261,6 @@ namespace Models
 			}
 		}
 		
-		public System.Data.Linq.Table<PM_ProjectTask> PM_ProjectTasks
-		{
-			get
-			{
-				return this.GetTable<PM_ProjectTask>();
-			}
-		}
-		
 		public System.Data.Linq.Table<PM_ProjectEmployee> PM_ProjectEmployees
 		{
 			get
@@ -298,6 +290,14 @@ namespace Models
 			get
 			{
 				return this.GetTable<PM_ProjectProcess>();
+			}
+		}
+		
+		public System.Data.Linq.Table<PM_ProjectTask> PM_ProjectTasks
+		{
+			get
+			{
+				return this.GetTable<PM_ProjectTask>();
 			}
 		}
 	}
@@ -2004,13 +2004,13 @@ namespace Models
 		
 		private EntityRef<PM_ProjectMachinery> _PM_ProjectMachinery;
 		
-		private EntityRef<PM_ProjectTask> _PM_ProjectTask;
-		
 		private EntityRef<PM_ProjectEmployee> _PM_ProjectEmployee;
 		
 		private EntityRef<PM_ProjectEmployee> _PM_ProjectEmployee1;
 		
 		private EntityRef<PM_ProjectEmployee> _PM_ProjectEmployee2;
+		
+		private EntityRef<PM_ProjectTask> _PM_ProjectTask;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -2064,10 +2064,10 @@ namespace Models
 		{
 			this._PM_ProjectSubProcess = default(EntityRef<PM_ProjectSubProcess>);
 			this._PM_ProjectMachinery = default(EntityRef<PM_ProjectMachinery>);
-			this._PM_ProjectTask = default(EntityRef<PM_ProjectTask>);
 			this._PM_ProjectEmployee = default(EntityRef<PM_ProjectEmployee>);
 			this._PM_ProjectEmployee1 = default(EntityRef<PM_ProjectEmployee>);
 			this._PM_ProjectEmployee2 = default(EntityRef<PM_ProjectEmployee>);
+			this._PM_ProjectTask = default(EntityRef<PM_ProjectTask>);
 			OnCreated();
 		}
 		
@@ -2583,40 +2583,6 @@ namespace Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PM_ProjectTask_PM_ProjectProcessDetail", Storage="_PM_ProjectTask", ThisKey="DetailProjectTaskID", OtherKey="ProjectTaskID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public PM_ProjectTask PM_ProjectTask
-		{
-			get
-			{
-				return this._PM_ProjectTask.Entity;
-			}
-			set
-			{
-				PM_ProjectTask previousValue = this._PM_ProjectTask.Entity;
-				if (((previousValue != value) 
-							|| (this._PM_ProjectTask.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._PM_ProjectTask.Entity = null;
-						previousValue.PM_ProjectProcessDetails.Remove(this);
-					}
-					this._PM_ProjectTask.Entity = value;
-					if ((value != null))
-					{
-						value.PM_ProjectProcessDetails.Add(this);
-						this._DetailProjectTaskID = value.ProjectTaskID;
-					}
-					else
-					{
-						this._DetailProjectTaskID = default(int);
-					}
-					this.SendPropertyChanged("PM_ProjectTask");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PM_ProjectEmployee_PM_ProjectProcessDetail", Storage="_PM_ProjectEmployee", ThisKey="DetailOwnerM", OtherKey="EmployeeID", IsForeignKey=true)]
 		public PM_ProjectEmployee PM_ProjectEmployee
 		{
@@ -2715,6 +2681,40 @@ namespace Models
 						this._DetailOwner = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("PM_ProjectEmployee2");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PM_ProjectTask_PM_ProjectProcessDetail", Storage="_PM_ProjectTask", ThisKey="DetailProjectTaskID", OtherKey="ProjectTaskID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public PM_ProjectTask PM_ProjectTask
+		{
+			get
+			{
+				return this._PM_ProjectTask.Entity;
+			}
+			set
+			{
+				PM_ProjectTask previousValue = this._PM_ProjectTask.Entity;
+				if (((previousValue != value) 
+							|| (this._PM_ProjectTask.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._PM_ProjectTask.Entity = null;
+						previousValue.PM_ProjectProcessDetails.Remove(this);
+					}
+					this._PM_ProjectTask.Entity = value;
+					if ((value != null))
+					{
+						value.PM_ProjectProcessDetails.Add(this);
+						this._DetailProjectTaskID = value.ProjectTaskID;
+					}
+					else
+					{
+						this._DetailProjectTaskID = default(int);
+					}
+					this.SendPropertyChanged("PM_ProjectTask");
 				}
 			}
 		}
@@ -5947,1652 +5947,6 @@ namespace Models
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PM_ProjectTask")]
-	public partial class PM_ProjectTask : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ProjectTaskID;
-		
-		private System.Nullable<int> _ProjectTaskProjectID;
-		
-		private string _ProjectTaskMoldCode;
-		
-		private System.Nullable<int> _ProjectTaskMoldsId;
-		
-		private System.Nullable<decimal> _ProjectTaskMoldsFactor;
-		
-		private string _ProjectTaskDisplayName;
-		
-		private System.Nullable<int> _ProjectTaskQuantities;
-		
-		private string _ProjectTaskContainHead;
-		
-		private string _ProjectTaskBottoHob;
-		
-		private string _ProjectTaskChildNote;
-		
-		private string _ProjectTaskHorikomi;
-		
-		private System.Nullable<decimal> _ProjectTaskPrice;
-		
-		private System.Nullable<int> _ProjectTaskThickness;
-		
-		private string _ProjectTaskThicknessTotal;
-		
-		private System.Nullable<decimal> _ProjectTaskDiameterOut;
-		
-		private string _ProjectTaskHardness;
-		
-		private string _ProjectTaskOverlayNum;
-		
-		private string _ProjectTaskHoleNum;
-		
-		private string _ProjectTaskBox;
-		
-		private string _ProjectTaskMaterialsCode;
-		
-		private string _ProjectTaskMaterialsRequire;
-		
-		private string _ProjectTaskDimension;
-		
-		private System.Nullable<decimal> _ProjectTaskWeight;
-		
-		private System.Nullable<System.DateTime> _ProjectTaskDeadline;
-		
-		private System.Nullable<System.DateTime> _ProjectTaskTransmit;
-		
-		private int _ProjectTaskStatusID;
-		
-		private int _ProjectTaskPriorityID;
-		
-		private string _ProjectTaskDescription;
-		
-		private System.Nullable<int> _ProjectTaskOwnerID;
-		
-		private System.Nullable<int> _ProjectTaskCreatedByID;
-		
-		private System.Nullable<int> _ProjectTaskAssignedToUserID;
-		
-		private int _ProjectTaskProgress;
-		
-		private double _ProjectTaskHours;
-		
-		private System.Guid _ProjectTaskGUID;
-		
-		private System.DateTime _ProjectTaskLastModified;
-		
-		private System.Nullable<int> _ProjectTaskProjectOrder;
-		
-		private System.Nullable<int> _ProjectTaskUserOrder;
-		
-		private System.Nullable<bool> _ProjectTaskNotificationSent;
-		
-		private System.Nullable<bool> _ProjectTaskIsPrivate;
-		
-		private System.Nullable<int> _ProjectTaskCustomerId;
-		
-		private System.Nullable<System.DateTime> _ProjectTaskDuKienThoQuaTinh;
-		
-		private System.Nullable<System.DateTime> _ProjectTaskDuKienTinhQuaQA;
-		
-		private System.Nullable<System.DateTime> _ProjectTaskExpectedThree;
-		
-		private System.Nullable<System.DateTime> _ProjectTaskThucTeThoQuaTinh;
-		
-		private System.Nullable<System.DateTime> _ProjectTaskThucTeTinhQuaQA;
-		
-		private System.Nullable<System.DateTime> _ModifiedWhen;
-		
-		private System.Nullable<int> _ModifiedByUserId;
-		
-		private System.Nullable<System.DateTime> _CreatedWhen;
-		
-		private System.Nullable<int> _CreatedByUserId;
-		
-		private System.Nullable<System.DateTime> _ProjectTaskDuKienXuatHang;
-		
-		private System.Nullable<System.DateTime> _ProjectTaskThucTeXuatHang;
-		
-		private EntitySet<PM_ProjectProcessDetail> _PM_ProjectProcessDetails;
-		
-		private EntitySet<PM_ProjectProcess> _PM_ProjectProcesses;
-		
-		private EntityRef<PM_ProjectCustomer> _PM_ProjectCustomer;
-		
-		private EntityRef<PM_ProjectMold> _PM_ProjectMold;
-		
-		private EntityRef<CMS_User> _CMS_User;
-		
-		private EntityRef<CMS_User> _CMS_User1;
-		
-		private EntityRef<CMS_User> _CMS_User2;
-		
-		private EntityRef<PM_ProjectTaskPriority> _PM_ProjectTaskPriority;
-		
-		private EntityRef<PM_Project> _PM_Project;
-		
-		private EntityRef<PM_ProjectTaskStatus> _PM_ProjectTaskStatus;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnProjectTaskIDChanging(int value);
-    partial void OnProjectTaskIDChanged();
-    partial void OnProjectTaskProjectIDChanging(System.Nullable<int> value);
-    partial void OnProjectTaskProjectIDChanged();
-    partial void OnProjectTaskMoldCodeChanging(string value);
-    partial void OnProjectTaskMoldCodeChanged();
-    partial void OnProjectTaskMoldsIdChanging(System.Nullable<int> value);
-    partial void OnProjectTaskMoldsIdChanged();
-    partial void OnProjectTaskMoldsFactorChanging(System.Nullable<decimal> value);
-    partial void OnProjectTaskMoldsFactorChanged();
-    partial void OnProjectTaskDisplayNameChanging(string value);
-    partial void OnProjectTaskDisplayNameChanged();
-    partial void OnProjectTaskQuantitiesChanging(System.Nullable<int> value);
-    partial void OnProjectTaskQuantitiesChanged();
-    partial void OnProjectTaskContainHeadChanging(string value);
-    partial void OnProjectTaskContainHeadChanged();
-    partial void OnProjectTaskBottoHobChanging(string value);
-    partial void OnProjectTaskBottoHobChanged();
-    partial void OnProjectTaskChildNoteChanging(string value);
-    partial void OnProjectTaskChildNoteChanged();
-    partial void OnProjectTaskHorikomiChanging(string value);
-    partial void OnProjectTaskHorikomiChanged();
-    partial void OnProjectTaskPriceChanging(System.Nullable<decimal> value);
-    partial void OnProjectTaskPriceChanged();
-    partial void OnProjectTaskThicknessChanging(System.Nullable<int> value);
-    partial void OnProjectTaskThicknessChanged();
-    partial void OnProjectTaskThicknessTotalChanging(string value);
-    partial void OnProjectTaskThicknessTotalChanged();
-    partial void OnProjectTaskDiameterOutChanging(System.Nullable<decimal> value);
-    partial void OnProjectTaskDiameterOutChanged();
-    partial void OnProjectTaskHardnessChanging(string value);
-    partial void OnProjectTaskHardnessChanged();
-    partial void OnProjectTaskOverlayNumChanging(string value);
-    partial void OnProjectTaskOverlayNumChanged();
-    partial void OnProjectTaskHoleNumChanging(string value);
-    partial void OnProjectTaskHoleNumChanged();
-    partial void OnProjectTaskBoxChanging(string value);
-    partial void OnProjectTaskBoxChanged();
-    partial void OnProjectTaskMaterialsCodeChanging(string value);
-    partial void OnProjectTaskMaterialsCodeChanged();
-    partial void OnProjectTaskMaterialsRequireChanging(string value);
-    partial void OnProjectTaskMaterialsRequireChanged();
-    partial void OnProjectTaskDimensionChanging(string value);
-    partial void OnProjectTaskDimensionChanged();
-    partial void OnProjectTaskWeightChanging(System.Nullable<decimal> value);
-    partial void OnProjectTaskWeightChanged();
-    partial void OnProjectTaskDeadlineChanging(System.Nullable<System.DateTime> value);
-    partial void OnProjectTaskDeadlineChanged();
-    partial void OnProjectTaskTransmitChanging(System.Nullable<System.DateTime> value);
-    partial void OnProjectTaskTransmitChanged();
-    partial void OnProjectTaskStatusIDChanging(int value);
-    partial void OnProjectTaskStatusIDChanged();
-    partial void OnProjectTaskPriorityIDChanging(int value);
-    partial void OnProjectTaskPriorityIDChanged();
-    partial void OnProjectTaskDescriptionChanging(string value);
-    partial void OnProjectTaskDescriptionChanged();
-    partial void OnProjectTaskOwnerIDChanging(System.Nullable<int> value);
-    partial void OnProjectTaskOwnerIDChanged();
-    partial void OnProjectTaskCreatedByIDChanging(System.Nullable<int> value);
-    partial void OnProjectTaskCreatedByIDChanged();
-    partial void OnProjectTaskAssignedToUserIDChanging(System.Nullable<int> value);
-    partial void OnProjectTaskAssignedToUserIDChanged();
-    partial void OnProjectTaskProgressChanging(int value);
-    partial void OnProjectTaskProgressChanged();
-    partial void OnProjectTaskHoursChanging(double value);
-    partial void OnProjectTaskHoursChanged();
-    partial void OnProjectTaskGUIDChanging(System.Guid value);
-    partial void OnProjectTaskGUIDChanged();
-    partial void OnProjectTaskLastModifiedChanging(System.DateTime value);
-    partial void OnProjectTaskLastModifiedChanged();
-    partial void OnProjectTaskProjectOrderChanging(System.Nullable<int> value);
-    partial void OnProjectTaskProjectOrderChanged();
-    partial void OnProjectTaskUserOrderChanging(System.Nullable<int> value);
-    partial void OnProjectTaskUserOrderChanged();
-    partial void OnProjectTaskNotificationSentChanging(System.Nullable<bool> value);
-    partial void OnProjectTaskNotificationSentChanged();
-    partial void OnProjectTaskIsPrivateChanging(System.Nullable<bool> value);
-    partial void OnProjectTaskIsPrivateChanged();
-    partial void OnProjectTaskCustomerIdChanging(System.Nullable<int> value);
-    partial void OnProjectTaskCustomerIdChanged();
-    partial void OnProjectTaskDuKienThoQuaTinhChanging(System.Nullable<System.DateTime> value);
-    partial void OnProjectTaskDuKienThoQuaTinhChanged();
-    partial void OnProjectTaskDuKienTinhQuaQAChanging(System.Nullable<System.DateTime> value);
-    partial void OnProjectTaskDuKienTinhQuaQAChanged();
-    partial void OnProjectTaskExpectedThreeChanging(System.Nullable<System.DateTime> value);
-    partial void OnProjectTaskExpectedThreeChanged();
-    partial void OnProjectTaskThucTeThoQuaTinhChanging(System.Nullable<System.DateTime> value);
-    partial void OnProjectTaskThucTeThoQuaTinhChanged();
-    partial void OnProjectTaskThucTeTinhQuaQAChanging(System.Nullable<System.DateTime> value);
-    partial void OnProjectTaskThucTeTinhQuaQAChanged();
-    partial void OnModifiedWhenChanging(System.Nullable<System.DateTime> value);
-    partial void OnModifiedWhenChanged();
-    partial void OnModifiedByUserIdChanging(System.Nullable<int> value);
-    partial void OnModifiedByUserIdChanged();
-    partial void OnCreatedWhenChanging(System.Nullable<System.DateTime> value);
-    partial void OnCreatedWhenChanged();
-    partial void OnCreatedByUserIdChanging(System.Nullable<int> value);
-    partial void OnCreatedByUserIdChanged();
-    partial void OnProjectTaskDuKienXuatHangChanging(System.Nullable<System.DateTime> value);
-    partial void OnProjectTaskDuKienXuatHangChanged();
-    partial void OnProjectTaskThucTeXuatHangChanging(System.Nullable<System.DateTime> value);
-    partial void OnProjectTaskThucTeXuatHangChanged();
-    #endregion
-		
-		public PM_ProjectTask()
-		{
-			this._PM_ProjectProcessDetails = new EntitySet<PM_ProjectProcessDetail>(new Action<PM_ProjectProcessDetail>(this.attach_PM_ProjectProcessDetails), new Action<PM_ProjectProcessDetail>(this.detach_PM_ProjectProcessDetails));
-			this._PM_ProjectProcesses = new EntitySet<PM_ProjectProcess>(new Action<PM_ProjectProcess>(this.attach_PM_ProjectProcesses), new Action<PM_ProjectProcess>(this.detach_PM_ProjectProcesses));
-			this._PM_ProjectCustomer = default(EntityRef<PM_ProjectCustomer>);
-			this._PM_ProjectMold = default(EntityRef<PM_ProjectMold>);
-			this._CMS_User = default(EntityRef<CMS_User>);
-			this._CMS_User1 = default(EntityRef<CMS_User>);
-			this._CMS_User2 = default(EntityRef<CMS_User>);
-			this._PM_ProjectTaskPriority = default(EntityRef<PM_ProjectTaskPriority>);
-			this._PM_Project = default(EntityRef<PM_Project>);
-			this._PM_ProjectTaskStatus = default(EntityRef<PM_ProjectTaskStatus>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ProjectTaskID
-		{
-			get
-			{
-				return this._ProjectTaskID;
-			}
-			set
-			{
-				if ((this._ProjectTaskID != value))
-				{
-					this.OnProjectTaskIDChanging(value);
-					this.SendPropertyChanging();
-					this._ProjectTaskID = value;
-					this.SendPropertyChanged("ProjectTaskID");
-					this.OnProjectTaskIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskProjectID", DbType="Int")]
-		public System.Nullable<int> ProjectTaskProjectID
-		{
-			get
-			{
-				return this._ProjectTaskProjectID;
-			}
-			set
-			{
-				if ((this._ProjectTaskProjectID != value))
-				{
-					if (this._PM_Project.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnProjectTaskProjectIDChanging(value);
-					this.SendPropertyChanging();
-					this._ProjectTaskProjectID = value;
-					this.SendPropertyChanged("ProjectTaskProjectID");
-					this.OnProjectTaskProjectIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskMoldCode", DbType="NVarChar(25)")]
-		public string ProjectTaskMoldCode
-		{
-			get
-			{
-				return this._ProjectTaskMoldCode;
-			}
-			set
-			{
-				if ((this._ProjectTaskMoldCode != value))
-				{
-					this.OnProjectTaskMoldCodeChanging(value);
-					this.SendPropertyChanging();
-					this._ProjectTaskMoldCode = value;
-					this.SendPropertyChanged("ProjectTaskMoldCode");
-					this.OnProjectTaskMoldCodeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskMoldsId", DbType="Int")]
-		public System.Nullable<int> ProjectTaskMoldsId
-		{
-			get
-			{
-				return this._ProjectTaskMoldsId;
-			}
-			set
-			{
-				if ((this._ProjectTaskMoldsId != value))
-				{
-					if (this._PM_ProjectMold.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnProjectTaskMoldsIdChanging(value);
-					this.SendPropertyChanging();
-					this._ProjectTaskMoldsId = value;
-					this.SendPropertyChanged("ProjectTaskMoldsId");
-					this.OnProjectTaskMoldsIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskMoldsFactor", DbType="Decimal(10,2)")]
-		public System.Nullable<decimal> ProjectTaskMoldsFactor
-		{
-			get
-			{
-				return this._ProjectTaskMoldsFactor;
-			}
-			set
-			{
-				if ((this._ProjectTaskMoldsFactor != value))
-				{
-					this.OnProjectTaskMoldsFactorChanging(value);
-					this.SendPropertyChanging();
-					this._ProjectTaskMoldsFactor = value;
-					this.SendPropertyChanged("ProjectTaskMoldsFactor");
-					this.OnProjectTaskMoldsFactorChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskDisplayName", DbType="NVarChar(200) NOT NULL", CanBeNull=false)]
-		public string ProjectTaskDisplayName
-		{
-			get
-			{
-				return this._ProjectTaskDisplayName;
-			}
-			set
-			{
-				if ((this._ProjectTaskDisplayName != value))
-				{
-					this.OnProjectTaskDisplayNameChanging(value);
-					this.SendPropertyChanging();
-					this._ProjectTaskDisplayName = value;
-					this.SendPropertyChanged("ProjectTaskDisplayName");
-					this.OnProjectTaskDisplayNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskQuantities", DbType="Int")]
-		public System.Nullable<int> ProjectTaskQuantities
-		{
-			get
-			{
-				return this._ProjectTaskQuantities;
-			}
-			set
-			{
-				if ((this._ProjectTaskQuantities != value))
-				{
-					this.OnProjectTaskQuantitiesChanging(value);
-					this.SendPropertyChanging();
-					this._ProjectTaskQuantities = value;
-					this.SendPropertyChanged("ProjectTaskQuantities");
-					this.OnProjectTaskQuantitiesChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskContainHead", DbType="NVarChar(25)")]
-		public string ProjectTaskContainHead
-		{
-			get
-			{
-				return this._ProjectTaskContainHead;
-			}
-			set
-			{
-				if ((this._ProjectTaskContainHead != value))
-				{
-					this.OnProjectTaskContainHeadChanging(value);
-					this.SendPropertyChanging();
-					this._ProjectTaskContainHead = value;
-					this.SendPropertyChanged("ProjectTaskContainHead");
-					this.OnProjectTaskContainHeadChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskBottoHob", DbType="NVarChar(25)")]
-		public string ProjectTaskBottoHob
-		{
-			get
-			{
-				return this._ProjectTaskBottoHob;
-			}
-			set
-			{
-				if ((this._ProjectTaskBottoHob != value))
-				{
-					this.OnProjectTaskBottoHobChanging(value);
-					this.SendPropertyChanging();
-					this._ProjectTaskBottoHob = value;
-					this.SendPropertyChanged("ProjectTaskBottoHob");
-					this.OnProjectTaskBottoHobChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskChildNote", DbType="NVarChar(255)")]
-		public string ProjectTaskChildNote
-		{
-			get
-			{
-				return this._ProjectTaskChildNote;
-			}
-			set
-			{
-				if ((this._ProjectTaskChildNote != value))
-				{
-					this.OnProjectTaskChildNoteChanging(value);
-					this.SendPropertyChanging();
-					this._ProjectTaskChildNote = value;
-					this.SendPropertyChanged("ProjectTaskChildNote");
-					this.OnProjectTaskChildNoteChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskHorikomi", DbType="NVarChar(25)")]
-		public string ProjectTaskHorikomi
-		{
-			get
-			{
-				return this._ProjectTaskHorikomi;
-			}
-			set
-			{
-				if ((this._ProjectTaskHorikomi != value))
-				{
-					this.OnProjectTaskHorikomiChanging(value);
-					this.SendPropertyChanging();
-					this._ProjectTaskHorikomi = value;
-					this.SendPropertyChanged("ProjectTaskHorikomi");
-					this.OnProjectTaskHorikomiChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskPrice", DbType="Decimal(10,2)")]
-		public System.Nullable<decimal> ProjectTaskPrice
-		{
-			get
-			{
-				return this._ProjectTaskPrice;
-			}
-			set
-			{
-				if ((this._ProjectTaskPrice != value))
-				{
-					this.OnProjectTaskPriceChanging(value);
-					this.SendPropertyChanging();
-					this._ProjectTaskPrice = value;
-					this.SendPropertyChanged("ProjectTaskPrice");
-					this.OnProjectTaskPriceChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskThickness", DbType="Int")]
-		public System.Nullable<int> ProjectTaskThickness
-		{
-			get
-			{
-				return this._ProjectTaskThickness;
-			}
-			set
-			{
-				if ((this._ProjectTaskThickness != value))
-				{
-					this.OnProjectTaskThicknessChanging(value);
-					this.SendPropertyChanging();
-					this._ProjectTaskThickness = value;
-					this.SendPropertyChanged("ProjectTaskThickness");
-					this.OnProjectTaskThicknessChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskThicknessTotal", DbType="NVarChar(25)")]
-		public string ProjectTaskThicknessTotal
-		{
-			get
-			{
-				return this._ProjectTaskThicknessTotal;
-			}
-			set
-			{
-				if ((this._ProjectTaskThicknessTotal != value))
-				{
-					this.OnProjectTaskThicknessTotalChanging(value);
-					this.SendPropertyChanging();
-					this._ProjectTaskThicknessTotal = value;
-					this.SendPropertyChanged("ProjectTaskThicknessTotal");
-					this.OnProjectTaskThicknessTotalChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskDiameterOut", DbType="Decimal(10,0)")]
-		public System.Nullable<decimal> ProjectTaskDiameterOut
-		{
-			get
-			{
-				return this._ProjectTaskDiameterOut;
-			}
-			set
-			{
-				if ((this._ProjectTaskDiameterOut != value))
-				{
-					this.OnProjectTaskDiameterOutChanging(value);
-					this.SendPropertyChanging();
-					this._ProjectTaskDiameterOut = value;
-					this.SendPropertyChanged("ProjectTaskDiameterOut");
-					this.OnProjectTaskDiameterOutChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskHardness", DbType="NVarChar(25)")]
-		public string ProjectTaskHardness
-		{
-			get
-			{
-				return this._ProjectTaskHardness;
-			}
-			set
-			{
-				if ((this._ProjectTaskHardness != value))
-				{
-					this.OnProjectTaskHardnessChanging(value);
-					this.SendPropertyChanging();
-					this._ProjectTaskHardness = value;
-					this.SendPropertyChanged("ProjectTaskHardness");
-					this.OnProjectTaskHardnessChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskOverlayNum", DbType="NVarChar(25)")]
-		public string ProjectTaskOverlayNum
-		{
-			get
-			{
-				return this._ProjectTaskOverlayNum;
-			}
-			set
-			{
-				if ((this._ProjectTaskOverlayNum != value))
-				{
-					this.OnProjectTaskOverlayNumChanging(value);
-					this.SendPropertyChanging();
-					this._ProjectTaskOverlayNum = value;
-					this.SendPropertyChanged("ProjectTaskOverlayNum");
-					this.OnProjectTaskOverlayNumChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskHoleNum", DbType="NVarChar(25)")]
-		public string ProjectTaskHoleNum
-		{
-			get
-			{
-				return this._ProjectTaskHoleNum;
-			}
-			set
-			{
-				if ((this._ProjectTaskHoleNum != value))
-				{
-					this.OnProjectTaskHoleNumChanging(value);
-					this.SendPropertyChanging();
-					this._ProjectTaskHoleNum = value;
-					this.SendPropertyChanged("ProjectTaskHoleNum");
-					this.OnProjectTaskHoleNumChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskBox", DbType="VarChar(3)")]
-		public string ProjectTaskBox
-		{
-			get
-			{
-				return this._ProjectTaskBox;
-			}
-			set
-			{
-				if ((this._ProjectTaskBox != value))
-				{
-					this.OnProjectTaskBoxChanging(value);
-					this.SendPropertyChanging();
-					this._ProjectTaskBox = value;
-					this.SendPropertyChanged("ProjectTaskBox");
-					this.OnProjectTaskBoxChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskMaterialsCode", DbType="NVarChar(25)")]
-		public string ProjectTaskMaterialsCode
-		{
-			get
-			{
-				return this._ProjectTaskMaterialsCode;
-			}
-			set
-			{
-				if ((this._ProjectTaskMaterialsCode != value))
-				{
-					this.OnProjectTaskMaterialsCodeChanging(value);
-					this.SendPropertyChanging();
-					this._ProjectTaskMaterialsCode = value;
-					this.SendPropertyChanged("ProjectTaskMaterialsCode");
-					this.OnProjectTaskMaterialsCodeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskMaterialsRequire", DbType="NVarChar(12)")]
-		public string ProjectTaskMaterialsRequire
-		{
-			get
-			{
-				return this._ProjectTaskMaterialsRequire;
-			}
-			set
-			{
-				if ((this._ProjectTaskMaterialsRequire != value))
-				{
-					this.OnProjectTaskMaterialsRequireChanging(value);
-					this.SendPropertyChanging();
-					this._ProjectTaskMaterialsRequire = value;
-					this.SendPropertyChanged("ProjectTaskMaterialsRequire");
-					this.OnProjectTaskMaterialsRequireChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskDimension", DbType="NVarChar(255)")]
-		public string ProjectTaskDimension
-		{
-			get
-			{
-				return this._ProjectTaskDimension;
-			}
-			set
-			{
-				if ((this._ProjectTaskDimension != value))
-				{
-					this.OnProjectTaskDimensionChanging(value);
-					this.SendPropertyChanging();
-					this._ProjectTaskDimension = value;
-					this.SendPropertyChanged("ProjectTaskDimension");
-					this.OnProjectTaskDimensionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskWeight", DbType="Decimal(10,2)")]
-		public System.Nullable<decimal> ProjectTaskWeight
-		{
-			get
-			{
-				return this._ProjectTaskWeight;
-			}
-			set
-			{
-				if ((this._ProjectTaskWeight != value))
-				{
-					this.OnProjectTaskWeightChanging(value);
-					this.SendPropertyChanging();
-					this._ProjectTaskWeight = value;
-					this.SendPropertyChanged("ProjectTaskWeight");
-					this.OnProjectTaskWeightChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskDeadline", DbType="DateTime")]
-		public System.Nullable<System.DateTime> ProjectTaskDeadline
-		{
-			get
-			{
-				return this._ProjectTaskDeadline;
-			}
-			set
-			{
-				if ((this._ProjectTaskDeadline != value))
-				{
-					this.OnProjectTaskDeadlineChanging(value);
-					this.SendPropertyChanging();
-					this._ProjectTaskDeadline = value;
-					this.SendPropertyChanged("ProjectTaskDeadline");
-					this.OnProjectTaskDeadlineChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskTransmit", DbType="DateTime")]
-		public System.Nullable<System.DateTime> ProjectTaskTransmit
-		{
-			get
-			{
-				return this._ProjectTaskTransmit;
-			}
-			set
-			{
-				if ((this._ProjectTaskTransmit != value))
-				{
-					this.OnProjectTaskTransmitChanging(value);
-					this.SendPropertyChanging();
-					this._ProjectTaskTransmit = value;
-					this.SendPropertyChanged("ProjectTaskTransmit");
-					this.OnProjectTaskTransmitChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskStatusID", DbType="Int NOT NULL")]
-		public int ProjectTaskStatusID
-		{
-			get
-			{
-				return this._ProjectTaskStatusID;
-			}
-			set
-			{
-				if ((this._ProjectTaskStatusID != value))
-				{
-					if (this._PM_ProjectTaskStatus.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnProjectTaskStatusIDChanging(value);
-					this.SendPropertyChanging();
-					this._ProjectTaskStatusID = value;
-					this.SendPropertyChanged("ProjectTaskStatusID");
-					this.OnProjectTaskStatusIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskPriorityID", DbType="Int NOT NULL")]
-		public int ProjectTaskPriorityID
-		{
-			get
-			{
-				return this._ProjectTaskPriorityID;
-			}
-			set
-			{
-				if ((this._ProjectTaskPriorityID != value))
-				{
-					if (this._PM_ProjectTaskPriority.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnProjectTaskPriorityIDChanging(value);
-					this.SendPropertyChanging();
-					this._ProjectTaskPriorityID = value;
-					this.SendPropertyChanged("ProjectTaskPriorityID");
-					this.OnProjectTaskPriorityIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskDescription", DbType="NVarChar(MAX)")]
-		public string ProjectTaskDescription
-		{
-			get
-			{
-				return this._ProjectTaskDescription;
-			}
-			set
-			{
-				if ((this._ProjectTaskDescription != value))
-				{
-					this.OnProjectTaskDescriptionChanging(value);
-					this.SendPropertyChanging();
-					this._ProjectTaskDescription = value;
-					this.SendPropertyChanged("ProjectTaskDescription");
-					this.OnProjectTaskDescriptionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskOwnerID", DbType="Int")]
-		public System.Nullable<int> ProjectTaskOwnerID
-		{
-			get
-			{
-				return this._ProjectTaskOwnerID;
-			}
-			set
-			{
-				if ((this._ProjectTaskOwnerID != value))
-				{
-					if (this._CMS_User2.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnProjectTaskOwnerIDChanging(value);
-					this.SendPropertyChanging();
-					this._ProjectTaskOwnerID = value;
-					this.SendPropertyChanged("ProjectTaskOwnerID");
-					this.OnProjectTaskOwnerIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskCreatedByID", DbType="Int")]
-		public System.Nullable<int> ProjectTaskCreatedByID
-		{
-			get
-			{
-				return this._ProjectTaskCreatedByID;
-			}
-			set
-			{
-				if ((this._ProjectTaskCreatedByID != value))
-				{
-					if (this._CMS_User1.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnProjectTaskCreatedByIDChanging(value);
-					this.SendPropertyChanging();
-					this._ProjectTaskCreatedByID = value;
-					this.SendPropertyChanged("ProjectTaskCreatedByID");
-					this.OnProjectTaskCreatedByIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskAssignedToUserID", DbType="Int")]
-		public System.Nullable<int> ProjectTaskAssignedToUserID
-		{
-			get
-			{
-				return this._ProjectTaskAssignedToUserID;
-			}
-			set
-			{
-				if ((this._ProjectTaskAssignedToUserID != value))
-				{
-					if (this._CMS_User.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnProjectTaskAssignedToUserIDChanging(value);
-					this.SendPropertyChanging();
-					this._ProjectTaskAssignedToUserID = value;
-					this.SendPropertyChanged("ProjectTaskAssignedToUserID");
-					this.OnProjectTaskAssignedToUserIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskProgress", DbType="Int NOT NULL")]
-		public int ProjectTaskProgress
-		{
-			get
-			{
-				return this._ProjectTaskProgress;
-			}
-			set
-			{
-				if ((this._ProjectTaskProgress != value))
-				{
-					this.OnProjectTaskProgressChanging(value);
-					this.SendPropertyChanging();
-					this._ProjectTaskProgress = value;
-					this.SendPropertyChanged("ProjectTaskProgress");
-					this.OnProjectTaskProgressChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskHours", DbType="Float NOT NULL")]
-		public double ProjectTaskHours
-		{
-			get
-			{
-				return this._ProjectTaskHours;
-			}
-			set
-			{
-				if ((this._ProjectTaskHours != value))
-				{
-					this.OnProjectTaskHoursChanging(value);
-					this.SendPropertyChanging();
-					this._ProjectTaskHours = value;
-					this.SendPropertyChanged("ProjectTaskHours");
-					this.OnProjectTaskHoursChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskGUID", DbType="UniqueIdentifier NOT NULL")]
-		public System.Guid ProjectTaskGUID
-		{
-			get
-			{
-				return this._ProjectTaskGUID;
-			}
-			set
-			{
-				if ((this._ProjectTaskGUID != value))
-				{
-					this.OnProjectTaskGUIDChanging(value);
-					this.SendPropertyChanging();
-					this._ProjectTaskGUID = value;
-					this.SendPropertyChanged("ProjectTaskGUID");
-					this.OnProjectTaskGUIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskLastModified", DbType="DateTime NOT NULL")]
-		public System.DateTime ProjectTaskLastModified
-		{
-			get
-			{
-				return this._ProjectTaskLastModified;
-			}
-			set
-			{
-				if ((this._ProjectTaskLastModified != value))
-				{
-					this.OnProjectTaskLastModifiedChanging(value);
-					this.SendPropertyChanging();
-					this._ProjectTaskLastModified = value;
-					this.SendPropertyChanged("ProjectTaskLastModified");
-					this.OnProjectTaskLastModifiedChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskProjectOrder", DbType="Int")]
-		public System.Nullable<int> ProjectTaskProjectOrder
-		{
-			get
-			{
-				return this._ProjectTaskProjectOrder;
-			}
-			set
-			{
-				if ((this._ProjectTaskProjectOrder != value))
-				{
-					this.OnProjectTaskProjectOrderChanging(value);
-					this.SendPropertyChanging();
-					this._ProjectTaskProjectOrder = value;
-					this.SendPropertyChanged("ProjectTaskProjectOrder");
-					this.OnProjectTaskProjectOrderChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskUserOrder", DbType="Int")]
-		public System.Nullable<int> ProjectTaskUserOrder
-		{
-			get
-			{
-				return this._ProjectTaskUserOrder;
-			}
-			set
-			{
-				if ((this._ProjectTaskUserOrder != value))
-				{
-					this.OnProjectTaskUserOrderChanging(value);
-					this.SendPropertyChanging();
-					this._ProjectTaskUserOrder = value;
-					this.SendPropertyChanged("ProjectTaskUserOrder");
-					this.OnProjectTaskUserOrderChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskNotificationSent", DbType="Bit")]
-		public System.Nullable<bool> ProjectTaskNotificationSent
-		{
-			get
-			{
-				return this._ProjectTaskNotificationSent;
-			}
-			set
-			{
-				if ((this._ProjectTaskNotificationSent != value))
-				{
-					this.OnProjectTaskNotificationSentChanging(value);
-					this.SendPropertyChanging();
-					this._ProjectTaskNotificationSent = value;
-					this.SendPropertyChanged("ProjectTaskNotificationSent");
-					this.OnProjectTaskNotificationSentChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskIsPrivate", DbType="Bit")]
-		public System.Nullable<bool> ProjectTaskIsPrivate
-		{
-			get
-			{
-				return this._ProjectTaskIsPrivate;
-			}
-			set
-			{
-				if ((this._ProjectTaskIsPrivate != value))
-				{
-					this.OnProjectTaskIsPrivateChanging(value);
-					this.SendPropertyChanging();
-					this._ProjectTaskIsPrivate = value;
-					this.SendPropertyChanged("ProjectTaskIsPrivate");
-					this.OnProjectTaskIsPrivateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskCustomerId", DbType="Int")]
-		public System.Nullable<int> ProjectTaskCustomerId
-		{
-			get
-			{
-				return this._ProjectTaskCustomerId;
-			}
-			set
-			{
-				if ((this._ProjectTaskCustomerId != value))
-				{
-					if (this._PM_ProjectCustomer.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnProjectTaskCustomerIdChanging(value);
-					this.SendPropertyChanging();
-					this._ProjectTaskCustomerId = value;
-					this.SendPropertyChanged("ProjectTaskCustomerId");
-					this.OnProjectTaskCustomerIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskDuKienThoQuaTinh", DbType="DateTime")]
-		public System.Nullable<System.DateTime> ProjectTaskDuKienThoQuaTinh
-		{
-			get
-			{
-				return this._ProjectTaskDuKienThoQuaTinh;
-			}
-			set
-			{
-				if ((this._ProjectTaskDuKienThoQuaTinh != value))
-				{
-					this.OnProjectTaskDuKienThoQuaTinhChanging(value);
-					this.SendPropertyChanging();
-					this._ProjectTaskDuKienThoQuaTinh = value;
-					this.SendPropertyChanged("ProjectTaskDuKienThoQuaTinh");
-					this.OnProjectTaskDuKienThoQuaTinhChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskDuKienTinhQuaQA", DbType="DateTime")]
-		public System.Nullable<System.DateTime> ProjectTaskDuKienTinhQuaQA
-		{
-			get
-			{
-				return this._ProjectTaskDuKienTinhQuaQA;
-			}
-			set
-			{
-				if ((this._ProjectTaskDuKienTinhQuaQA != value))
-				{
-					this.OnProjectTaskDuKienTinhQuaQAChanging(value);
-					this.SendPropertyChanging();
-					this._ProjectTaskDuKienTinhQuaQA = value;
-					this.SendPropertyChanged("ProjectTaskDuKienTinhQuaQA");
-					this.OnProjectTaskDuKienTinhQuaQAChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskExpectedThree", DbType="DateTime")]
-		public System.Nullable<System.DateTime> ProjectTaskExpectedThree
-		{
-			get
-			{
-				return this._ProjectTaskExpectedThree;
-			}
-			set
-			{
-				if ((this._ProjectTaskExpectedThree != value))
-				{
-					this.OnProjectTaskExpectedThreeChanging(value);
-					this.SendPropertyChanging();
-					this._ProjectTaskExpectedThree = value;
-					this.SendPropertyChanged("ProjectTaskExpectedThree");
-					this.OnProjectTaskExpectedThreeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskThucTeThoQuaTinh", DbType="DateTime")]
-		public System.Nullable<System.DateTime> ProjectTaskThucTeThoQuaTinh
-		{
-			get
-			{
-				return this._ProjectTaskThucTeThoQuaTinh;
-			}
-			set
-			{
-				if ((this._ProjectTaskThucTeThoQuaTinh != value))
-				{
-					this.OnProjectTaskThucTeThoQuaTinhChanging(value);
-					this.SendPropertyChanging();
-					this._ProjectTaskThucTeThoQuaTinh = value;
-					this.SendPropertyChanged("ProjectTaskThucTeThoQuaTinh");
-					this.OnProjectTaskThucTeThoQuaTinhChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskThucTeTinhQuaQA", DbType="DateTime")]
-		public System.Nullable<System.DateTime> ProjectTaskThucTeTinhQuaQA
-		{
-			get
-			{
-				return this._ProjectTaskThucTeTinhQuaQA;
-			}
-			set
-			{
-				if ((this._ProjectTaskThucTeTinhQuaQA != value))
-				{
-					this.OnProjectTaskThucTeTinhQuaQAChanging(value);
-					this.SendPropertyChanging();
-					this._ProjectTaskThucTeTinhQuaQA = value;
-					this.SendPropertyChanged("ProjectTaskThucTeTinhQuaQA");
-					this.OnProjectTaskThucTeTinhQuaQAChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifiedWhen", DbType="DateTime")]
-		public System.Nullable<System.DateTime> ModifiedWhen
-		{
-			get
-			{
-				return this._ModifiedWhen;
-			}
-			set
-			{
-				if ((this._ModifiedWhen != value))
-				{
-					this.OnModifiedWhenChanging(value);
-					this.SendPropertyChanging();
-					this._ModifiedWhen = value;
-					this.SendPropertyChanged("ModifiedWhen");
-					this.OnModifiedWhenChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifiedByUserId", DbType="Int")]
-		public System.Nullable<int> ModifiedByUserId
-		{
-			get
-			{
-				return this._ModifiedByUserId;
-			}
-			set
-			{
-				if ((this._ModifiedByUserId != value))
-				{
-					this.OnModifiedByUserIdChanging(value);
-					this.SendPropertyChanging();
-					this._ModifiedByUserId = value;
-					this.SendPropertyChanged("ModifiedByUserId");
-					this.OnModifiedByUserIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedWhen", DbType="DateTime")]
-		public System.Nullable<System.DateTime> CreatedWhen
-		{
-			get
-			{
-				return this._CreatedWhen;
-			}
-			set
-			{
-				if ((this._CreatedWhen != value))
-				{
-					this.OnCreatedWhenChanging(value);
-					this.SendPropertyChanging();
-					this._CreatedWhen = value;
-					this.SendPropertyChanged("CreatedWhen");
-					this.OnCreatedWhenChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedByUserId", DbType="Int")]
-		public System.Nullable<int> CreatedByUserId
-		{
-			get
-			{
-				return this._CreatedByUserId;
-			}
-			set
-			{
-				if ((this._CreatedByUserId != value))
-				{
-					this.OnCreatedByUserIdChanging(value);
-					this.SendPropertyChanging();
-					this._CreatedByUserId = value;
-					this.SendPropertyChanged("CreatedByUserId");
-					this.OnCreatedByUserIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskDuKienXuatHang", DbType="DateTime")]
-		public System.Nullable<System.DateTime> ProjectTaskDuKienXuatHang
-		{
-			get
-			{
-				return this._ProjectTaskDuKienXuatHang;
-			}
-			set
-			{
-				if ((this._ProjectTaskDuKienXuatHang != value))
-				{
-					this.OnProjectTaskDuKienXuatHangChanging(value);
-					this.SendPropertyChanging();
-					this._ProjectTaskDuKienXuatHang = value;
-					this.SendPropertyChanged("ProjectTaskDuKienXuatHang");
-					this.OnProjectTaskDuKienXuatHangChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskThucTeXuatHang", DbType="DateTime")]
-		public System.Nullable<System.DateTime> ProjectTaskThucTeXuatHang
-		{
-			get
-			{
-				return this._ProjectTaskThucTeXuatHang;
-			}
-			set
-			{
-				if ((this._ProjectTaskThucTeXuatHang != value))
-				{
-					this.OnProjectTaskThucTeXuatHangChanging(value);
-					this.SendPropertyChanging();
-					this._ProjectTaskThucTeXuatHang = value;
-					this.SendPropertyChanged("ProjectTaskThucTeXuatHang");
-					this.OnProjectTaskThucTeXuatHangChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PM_ProjectTask_PM_ProjectProcessDetail", Storage="_PM_ProjectProcessDetails", ThisKey="ProjectTaskID", OtherKey="DetailProjectTaskID")]
-		public EntitySet<PM_ProjectProcessDetail> PM_ProjectProcessDetails
-		{
-			get
-			{
-				return this._PM_ProjectProcessDetails;
-			}
-			set
-			{
-				this._PM_ProjectProcessDetails.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PM_ProjectTask_PM_ProjectProcess", Storage="_PM_ProjectProcesses", ThisKey="ProjectTaskID", OtherKey="ProcessProjectTaskID")]
-		public EntitySet<PM_ProjectProcess> PM_ProjectProcesses
-		{
-			get
-			{
-				return this._PM_ProjectProcesses;
-			}
-			set
-			{
-				this._PM_ProjectProcesses.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PM_ProjectCustomer_PM_ProjectTask", Storage="_PM_ProjectCustomer", ThisKey="ProjectTaskCustomerId", OtherKey="CustomerId", IsForeignKey=true, DeleteRule="CASCADE")]
-		public PM_ProjectCustomer PM_ProjectCustomer
-		{
-			get
-			{
-				return this._PM_ProjectCustomer.Entity;
-			}
-			set
-			{
-				PM_ProjectCustomer previousValue = this._PM_ProjectCustomer.Entity;
-				if (((previousValue != value) 
-							|| (this._PM_ProjectCustomer.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._PM_ProjectCustomer.Entity = null;
-						previousValue.PM_ProjectTasks.Remove(this);
-					}
-					this._PM_ProjectCustomer.Entity = value;
-					if ((value != null))
-					{
-						value.PM_ProjectTasks.Add(this);
-						this._ProjectTaskCustomerId = value.CustomerId;
-					}
-					else
-					{
-						this._ProjectTaskCustomerId = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("PM_ProjectCustomer");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PM_ProjectMold_PM_ProjectTask", Storage="_PM_ProjectMold", ThisKey="ProjectTaskMoldsId", OtherKey="MoldsId", IsForeignKey=true, DeleteRule="CASCADE")]
-		public PM_ProjectMold PM_ProjectMold
-		{
-			get
-			{
-				return this._PM_ProjectMold.Entity;
-			}
-			set
-			{
-				PM_ProjectMold previousValue = this._PM_ProjectMold.Entity;
-				if (((previousValue != value) 
-							|| (this._PM_ProjectMold.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._PM_ProjectMold.Entity = null;
-						previousValue.PM_ProjectTasks.Remove(this);
-					}
-					this._PM_ProjectMold.Entity = value;
-					if ((value != null))
-					{
-						value.PM_ProjectTasks.Add(this);
-						this._ProjectTaskMoldsId = value.MoldsId;
-					}
-					else
-					{
-						this._ProjectTaskMoldsId = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("PM_ProjectMold");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CMS_User_PM_ProjectTask", Storage="_CMS_User", ThisKey="ProjectTaskAssignedToUserID", OtherKey="UserID", IsForeignKey=true)]
-		public CMS_User CMS_User
-		{
-			get
-			{
-				return this._CMS_User.Entity;
-			}
-			set
-			{
-				CMS_User previousValue = this._CMS_User.Entity;
-				if (((previousValue != value) 
-							|| (this._CMS_User.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._CMS_User.Entity = null;
-						previousValue.PM_ProjectTasks.Remove(this);
-					}
-					this._CMS_User.Entity = value;
-					if ((value != null))
-					{
-						value.PM_ProjectTasks.Add(this);
-						this._ProjectTaskAssignedToUserID = value.UserID;
-					}
-					else
-					{
-						this._ProjectTaskAssignedToUserID = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("CMS_User");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CMS_User_PM_ProjectTask1", Storage="_CMS_User1", ThisKey="ProjectTaskCreatedByID", OtherKey="UserID", IsForeignKey=true)]
-		public CMS_User CMS_User1
-		{
-			get
-			{
-				return this._CMS_User1.Entity;
-			}
-			set
-			{
-				CMS_User previousValue = this._CMS_User1.Entity;
-				if (((previousValue != value) 
-							|| (this._CMS_User1.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._CMS_User1.Entity = null;
-						previousValue.PM_ProjectTasks1.Remove(this);
-					}
-					this._CMS_User1.Entity = value;
-					if ((value != null))
-					{
-						value.PM_ProjectTasks1.Add(this);
-						this._ProjectTaskCreatedByID = value.UserID;
-					}
-					else
-					{
-						this._ProjectTaskCreatedByID = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("CMS_User1");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CMS_User_PM_ProjectTask2", Storage="_CMS_User2", ThisKey="ProjectTaskOwnerID", OtherKey="UserID", IsForeignKey=true)]
-		public CMS_User CMS_User2
-		{
-			get
-			{
-				return this._CMS_User2.Entity;
-			}
-			set
-			{
-				CMS_User previousValue = this._CMS_User2.Entity;
-				if (((previousValue != value) 
-							|| (this._CMS_User2.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._CMS_User2.Entity = null;
-						previousValue.PM_ProjectTasks2.Remove(this);
-					}
-					this._CMS_User2.Entity = value;
-					if ((value != null))
-					{
-						value.PM_ProjectTasks2.Add(this);
-						this._ProjectTaskOwnerID = value.UserID;
-					}
-					else
-					{
-						this._ProjectTaskOwnerID = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("CMS_User2");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PM_ProjectTaskPriority_PM_ProjectTask", Storage="_PM_ProjectTaskPriority", ThisKey="ProjectTaskPriorityID", OtherKey="TaskPriorityID", IsForeignKey=true)]
-		public PM_ProjectTaskPriority PM_ProjectTaskPriority
-		{
-			get
-			{
-				return this._PM_ProjectTaskPriority.Entity;
-			}
-			set
-			{
-				PM_ProjectTaskPriority previousValue = this._PM_ProjectTaskPriority.Entity;
-				if (((previousValue != value) 
-							|| (this._PM_ProjectTaskPriority.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._PM_ProjectTaskPriority.Entity = null;
-						previousValue.PM_ProjectTasks.Remove(this);
-					}
-					this._PM_ProjectTaskPriority.Entity = value;
-					if ((value != null))
-					{
-						value.PM_ProjectTasks.Add(this);
-						this._ProjectTaskPriorityID = value.TaskPriorityID;
-					}
-					else
-					{
-						this._ProjectTaskPriorityID = default(int);
-					}
-					this.SendPropertyChanged("PM_ProjectTaskPriority");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PM_Project_PM_ProjectTask", Storage="_PM_Project", ThisKey="ProjectTaskProjectID", OtherKey="ProjectID", IsForeignKey=true)]
-		public PM_Project PM_Project
-		{
-			get
-			{
-				return this._PM_Project.Entity;
-			}
-			set
-			{
-				PM_Project previousValue = this._PM_Project.Entity;
-				if (((previousValue != value) 
-							|| (this._PM_Project.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._PM_Project.Entity = null;
-						previousValue.PM_ProjectTasks.Remove(this);
-					}
-					this._PM_Project.Entity = value;
-					if ((value != null))
-					{
-						value.PM_ProjectTasks.Add(this);
-						this._ProjectTaskProjectID = value.ProjectID;
-					}
-					else
-					{
-						this._ProjectTaskProjectID = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("PM_Project");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PM_ProjectTaskStatus_PM_ProjectTask", Storage="_PM_ProjectTaskStatus", ThisKey="ProjectTaskStatusID", OtherKey="TaskStatusID", IsForeignKey=true)]
-		public PM_ProjectTaskStatus PM_ProjectTaskStatus
-		{
-			get
-			{
-				return this._PM_ProjectTaskStatus.Entity;
-			}
-			set
-			{
-				PM_ProjectTaskStatus previousValue = this._PM_ProjectTaskStatus.Entity;
-				if (((previousValue != value) 
-							|| (this._PM_ProjectTaskStatus.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._PM_ProjectTaskStatus.Entity = null;
-						previousValue.PM_ProjectTasks.Remove(this);
-					}
-					this._PM_ProjectTaskStatus.Entity = value;
-					if ((value != null))
-					{
-						value.PM_ProjectTasks.Add(this);
-						this._ProjectTaskStatusID = value.TaskStatusID;
-					}
-					else
-					{
-						this._ProjectTaskStatusID = default(int);
-					}
-					this.SendPropertyChanged("PM_ProjectTaskStatus");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_PM_ProjectProcessDetails(PM_ProjectProcessDetail entity)
-		{
-			this.SendPropertyChanging();
-			entity.PM_ProjectTask = this;
-		}
-		
-		private void detach_PM_ProjectProcessDetails(PM_ProjectProcessDetail entity)
-		{
-			this.SendPropertyChanging();
-			entity.PM_ProjectTask = null;
-		}
-		
-		private void attach_PM_ProjectProcesses(PM_ProjectProcess entity)
-		{
-			this.SendPropertyChanging();
-			entity.PM_ProjectTask = this;
-		}
-		
-		private void detach_PM_ProjectProcesses(PM_ProjectProcess entity)
-		{
-			this.SendPropertyChanging();
-			entity.PM_ProjectTask = null;
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PM_ProjectEmployee")]
 	public partial class PM_ProjectEmployee : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -9581,6 +7935,1772 @@ namespace Models
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PM_ProjectTask")]
+	public partial class PM_ProjectTask : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ProjectTaskID;
+		
+		private System.Nullable<int> _ProjectTaskProjectID;
+		
+		private string _ProjectTaskMoldCode;
+		
+		private System.Nullable<int> _ProjectTaskMoldsId;
+		
+		private System.Nullable<decimal> _ProjectTaskMoldsFactor;
+		
+		private string _ProjectTaskDisplayName;
+		
+		private System.Nullable<int> _ProjectTaskQuantities;
+		
+		private string _ProjectTaskContainHead;
+		
+		private string _ProjectTaskBottoHob;
+		
+		private string _ProjectTaskChildNote;
+		
+		private string _ProjectTaskHorikomi;
+		
+		private System.Nullable<decimal> _ProjectTaskPrice;
+		
+		private System.Nullable<int> _ProjectTaskThickness;
+		
+		private string _ProjectTaskThicknessTotal;
+		
+		private System.Nullable<decimal> _ProjectTaskDiameterOut;
+		
+		private string _ProjectTaskHardness;
+		
+		private string _ProjectTaskOverlayNum;
+		
+		private string _ProjectTaskHoleNum;
+		
+		private string _ProjectTaskBox;
+		
+		private string _ProjectTaskMaterialsCode;
+		
+		private string _ProjectTaskMaterialsRequire;
+		
+		private string _ProjectTaskDimension;
+		
+		private System.Nullable<decimal> _ProjectTaskWeight;
+		
+		private System.Nullable<System.DateTime> _ProjectTaskDeadline;
+		
+		private System.Nullable<System.DateTime> _ProjectTaskTransmit;
+		
+		private int _ProjectTaskStatusID;
+		
+		private int _ProjectTaskPriorityID;
+		
+		private string _ProjectTaskDescription;
+		
+		private System.Nullable<int> _ProjectTaskOwnerID;
+		
+		private System.Nullable<int> _ProjectTaskCreatedByID;
+		
+		private System.Nullable<int> _ProjectTaskAssignedToUserID;
+		
+		private int _ProjectTaskProgress;
+		
+		private double _ProjectTaskHours;
+		
+		private System.Guid _ProjectTaskGUID;
+		
+		private System.DateTime _ProjectTaskLastModified;
+		
+		private System.Nullable<int> _ProjectTaskProjectOrder;
+		
+		private System.Nullable<int> _ProjectTaskUserOrder;
+		
+		private System.Nullable<bool> _ProjectTaskNotificationSent;
+		
+		private System.Nullable<bool> _ProjectTaskIsPrivate;
+		
+		private System.Nullable<int> _ProjectTaskCustomerId;
+		
+		private System.Nullable<System.DateTime> _ProjectTaskExpectedThree;
+		
+		private System.Nullable<System.DateTime> _ModifiedWhen;
+		
+		private System.Nullable<int> _ModifiedByUserId;
+		
+		private System.Nullable<System.DateTime> _CreatedWhen;
+		
+		private System.Nullable<int> _CreatedByUserId;
+		
+		private System.Nullable<System.DateTime> _DX_XuatHang_DuKien;
+		
+		private System.Nullable<System.DateTime> _DX_XuatHang_ThucTe;
+		
+		private string _DX_MaDonHang;
+		
+		private System.Nullable<System.DateTime> _DX_DuKienHT_NC;
+		
+		private System.Nullable<System.DateTime> _DX_DuKienHT_MC;
+		
+		private System.Nullable<System.DateTime> _DX_DuKienHT_PhayTay;
+		
+		private System.Nullable<System.DateTime> _DX_DuKienHT_Nhiet;
+		
+		private System.Nullable<System.DateTime> _DX_DuKienHT_Mai;
+		
+		private System.Nullable<System.DateTime> _DX_DuKienHT_WEDM;
+		
+		private System.Nullable<System.DateTime> _DX_DuKienHT_EDM;
+		
+		private System.Nullable<System.DateTime> _DX_DuKienHT_QA;
+		
+		private EntitySet<PM_ProjectProcessDetail> _PM_ProjectProcessDetails;
+		
+		private EntitySet<PM_ProjectProcess> _PM_ProjectProcesses;
+		
+		private EntityRef<PM_ProjectCustomer> _PM_ProjectCustomer;
+		
+		private EntityRef<PM_ProjectMold> _PM_ProjectMold;
+		
+		private EntityRef<CMS_User> _CMS_User;
+		
+		private EntityRef<CMS_User> _CMS_User1;
+		
+		private EntityRef<CMS_User> _CMS_User2;
+		
+		private EntityRef<PM_ProjectTaskPriority> _PM_ProjectTaskPriority;
+		
+		private EntityRef<PM_Project> _PM_Project;
+		
+		private EntityRef<PM_ProjectTaskStatus> _PM_ProjectTaskStatus;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnProjectTaskIDChanging(int value);
+    partial void OnProjectTaskIDChanged();
+    partial void OnProjectTaskProjectIDChanging(System.Nullable<int> value);
+    partial void OnProjectTaskProjectIDChanged();
+    partial void OnProjectTaskMoldCodeChanging(string value);
+    partial void OnProjectTaskMoldCodeChanged();
+    partial void OnProjectTaskMoldsIdChanging(System.Nullable<int> value);
+    partial void OnProjectTaskMoldsIdChanged();
+    partial void OnProjectTaskMoldsFactorChanging(System.Nullable<decimal> value);
+    partial void OnProjectTaskMoldsFactorChanged();
+    partial void OnProjectTaskDisplayNameChanging(string value);
+    partial void OnProjectTaskDisplayNameChanged();
+    partial void OnProjectTaskQuantitiesChanging(System.Nullable<int> value);
+    partial void OnProjectTaskQuantitiesChanged();
+    partial void OnProjectTaskContainHeadChanging(string value);
+    partial void OnProjectTaskContainHeadChanged();
+    partial void OnProjectTaskBottoHobChanging(string value);
+    partial void OnProjectTaskBottoHobChanged();
+    partial void OnProjectTaskChildNoteChanging(string value);
+    partial void OnProjectTaskChildNoteChanged();
+    partial void OnProjectTaskHorikomiChanging(string value);
+    partial void OnProjectTaskHorikomiChanged();
+    partial void OnProjectTaskPriceChanging(System.Nullable<decimal> value);
+    partial void OnProjectTaskPriceChanged();
+    partial void OnProjectTaskThicknessChanging(System.Nullable<int> value);
+    partial void OnProjectTaskThicknessChanged();
+    partial void OnProjectTaskThicknessTotalChanging(string value);
+    partial void OnProjectTaskThicknessTotalChanged();
+    partial void OnProjectTaskDiameterOutChanging(System.Nullable<decimal> value);
+    partial void OnProjectTaskDiameterOutChanged();
+    partial void OnProjectTaskHardnessChanging(string value);
+    partial void OnProjectTaskHardnessChanged();
+    partial void OnProjectTaskOverlayNumChanging(string value);
+    partial void OnProjectTaskOverlayNumChanged();
+    partial void OnProjectTaskHoleNumChanging(string value);
+    partial void OnProjectTaskHoleNumChanged();
+    partial void OnProjectTaskBoxChanging(string value);
+    partial void OnProjectTaskBoxChanged();
+    partial void OnProjectTaskMaterialsCodeChanging(string value);
+    partial void OnProjectTaskMaterialsCodeChanged();
+    partial void OnProjectTaskMaterialsRequireChanging(string value);
+    partial void OnProjectTaskMaterialsRequireChanged();
+    partial void OnProjectTaskDimensionChanging(string value);
+    partial void OnProjectTaskDimensionChanged();
+    partial void OnProjectTaskWeightChanging(System.Nullable<decimal> value);
+    partial void OnProjectTaskWeightChanged();
+    partial void OnProjectTaskDeadlineChanging(System.Nullable<System.DateTime> value);
+    partial void OnProjectTaskDeadlineChanged();
+    partial void OnProjectTaskTransmitChanging(System.Nullable<System.DateTime> value);
+    partial void OnProjectTaskTransmitChanged();
+    partial void OnProjectTaskStatusIDChanging(int value);
+    partial void OnProjectTaskStatusIDChanged();
+    partial void OnProjectTaskPriorityIDChanging(int value);
+    partial void OnProjectTaskPriorityIDChanged();
+    partial void OnProjectTaskDescriptionChanging(string value);
+    partial void OnProjectTaskDescriptionChanged();
+    partial void OnProjectTaskOwnerIDChanging(System.Nullable<int> value);
+    partial void OnProjectTaskOwnerIDChanged();
+    partial void OnProjectTaskCreatedByIDChanging(System.Nullable<int> value);
+    partial void OnProjectTaskCreatedByIDChanged();
+    partial void OnProjectTaskAssignedToUserIDChanging(System.Nullable<int> value);
+    partial void OnProjectTaskAssignedToUserIDChanged();
+    partial void OnProjectTaskProgressChanging(int value);
+    partial void OnProjectTaskProgressChanged();
+    partial void OnProjectTaskHoursChanging(double value);
+    partial void OnProjectTaskHoursChanged();
+    partial void OnProjectTaskGUIDChanging(System.Guid value);
+    partial void OnProjectTaskGUIDChanged();
+    partial void OnProjectTaskLastModifiedChanging(System.DateTime value);
+    partial void OnProjectTaskLastModifiedChanged();
+    partial void OnProjectTaskProjectOrderChanging(System.Nullable<int> value);
+    partial void OnProjectTaskProjectOrderChanged();
+    partial void OnProjectTaskUserOrderChanging(System.Nullable<int> value);
+    partial void OnProjectTaskUserOrderChanged();
+    partial void OnProjectTaskNotificationSentChanging(System.Nullable<bool> value);
+    partial void OnProjectTaskNotificationSentChanged();
+    partial void OnProjectTaskIsPrivateChanging(System.Nullable<bool> value);
+    partial void OnProjectTaskIsPrivateChanged();
+    partial void OnProjectTaskCustomerIdChanging(System.Nullable<int> value);
+    partial void OnProjectTaskCustomerIdChanged();
+    partial void OnProjectTaskExpectedThreeChanging(System.Nullable<System.DateTime> value);
+    partial void OnProjectTaskExpectedThreeChanged();
+    partial void OnModifiedWhenChanging(System.Nullable<System.DateTime> value);
+    partial void OnModifiedWhenChanged();
+    partial void OnModifiedByUserIdChanging(System.Nullable<int> value);
+    partial void OnModifiedByUserIdChanged();
+    partial void OnCreatedWhenChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreatedWhenChanged();
+    partial void OnCreatedByUserIdChanging(System.Nullable<int> value);
+    partial void OnCreatedByUserIdChanged();
+    partial void OnDX_XuatHang_DuKienChanging(System.Nullable<System.DateTime> value);
+    partial void OnDX_XuatHang_DuKienChanged();
+    partial void OnDX_XuatHang_ThucTeChanging(System.Nullable<System.DateTime> value);
+    partial void OnDX_XuatHang_ThucTeChanged();
+    partial void OnDX_MaDonHangChanging(string value);
+    partial void OnDX_MaDonHangChanged();
+    partial void OnDX_DuKienHT_NCChanging(System.Nullable<System.DateTime> value);
+    partial void OnDX_DuKienHT_NCChanged();
+    partial void OnDX_DuKienHT_MCChanging(System.Nullable<System.DateTime> value);
+    partial void OnDX_DuKienHT_MCChanged();
+    partial void OnDX_DuKienHT_PhayTayChanging(System.Nullable<System.DateTime> value);
+    partial void OnDX_DuKienHT_PhayTayChanged();
+    partial void OnDX_DuKienHT_NhietChanging(System.Nullable<System.DateTime> value);
+    partial void OnDX_DuKienHT_NhietChanged();
+    partial void OnDX_DuKienHT_MaiChanging(System.Nullable<System.DateTime> value);
+    partial void OnDX_DuKienHT_MaiChanged();
+    partial void OnDX_DuKienHT_WEDMChanging(System.Nullable<System.DateTime> value);
+    partial void OnDX_DuKienHT_WEDMChanged();
+    partial void OnDX_DuKienHT_EDMChanging(System.Nullable<System.DateTime> value);
+    partial void OnDX_DuKienHT_EDMChanged();
+    partial void OnDX_DuKienHT_QAChanging(System.Nullable<System.DateTime> value);
+    partial void OnDX_DuKienHT_QAChanged();
+    #endregion
+		
+		public PM_ProjectTask()
+		{
+			this._PM_ProjectProcessDetails = new EntitySet<PM_ProjectProcessDetail>(new Action<PM_ProjectProcessDetail>(this.attach_PM_ProjectProcessDetails), new Action<PM_ProjectProcessDetail>(this.detach_PM_ProjectProcessDetails));
+			this._PM_ProjectProcesses = new EntitySet<PM_ProjectProcess>(new Action<PM_ProjectProcess>(this.attach_PM_ProjectProcesses), new Action<PM_ProjectProcess>(this.detach_PM_ProjectProcesses));
+			this._PM_ProjectCustomer = default(EntityRef<PM_ProjectCustomer>);
+			this._PM_ProjectMold = default(EntityRef<PM_ProjectMold>);
+			this._CMS_User = default(EntityRef<CMS_User>);
+			this._CMS_User1 = default(EntityRef<CMS_User>);
+			this._CMS_User2 = default(EntityRef<CMS_User>);
+			this._PM_ProjectTaskPriority = default(EntityRef<PM_ProjectTaskPriority>);
+			this._PM_Project = default(EntityRef<PM_Project>);
+			this._PM_ProjectTaskStatus = default(EntityRef<PM_ProjectTaskStatus>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ProjectTaskID
+		{
+			get
+			{
+				return this._ProjectTaskID;
+			}
+			set
+			{
+				if ((this._ProjectTaskID != value))
+				{
+					this.OnProjectTaskIDChanging(value);
+					this.SendPropertyChanging();
+					this._ProjectTaskID = value;
+					this.SendPropertyChanged("ProjectTaskID");
+					this.OnProjectTaskIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskProjectID", DbType="Int")]
+		public System.Nullable<int> ProjectTaskProjectID
+		{
+			get
+			{
+				return this._ProjectTaskProjectID;
+			}
+			set
+			{
+				if ((this._ProjectTaskProjectID != value))
+				{
+					if (this._PM_Project.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnProjectTaskProjectIDChanging(value);
+					this.SendPropertyChanging();
+					this._ProjectTaskProjectID = value;
+					this.SendPropertyChanged("ProjectTaskProjectID");
+					this.OnProjectTaskProjectIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskMoldCode", DbType="NVarChar(25)")]
+		public string ProjectTaskMoldCode
+		{
+			get
+			{
+				return this._ProjectTaskMoldCode;
+			}
+			set
+			{
+				if ((this._ProjectTaskMoldCode != value))
+				{
+					this.OnProjectTaskMoldCodeChanging(value);
+					this.SendPropertyChanging();
+					this._ProjectTaskMoldCode = value;
+					this.SendPropertyChanged("ProjectTaskMoldCode");
+					this.OnProjectTaskMoldCodeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskMoldsId", DbType="Int")]
+		public System.Nullable<int> ProjectTaskMoldsId
+		{
+			get
+			{
+				return this._ProjectTaskMoldsId;
+			}
+			set
+			{
+				if ((this._ProjectTaskMoldsId != value))
+				{
+					if (this._PM_ProjectMold.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnProjectTaskMoldsIdChanging(value);
+					this.SendPropertyChanging();
+					this._ProjectTaskMoldsId = value;
+					this.SendPropertyChanged("ProjectTaskMoldsId");
+					this.OnProjectTaskMoldsIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskMoldsFactor", DbType="Decimal(10,2)")]
+		public System.Nullable<decimal> ProjectTaskMoldsFactor
+		{
+			get
+			{
+				return this._ProjectTaskMoldsFactor;
+			}
+			set
+			{
+				if ((this._ProjectTaskMoldsFactor != value))
+				{
+					this.OnProjectTaskMoldsFactorChanging(value);
+					this.SendPropertyChanging();
+					this._ProjectTaskMoldsFactor = value;
+					this.SendPropertyChanged("ProjectTaskMoldsFactor");
+					this.OnProjectTaskMoldsFactorChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskDisplayName", DbType="NVarChar(200) NOT NULL", CanBeNull=false)]
+		public string ProjectTaskDisplayName
+		{
+			get
+			{
+				return this._ProjectTaskDisplayName;
+			}
+			set
+			{
+				if ((this._ProjectTaskDisplayName != value))
+				{
+					this.OnProjectTaskDisplayNameChanging(value);
+					this.SendPropertyChanging();
+					this._ProjectTaskDisplayName = value;
+					this.SendPropertyChanged("ProjectTaskDisplayName");
+					this.OnProjectTaskDisplayNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskQuantities", DbType="Int")]
+		public System.Nullable<int> ProjectTaskQuantities
+		{
+			get
+			{
+				return this._ProjectTaskQuantities;
+			}
+			set
+			{
+				if ((this._ProjectTaskQuantities != value))
+				{
+					this.OnProjectTaskQuantitiesChanging(value);
+					this.SendPropertyChanging();
+					this._ProjectTaskQuantities = value;
+					this.SendPropertyChanged("ProjectTaskQuantities");
+					this.OnProjectTaskQuantitiesChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskContainHead", DbType="NVarChar(25)")]
+		public string ProjectTaskContainHead
+		{
+			get
+			{
+				return this._ProjectTaskContainHead;
+			}
+			set
+			{
+				if ((this._ProjectTaskContainHead != value))
+				{
+					this.OnProjectTaskContainHeadChanging(value);
+					this.SendPropertyChanging();
+					this._ProjectTaskContainHead = value;
+					this.SendPropertyChanged("ProjectTaskContainHead");
+					this.OnProjectTaskContainHeadChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskBottoHob", DbType="NVarChar(25)")]
+		public string ProjectTaskBottoHob
+		{
+			get
+			{
+				return this._ProjectTaskBottoHob;
+			}
+			set
+			{
+				if ((this._ProjectTaskBottoHob != value))
+				{
+					this.OnProjectTaskBottoHobChanging(value);
+					this.SendPropertyChanging();
+					this._ProjectTaskBottoHob = value;
+					this.SendPropertyChanged("ProjectTaskBottoHob");
+					this.OnProjectTaskBottoHobChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskChildNote", DbType="NVarChar(255)")]
+		public string ProjectTaskChildNote
+		{
+			get
+			{
+				return this._ProjectTaskChildNote;
+			}
+			set
+			{
+				if ((this._ProjectTaskChildNote != value))
+				{
+					this.OnProjectTaskChildNoteChanging(value);
+					this.SendPropertyChanging();
+					this._ProjectTaskChildNote = value;
+					this.SendPropertyChanged("ProjectTaskChildNote");
+					this.OnProjectTaskChildNoteChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskHorikomi", DbType="NVarChar(25)")]
+		public string ProjectTaskHorikomi
+		{
+			get
+			{
+				return this._ProjectTaskHorikomi;
+			}
+			set
+			{
+				if ((this._ProjectTaskHorikomi != value))
+				{
+					this.OnProjectTaskHorikomiChanging(value);
+					this.SendPropertyChanging();
+					this._ProjectTaskHorikomi = value;
+					this.SendPropertyChanged("ProjectTaskHorikomi");
+					this.OnProjectTaskHorikomiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskPrice", DbType="Decimal(10,2)")]
+		public System.Nullable<decimal> ProjectTaskPrice
+		{
+			get
+			{
+				return this._ProjectTaskPrice;
+			}
+			set
+			{
+				if ((this._ProjectTaskPrice != value))
+				{
+					this.OnProjectTaskPriceChanging(value);
+					this.SendPropertyChanging();
+					this._ProjectTaskPrice = value;
+					this.SendPropertyChanged("ProjectTaskPrice");
+					this.OnProjectTaskPriceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskThickness", DbType="Int")]
+		public System.Nullable<int> ProjectTaskThickness
+		{
+			get
+			{
+				return this._ProjectTaskThickness;
+			}
+			set
+			{
+				if ((this._ProjectTaskThickness != value))
+				{
+					this.OnProjectTaskThicknessChanging(value);
+					this.SendPropertyChanging();
+					this._ProjectTaskThickness = value;
+					this.SendPropertyChanged("ProjectTaskThickness");
+					this.OnProjectTaskThicknessChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskThicknessTotal", DbType="NVarChar(25)")]
+		public string ProjectTaskThicknessTotal
+		{
+			get
+			{
+				return this._ProjectTaskThicknessTotal;
+			}
+			set
+			{
+				if ((this._ProjectTaskThicknessTotal != value))
+				{
+					this.OnProjectTaskThicknessTotalChanging(value);
+					this.SendPropertyChanging();
+					this._ProjectTaskThicknessTotal = value;
+					this.SendPropertyChanged("ProjectTaskThicknessTotal");
+					this.OnProjectTaskThicknessTotalChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskDiameterOut", DbType="Decimal(10,0)")]
+		public System.Nullable<decimal> ProjectTaskDiameterOut
+		{
+			get
+			{
+				return this._ProjectTaskDiameterOut;
+			}
+			set
+			{
+				if ((this._ProjectTaskDiameterOut != value))
+				{
+					this.OnProjectTaskDiameterOutChanging(value);
+					this.SendPropertyChanging();
+					this._ProjectTaskDiameterOut = value;
+					this.SendPropertyChanged("ProjectTaskDiameterOut");
+					this.OnProjectTaskDiameterOutChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskHardness", DbType="NVarChar(25)")]
+		public string ProjectTaskHardness
+		{
+			get
+			{
+				return this._ProjectTaskHardness;
+			}
+			set
+			{
+				if ((this._ProjectTaskHardness != value))
+				{
+					this.OnProjectTaskHardnessChanging(value);
+					this.SendPropertyChanging();
+					this._ProjectTaskHardness = value;
+					this.SendPropertyChanged("ProjectTaskHardness");
+					this.OnProjectTaskHardnessChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskOverlayNum", DbType="NVarChar(25)")]
+		public string ProjectTaskOverlayNum
+		{
+			get
+			{
+				return this._ProjectTaskOverlayNum;
+			}
+			set
+			{
+				if ((this._ProjectTaskOverlayNum != value))
+				{
+					this.OnProjectTaskOverlayNumChanging(value);
+					this.SendPropertyChanging();
+					this._ProjectTaskOverlayNum = value;
+					this.SendPropertyChanged("ProjectTaskOverlayNum");
+					this.OnProjectTaskOverlayNumChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskHoleNum", DbType="NVarChar(25)")]
+		public string ProjectTaskHoleNum
+		{
+			get
+			{
+				return this._ProjectTaskHoleNum;
+			}
+			set
+			{
+				if ((this._ProjectTaskHoleNum != value))
+				{
+					this.OnProjectTaskHoleNumChanging(value);
+					this.SendPropertyChanging();
+					this._ProjectTaskHoleNum = value;
+					this.SendPropertyChanged("ProjectTaskHoleNum");
+					this.OnProjectTaskHoleNumChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskBox", DbType="VarChar(3)")]
+		public string ProjectTaskBox
+		{
+			get
+			{
+				return this._ProjectTaskBox;
+			}
+			set
+			{
+				if ((this._ProjectTaskBox != value))
+				{
+					this.OnProjectTaskBoxChanging(value);
+					this.SendPropertyChanging();
+					this._ProjectTaskBox = value;
+					this.SendPropertyChanged("ProjectTaskBox");
+					this.OnProjectTaskBoxChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskMaterialsCode", DbType="NVarChar(25)")]
+		public string ProjectTaskMaterialsCode
+		{
+			get
+			{
+				return this._ProjectTaskMaterialsCode;
+			}
+			set
+			{
+				if ((this._ProjectTaskMaterialsCode != value))
+				{
+					this.OnProjectTaskMaterialsCodeChanging(value);
+					this.SendPropertyChanging();
+					this._ProjectTaskMaterialsCode = value;
+					this.SendPropertyChanged("ProjectTaskMaterialsCode");
+					this.OnProjectTaskMaterialsCodeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskMaterialsRequire", DbType="NVarChar(12)")]
+		public string ProjectTaskMaterialsRequire
+		{
+			get
+			{
+				return this._ProjectTaskMaterialsRequire;
+			}
+			set
+			{
+				if ((this._ProjectTaskMaterialsRequire != value))
+				{
+					this.OnProjectTaskMaterialsRequireChanging(value);
+					this.SendPropertyChanging();
+					this._ProjectTaskMaterialsRequire = value;
+					this.SendPropertyChanged("ProjectTaskMaterialsRequire");
+					this.OnProjectTaskMaterialsRequireChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskDimension", DbType="NVarChar(255)")]
+		public string ProjectTaskDimension
+		{
+			get
+			{
+				return this._ProjectTaskDimension;
+			}
+			set
+			{
+				if ((this._ProjectTaskDimension != value))
+				{
+					this.OnProjectTaskDimensionChanging(value);
+					this.SendPropertyChanging();
+					this._ProjectTaskDimension = value;
+					this.SendPropertyChanged("ProjectTaskDimension");
+					this.OnProjectTaskDimensionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskWeight", DbType="Decimal(10,2)")]
+		public System.Nullable<decimal> ProjectTaskWeight
+		{
+			get
+			{
+				return this._ProjectTaskWeight;
+			}
+			set
+			{
+				if ((this._ProjectTaskWeight != value))
+				{
+					this.OnProjectTaskWeightChanging(value);
+					this.SendPropertyChanging();
+					this._ProjectTaskWeight = value;
+					this.SendPropertyChanged("ProjectTaskWeight");
+					this.OnProjectTaskWeightChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskDeadline", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ProjectTaskDeadline
+		{
+			get
+			{
+				return this._ProjectTaskDeadline;
+			}
+			set
+			{
+				if ((this._ProjectTaskDeadline != value))
+				{
+					this.OnProjectTaskDeadlineChanging(value);
+					this.SendPropertyChanging();
+					this._ProjectTaskDeadline = value;
+					this.SendPropertyChanged("ProjectTaskDeadline");
+					this.OnProjectTaskDeadlineChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskTransmit", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ProjectTaskTransmit
+		{
+			get
+			{
+				return this._ProjectTaskTransmit;
+			}
+			set
+			{
+				if ((this._ProjectTaskTransmit != value))
+				{
+					this.OnProjectTaskTransmitChanging(value);
+					this.SendPropertyChanging();
+					this._ProjectTaskTransmit = value;
+					this.SendPropertyChanged("ProjectTaskTransmit");
+					this.OnProjectTaskTransmitChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskStatusID", DbType="Int NOT NULL")]
+		public int ProjectTaskStatusID
+		{
+			get
+			{
+				return this._ProjectTaskStatusID;
+			}
+			set
+			{
+				if ((this._ProjectTaskStatusID != value))
+				{
+					if (this._PM_ProjectTaskStatus.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnProjectTaskStatusIDChanging(value);
+					this.SendPropertyChanging();
+					this._ProjectTaskStatusID = value;
+					this.SendPropertyChanged("ProjectTaskStatusID");
+					this.OnProjectTaskStatusIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskPriorityID", DbType="Int NOT NULL")]
+		public int ProjectTaskPriorityID
+		{
+			get
+			{
+				return this._ProjectTaskPriorityID;
+			}
+			set
+			{
+				if ((this._ProjectTaskPriorityID != value))
+				{
+					if (this._PM_ProjectTaskPriority.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnProjectTaskPriorityIDChanging(value);
+					this.SendPropertyChanging();
+					this._ProjectTaskPriorityID = value;
+					this.SendPropertyChanged("ProjectTaskPriorityID");
+					this.OnProjectTaskPriorityIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskDescription", DbType="NVarChar(MAX)")]
+		public string ProjectTaskDescription
+		{
+			get
+			{
+				return this._ProjectTaskDescription;
+			}
+			set
+			{
+				if ((this._ProjectTaskDescription != value))
+				{
+					this.OnProjectTaskDescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._ProjectTaskDescription = value;
+					this.SendPropertyChanged("ProjectTaskDescription");
+					this.OnProjectTaskDescriptionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskOwnerID", DbType="Int")]
+		public System.Nullable<int> ProjectTaskOwnerID
+		{
+			get
+			{
+				return this._ProjectTaskOwnerID;
+			}
+			set
+			{
+				if ((this._ProjectTaskOwnerID != value))
+				{
+					if (this._CMS_User2.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnProjectTaskOwnerIDChanging(value);
+					this.SendPropertyChanging();
+					this._ProjectTaskOwnerID = value;
+					this.SendPropertyChanged("ProjectTaskOwnerID");
+					this.OnProjectTaskOwnerIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskCreatedByID", DbType="Int")]
+		public System.Nullable<int> ProjectTaskCreatedByID
+		{
+			get
+			{
+				return this._ProjectTaskCreatedByID;
+			}
+			set
+			{
+				if ((this._ProjectTaskCreatedByID != value))
+				{
+					if (this._CMS_User1.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnProjectTaskCreatedByIDChanging(value);
+					this.SendPropertyChanging();
+					this._ProjectTaskCreatedByID = value;
+					this.SendPropertyChanged("ProjectTaskCreatedByID");
+					this.OnProjectTaskCreatedByIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskAssignedToUserID", DbType="Int")]
+		public System.Nullable<int> ProjectTaskAssignedToUserID
+		{
+			get
+			{
+				return this._ProjectTaskAssignedToUserID;
+			}
+			set
+			{
+				if ((this._ProjectTaskAssignedToUserID != value))
+				{
+					if (this._CMS_User.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnProjectTaskAssignedToUserIDChanging(value);
+					this.SendPropertyChanging();
+					this._ProjectTaskAssignedToUserID = value;
+					this.SendPropertyChanged("ProjectTaskAssignedToUserID");
+					this.OnProjectTaskAssignedToUserIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskProgress", DbType="Int NOT NULL")]
+		public int ProjectTaskProgress
+		{
+			get
+			{
+				return this._ProjectTaskProgress;
+			}
+			set
+			{
+				if ((this._ProjectTaskProgress != value))
+				{
+					this.OnProjectTaskProgressChanging(value);
+					this.SendPropertyChanging();
+					this._ProjectTaskProgress = value;
+					this.SendPropertyChanged("ProjectTaskProgress");
+					this.OnProjectTaskProgressChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskHours", DbType="Float NOT NULL")]
+		public double ProjectTaskHours
+		{
+			get
+			{
+				return this._ProjectTaskHours;
+			}
+			set
+			{
+				if ((this._ProjectTaskHours != value))
+				{
+					this.OnProjectTaskHoursChanging(value);
+					this.SendPropertyChanging();
+					this._ProjectTaskHours = value;
+					this.SendPropertyChanged("ProjectTaskHours");
+					this.OnProjectTaskHoursChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskGUID", DbType="UniqueIdentifier NOT NULL")]
+		public System.Guid ProjectTaskGUID
+		{
+			get
+			{
+				return this._ProjectTaskGUID;
+			}
+			set
+			{
+				if ((this._ProjectTaskGUID != value))
+				{
+					this.OnProjectTaskGUIDChanging(value);
+					this.SendPropertyChanging();
+					this._ProjectTaskGUID = value;
+					this.SendPropertyChanged("ProjectTaskGUID");
+					this.OnProjectTaskGUIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskLastModified", DbType="DateTime NOT NULL")]
+		public System.DateTime ProjectTaskLastModified
+		{
+			get
+			{
+				return this._ProjectTaskLastModified;
+			}
+			set
+			{
+				if ((this._ProjectTaskLastModified != value))
+				{
+					this.OnProjectTaskLastModifiedChanging(value);
+					this.SendPropertyChanging();
+					this._ProjectTaskLastModified = value;
+					this.SendPropertyChanged("ProjectTaskLastModified");
+					this.OnProjectTaskLastModifiedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskProjectOrder", DbType="Int")]
+		public System.Nullable<int> ProjectTaskProjectOrder
+		{
+			get
+			{
+				return this._ProjectTaskProjectOrder;
+			}
+			set
+			{
+				if ((this._ProjectTaskProjectOrder != value))
+				{
+					this.OnProjectTaskProjectOrderChanging(value);
+					this.SendPropertyChanging();
+					this._ProjectTaskProjectOrder = value;
+					this.SendPropertyChanged("ProjectTaskProjectOrder");
+					this.OnProjectTaskProjectOrderChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskUserOrder", DbType="Int")]
+		public System.Nullable<int> ProjectTaskUserOrder
+		{
+			get
+			{
+				return this._ProjectTaskUserOrder;
+			}
+			set
+			{
+				if ((this._ProjectTaskUserOrder != value))
+				{
+					this.OnProjectTaskUserOrderChanging(value);
+					this.SendPropertyChanging();
+					this._ProjectTaskUserOrder = value;
+					this.SendPropertyChanged("ProjectTaskUserOrder");
+					this.OnProjectTaskUserOrderChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskNotificationSent", DbType="Bit")]
+		public System.Nullable<bool> ProjectTaskNotificationSent
+		{
+			get
+			{
+				return this._ProjectTaskNotificationSent;
+			}
+			set
+			{
+				if ((this._ProjectTaskNotificationSent != value))
+				{
+					this.OnProjectTaskNotificationSentChanging(value);
+					this.SendPropertyChanging();
+					this._ProjectTaskNotificationSent = value;
+					this.SendPropertyChanged("ProjectTaskNotificationSent");
+					this.OnProjectTaskNotificationSentChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskIsPrivate", DbType="Bit")]
+		public System.Nullable<bool> ProjectTaskIsPrivate
+		{
+			get
+			{
+				return this._ProjectTaskIsPrivate;
+			}
+			set
+			{
+				if ((this._ProjectTaskIsPrivate != value))
+				{
+					this.OnProjectTaskIsPrivateChanging(value);
+					this.SendPropertyChanging();
+					this._ProjectTaskIsPrivate = value;
+					this.SendPropertyChanged("ProjectTaskIsPrivate");
+					this.OnProjectTaskIsPrivateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskCustomerId", DbType="Int")]
+		public System.Nullable<int> ProjectTaskCustomerId
+		{
+			get
+			{
+				return this._ProjectTaskCustomerId;
+			}
+			set
+			{
+				if ((this._ProjectTaskCustomerId != value))
+				{
+					if (this._PM_ProjectCustomer.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnProjectTaskCustomerIdChanging(value);
+					this.SendPropertyChanging();
+					this._ProjectTaskCustomerId = value;
+					this.SendPropertyChanged("ProjectTaskCustomerId");
+					this.OnProjectTaskCustomerIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskExpectedThree", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ProjectTaskExpectedThree
+		{
+			get
+			{
+				return this._ProjectTaskExpectedThree;
+			}
+			set
+			{
+				if ((this._ProjectTaskExpectedThree != value))
+				{
+					this.OnProjectTaskExpectedThreeChanging(value);
+					this.SendPropertyChanging();
+					this._ProjectTaskExpectedThree = value;
+					this.SendPropertyChanged("ProjectTaskExpectedThree");
+					this.OnProjectTaskExpectedThreeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifiedWhen", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ModifiedWhen
+		{
+			get
+			{
+				return this._ModifiedWhen;
+			}
+			set
+			{
+				if ((this._ModifiedWhen != value))
+				{
+					this.OnModifiedWhenChanging(value);
+					this.SendPropertyChanging();
+					this._ModifiedWhen = value;
+					this.SendPropertyChanged("ModifiedWhen");
+					this.OnModifiedWhenChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifiedByUserId", DbType="Int")]
+		public System.Nullable<int> ModifiedByUserId
+		{
+			get
+			{
+				return this._ModifiedByUserId;
+			}
+			set
+			{
+				if ((this._ModifiedByUserId != value))
+				{
+					this.OnModifiedByUserIdChanging(value);
+					this.SendPropertyChanging();
+					this._ModifiedByUserId = value;
+					this.SendPropertyChanged("ModifiedByUserId");
+					this.OnModifiedByUserIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedWhen", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreatedWhen
+		{
+			get
+			{
+				return this._CreatedWhen;
+			}
+			set
+			{
+				if ((this._CreatedWhen != value))
+				{
+					this.OnCreatedWhenChanging(value);
+					this.SendPropertyChanging();
+					this._CreatedWhen = value;
+					this.SendPropertyChanged("CreatedWhen");
+					this.OnCreatedWhenChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedByUserId", DbType="Int")]
+		public System.Nullable<int> CreatedByUserId
+		{
+			get
+			{
+				return this._CreatedByUserId;
+			}
+			set
+			{
+				if ((this._CreatedByUserId != value))
+				{
+					this.OnCreatedByUserIdChanging(value);
+					this.SendPropertyChanging();
+					this._CreatedByUserId = value;
+					this.SendPropertyChanged("CreatedByUserId");
+					this.OnCreatedByUserIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DX_XuatHang_DuKien", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DX_XuatHang_DuKien
+		{
+			get
+			{
+				return this._DX_XuatHang_DuKien;
+			}
+			set
+			{
+				if ((this._DX_XuatHang_DuKien != value))
+				{
+					this.OnDX_XuatHang_DuKienChanging(value);
+					this.SendPropertyChanging();
+					this._DX_XuatHang_DuKien = value;
+					this.SendPropertyChanged("DX_XuatHang_DuKien");
+					this.OnDX_XuatHang_DuKienChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DX_XuatHang_ThucTe", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DX_XuatHang_ThucTe
+		{
+			get
+			{
+				return this._DX_XuatHang_ThucTe;
+			}
+			set
+			{
+				if ((this._DX_XuatHang_ThucTe != value))
+				{
+					this.OnDX_XuatHang_ThucTeChanging(value);
+					this.SendPropertyChanging();
+					this._DX_XuatHang_ThucTe = value;
+					this.SendPropertyChanged("DX_XuatHang_ThucTe");
+					this.OnDX_XuatHang_ThucTeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DX_MaDonHang", DbType="NVarChar(12)")]
+		public string DX_MaDonHang
+		{
+			get
+			{
+				return this._DX_MaDonHang;
+			}
+			set
+			{
+				if ((this._DX_MaDonHang != value))
+				{
+					this.OnDX_MaDonHangChanging(value);
+					this.SendPropertyChanging();
+					this._DX_MaDonHang = value;
+					this.SendPropertyChanged("DX_MaDonHang");
+					this.OnDX_MaDonHangChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DX_DuKienHT_NC", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DX_DuKienHT_NC
+		{
+			get
+			{
+				return this._DX_DuKienHT_NC;
+			}
+			set
+			{
+				if ((this._DX_DuKienHT_NC != value))
+				{
+					this.OnDX_DuKienHT_NCChanging(value);
+					this.SendPropertyChanging();
+					this._DX_DuKienHT_NC = value;
+					this.SendPropertyChanged("DX_DuKienHT_NC");
+					this.OnDX_DuKienHT_NCChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DX_DuKienHT_MC", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DX_DuKienHT_MC
+		{
+			get
+			{
+				return this._DX_DuKienHT_MC;
+			}
+			set
+			{
+				if ((this._DX_DuKienHT_MC != value))
+				{
+					this.OnDX_DuKienHT_MCChanging(value);
+					this.SendPropertyChanging();
+					this._DX_DuKienHT_MC = value;
+					this.SendPropertyChanged("DX_DuKienHT_MC");
+					this.OnDX_DuKienHT_MCChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DX_DuKienHT_PhayTay", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DX_DuKienHT_PhayTay
+		{
+			get
+			{
+				return this._DX_DuKienHT_PhayTay;
+			}
+			set
+			{
+				if ((this._DX_DuKienHT_PhayTay != value))
+				{
+					this.OnDX_DuKienHT_PhayTayChanging(value);
+					this.SendPropertyChanging();
+					this._DX_DuKienHT_PhayTay = value;
+					this.SendPropertyChanged("DX_DuKienHT_PhayTay");
+					this.OnDX_DuKienHT_PhayTayChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DX_DuKienHT_Nhiet", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DX_DuKienHT_Nhiet
+		{
+			get
+			{
+				return this._DX_DuKienHT_Nhiet;
+			}
+			set
+			{
+				if ((this._DX_DuKienHT_Nhiet != value))
+				{
+					this.OnDX_DuKienHT_NhietChanging(value);
+					this.SendPropertyChanging();
+					this._DX_DuKienHT_Nhiet = value;
+					this.SendPropertyChanged("DX_DuKienHT_Nhiet");
+					this.OnDX_DuKienHT_NhietChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DX_DuKienHT_Mai", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DX_DuKienHT_Mai
+		{
+			get
+			{
+				return this._DX_DuKienHT_Mai;
+			}
+			set
+			{
+				if ((this._DX_DuKienHT_Mai != value))
+				{
+					this.OnDX_DuKienHT_MaiChanging(value);
+					this.SendPropertyChanging();
+					this._DX_DuKienHT_Mai = value;
+					this.SendPropertyChanged("DX_DuKienHT_Mai");
+					this.OnDX_DuKienHT_MaiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DX_DuKienHT_WEDM", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DX_DuKienHT_WEDM
+		{
+			get
+			{
+				return this._DX_DuKienHT_WEDM;
+			}
+			set
+			{
+				if ((this._DX_DuKienHT_WEDM != value))
+				{
+					this.OnDX_DuKienHT_WEDMChanging(value);
+					this.SendPropertyChanging();
+					this._DX_DuKienHT_WEDM = value;
+					this.SendPropertyChanged("DX_DuKienHT_WEDM");
+					this.OnDX_DuKienHT_WEDMChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DX_DuKienHT_EDM", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DX_DuKienHT_EDM
+		{
+			get
+			{
+				return this._DX_DuKienHT_EDM;
+			}
+			set
+			{
+				if ((this._DX_DuKienHT_EDM != value))
+				{
+					this.OnDX_DuKienHT_EDMChanging(value);
+					this.SendPropertyChanging();
+					this._DX_DuKienHT_EDM = value;
+					this.SendPropertyChanged("DX_DuKienHT_EDM");
+					this.OnDX_DuKienHT_EDMChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DX_DuKienHT_QA", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DX_DuKienHT_QA
+		{
+			get
+			{
+				return this._DX_DuKienHT_QA;
+			}
+			set
+			{
+				if ((this._DX_DuKienHT_QA != value))
+				{
+					this.OnDX_DuKienHT_QAChanging(value);
+					this.SendPropertyChanging();
+					this._DX_DuKienHT_QA = value;
+					this.SendPropertyChanged("DX_DuKienHT_QA");
+					this.OnDX_DuKienHT_QAChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PM_ProjectTask_PM_ProjectProcessDetail", Storage="_PM_ProjectProcessDetails", ThisKey="ProjectTaskID", OtherKey="DetailProjectTaskID")]
+		public EntitySet<PM_ProjectProcessDetail> PM_ProjectProcessDetails
+		{
+			get
+			{
+				return this._PM_ProjectProcessDetails;
+			}
+			set
+			{
+				this._PM_ProjectProcessDetails.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PM_ProjectTask_PM_ProjectProcess", Storage="_PM_ProjectProcesses", ThisKey="ProjectTaskID", OtherKey="ProcessProjectTaskID")]
+		public EntitySet<PM_ProjectProcess> PM_ProjectProcesses
+		{
+			get
+			{
+				return this._PM_ProjectProcesses;
+			}
+			set
+			{
+				this._PM_ProjectProcesses.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PM_ProjectCustomer_PM_ProjectTask", Storage="_PM_ProjectCustomer", ThisKey="ProjectTaskCustomerId", OtherKey="CustomerId", IsForeignKey=true, DeleteRule="CASCADE")]
+		public PM_ProjectCustomer PM_ProjectCustomer
+		{
+			get
+			{
+				return this._PM_ProjectCustomer.Entity;
+			}
+			set
+			{
+				PM_ProjectCustomer previousValue = this._PM_ProjectCustomer.Entity;
+				if (((previousValue != value) 
+							|| (this._PM_ProjectCustomer.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._PM_ProjectCustomer.Entity = null;
+						previousValue.PM_ProjectTasks.Remove(this);
+					}
+					this._PM_ProjectCustomer.Entity = value;
+					if ((value != null))
+					{
+						value.PM_ProjectTasks.Add(this);
+						this._ProjectTaskCustomerId = value.CustomerId;
+					}
+					else
+					{
+						this._ProjectTaskCustomerId = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("PM_ProjectCustomer");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PM_ProjectMold_PM_ProjectTask", Storage="_PM_ProjectMold", ThisKey="ProjectTaskMoldsId", OtherKey="MoldsId", IsForeignKey=true, DeleteRule="CASCADE")]
+		public PM_ProjectMold PM_ProjectMold
+		{
+			get
+			{
+				return this._PM_ProjectMold.Entity;
+			}
+			set
+			{
+				PM_ProjectMold previousValue = this._PM_ProjectMold.Entity;
+				if (((previousValue != value) 
+							|| (this._PM_ProjectMold.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._PM_ProjectMold.Entity = null;
+						previousValue.PM_ProjectTasks.Remove(this);
+					}
+					this._PM_ProjectMold.Entity = value;
+					if ((value != null))
+					{
+						value.PM_ProjectTasks.Add(this);
+						this._ProjectTaskMoldsId = value.MoldsId;
+					}
+					else
+					{
+						this._ProjectTaskMoldsId = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("PM_ProjectMold");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CMS_User_PM_ProjectTask", Storage="_CMS_User", ThisKey="ProjectTaskAssignedToUserID", OtherKey="UserID", IsForeignKey=true)]
+		public CMS_User CMS_User
+		{
+			get
+			{
+				return this._CMS_User.Entity;
+			}
+			set
+			{
+				CMS_User previousValue = this._CMS_User.Entity;
+				if (((previousValue != value) 
+							|| (this._CMS_User.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._CMS_User.Entity = null;
+						previousValue.PM_ProjectTasks.Remove(this);
+					}
+					this._CMS_User.Entity = value;
+					if ((value != null))
+					{
+						value.PM_ProjectTasks.Add(this);
+						this._ProjectTaskAssignedToUserID = value.UserID;
+					}
+					else
+					{
+						this._ProjectTaskAssignedToUserID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("CMS_User");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CMS_User_PM_ProjectTask1", Storage="_CMS_User1", ThisKey="ProjectTaskCreatedByID", OtherKey="UserID", IsForeignKey=true)]
+		public CMS_User CMS_User1
+		{
+			get
+			{
+				return this._CMS_User1.Entity;
+			}
+			set
+			{
+				CMS_User previousValue = this._CMS_User1.Entity;
+				if (((previousValue != value) 
+							|| (this._CMS_User1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._CMS_User1.Entity = null;
+						previousValue.PM_ProjectTasks1.Remove(this);
+					}
+					this._CMS_User1.Entity = value;
+					if ((value != null))
+					{
+						value.PM_ProjectTasks1.Add(this);
+						this._ProjectTaskCreatedByID = value.UserID;
+					}
+					else
+					{
+						this._ProjectTaskCreatedByID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("CMS_User1");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CMS_User_PM_ProjectTask2", Storage="_CMS_User2", ThisKey="ProjectTaskOwnerID", OtherKey="UserID", IsForeignKey=true)]
+		public CMS_User CMS_User2
+		{
+			get
+			{
+				return this._CMS_User2.Entity;
+			}
+			set
+			{
+				CMS_User previousValue = this._CMS_User2.Entity;
+				if (((previousValue != value) 
+							|| (this._CMS_User2.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._CMS_User2.Entity = null;
+						previousValue.PM_ProjectTasks2.Remove(this);
+					}
+					this._CMS_User2.Entity = value;
+					if ((value != null))
+					{
+						value.PM_ProjectTasks2.Add(this);
+						this._ProjectTaskOwnerID = value.UserID;
+					}
+					else
+					{
+						this._ProjectTaskOwnerID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("CMS_User2");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PM_ProjectTaskPriority_PM_ProjectTask", Storage="_PM_ProjectTaskPriority", ThisKey="ProjectTaskPriorityID", OtherKey="TaskPriorityID", IsForeignKey=true)]
+		public PM_ProjectTaskPriority PM_ProjectTaskPriority
+		{
+			get
+			{
+				return this._PM_ProjectTaskPriority.Entity;
+			}
+			set
+			{
+				PM_ProjectTaskPriority previousValue = this._PM_ProjectTaskPriority.Entity;
+				if (((previousValue != value) 
+							|| (this._PM_ProjectTaskPriority.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._PM_ProjectTaskPriority.Entity = null;
+						previousValue.PM_ProjectTasks.Remove(this);
+					}
+					this._PM_ProjectTaskPriority.Entity = value;
+					if ((value != null))
+					{
+						value.PM_ProjectTasks.Add(this);
+						this._ProjectTaskPriorityID = value.TaskPriorityID;
+					}
+					else
+					{
+						this._ProjectTaskPriorityID = default(int);
+					}
+					this.SendPropertyChanged("PM_ProjectTaskPriority");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PM_Project_PM_ProjectTask", Storage="_PM_Project", ThisKey="ProjectTaskProjectID", OtherKey="ProjectID", IsForeignKey=true)]
+		public PM_Project PM_Project
+		{
+			get
+			{
+				return this._PM_Project.Entity;
+			}
+			set
+			{
+				PM_Project previousValue = this._PM_Project.Entity;
+				if (((previousValue != value) 
+							|| (this._PM_Project.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._PM_Project.Entity = null;
+						previousValue.PM_ProjectTasks.Remove(this);
+					}
+					this._PM_Project.Entity = value;
+					if ((value != null))
+					{
+						value.PM_ProjectTasks.Add(this);
+						this._ProjectTaskProjectID = value.ProjectID;
+					}
+					else
+					{
+						this._ProjectTaskProjectID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("PM_Project");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PM_ProjectTaskStatus_PM_ProjectTask", Storage="_PM_ProjectTaskStatus", ThisKey="ProjectTaskStatusID", OtherKey="TaskStatusID", IsForeignKey=true)]
+		public PM_ProjectTaskStatus PM_ProjectTaskStatus
+		{
+			get
+			{
+				return this._PM_ProjectTaskStatus.Entity;
+			}
+			set
+			{
+				PM_ProjectTaskStatus previousValue = this._PM_ProjectTaskStatus.Entity;
+				if (((previousValue != value) 
+							|| (this._PM_ProjectTaskStatus.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._PM_ProjectTaskStatus.Entity = null;
+						previousValue.PM_ProjectTasks.Remove(this);
+					}
+					this._PM_ProjectTaskStatus.Entity = value;
+					if ((value != null))
+					{
+						value.PM_ProjectTasks.Add(this);
+						this._ProjectTaskStatusID = value.TaskStatusID;
+					}
+					else
+					{
+						this._ProjectTaskStatusID = default(int);
+					}
+					this.SendPropertyChanged("PM_ProjectTaskStatus");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_PM_ProjectProcessDetails(PM_ProjectProcessDetail entity)
+		{
+			this.SendPropertyChanging();
+			entity.PM_ProjectTask = this;
+		}
+		
+		private void detach_PM_ProjectProcessDetails(PM_ProjectProcessDetail entity)
+		{
+			this.SendPropertyChanging();
+			entity.PM_ProjectTask = null;
+		}
+		
+		private void attach_PM_ProjectProcesses(PM_ProjectProcess entity)
+		{
+			this.SendPropertyChanging();
+			entity.PM_ProjectTask = this;
+		}
+		
+		private void detach_PM_ProjectProcesses(PM_ProjectProcess entity)
+		{
+			this.SendPropertyChanging();
+			entity.PM_ProjectTask = null;
 		}
 	}
 }

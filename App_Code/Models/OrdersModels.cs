@@ -42,18 +42,26 @@ public class OrdersModels
                     ProjectTaskThicknessTotal = sm.t.ProjectTaskThicknessTotal,
                     ProjectTaskTransmit = sm.t.ProjectTaskTransmit,
                     ProjectTaskPriceCalc = sm.t.ProjectTaskQuantities * sm.t.ProjectTaskPrice,
-                    ProjectTaskDuKienThoQuaTinh = sm.t.ProjectTaskDuKienThoQuaTinh,
-                    ProjectTaskDuKienTinhQuaQA = sm.t.ProjectTaskDuKienTinhQuaQA,
                     CreatedWhen = sm.t.CreatedWhen,
                     UserModified = userm.FullName,
-                    ProjectTaskDuKienXuatHang = sm.t.ProjectTaskDuKienXuatHang,
-                    ProjectTaskThucTeXuatHang = sm.t.ProjectTaskThucTeXuatHang
+                    DX_MaDonHang                = sm.t.DX_MaDonHang,
+                    DX_XuatHang_DuKien          = sm.t.DX_XuatHang_DuKien,
+                    DX_XuatHang_ThucTe          = sm.t.DX_XuatHang_ThucTe,
+                    DX_DuKienHT_EDM             = sm.t.DX_DuKienHT_EDM,
+                    DX_DuKienHT_Mai             = sm.t.DX_DuKienHT_Mai,
+                    DX_DuKienHT_MC              = sm.t.DX_DuKienHT_MC,
+                    DX_DuKienHT_NC              = sm.t.DX_DuKienHT_NC,
+                    DX_DuKienHT_Nhiet           = sm.t.DX_DuKienHT_Nhiet,
+                    DX_DuKienHT_PhayTay         = sm.t.DX_DuKienHT_PhayTay,
+                    DX_DuKienHT_QA              = sm.t.DX_DuKienHT_QA,
+                    DX_DuKienHT_WEDM            = sm.t.DX_DuKienHT_WEDM
+
                 }).OrderBy(o => o.ProjectTaskMoldCode);
     }
     public static IEnumerable<OrdersObject> OrdersListNd(string TaskStatus, string TaskPriority, DateTime DateBeginB, DateTime DateEndB) {
         int[] statusIds = Array.ConvertAll(TaskStatus.Split(';'), s => int.Parse(s));
         int[] priorityIds = Array.ConvertAll(TaskPriority.Split(';'), s => int.Parse(s));
-        return LINQData.db.PM_ProjectTasks.Where(w => statusIds.Contains(w.ProjectTaskStatusID) && priorityIds.Contains(w.ProjectTaskPriorityID) && w.ProjectTaskDuKienXuatHang >= DateBeginB && w.ProjectTaskDuKienXuatHang <= DateEndB)
+        return LINQData.db.PM_ProjectTasks.Where(w => statusIds.Contains(w.ProjectTaskStatusID) && priorityIds.Contains(w.ProjectTaskPriorityID) && w.DX_XuatHang_DuKien >= DateBeginB && w.DX_XuatHang_DuKien <= DateEndB)
                 .GroupJoin(LINQData.db.CMS_Users, t => t.ModifiedByUserId, userc => userc.UserID, (t, userm) => new { t, userm })
                 .SelectMany(sm => sm.userm.DefaultIfEmpty(), (sm, userm) => new OrdersObject {
                     ProjectTaskID = sm.t.ProjectTaskID,
@@ -83,18 +91,31 @@ public class OrdersModels
                     ProjectTaskPriceCalc = sm.t.ProjectTaskQuantities * sm.t.ProjectTaskPrice,
                     CreatedWhen = sm.t.CreatedWhen,
                     UserModified = userm.FullName,
-                    ProjectTaskDuKienThoQuaTinh = sm.t.ProjectTaskDuKienThoQuaTinh,
-                    ProjectTaskDuKienTinhQuaQA = sm.t.ProjectTaskDuKienTinhQuaQA,
-                    ProjectTaskKetQuaThoQuaTinh = (sm.t.ProjectTaskThucTeThoQuaTinh <= sm.t.ProjectTaskDuKienThoQuaTinh) ? "Đạt" : !sm.t.ProjectTaskThucTeThoQuaTinh.HasValue ? "" : "Không đạt",
-                    ProjectTaskThucTeThoQuaTinh = sm.t.ProjectTaskThucTeThoQuaTinh,
-                    ProjectTaskThucTeTinhQuaQA = sm.t.ProjectTaskThucTeTinhQuaQA,
-                    ProjectTaskDuKienXuatHang = sm.t.ProjectTaskDuKienXuatHang,
-                    ProjectTaskThucTeXuatHang = sm.t.ProjectTaskThucTeXuatHang
+                    DX_MaDonHang            = sm.t.DX_MaDonHang,
+                    DX_XuatHang_DuKien      = sm.t.DX_XuatHang_DuKien,
+                    DX_XuatHang_ThucTe      = sm.t.DX_XuatHang_ThucTe,                    
+                    DX_DuKienHT_EDM         = sm.t.DX_DuKienHT_EDM,
+                    DX_DuKienHT_Mai         = sm.t.DX_DuKienHT_Mai,
+                    DX_DuKienHT_MC          = sm.t.DX_DuKienHT_MC,
+                    DX_DuKienHT_NC          = sm.t.DX_DuKienHT_NC,
+                    DX_DuKienHT_Nhiet       = sm.t.DX_DuKienHT_Nhiet,
+                    DX_DuKienHT_PhayTay     = sm.t.DX_DuKienHT_PhayTay,
+                    DX_DuKienHT_QA          = sm.t.DX_DuKienHT_QA,
+                    DX_DuKienHT_WEDM        = sm.t.DX_DuKienHT_WEDM
                 }).OrderByDescending(o => o.ProjectTaskTransmit).ThenBy(o => o.ProjectTaskPriorityID);
     }
     public static void OrdersCreated(string ProjectTaskMoldCode, string ProjectTaskOverlayNum, string ProjectTaskHoleNum, decimal ProjectTaskDiameterOut, string ProjectTaskMaterialsRequire, string ProjectTaskMaterialsCode, int ProjectTaskMoldsId,
                                      int ProjectTaskThickness, string ProjectTaskThicknessTotal, int ProjectTaskQuantities, string ProjectTaskContainHead, string ProjectTaskBottoHob, string ProjectTaskChildNote, string ProjectTaskHorikomi, string ProjectTaskHardness, int ProjectTaskCustomerId,
-                                     DateTime ProjectTaskDuKienThoQuaTinh, DateTime ProjectTaskDuKienTinhQuaQA, DateTime ProjectTaskDuKienXuatHang, DateTime ProjectTaskDeadline, DateTime ProjectTaskTransmit, string ProjectTaskDescription)
+                                     DateTime? DX_XuatHang_DuKien,
+                                     DateTime? DX_DuKienHT_EDM,
+                                     DateTime? DX_DuKienHT_Mai,
+                                     DateTime? DX_DuKienHT_MC,
+                                     DateTime? DX_DuKienHT_NC,
+                                     DateTime? DX_DuKienHT_Nhiet,
+                                     DateTime? DX_DuKienHT_PhayTay,
+                                     DateTime? DX_DuKienHT_QA,
+                                     DateTime? DX_DuKienHT_WEDM,
+                                     DateTime ProjectTaskDeadline, DateTime ProjectTaskTransmit, string ProjectTaskDescription)
     {
         using (TransactionScope transactionScope = new TransactionScope())
         {
@@ -129,9 +150,16 @@ public class OrdersModels
                 pt.ProjectTaskHardness = ProjectTaskHardness;
                 pt.ProjectTaskCustomerId = ProjectTaskCustomerId;
                 pt.ProjectTaskTransmit = ProjectTaskTransmit;
-                pt.ProjectTaskDuKienThoQuaTinh = ProjectTaskDuKienThoQuaTinh;
-                pt.ProjectTaskDuKienTinhQuaQA = ProjectTaskDuKienTinhQuaQA;
-                pt.ProjectTaskDuKienXuatHang = ProjectTaskDuKienXuatHang;
+                pt.DX_MaDonHang         = SystemModels.Fn_Get_MaDinhDanh(null, "DH", 6, "Mã đơn hàng");
+                pt.DX_XuatHang_DuKien   = DX_XuatHang_DuKien.HasValue ? DX_XuatHang_DuKien : null;
+                pt.DX_DuKienHT_EDM      = DX_DuKienHT_EDM.HasValue ? DX_DuKienHT_EDM : null;
+                pt.DX_DuKienHT_Mai      = DX_DuKienHT_Mai.HasValue ? DX_DuKienHT_Mai : null;
+                pt.DX_DuKienHT_MC       = DX_DuKienHT_MC.HasValue ? DX_DuKienHT_MC : null;
+                pt.DX_DuKienHT_NC       = DX_DuKienHT_NC.HasValue ? DX_DuKienHT_NC : null;
+                pt.DX_DuKienHT_Nhiet    = DX_DuKienHT_Nhiet.HasValue ? DX_DuKienHT_Nhiet : null;
+                pt.DX_DuKienHT_PhayTay  = DX_DuKienHT_PhayTay.HasValue ? DX_DuKienHT_PhayTay : null;
+                pt.DX_DuKienHT_QA       = DX_DuKienHT_QA.HasValue ? DX_DuKienHT_QA : null;
+                pt.DX_DuKienHT_WEDM     = DX_DuKienHT_WEDM.HasValue ? DX_DuKienHT_WEDM : null;
 
                 Nullable<decimal> factor = LINQData.db.PM_ProjectMolds.Where(w => w.MoldsId == ProjectTaskMoldsId).Select(s => s.MoldsFactor).FirstOrDefault();
                 if (factor != null)
@@ -155,14 +183,12 @@ public class OrdersModels
                     int dataQA = LINQData.db.PM_ProjectProcessLists.FirstOrDefault(fod => fod.ProcessListGroup.Equals("dataQA")).ProcessListId;
                     Nullable<Boolean> DXNhanDuKien = LINQData.db.PM_ProjectProcessLists.FirstOrDefault(fod => fod.ProcessListId == MoldsProcess.ProcessListId).DXNhanDuKien;
                     Nullable<DateTime> DXNgayNhanDuKien = (DXNhanDuKien == true ? ProjectTaskTransmit.AddHours(1) : (DateTime?)null);
-                    Nullable<DateTime> DXNgayNhanDuKienQA = (MoldsProcess.ProcessListId == dataQA ? ProjectTaskDuKienTinhQuaQA : (DateTime?)null);
                     LINQData.db.PM_ProjectProcesses.InsertOnSubmit(new PM_ProjectProcess() {
                         ProcessProjectTaskID = newTask.ProjectTaskID,
                         ProcessListId = MoldsProcess.ProcessListId,
                         ProcessRequired = true,
                         ProcessGangerBrowse = false,
                         ProcessSMGangerBrowse = false,
-                        ProcessExpectedCompletion = (MoldsProcess.ProcessListId == dataQA ? DXNgayNhanDuKienQA : DXNgayNhanDuKien),
                         DXChuyenQuaCongDoan = ProcessTo,
                         CreatedWhen = DateTime.Now,
                         CreatedByUserId = CMSContext.CurrentUser.UserID,
@@ -180,7 +206,15 @@ public class OrdersModels
     }
     public static void OrdersUpdated(int ProjectTaskID, string ProjectTaskMoldCode, string ProjectTaskOverlayNum, string ProjectTaskHoleNum, decimal ProjectTaskDiameterOut, string ProjectTaskMaterialsRequire, string ProjectTaskMaterialsCode, int ProjectTaskMoldsId,
                                      int ProjectTaskThickness, string ProjectTaskThicknessTotal, int ProjectTaskQuantities, string ProjectTaskContainHead, string ProjectTaskBottoHob, string ProjectTaskChildNote, string ProjectTaskHorikomi, string ProjectTaskHardness, int ProjectTaskCustomerId,
-                                     DateTime ProjectTaskDuKienThoQuaTinh, DateTime ProjectTaskDuKienTinhQuaQA, DateTime ProjectTaskDuKienXuatHang, DateTime ProjectTaskDeadline, DateTime ProjectTaskTransmit, string ProjectTaskDescription)
+                                     DateTime? DX_XuatHang_DuKien,
+                                     DateTime? DX_DuKienHT_EDM,
+                                     DateTime? DX_DuKienHT_Mai,
+                                     DateTime? DX_DuKienHT_MC,
+                                     DateTime? DX_DuKienHT_NC,
+                                     DateTime? DX_DuKienHT_Nhiet,
+                                     DateTime? DX_DuKienHT_PhayTay,
+                                     DateTime? DX_DuKienHT_QA,
+                                     DateTime? DX_DuKienHT_WEDM, DateTime ProjectTaskDeadline, DateTime ProjectTaskTransmit, string ProjectTaskDescription)
     {
         using (TransactionScope transactionScope = new TransactionScope())
         {
@@ -211,9 +245,15 @@ public class OrdersModels
                     pt.ProjectTaskTransmit = ProjectTaskTransmit;
                     pt.ProjectTaskDeadline = ProjectTaskDeadline;
                     pt.ProjectTaskDescription = ProjectTaskDescription;
-                    pt.ProjectTaskDuKienThoQuaTinh = ProjectTaskDuKienThoQuaTinh;
-                    pt.ProjectTaskDuKienTinhQuaQA = ProjectTaskDuKienTinhQuaQA;
-                    pt.ProjectTaskDuKienXuatHang = ProjectTaskDuKienXuatHang;
+                    pt.DX_XuatHang_DuKien = DX_XuatHang_DuKien.HasValue ? DX_XuatHang_DuKien : null;
+                    pt.DX_DuKienHT_EDM = DX_DuKienHT_EDM.HasValue ? DX_DuKienHT_EDM : null;
+                    pt.DX_DuKienHT_Mai = DX_DuKienHT_Mai.HasValue ? DX_DuKienHT_Mai : null;
+                    pt.DX_DuKienHT_MC = DX_DuKienHT_MC.HasValue ? DX_DuKienHT_MC : null;
+                    pt.DX_DuKienHT_NC = DX_DuKienHT_NC.HasValue ? DX_DuKienHT_NC : null;
+                    pt.DX_DuKienHT_Nhiet = DX_DuKienHT_Nhiet.HasValue ? DX_DuKienHT_Nhiet : null;
+                    pt.DX_DuKienHT_PhayTay = DX_DuKienHT_PhayTay.HasValue ? DX_DuKienHT_PhayTay : null;
+                    pt.DX_DuKienHT_QA = DX_DuKienHT_QA.HasValue ? DX_DuKienHT_QA : null;
+                    pt.DX_DuKienHT_WEDM = DX_DuKienHT_WEDM.HasValue ? DX_DuKienHT_WEDM : null;
 
                     if (UpdateProcess)
                     {
@@ -252,7 +292,16 @@ public class OrdersModels
         }
     }
     public static void OrdersUpdatedNd(int ProjectTaskID, int ProjectTaskStatusID, int ProjectTaskPriorityID, decimal ProjectTaskPrice, DateTime ProjectTaskDeadline, DateTime ProjectTaskTransmit, string ProjectTaskDescription,
-        DateTime? ProjectTaskDuKienThoQuaTinh, DateTime? ProjectTaskThucTeThoQuaTinh, DateTime? ProjectTaskDuKienTinhQuaQA, DateTime? ProjectTaskThucTeTinhQuaQA, DateTime? ProjectTaskDuKienXuatHang, DateTime? ProjectTaskThucTeXuatHang)
+        DateTime? DX_XuatHang_ThucTe,
+        DateTime? DX_XuatHang_DuKien,
+        DateTime? DX_DuKienHT_EDM,
+        DateTime? DX_DuKienHT_Mai,
+        DateTime? DX_DuKienHT_MC,
+        DateTime? DX_DuKienHT_NC,
+        DateTime? DX_DuKienHT_Nhiet,
+        DateTime? DX_DuKienHT_PhayTay,
+        DateTime? DX_DuKienHT_QA,
+        DateTime? DX_DuKienHT_WEDM)
     {
         PM_ProjectTask pt = LINQData.db.PM_ProjectTasks.FirstOrDefault(x => x.ProjectTaskID == ProjectTaskID);
         if (pt != null)
@@ -263,12 +312,16 @@ public class OrdersModels
             pt.ProjectTaskDeadline = ProjectTaskDeadline;
             pt.ProjectTaskTransmit = ProjectTaskTransmit;
             pt.ProjectTaskDescription = ProjectTaskDescription;
-            pt.ProjectTaskDuKienThoQuaTinh = ProjectTaskDuKienThoQuaTinh;
-            pt.ProjectTaskThucTeThoQuaTinh = ProjectTaskThucTeThoQuaTinh;
-            pt.ProjectTaskDuKienTinhQuaQA = ProjectTaskDuKienTinhQuaQA;
-            pt.ProjectTaskThucTeTinhQuaQA = ProjectTaskThucTeTinhQuaQA;
-            pt.ProjectTaskDuKienXuatHang = ProjectTaskDuKienXuatHang;
-            pt.ProjectTaskThucTeXuatHang = ProjectTaskThucTeXuatHang;
+            pt.DX_XuatHang_ThucTe = DX_XuatHang_ThucTe.HasValue ? DX_XuatHang_ThucTe : null;
+            pt.DX_XuatHang_DuKien = DX_XuatHang_DuKien.HasValue ? DX_XuatHang_DuKien : null;
+            pt.DX_DuKienHT_EDM = DX_DuKienHT_EDM.HasValue ? DX_DuKienHT_EDM : null;
+            pt.DX_DuKienHT_Mai = DX_DuKienHT_Mai.HasValue ? DX_DuKienHT_Mai : null;
+            pt.DX_DuKienHT_MC = DX_DuKienHT_MC.HasValue ? DX_DuKienHT_MC : null;
+            pt.DX_DuKienHT_NC = DX_DuKienHT_NC.HasValue ? DX_DuKienHT_NC : null;
+            pt.DX_DuKienHT_Nhiet = DX_DuKienHT_Nhiet.HasValue ? DX_DuKienHT_Nhiet : null;
+            pt.DX_DuKienHT_PhayTay = DX_DuKienHT_PhayTay.HasValue ? DX_DuKienHT_PhayTay : null;
+            pt.DX_DuKienHT_QA = DX_DuKienHT_QA.HasValue ? DX_DuKienHT_QA : null;
+            pt.DX_DuKienHT_WEDM = DX_DuKienHT_WEDM.HasValue ? DX_DuKienHT_WEDM : null;
             LINQData.db.SubmitChanges();
         }
     }
@@ -374,8 +427,6 @@ public class OrdersModels
                 CustomerName = pc.CustomerName,
                 ProjectTaskPriorityID = sm.pp.pp.pt.ProjectTaskPriorityID,
                 ProcessExpectedCompletion = sm.pp.pp.pp.ProcessExpectedCompletion,
-                ProjectTaskDuKienThoQuaTinh = sm.pp.pp.pt.ProjectTaskDuKienThoQuaTinh,
-                ProjectTaskDuKienTinhQuaQA = sm.pp.pp.pt.ProjectTaskDuKienTinhQuaQA,
                 ProcessNotes = sm.pp.pp.pp.ProcessNotes,
                 DXMoTa = sm.pp.pp.pt.ProjectTaskDescription,
                 DXNgayNhanThucTe = sm.pp.pp.pp.DXNgayNhanThucTe,
@@ -441,12 +492,8 @@ public class OrdersModels
                 PM_ProjectTask pt = LINQData.db.PM_ProjectTasks.Where(w => w.ProjectTaskID == ProjectTaskID).FirstOrDefault();
                 if (pt != null && finish) {
                     pt.ProjectTaskStatusID = 7;
-                    pt.ProjectTaskThucTeXuatHang = DateTime.Now;
+                    pt.DX_XuatHang_ThucTe = DateTime.Now;
                 }
-                if (pt != null && !pt.ProjectTaskThucTeThoQuaTinh.HasValue && finishTho)
-                    pt.ProjectTaskThucTeThoQuaTinh = DateTime.Now;
-                if (pt != null && !pt.ProjectTaskThucTeTinhQuaQA.HasValue && finishTinh)
-                    pt.ProjectTaskThucTeTinhQuaQA = DateTime.Now;
                 LINQData.db.SubmitChanges();
                 transactionScope.Complete();                
             }

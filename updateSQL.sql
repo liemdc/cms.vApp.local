@@ -239,3 +239,96 @@ BEGIN ALTER TABLE PM_ProjectProcess
 	ADD DXNgayKetThucDuKien DATETIME;
 	PRINT ('ADD DXNgayKetThucDuKien DATETIME;');
 END
+
+
+
+
+
+
+--- ///
+-- Add Column DX_DuKienHT_NC DATETIME
+IF NOT EXISTS ( SELECT object_id FROM sys.columns WHERE object_id = OBJECT_ID(N'PM_ProjectTask') AND name = 'DX_DuKienHT_NC' )
+BEGIN ALTER TABLE PM_ProjectTask
+	ADD DX_DuKienHT_NC DATETIME;
+	PRINT ('ADD DX_DuKienHT_NC DATETIME;');
+END
+GO
+-- Add Column DX_DuKienHT_MC DATETIME
+IF NOT EXISTS ( SELECT object_id FROM sys.columns WHERE object_id = OBJECT_ID(N'PM_ProjectTask') AND name = 'DX_DuKienHT_MC' )
+BEGIN ALTER TABLE PM_ProjectTask
+	ADD DX_DuKienHT_MC DATETIME;
+	PRINT ('ADD DX_DuKienHT_MC DATETIME;');
+END
+GO
+-- Add Column DX_DuKienHT_PhayTay DATETIME
+IF NOT EXISTS ( SELECT object_id FROM sys.columns WHERE object_id = OBJECT_ID(N'PM_ProjectTask') AND name = 'DX_DuKienHT_PhayTay' )
+BEGIN ALTER TABLE PM_ProjectTask
+	ADD DX_DuKienHT_PhayTay DATETIME;
+	PRINT ('ADD DX_DuKienHT_PhayTay DATETIME;');
+END
+GO
+-- Add Column DX_DuKienHT_Nhiet DATETIME
+IF NOT EXISTS ( SELECT object_id FROM sys.columns WHERE object_id = OBJECT_ID(N'PM_ProjectTask') AND name = 'DX_DuKienHT_Nhiet' )
+BEGIN ALTER TABLE PM_ProjectTask
+	ADD DX_DuKienHT_Nhiet DATETIME;
+	PRINT ('ADD DX_DuKienHT_Nhiet DATETIME;');
+END
+GO
+-- Add Column DX_DuKienHT_Mai DATETIME
+IF NOT EXISTS ( SELECT object_id FROM sys.columns WHERE object_id = OBJECT_ID(N'PM_ProjectTask') AND name = 'DX_DuKienHT_Mai' )
+BEGIN ALTER TABLE PM_ProjectTask
+	ADD DX_DuKienHT_Mai DATETIME;
+	PRINT ('ADD DX_DuKienHT_Mai DATETIME;');
+END
+GO
+-- Add Column DX_DuKienHT_WEDM DATETIME
+IF NOT EXISTS ( SELECT object_id FROM sys.columns WHERE object_id = OBJECT_ID(N'PM_ProjectTask') AND name = 'DX_DuKienHT_WEDM' )
+BEGIN ALTER TABLE PM_ProjectTask
+	ADD DX_DuKienHT_WEDM DATETIME;
+	PRINT ('ADD DX_DuKienHT_WEDM DATETIME;');
+END
+GO
+-- Add Column DX_DuKienHT_EDM DATETIME
+IF NOT EXISTS ( SELECT object_id FROM sys.columns WHERE object_id = OBJECT_ID(N'PM_ProjectTask') AND name = 'DX_DuKienHT_EDM' )
+BEGIN ALTER TABLE PM_ProjectTask
+	ADD DX_DuKienHT_EDM DATETIME;
+	PRINT ('ADD DX_DuKienHT_EDM DATETIME;');
+END
+GO
+-- Add Column DX_DuKienHT_QA DATETIME
+IF NOT EXISTS ( SELECT object_id FROM sys.columns WHERE object_id = OBJECT_ID(N'PM_ProjectTask') AND name = 'DX_DuKienHT_QA' )
+BEGIN ALTER TABLE PM_ProjectTask
+	ADD DX_DuKienHT_QA DATETIME;
+	PRINT ('ADD DX_DuKienHT_QA DATETIME;');
+END
+GO
+-- Add Column DX_MaDonHang NVARCHAR(12)
+IF NOT EXISTS ( SELECT object_id FROM sys.columns WHERE object_id = OBJECT_ID(N'PM_ProjectTask') AND name = 'DX_MaDonHang' )
+BEGIN ALTER TABLE PM_ProjectTask
+	ADD DX_MaDonHang NVARCHAR(12);
+	PRINT ('ADD DX_MaDonHang NVARCHAR(12);');
+END
+GO
+-- RENAME Column ProjectTaskDuKienXuatHang +> DX_XuatHang_DuKien
+IF EXISTS ( SELECT object_id FROM sys.columns WHERE object_id = OBJECT_ID(N'PM_ProjectTask') AND name = 'ProjectTaskDuKienXuatHang' )
+BEGIN EXEC sp_rename 'PM_ProjectTask.ProjectTaskDuKienXuatHang', 'DX_XuatHang_DuKien', 'COLUMN'
+	PRINT ('RENAME Column ProjectTaskDuKienXuatHang +> DX_XuatHang_DuKien;');
+END
+GO
+-- RENAME Column ProjectTaskThucTeXuatHang +> DX_XuatHang_ThucTe
+IF EXISTS ( SELECT object_id FROM sys.columns WHERE object_id = OBJECT_ID(N'PM_ProjectTask') AND name = 'ProjectTaskThucTeXuatHang' )
+BEGIN EXEC sp_rename 'PM_ProjectTask.ProjectTaskThucTeXuatHang', 'DX_XuatHang_ThucTe', 'COLUMN'
+	PRINT ('RENAME Column ProjectTaskThucTeXuatHang +> DX_XuatHang_ThucTe;');
+END
+GO
+ALTER TABLE PM_ProjectTask
+DROP COLUMN ProjectTaskDuKienThoQuaTinh;
+GO
+ALTER TABLE PM_ProjectTask
+DROP COLUMN ProjectTaskDuKienTinhQuaQA;
+GO
+ALTER TABLE PM_ProjectTask
+DROP COLUMN ProjectTaskThucTeThoQuaTinh;
+GO
+ALTER TABLE PM_ProjectTask
+DROP COLUMN ProjectTaskThucTeTinhQuaQA;
