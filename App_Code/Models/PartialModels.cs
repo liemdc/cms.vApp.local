@@ -1,4 +1,5 @@
 ﻿using Models;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Web;
 
@@ -132,17 +133,12 @@ public partial class OrdersObject {
     public string ProjectTaskProcessIds { get; set; }
     public Nullable<int> ProjectTaskThickness { get; set; }
     public string ProjectTaskThicknessTotal { get; set; }
-    public Nullable<int> ProjectTaskQuantities { get; set; }
-    public string ProjectTaskContainHead { get; set; }
-    public string ProjectTaskBottoHob { get; set; }
-    public string ProjectTaskChildNote { get; set; }
+    public Nullable<int> ProjectTaskQuantities { get; set; }   
     public string ProjectTaskHorikomi { get; set; }
     public string ProjectTaskHardness { get; set; }
     public Nullable<int> ProjectTaskCustomerId { get; set; }
     public string ProjectTaskDisplayName { get; set; }
     public int ProjectTaskStatusID { get; set; }
-    public Nullable<decimal> ProjectTaskPrice { get; set; }
-    public Nullable<decimal> ProjectTaskPriceCalc { get; set; }
     public int ProjectTaskPriorityID { get; set; }
     public Nullable<DateTime> ProjectTaskDeadline { get; set; }
     public Nullable<DateTime> ProjectTaskTransmit { get; set; }
@@ -150,16 +146,35 @@ public partial class OrdersObject {
     public string UserModified { get; set; }
     public Nullable<DateTime> CreatedWhen { get; set; }
     public string               DX_MaDonHang { get; set; }
-    public Nullable<DateTime>   DX_XuatHang_DuKien { get; set; }
-    public Nullable<DateTime>   DX_XuatHang_ThucTe { get; set; }
-    public Nullable<DateTime>   DX_DuKienHT_NC { get; set; }
-    public Nullable<DateTime>   DX_DuKienHT_MC { get; set; }
-    public Nullable<DateTime>   DX_DuKienHT_PhayTay { get; set; }
-    public Nullable<DateTime>   DX_DuKienHT_Nhiet { get; set; }
-    public Nullable<DateTime>   DX_DuKienHT_Mai { get; set; }
-    public Nullable<DateTime>   DX_DuKienHT_WEDM { get; set; }
-    public Nullable<DateTime>   DX_DuKienHT_EDM { get; set; }
-    public Nullable<DateTime>   DX_DuKienHT_QA { get; set; }
+    public Nullable<Decimal> DX_DuKienGC_LapRap { get; set; }
+    public Nullable<DateTime> DX_DuKienHT_LapRap { get; set; }
+    public Nullable<DateTime> DX_ThucTeHT_LapRap { get; set; }
+    public Nullable<Decimal> DX_DuKienGC_NC { get; set; }
+    public Nullable<DateTime> DX_DuKienHT_NC { get; set; }
+    public Nullable<DateTime> DX_ThucTeHT_NC { get; set; }
+    public Nullable<Decimal> DX_DuKienGC_MC { get; set; }
+    public Nullable<DateTime> DX_DuKienHT_MC { get; set; }
+    public Nullable<DateTime> DX_ThucTeHT_MC { get; set; }
+    public Nullable<Decimal> DX_DuKienGC_PhayTay { get; set; }
+    public Nullable<DateTime> DX_DuKienHT_PhayTay { get; set; }
+    public Nullable<DateTime> DX_ThucTeHT_PhayTay { get; set; }
+    public Nullable<Decimal> DX_DuKienGC_Nhiet { get; set; }
+    public Nullable<DateTime> DX_DuKienHT_Nhiet { get; set; }
+    public Nullable<DateTime> DX_ThucTeHT_Nhiet { get; set; }
+    public Nullable<Decimal> DX_DuKienGC_Mai { get; set; }
+    public Nullable<DateTime> DX_DuKienHT_Mai { get; set; }
+    public Nullable<DateTime> DX_ThucTeHT_Mai { get; set; }
+    public Nullable<Decimal> DX_DuKienGC_WEDM { get; set; }
+    public Nullable<DateTime> DX_DuKienHT_WEDM { get; set; }
+    public Nullable<DateTime> DX_ThucTeHT_WEDM { get; set; }
+    public Nullable<Decimal> DX_DuKienGC_EDM { get; set; }
+    public Nullable<DateTime> DX_DuKienHT_EDM { get; set; }
+    public Nullable<DateTime> DX_ThucTeHT_EDM { get; set; }
+    public Nullable<Decimal> DX_DuKienGC_QA { get; set; }
+    public Nullable<DateTime> DX_DuKienHT_QA { get; set; }
+    public Nullable<DateTime> DX_ThucTeHT_QA { get; set; }
+    public Nullable<DateTime> DX_XuatHang_DuKien { get; set; }
+    public Nullable<DateTime> DX_XuatHang_ThucTe { get; set; }
 }
 public partial class MoldsProcessObject
 {
@@ -267,14 +282,34 @@ public partial class PermissionsObject
     public bool PermissionAllow { get; set; }
 }
 
-public partial class DonHangObject {
-    public string MaDonHang { get; set; }
+public partial class DonHang_CongDoanTG {
+    public Nullable<Decimal> DX_DuKienGC_LapRap { get; set; }
+    public Nullable<DateTime> DX_DuKienHT_LapRap { get; set; }
+    public Nullable<DateTime> DX_ThucTeHT_LapRap { get; set; }
+    public Nullable<Decimal> DX_DuKienGC_NC { get; set; }
     public Nullable<DateTime> DX_DuKienHT_NC { get; set; }
+    public Nullable<DateTime> DX_ThucTeHT_NC { get; set; }
+    public Nullable<Decimal> DX_DuKienGC_MC { get; set; }
     public Nullable<DateTime> DX_DuKienHT_MC { get; set; }
+    public Nullable<DateTime> DX_ThucTeHT_MC { get; set; }
+    public Nullable<Decimal> DX_DuKienGC_PhayTay { get; set; }
     public Nullable<DateTime> DX_DuKienHT_PhayTay { get; set; }
+    public Nullable<DateTime> DX_ThucTeHT_PhayTay { get; set; }
+    public Nullable<Decimal> DX_DuKienGC_Nhiet { get; set; }
     public Nullable<DateTime> DX_DuKienHT_Nhiet { get; set; }
+    public Nullable<DateTime> DX_ThucTeHT_Nhiet { get; set; }
+    public Nullable<Decimal> DX_DuKienGC_Mai { get; set; }
     public Nullable<DateTime> DX_DuKienHT_Mai { get; set; }
+    public Nullable<DateTime> DX_ThucTeHT_Mai { get; set; }
+    public Nullable<Decimal> DX_DuKienGC_WEDM { get; set; }
     public Nullable<DateTime> DX_DuKienHT_WEDM { get; set; }
+    public Nullable<DateTime> DX_ThucTeHT_WEDM { get; set; }
+    public Nullable<Decimal> DX_DuKienGC_EDM { get; set; }
     public Nullable<DateTime> DX_DuKienHT_EDM { get; set; }
+    public Nullable<DateTime> DX_ThucTeHT_EDM { get; set; }
+    public Nullable<Decimal> DX_DuKienGC_QA { get; set; }
     public Nullable<DateTime> DX_DuKienHT_QA { get; set; }
+    public Nullable<DateTime> DX_ThucTeHT_QA { get; set; }
+    public Nullable<DateTime> DX_XuatHang_DuKien { get; set; }
+    public Nullable<DateTime> DX_XuatHang_ThucTe { get; set; }
 }

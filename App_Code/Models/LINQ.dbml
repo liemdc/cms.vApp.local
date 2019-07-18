@@ -365,11 +365,7 @@
       <Column Name="ProjectTaskMoldsFactor" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
       <Column Name="ProjectTaskDisplayName" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
       <Column Name="ProjectTaskQuantities" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ProjectTaskContainHead" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
-      <Column Name="ProjectTaskBottoHob" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
-      <Column Name="ProjectTaskChildNote" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
       <Column Name="ProjectTaskHorikomi" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
-      <Column Name="ProjectTaskPrice" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
       <Column Name="ProjectTaskThickness" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ProjectTaskThicknessTotal" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
       <Column Name="ProjectTaskDiameterOut" Type="System.Decimal" DbType="Decimal(10,0)" CanBeNull="true" />
@@ -414,6 +410,7 @@
       <Column Name="DX_DuKienHT_WEDM" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="DX_DuKienHT_EDM" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="DX_DuKienHT_QA" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DX_CongDoanTG" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Association Name="PM_ProjectTask_PM_ProjectProcessDetail" Member="PM_ProjectProcessDetails" ThisKey="ProjectTaskID" OtherKey="DetailProjectTaskID" Type="PM_ProjectProcessDetail" />
       <Association Name="PM_ProjectTask_PM_ProjectProcess" Member="PM_ProjectProcesses" ThisKey="ProjectTaskID" OtherKey="ProcessProjectTaskID" Type="PM_ProjectProcess" />
       <Association Name="PM_ProjectCustomer_PM_ProjectTask" Member="PM_ProjectCustomer" ThisKey="ProjectTaskCustomerId" OtherKey="CustomerId" Type="PM_ProjectCustomer" IsForeignKey="true" DeleteRule="CASCADE" />

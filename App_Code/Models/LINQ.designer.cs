@@ -7958,15 +7958,7 @@ namespace Models
 		
 		private System.Nullable<int> _ProjectTaskQuantities;
 		
-		private string _ProjectTaskContainHead;
-		
-		private string _ProjectTaskBottoHob;
-		
-		private string _ProjectTaskChildNote;
-		
 		private string _ProjectTaskHorikomi;
-		
-		private System.Nullable<decimal> _ProjectTaskPrice;
 		
 		private System.Nullable<int> _ProjectTaskThickness;
 		
@@ -8056,6 +8048,8 @@ namespace Models
 		
 		private System.Nullable<System.DateTime> _DX_DuKienHT_QA;
 		
+		private string _DX_CongDoanTG;
+		
 		private EntitySet<PM_ProjectProcessDetail> _PM_ProjectProcessDetails;
 		
 		private EntitySet<PM_ProjectProcess> _PM_ProjectProcesses;
@@ -8094,16 +8088,8 @@ namespace Models
     partial void OnProjectTaskDisplayNameChanged();
     partial void OnProjectTaskQuantitiesChanging(System.Nullable<int> value);
     partial void OnProjectTaskQuantitiesChanged();
-    partial void OnProjectTaskContainHeadChanging(string value);
-    partial void OnProjectTaskContainHeadChanged();
-    partial void OnProjectTaskBottoHobChanging(string value);
-    partial void OnProjectTaskBottoHobChanged();
-    partial void OnProjectTaskChildNoteChanging(string value);
-    partial void OnProjectTaskChildNoteChanged();
     partial void OnProjectTaskHorikomiChanging(string value);
     partial void OnProjectTaskHorikomiChanged();
-    partial void OnProjectTaskPriceChanging(System.Nullable<decimal> value);
-    partial void OnProjectTaskPriceChanged();
     partial void OnProjectTaskThicknessChanging(System.Nullable<int> value);
     partial void OnProjectTaskThicknessChanged();
     partial void OnProjectTaskThicknessTotalChanging(string value);
@@ -8192,6 +8178,8 @@ namespace Models
     partial void OnDX_DuKienHT_EDMChanged();
     partial void OnDX_DuKienHT_QAChanging(System.Nullable<System.DateTime> value);
     partial void OnDX_DuKienHT_QAChanged();
+    partial void OnDX_CongDoanTGChanging(string value);
+    partial void OnDX_CongDoanTGChanged();
     #endregion
 		
 		public PM_ProjectTask()
@@ -8357,66 +8345,6 @@ namespace Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskContainHead", DbType="NVarChar(25)")]
-		public string ProjectTaskContainHead
-		{
-			get
-			{
-				return this._ProjectTaskContainHead;
-			}
-			set
-			{
-				if ((this._ProjectTaskContainHead != value))
-				{
-					this.OnProjectTaskContainHeadChanging(value);
-					this.SendPropertyChanging();
-					this._ProjectTaskContainHead = value;
-					this.SendPropertyChanged("ProjectTaskContainHead");
-					this.OnProjectTaskContainHeadChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskBottoHob", DbType="NVarChar(25)")]
-		public string ProjectTaskBottoHob
-		{
-			get
-			{
-				return this._ProjectTaskBottoHob;
-			}
-			set
-			{
-				if ((this._ProjectTaskBottoHob != value))
-				{
-					this.OnProjectTaskBottoHobChanging(value);
-					this.SendPropertyChanging();
-					this._ProjectTaskBottoHob = value;
-					this.SendPropertyChanged("ProjectTaskBottoHob");
-					this.OnProjectTaskBottoHobChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskChildNote", DbType="NVarChar(255)")]
-		public string ProjectTaskChildNote
-		{
-			get
-			{
-				return this._ProjectTaskChildNote;
-			}
-			set
-			{
-				if ((this._ProjectTaskChildNote != value))
-				{
-					this.OnProjectTaskChildNoteChanging(value);
-					this.SendPropertyChanging();
-					this._ProjectTaskChildNote = value;
-					this.SendPropertyChanged("ProjectTaskChildNote");
-					this.OnProjectTaskChildNoteChanged();
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskHorikomi", DbType="NVarChar(25)")]
 		public string ProjectTaskHorikomi
 		{
@@ -8433,26 +8361,6 @@ namespace Models
 					this._ProjectTaskHorikomi = value;
 					this.SendPropertyChanged("ProjectTaskHorikomi");
 					this.OnProjectTaskHorikomiChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskPrice", DbType="Decimal(10,2)")]
-		public System.Nullable<decimal> ProjectTaskPrice
-		{
-			get
-			{
-				return this._ProjectTaskPrice;
-			}
-			set
-			{
-				if ((this._ProjectTaskPrice != value))
-				{
-					this.OnProjectTaskPriceChanging(value);
-					this.SendPropertyChanging();
-					this._ProjectTaskPrice = value;
-					this.SendPropertyChanged("ProjectTaskPrice");
-					this.OnProjectTaskPriceChanged();
 				}
 			}
 		}
@@ -9357,6 +9265,26 @@ namespace Models
 					this._DX_DuKienHT_QA = value;
 					this.SendPropertyChanged("DX_DuKienHT_QA");
 					this.OnDX_DuKienHT_QAChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DX_CongDoanTG", DbType="NVarChar(MAX)")]
+		public string DX_CongDoanTG
+		{
+			get
+			{
+				return this._DX_CongDoanTG;
+			}
+			set
+			{
+				if ((this._DX_CongDoanTG != value))
+				{
+					this.OnDX_CongDoanTGChanging(value);
+					this.SendPropertyChanging();
+					this._DX_CongDoanTG = value;
+					this.SendPropertyChanged("DX_CongDoanTG");
+					this.OnDX_CongDoanTGChanged();
 				}
 			}
 		}

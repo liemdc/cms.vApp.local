@@ -3,6 +3,7 @@ using CMS.GlobalHelper;
 using CMS.SettingsProvider;
 using CMS.SiteProvider;
 using Models;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -18,28 +19,43 @@ public partial class CMSTemplates_DevNext : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         //List<PM_ProjectTask> listPt = LINQData.db.PM_ProjectTasks.ToList();
-        ////foreach (var item in listPt)
-        ////{
-        ////    item.DX_MaDonHang = SystemModels.Fn_Get_MaDinhDanh(item.ProjectTaskLastModified.Year.ToString(), "DH", 6, "Mã đơn hàng");
-        ////}
-        ////LINQData.db.SubmitChanges();
+        //foreach (var item in listPt) {
+        //    //item.DX_MaDonHang = SystemModels.Fn_Get_MaDinhDanh(item.ProjectTaskLastModified.Year.ToString(), "DH", 6, "Mã đơn hàng");
+        //    DonHang_CongDoanTG data = new DonHang_CongDoanTG{};
+        //    data.DX_DuKienHT_EDM = item.DX_DuKienHT_EDM;
+        //    data.DX_DuKienHT_Mai = item.DX_DuKienHT_Mai;
+        //    data.DX_DuKienHT_MC = item.DX_DuKienHT_MC;
+        //    data.DX_DuKienHT_NC = item.DX_DuKienHT_NC;
+        //    data.DX_DuKienHT_Nhiet = item.DX_DuKienHT_Nhiet;
+        //    data.DX_DuKienHT_PhayTay = item.DX_DuKienHT_PhayTay;
+        //    data.DX_DuKienHT_QA = item.DX_DuKienHT_QA;
+        //    data.DX_DuKienHT_WEDM = item.DX_DuKienHT_WEDM;
+        //    data.DX_XuatHang_DuKien = item.DX_XuatHang_DuKien;
+        //    data.DX_XuatHang_ThucTe = item.DX_XuatHang_ThucTe;
+
+        //    JObject o = (JObject)JToken.FromObject(data);
+
+        //    item.DX_CongDoanTG = o.ToString(Formatting.None);
+        //    //DataUtils.WriteLog(o.ToString(Formatting.None));
+        //}
+        //LINQData.db.SubmitChanges();
         //foreach (var item in listPt)
         //{
         //    DataUtils.WriteLog(item.DX_MaDonHang);
         //}
-        CustomTableItemProvider customTableProvider = new CustomTableItemProvider(CMSContext.CurrentUser);
-        string MaLuuTru = "DX.MaLuuTru";
-        DataClassInfo DX_MaLuuTru = DataClassInfoProvider.GetDataClass(MaLuuTru);
+        //CustomTableItemProvider customTableProvider = new CustomTableItemProvider(CMSContext.CurrentUser);
+        //string MaLuuTru = "DX.MaLuuTru";
+        //DataClassInfo DX_MaLuuTru = DataClassInfoProvider.GetDataClass(MaLuuTru);
 
-        if (DX_MaLuuTru != null) {
-            DataSet dataSet = customTableProvider.GetItems(MaLuuTru, null, null);
-            var IList = dataSet.Tables[0].AsEnumerable().ToList();
-            for (int i = 0; i < IList.Count; i++)
-            {
-                DataUtils.WriteLog(IList[i].Field<string>("MaTXT").ToString());
-            }
-        }
-
+        //if (DX_MaLuuTru != null) {
+        //    DataSet dataSet = customTableProvider.GetItems(MaLuuTru, null, null);
+        //    var IList = dataSet.Tables[0].AsEnumerable().ToList();
+        //    for (int i = 0; i < IList.Count; i++)
+        //    {
+        //        DataUtils.WriteLog(IList[i].Field<string>("MaTXT").ToString());
+        //    }
+        //}
+        DataUtils.WriteLog(Convert.ToDateTime("2019-07-21T00:00:00").ToString());
     }
 
     protected void btnUpdate_Click(object sender, EventArgs e)

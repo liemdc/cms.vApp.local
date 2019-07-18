@@ -332,3 +332,16 @@ DROP COLUMN ProjectTaskThucTeThoQuaTinh;
 GO
 ALTER TABLE PM_ProjectTask
 DROP COLUMN ProjectTaskThucTeTinhQuaQA;
+-----
+GO
+ALTER TABLE PM_ProjectTask
+DROP COLUMN ProjectTaskBottoHob;
+GO
+ALTER TABLE PM_ProjectTask
+DROP COLUMN ProjectTaskChildNote;
+GO
+ALTER TABLE PM_ProjectTask
+DROP COLUMN ProjectTaskContainHead;
+GO
+ALTER TABLE PM_ProjectTask
+DROP COLUMN ProjectTaskPrice;
