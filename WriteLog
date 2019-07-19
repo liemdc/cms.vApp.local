@@ -1,12 +1,12 @@
-Date: 15/07/2019 3:17:47 CH
-DH15
-Date: 15/07/2019 3:17:47 CH
-DH16
-Date: 15/07/2019 3:17:47 CH
-DH17
-Date: 15/07/2019 3:17:47 CH
-DH18
-Date: 15/07/2019 3:17:47 CH
-DH19
-Date: 17/07/2019 9:47:38 CH
-21/07/2019 12:00:00 SA
+Date: 19/07/2019 3:20:38 CH
+Error: Update đơn hàng!
+Date: 19/07/2019 3:20:38 CH
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at OrdersModels.OrdersUpdated(Int32 ProjectTaskID, String ProjectTaskMoldCode, String ProjectTaskOverlayNum, String ProjectTaskHoleNum, Decimal ProjectTaskDiameterOut, String ProjectTaskMaterialsRequire, String ProjectTaskMaterialsCode, Int32 ProjectTaskMoldsId, Int32 ProjectTaskThickness, String ProjectTaskThicknessTotal, Int32 ProjectTaskQuantities, String ProjectTaskHorikomi, String ProjectTaskHardness, Int32 ProjectTaskCustomerId, Nullable`1 DX_XuatHang_DuKien, Nullable`1 DX_DuKienHT_EDM, Nullable`1 DX_DuKienHT_Mai, Nullable`1 DX_DuKienHT_MC, Nullable`1 DX_DuKienHT_NC, Nullable`1 DX_DuKienHT_Nhiet, Nullable`1 DX_DuKienHT_PhayTay, Nullable`1 DX_DuKienHT_QA, Nullable`1 DX_DuKienHT_WEDM, Nullable`1 DX_DuKienHT_LapRap, DateTime ProjectTaskDeadline, DateTime ProjectTaskTransmit, String ProjectTaskDescription) in d:\GitHub\cms.vApp.local\App_Code\Models\OrdersModels.cs:line 323
+Date: 19/07/2019 3:23:03 CH
+Error: Update đơn hàng!
+Date: 19/07/2019 3:23:03 CH
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.Parse(String s, DateTimeFormatInfo dtfi, DateTimeStyles styles)
+   at System.Convert.ToDateTime(String value)
+   at OrdersModels.OrdersUpdated(Int32 ProjectTaskID, String ProjectTaskMoldCode, String ProjectTaskOverlayNum, String ProjectTaskHoleNum, Decimal ProjectTaskDiameterOut, String ProjectTaskMaterialsRequire, String ProjectTaskMaterialsCode, Int32 ProjectTaskMoldsId, Int32 ProjectTaskThickness, String ProjectTaskThicknessTotal, Int32 ProjectTaskQuantities, String ProjectTaskHorikomi, String ProjectTaskHardness, Int32 ProjectTaskCustomerId, Nullable`1 DX_XuatHang_DuKien, Nullable`1 DX_DuKienHT_EDM, Nullable`1 DX_DuKienHT_Mai, Nullable`1 DX_DuKienHT_MC, Nullable`1 DX_DuKienHT_NC, Nullable`1 DX_DuKienHT_Nhiet, Nullable`1 DX_DuKienHT_PhayTay, Nullable`1 DX_DuKienHT_QA, Nullable`1 DX_DuKienHT_WEDM, Nullable`1 DX_DuKienHT_LapRap, DateTime ProjectTaskDeadline, DateTime ProjectTaskTransmit, String ProjectTaskDescription) in d:\GitHub\cms.vApp.local\App_Code\Models\OrdersModels.cs:line 324

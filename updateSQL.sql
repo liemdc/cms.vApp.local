@@ -345,3 +345,40 @@ DROP COLUMN ProjectTaskContainHead;
 GO
 ALTER TABLE PM_ProjectTask
 DROP COLUMN ProjectTaskPrice;
+GO
+-- Add Column DX_HoanThanhDuKien DATETIME
+IF NOT EXISTS ( SELECT object_id FROM sys.columns WHERE object_id = OBJECT_ID(N'PM_ProjectProcess') AND name = 'DX_HoanThanhDuKien' )
+BEGIN ALTER TABLE PM_ProjectProcess
+	ADD DX_HoanThanhDuKien DATETIME;
+	PRINT ('ADD DX_HoanThanhDuKien DATETIME;');
+END
+GO
+ALTER TABLE PM_ProjectTask
+DROP COLUMN DX_DuKienHT_EDM;
+GO
+ALTER TABLE PM_ProjectTask
+DROP COLUMN DX_DuKienHT_Mai;
+GO
+ALTER TABLE PM_ProjectTask
+DROP COLUMN DX_DuKienHT_MC;
+GO
+ALTER TABLE PM_ProjectTask
+DROP COLUMN DX_DuKienHT_NC;
+GO
+ALTER TABLE PM_ProjectTask
+DROP COLUMN DX_DuKienHT_Nhiet;
+GO
+ALTER TABLE PM_ProjectTask
+DROP COLUMN DX_DuKienHT_PhayTay;
+GO
+ALTER TABLE PM_ProjectTask
+DROP COLUMN DX_DuKienHT_QA;
+GO
+ALTER TABLE PM_ProjectTask
+DROP COLUMN DX_DuKienHT_WEDM;
+GO
+ALTER TABLE PM_ProjectTask
+DROP COLUMN DX_DuKienHT_LapRap;
+GO
+ALTER TABLE PM_ProjectTask
+DROP COLUMN DX_CongDoanTG;

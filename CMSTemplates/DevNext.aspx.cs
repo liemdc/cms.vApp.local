@@ -55,7 +55,27 @@ public partial class CMSTemplates_DevNext : System.Web.UI.Page
         //        DataUtils.WriteLog(IList[i].Field<string>("MaTXT").ToString());
         //    }
         //}
-        DataUtils.WriteLog(Convert.ToDateTime("2019-07-21T00:00:00").ToString());
+        //DataUtils.WriteLog(Convert.ToDateTime("2019-07-21T00:00:00").ToString());
+
+        //string where = "UserID = 53";
+
+        //DataSet users = UserInfoProvider.GetFullUsers(where, null);
+
+        //JObject rx = JObject.Parse(users.Tables[0].ToJSON(true));
+
+        //DataUtils.WriteLog(rx.ToString());
+
+        //string[,] dataDK = {
+        //            {"74", "741"},
+        //            {"76", "762"},
+        //            {"77", "773"}
+        //        };
+        //for (int i = 0; i < dataDK.Length / 2; i++)
+        //{
+        //    if(dataDK[i, 0].Equals(77.ToString()))
+        //        DataUtils.WriteLog(i.ToString() + ": " + dataDK[i, 1]);
+        //}
+        
     }
 
     protected void btnUpdate_Click(object sender, EventArgs e)

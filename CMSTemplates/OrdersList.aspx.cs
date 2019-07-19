@@ -13,7 +13,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 
 public partial class CMSTemplates_OrdersList : TemplatePage {
-    protected void Page_Load(object sender, EventArgs e){
+    protected void Page_Load(object sender, EventArgs e) {
         int Year = DateTime.Now.Year;
         if (!IsPostBack) {
             CbExportMode.Items.AddRange(Enum.GetNames(typeof(GridViewDetailExportMode)));
@@ -71,11 +71,11 @@ public partial class CMSTemplates_OrdersList : TemplatePage {
             if (!CMSContext.CurrentUser.IsAuthorizedPerResource("LoaiKhuon", "Sua"))
                 e.Items.Remove(e.Items.FindByCommand(GridViewContextMenuCommand.EditRow));
             //if (!CMSContext.CurrentUser.IsAuthorizedPerResource("LoaiKhuon", "Xoa"))
-                e.Items.Remove(e.Items.FindByCommand(GridViewContextMenuCommand.DeleteRow));
+            e.Items.Remove(e.Items.FindByCommand(GridViewContextMenuCommand.DeleteRow));
         }
     }
     protected void GvLevelDA_FillContextMenuItems(object sender, DevExpress.Web.ASPxGridViewContextMenuEventArgs e) {
-        if (e.MenuType == GridViewContextMenuType.Rows) {            
+        if (e.MenuType == GridViewContextMenuType.Rows) {
             e.Items.Remove(e.Items.FindByCommand(GridViewContextMenuCommand.EditRow));
             if (!CMSContext.CurrentUser.IsAuthorizedPerResource("LoaiKhuon", "ThemMoi"))
                 e.Items.Remove(e.Items.FindByCommand(GridViewContextMenuCommand.NewRow));
@@ -85,9 +85,10 @@ public partial class CMSTemplates_OrdersList : TemplatePage {
     }
     protected void GvLevelBA_FillContextMenuItems(object sender, DevExpress.Web.ASPxGridViewContextMenuEventArgs e) {
         if (e.MenuType == GridViewContextMenuType.Rows) {            
-            e.Items.Remove(e.Items.FindByCommand(GridViewContextMenuCommand.EditRow));
             if (!CMSContext.CurrentUser.IsAuthorizedPerResource("DonHang", "ThemMoi"))
                 e.Items.Remove(e.Items.FindByCommand(GridViewContextMenuCommand.NewRow));
+            if (!CMSContext.CurrentUser.IsAuthorizedPerResource("DonHang", "Sua"))
+                e.Items.Remove(e.Items.FindByCommand(GridViewContextMenuCommand.EditRow));
             if (!CMSContext.CurrentUser.IsAuthorizedPerResource("DonHang", "Xoa"))
                 e.Items.Remove(e.Items.FindByCommand(GridViewContextMenuCommand.DeleteRow));
         }
@@ -104,6 +105,17 @@ public partial class CMSTemplates_OrdersList : TemplatePage {
             throw new Exception("<p style='color:#000000 !important;margin:0;font-weight:bold;font-family:Arial'>Đang nhập ở chế độ nhập liên tiếp.</p>");
     }
     protected void GvLevelA_ContextMenuItemClick(object sender, ASPxGridViewContextMenuItemClickEventArgs e) {
+        //DataUtils.WriteLog(e.Item.Name);
+        //if (e.Item.Name.Equals("CloneProduct")) {
+        //    copiedValues = new Hashtable();
+        //    foreach (string fieldName in copiedFields)
+        //        copiedValues[fieldName] = GvLevelA.GetRowValues(e.ElementIndex, fieldName);
+        //    GvLevelA.AddNewRow();
+        //} else if (e.Item.Name.Equals("CloneProduct")) {
+        //    string KeyValue = (string)GvLevelA.GetRowValues(e.ElementIndex, "ProjectTaskID");
+        //    string KeyMaDH = (string)GvLevelA.GetRowValues(e.ElementIndex, "DX_MaDonHang");
+        //    DataUtils.WriteLog(KeyValue + KeyMaDH);
+        //}
         switch (e.Item.Name) {
             case "CloneProduct":
                 copiedValues = new Hashtable();
@@ -139,5 +151,32 @@ public partial class CMSTemplates_OrdersList : TemplatePage {
 
     protected void On_DateChangedB(object sender, EventArgs e) {
         GvLevelB.DataBind();
+    }
+
+    private string[] GTitle = new string[]{"Dự kiến GC: ", "Dự kiến HT: ", "Thực tế HT: "};
+    private string[] GField = new string[]{"DX_DuKienHT_EDM", "DX_ThucTeHT_EDM", "DX_DuKienHT_Mai", "DX_ThucTeHT_Mai", "DX_DuKienHT_MC", "DX_ThucTeHT_MC", "DX_DuKienHT_NC", "DX_ThucTeHT_NC", "DX_DuKienHT_Nhiet", "DX_ThucTeHT_Nhiet", "DX_DuKienHT_PhayTay", "DX_ThucTeHT_PhayTay", "DX_DuKienHT_QA", "DX_ThucTeHT_QA", "DX_DuKienHT_WEDM", "DX_ThucTeHT_WEDM", "DX_DuKienHT_LapRap", "DX_ThucTeHT_LapRap"};
+    private void SetColumns(ASPxGridView dataGrid, Boolean valid) {
+        for (int i = 0; i < GField.Length; i++) {
+            GridViewDataDateColumn dataColumns = (dataGrid.Columns[GField[i]] as GridViewDataDateColumn);
+            dataColumns.Settings.AllowHeaderFilter = DevExpress.Utils.DefaultBoolean.False;
+            if(i % 2 != 0 && valid)
+                dataColumns.EditFormSettings.Visible = DevExpress.Utils.DefaultBoolean.False;
+            else
+                dataColumns.EditFormSettings.Visible = DevExpress.Utils.DefaultBoolean.True;
+            dataColumns.Width = Unit.Pixel(148);
+            dataColumns.PropertiesDateEdit.EditFormatString = "dd/MM/yyyy HH:mm";
+            dataColumns.PropertiesDateEdit.DisplayFormatString = "dd/MM/yyyy HH:mm";
+            dataColumns.PropertiesDateEdit.EditFormat = EditFormat.DateTime;
+            dataColumns.PropertiesDateEdit.TimeSectionProperties.Visible = true;
+            dataColumns.PropertiesDateEdit.TimeSectionProperties.TimeEditProperties.EditFormatString = "HH:mm";
+        }
+    }
+    protected void GvLevelA_Init(object sender, EventArgs e) {
+        ASPxGridView dataGrid = (sender as ASPxGridView);
+        SetColumns(dataGrid, true);
+    }
+    protected void GvLevelB_Init(object sender, EventArgs e) {
+        ASPxGridView dataGrid = (sender as ASPxGridView);
+        SetColumns(dataGrid, false);
     }
 }

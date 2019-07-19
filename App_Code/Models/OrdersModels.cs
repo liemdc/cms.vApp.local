@@ -14,122 +14,116 @@ using System.Web;
 public class OrdersModels
 {
     public static IEnumerable<OrdersObject> OrdersList() {
-        return LINQData.db.PM_ProjectTasks
-                .GroupJoin(LINQData.db.CMS_Users, t => t.ModifiedByUserId, userc => userc.UserID, (t, userm) => new { t, userm })
-                .SelectMany(sm => sm.userm.DefaultIfEmpty(), (sm, userm) => new OrdersObject {
-                    ProjectTaskID               = sm.t.ProjectTaskID,
-                    ProjectTaskCustomerId       = sm.t.ProjectTaskCustomerId,
-                    ProjectTaskDeadline         = sm.t.ProjectTaskDeadline,
-                    ProjectTaskDescription      = sm.t.ProjectTaskDescription,
-                    ProjectTaskDiameterOut      = sm.t.ProjectTaskDiameterOut,
-                    ProjectTaskDisplayName      = sm.t.ProjectTaskDisplayName,
-                    ProjectTaskHardness         = sm.t.ProjectTaskHardness,
-                    ProjectTaskHoleNum          = sm.t.ProjectTaskHoleNum,
-                    ProjectTaskHorikomi         = sm.t.ProjectTaskHorikomi,
-                    ProjectTaskMaterialsCode    = sm.t.ProjectTaskMaterialsCode,
-                    ProjectTaskMaterialsRequire = sm.t.ProjectTaskMaterialsRequire,
-                    ProjectTaskMoldCode         = sm.t.ProjectTaskMoldCode,
-                    ProjectTaskMoldsId          = sm.t.ProjectTaskMoldsId,
-                    ProjectTaskOverlayNum       = sm.t.ProjectTaskOverlayNum,
-                    ProjectTaskPriorityID       = sm.t.ProjectTaskPriorityID,
-                    ProjectTaskQuantities       = sm.t.ProjectTaskQuantities,
-                    ProjectTaskStatusID         = sm.t.ProjectTaskStatusID,
-                    ProjectTaskThickness        = sm.t.ProjectTaskThickness,
-                    ProjectTaskThicknessTotal   = sm.t.ProjectTaskThicknessTotal,
-                    ProjectTaskTransmit         = sm.t.ProjectTaskTransmit,
-                    CreatedWhen                 = sm.t.CreatedWhen,
-                    UserModified                = userm.FullName,
-                    DX_MaDonHang                = sm.t.DX_MaDonHang,
-                    DX_XuatHang_DuKien = (DateTime?)JObject.Parse(sm.t.DX_CongDoanTG)["DX_XuatHang_DuKien"],
-                    DX_XuatHang_ThucTe = (DateTime?)JObject.Parse(sm.t.DX_CongDoanTG)["DX_XuatHang_ThucTe"],
-                    DX_DuKienGC_EDM = (Decimal?)JObject.Parse(sm.t.DX_CongDoanTG)["DX_DuKienGC_EDM"],
-                    DX_DuKienHT_EDM = (DateTime?)JObject.Parse(sm.t.DX_CongDoanTG)["DX_DuKienHT_EDM"],
-                    DX_ThucTeHT_EDM = (DateTime?)JObject.Parse(sm.t.DX_CongDoanTG)["DX_ThucTeHT_EDM"],
-                    DX_DuKienGC_Mai = (Decimal?)JObject.Parse(sm.t.DX_CongDoanTG)["DX_DuKienGC_Mai"],
-                    DX_DuKienHT_Mai = (DateTime?)JObject.Parse(sm.t.DX_CongDoanTG)["DX_DuKienHT_Mai"],
-                    DX_ThucTeHT_Mai = (DateTime?)JObject.Parse(sm.t.DX_CongDoanTG)["DX_ThucTeHT_Mai"],
-                    DX_DuKienGC_MC = (Decimal?)JObject.Parse(sm.t.DX_CongDoanTG)["DX_DuKienGC_MC"],
-                    DX_DuKienHT_MC = (DateTime?)JObject.Parse(sm.t.DX_CongDoanTG)["DX_DuKienHT_MC"],
-                    DX_ThucTeHT_MC = (DateTime?)JObject.Parse(sm.t.DX_CongDoanTG)["DX_ThucTeHT_MC"],
-                    DX_DuKienGC_NC = (Decimal?)JObject.Parse(sm.t.DX_CongDoanTG)["DX_DuKienGC_NC"],
-                    DX_DuKienHT_NC = (DateTime?)JObject.Parse(sm.t.DX_CongDoanTG)["DX_DuKienHT_NC"],
-                    DX_ThucTeHT_NC = (DateTime?)JObject.Parse(sm.t.DX_CongDoanTG)["DX_ThucTeHT_NC"],
-                    DX_DuKienGC_Nhiet = (Decimal?)JObject.Parse(sm.t.DX_CongDoanTG)["DX_DuKienGC_Nhiet"],
-                    DX_DuKienHT_Nhiet = (DateTime?)JObject.Parse(sm.t.DX_CongDoanTG)["DX_DuKienHT_Nhiet"],
-                    DX_ThucTeHT_Nhiet = (DateTime?)JObject.Parse(sm.t.DX_CongDoanTG)["DX_ThucTeHT_Nhiet"],
-                    DX_DuKienGC_PhayTay = (Decimal?)JObject.Parse(sm.t.DX_CongDoanTG)["DX_DuKienGC_PhayTay"],
-                    DX_DuKienHT_PhayTay = (DateTime?)JObject.Parse(sm.t.DX_CongDoanTG)["DX_DuKienHT_PhayTay"],
-                    DX_ThucTeHT_PhayTay = (DateTime?)JObject.Parse(sm.t.DX_CongDoanTG)["DX_ThucTeHT_PhayTay"],
-                    DX_DuKienGC_QA = (Decimal?)JObject.Parse(sm.t.DX_CongDoanTG)["DX_DuKienGC_QA"],
-                    DX_DuKienHT_QA = (DateTime?)JObject.Parse(sm.t.DX_CongDoanTG)["DX_DuKienHT_QA"],
-                    DX_ThucTeHT_QA = (DateTime?)JObject.Parse(sm.t.DX_CongDoanTG)["DX_ThucTeHT_QA"],
-                    DX_DuKienGC_WEDM = (Decimal?)JObject.Parse(sm.t.DX_CongDoanTG)["DX_DuKienGC_WEDM"],
-                    DX_DuKienHT_WEDM = (DateTime?)JObject.Parse(sm.t.DX_CongDoanTG)["DX_DuKienHT_WEDM"],
-                    DX_ThucTeHT_WEDM = (DateTime?)JObject.Parse(sm.t.DX_CongDoanTG)["DX_ThucTeHT_WEDM"],
-                    DX_DuKienGC_LapRap = (Decimal?)JObject.Parse(sm.t.DX_CongDoanTG)["DX_DuKienGC_LapRap"],
-                    DX_DuKienHT_LapRap = (DateTime?)JObject.Parse(sm.t.DX_CongDoanTG)["DX_DuKienHT_LapRap"],
-                    DX_ThucTeHT_LapRap = (DateTime?)JObject.Parse(sm.t.DX_CongDoanTG)["DX_ThucTeHT_LapRap"]
-                }).OrderBy(o => o.ProjectTaskMoldCode);
+        return LINQData.db.DX_View_DonHang_Joineds
+            .Select(s => new OrdersObject {
+                ProjectTaskID               = (int)s.ProcessProjectTaskID,
+                ProjectTaskCustomerId       = s.ProjectTaskCustomerId,
+                ProjectTaskDeadline         = s.ProjectTaskDeadline,
+                ProjectTaskDescription      = s.ProjectTaskDescription,
+                ProjectTaskDiameterOut      = s.ProjectTaskDiameterOut,
+                ProjectTaskDisplayName      = s.ProjectTaskDisplayName,
+                ProjectTaskHardness         = s.ProjectTaskHardness,
+                ProjectTaskHoleNum          = s.ProjectTaskHoleNum,
+                ProjectTaskHorikomi         = s.ProjectTaskHorikomi,
+                ProjectTaskMaterialsCode    = s.ProjectTaskMaterialsCode,
+                ProjectTaskMaterialsRequire = s.ProjectTaskMaterialsRequire,
+                ProjectTaskMoldCode         = s.ProjectTaskMoldCode,
+                ProjectTaskMoldsId          = s.ProjectTaskMoldsId,
+                ProjectTaskOverlayNum       = s.ProjectTaskOverlayNum,
+                ProjectTaskPriorityID       = s.ProjectTaskPriorityID,
+                ProjectTaskQuantities       = s.ProjectTaskQuantities,
+                ProjectTaskStatusID         = s.ProjectTaskStatusID,
+                ProjectTaskThickness        = s.ProjectTaskThickness,
+                ProjectTaskThicknessTotal   = s.ProjectTaskThicknessTotal,
+                ProjectTaskTransmit         = s.ProjectTaskTransmit,
+                DX_MaDonHang                = s.DX_MaDonHang,
+                DX_XuatHang_DuKien = s.DX_XuatHang_DuKien,
+                DX_XuatHang_ThucTe = s.DX_XuatHang_ThucTe,
+                DX_DuKienGC_EDM = s.GC082,
+                DX_DuKienHT_EDM = s.DK082,
+                DX_ThucTeHT_EDM = s.TT082,
+                DX_DuKienGC_Mai = s.GC108,
+                DX_DuKienHT_Mai = s.DK108,
+                DX_ThucTeHT_Mai = s.TT108,
+                DX_DuKienGC_MC = s.GC074,
+                DX_DuKienHT_MC = s.DK074,
+                DX_ThucTeHT_MC = s.TT074,
+                DX_DuKienGC_NC = s.GC085,
+                DX_DuKienHT_NC = s.DK085,
+                DX_ThucTeHT_NC = s.TT085,
+                DX_DuKienGC_Nhiet = s.GC091,
+                DX_DuKienHT_Nhiet = s.DK091,
+                DX_ThucTeHT_Nhiet = s.TT091,
+                DX_DuKienGC_PhayTay = s.GC076,
+                DX_DuKienHT_PhayTay = s.DK076,
+                DX_ThucTeHT_PhayTay = s.TT076,
+                DX_DuKienGC_QA = s.GC077,
+                DX_DuKienHT_QA = s.DK077,
+                DX_ThucTeHT_QA = s.TT077,
+                DX_DuKienGC_WEDM = s.GC083,
+                DX_DuKienHT_WEDM = s.DK083,
+                DX_ThucTeHT_WEDM = s.TT083,
+                DX_DuKienGC_LapRap = s.GC100,
+                DX_DuKienHT_LapRap = s.DK100,
+                DX_ThucTeHT_LapRap = s.TT100                
+            }).OrderBy(o => o.ProjectTaskMoldCode);
     }
     public static IEnumerable<OrdersObject> OrdersListNd(string TaskStatus, string TaskPriority, DateTime DateBeginB, DateTime DateEndB) {
         int[] statusIds = Array.ConvertAll(TaskStatus.Split(';'), s => int.Parse(s));
-        int[] priorityIds = Array.ConvertAll(TaskPriority.Split(';'), s => int.Parse(s));
-        return LINQData.db.PM_ProjectTasks.Where(w => statusIds.Contains(w.ProjectTaskStatusID) && priorityIds.Contains(w.ProjectTaskPriorityID) && w.DX_XuatHang_DuKien >= DateBeginB && w.DX_XuatHang_DuKien <= DateEndB)
-                .GroupJoin(LINQData.db.CMS_Users, t => t.ModifiedByUserId, userc => userc.UserID, (t, userm) => new { t, userm })
-                .SelectMany(sm => sm.userm.DefaultIfEmpty(), (sm, userm) => new OrdersObject {
-                    ProjectTaskID               = sm.t.ProjectTaskID,
-                    ProjectTaskCustomerId       = sm.t.ProjectTaskCustomerId,
-                    ProjectTaskDeadline         = sm.t.ProjectTaskDeadline,
-                    ProjectTaskDescription      = sm.t.ProjectTaskDescription,
-                    ProjectTaskDiameterOut      = sm.t.ProjectTaskDiameterOut,
-                    ProjectTaskDisplayName      = sm.t.ProjectTaskDisplayName,
-                    ProjectTaskHardness         = sm.t.ProjectTaskHardness,
-                    ProjectTaskHoleNum          = sm.t.ProjectTaskHoleNum,
-                    ProjectTaskHorikomi         = sm.t.ProjectTaskHorikomi,
-                    ProjectTaskMaterialsCode    = sm.t.ProjectTaskMaterialsCode,
-                    ProjectTaskMaterialsRequire = sm.t.ProjectTaskMaterialsRequire,
-                    ProjectTaskMoldCode         = sm.t.ProjectTaskMoldCode,
-                    ProjectTaskMoldsId          = sm.t.ProjectTaskMoldsId,
-                    ProjectTaskOverlayNum       = sm.t.ProjectTaskOverlayNum,
-                    ProjectTaskPriorityID       = sm.t.ProjectTaskPriorityID,
-                    ProjectTaskQuantities       = sm.t.ProjectTaskQuantities,
-                    ProjectTaskStatusID         = sm.t.ProjectTaskStatusID,
-                    ProjectTaskThickness        = sm.t.ProjectTaskThickness,
-                    ProjectTaskThicknessTotal   = sm.t.ProjectTaskThicknessTotal,
-                    ProjectTaskTransmit         = sm.t.ProjectTaskTransmit,
-                    CreatedWhen                 = sm.t.CreatedWhen,
-                    UserModified                = userm.FullName,
-                    DX_MaDonHang                = sm.t.DX_MaDonHang,
-                    DX_XuatHang_DuKien = (DateTime?)JObject.Parse(sm.t.DX_CongDoanTG)["DX_XuatHang_DuKien"],
-                    DX_XuatHang_ThucTe = (DateTime?)JObject.Parse(sm.t.DX_CongDoanTG)["DX_XuatHang_ThucTe"],
-                    DX_DuKienGC_EDM = (Decimal?)JObject.Parse(sm.t.DX_CongDoanTG)["DX_DuKienGC_EDM"],
-                    DX_DuKienHT_EDM = (DateTime?)JObject.Parse(sm.t.DX_CongDoanTG)["DX_DuKienHT_EDM"],
-                    DX_ThucTeHT_EDM = (DateTime?)JObject.Parse(sm.t.DX_CongDoanTG)["DX_ThucTeHT_EDM"],
-                    DX_DuKienGC_Mai = (Decimal?)JObject.Parse(sm.t.DX_CongDoanTG)["DX_DuKienGC_Mai"],
-                    DX_DuKienHT_Mai = (DateTime?)JObject.Parse(sm.t.DX_CongDoanTG)["DX_DuKienHT_Mai"],
-                    DX_ThucTeHT_Mai = (DateTime?)JObject.Parse(sm.t.DX_CongDoanTG)["DX_ThucTeHT_Mai"],
-                    DX_DuKienGC_MC = (Decimal?)JObject.Parse(sm.t.DX_CongDoanTG)["DX_DuKienGC_MC"],
-                    DX_DuKienHT_MC = (DateTime?)JObject.Parse(sm.t.DX_CongDoanTG)["DX_DuKienHT_MC"],
-                    DX_ThucTeHT_MC = (DateTime?)JObject.Parse(sm.t.DX_CongDoanTG)["DX_ThucTeHT_MC"],
-                    DX_DuKienGC_NC = (Decimal?)JObject.Parse(sm.t.DX_CongDoanTG)["DX_DuKienGC_NC"],
-                    DX_DuKienHT_NC = (DateTime?)JObject.Parse(sm.t.DX_CongDoanTG)["DX_DuKienHT_NC"],
-                    DX_ThucTeHT_NC = (DateTime?)JObject.Parse(sm.t.DX_CongDoanTG)["DX_ThucTeHT_NC"],
-                    DX_DuKienGC_Nhiet = (Decimal?)JObject.Parse(sm.t.DX_CongDoanTG)["DX_DuKienGC_Nhiet"],
-                    DX_DuKienHT_Nhiet = (DateTime?)JObject.Parse(sm.t.DX_CongDoanTG)["DX_DuKienHT_Nhiet"],
-                    DX_ThucTeHT_Nhiet = (DateTime?)JObject.Parse(sm.t.DX_CongDoanTG)["DX_ThucTeHT_Nhiet"],
-                    DX_DuKienGC_PhayTay = (Decimal?)JObject.Parse(sm.t.DX_CongDoanTG)["DX_DuKienGC_PhayTay"],
-                    DX_DuKienHT_PhayTay = (DateTime?)JObject.Parse(sm.t.DX_CongDoanTG)["DX_DuKienHT_PhayTay"],
-                    DX_ThucTeHT_PhayTay = (DateTime?)JObject.Parse(sm.t.DX_CongDoanTG)["DX_ThucTeHT_PhayTay"],
-                    DX_DuKienGC_QA = (Decimal?)JObject.Parse(sm.t.DX_CongDoanTG)["DX_DuKienGC_QA"],
-                    DX_DuKienHT_QA = (DateTime?)JObject.Parse(sm.t.DX_CongDoanTG)["DX_DuKienHT_QA"],
-                    DX_ThucTeHT_QA = (DateTime?)JObject.Parse(sm.t.DX_CongDoanTG)["DX_ThucTeHT_QA"],
-                    DX_DuKienGC_WEDM = (Decimal?)JObject.Parse(sm.t.DX_CongDoanTG)["DX_DuKienGC_WEDM"],
-                    DX_DuKienHT_WEDM = (DateTime?)JObject.Parse(sm.t.DX_CongDoanTG)["DX_DuKienHT_WEDM"],
-                    DX_ThucTeHT_WEDM = (DateTime?)JObject.Parse(sm.t.DX_CongDoanTG)["DX_ThucTeHT_WEDM"],
-                    DX_DuKienGC_LapRap = (Decimal?)JObject.Parse(sm.t.DX_CongDoanTG)["DX_DuKienGC_LapRap"],
-                    DX_DuKienHT_LapRap = (DateTime?)JObject.Parse(sm.t.DX_CongDoanTG)["DX_DuKienHT_LapRap"],
-                    DX_ThucTeHT_LapRap = (DateTime?)JObject.Parse(sm.t.DX_CongDoanTG)["DX_ThucTeHT_LapRap"]
-                }).OrderByDescending(o => o.ProjectTaskTransmit).ThenBy(o => o.ProjectTaskPriorityID);
+        int[] priorityIds = Array.ConvertAll(TaskPriority.Split(';'), s => int.Parse(s));        
+        return LINQData.db.DX_View_DonHang_Joineds.Where(w => statusIds.Contains(w.ProjectTaskStatusID) && priorityIds.Contains(w.ProjectTaskPriorityID) && !w.DX_XuatHang_DuKien.HasValue ? w.DX_XuatHang_DuKien == null : w.DX_XuatHang_DuKien >= DateBeginB && !w.DX_XuatHang_DuKien.HasValue ? w.DX_XuatHang_DuKien == null : w.DX_XuatHang_DuKien <= DateEndB)
+            .Select(s => new OrdersObject {
+                ProjectTaskID = (int)s.ProcessProjectTaskID,
+                ProjectTaskCustomerId = s.ProjectTaskCustomerId,
+                ProjectTaskDeadline = s.ProjectTaskDeadline,
+                ProjectTaskDescription = s.ProjectTaskDescription,
+                ProjectTaskDiameterOut = s.ProjectTaskDiameterOut,
+                ProjectTaskDisplayName = s.ProjectTaskDisplayName,
+                ProjectTaskHardness = s.ProjectTaskHardness,
+                ProjectTaskHoleNum = s.ProjectTaskHoleNum,
+                ProjectTaskHorikomi = s.ProjectTaskHorikomi,
+                ProjectTaskMaterialsCode = s.ProjectTaskMaterialsCode,
+                ProjectTaskMaterialsRequire = s.ProjectTaskMaterialsRequire,
+                ProjectTaskMoldCode = s.ProjectTaskMoldCode,
+                ProjectTaskMoldsId = s.ProjectTaskMoldsId,
+                ProjectTaskOverlayNum = s.ProjectTaskOverlayNum,
+                ProjectTaskPriorityID = s.ProjectTaskPriorityID,
+                ProjectTaskQuantities = s.ProjectTaskQuantities,
+                ProjectTaskStatusID = s.ProjectTaskStatusID,
+                ProjectTaskThickness = s.ProjectTaskThickness,
+                ProjectTaskThicknessTotal = s.ProjectTaskThicknessTotal,
+                ProjectTaskTransmit = s.ProjectTaskTransmit,
+                DX_MaDonHang = s.DX_MaDonHang,
+                DX_XuatHang_DuKien = s.DX_XuatHang_DuKien,
+                DX_XuatHang_ThucTe = s.DX_XuatHang_ThucTe,
+                DX_DuKienGC_EDM = s.GC082,
+                DX_DuKienHT_EDM = s.DK082,
+                DX_ThucTeHT_EDM = s.TT082,
+                DX_DuKienGC_Mai = s.GC108,
+                DX_DuKienHT_Mai = s.DK108,
+                DX_ThucTeHT_Mai = s.TT108,
+                DX_DuKienGC_MC = s.GC074,
+                DX_DuKienHT_MC = s.DK074,
+                DX_ThucTeHT_MC = s.TT074,
+                DX_DuKienGC_NC = s.GC085,
+                DX_DuKienHT_NC = s.DK085,
+                DX_ThucTeHT_NC = s.TT085,
+                DX_DuKienGC_Nhiet = s.GC091,
+                DX_DuKienHT_Nhiet = s.DK091,
+                DX_ThucTeHT_Nhiet = s.TT091,
+                DX_DuKienGC_PhayTay = s.GC076,
+                DX_DuKienHT_PhayTay = s.DK076,
+                DX_ThucTeHT_PhayTay = s.TT076,
+                DX_DuKienGC_QA = s.GC077,
+                DX_DuKienHT_QA = s.DK077,
+                DX_ThucTeHT_QA = s.TT077,
+                DX_DuKienGC_WEDM = s.GC083,
+                DX_DuKienHT_WEDM = s.DK083,
+                DX_ThucTeHT_WEDM = s.TT083,
+                DX_DuKienGC_LapRap = s.GC100,
+                DX_DuKienHT_LapRap = s.DK100,
+                DX_ThucTeHT_LapRap = s.TT100
+            }).OrderByDescending(o => o.ProjectTaskTransmit).ThenBy(o => o.ProjectTaskPriorityID);
     }
     public static void OrdersCreated(string ProjectTaskMoldCode, string ProjectTaskOverlayNum, string ProjectTaskHoleNum, decimal ProjectTaskDiameterOut, string ProjectTaskMaterialsRequire, string ProjectTaskMaterialsCode, int ProjectTaskMoldsId,
                                      int ProjectTaskThickness, string ProjectTaskThicknessTotal, int ProjectTaskQuantities, string ProjectTaskHorikomi, string ProjectTaskHardness, int ProjectTaskCustomerId,
@@ -176,32 +170,7 @@ public class OrdersModels
                 pt.ProjectTaskCustomerId = ProjectTaskCustomerId;
                 pt.ProjectTaskTransmit = ProjectTaskTransmit;
                 pt.DX_MaDonHang         = SystemModels.Fn_Get_MaDinhDanh(null, "DH", 6, "Mã đơn hàng");
-
-                // -----
-                DonHang_CongDoanTG data = new DonHang_CongDoanTG { };
-                data.DX_DuKienHT_EDM = DX_DuKienHT_EDM;
-                data.DX_DuKienHT_Mai = DX_DuKienHT_Mai;
-                data.DX_DuKienHT_MC = DX_DuKienHT_MC;
-                data.DX_DuKienHT_NC = DX_DuKienHT_NC;
-                data.DX_DuKienHT_Nhiet = DX_DuKienHT_Nhiet;
-                data.DX_DuKienHT_PhayTay = DX_DuKienHT_PhayTay;
-                data.DX_DuKienHT_QA = DX_DuKienHT_QA;
-                data.DX_DuKienHT_WEDM = DX_DuKienHT_WEDM;
-                data.DX_DuKienHT_LapRap = DX_DuKienHT_LapRap;
-                data.DX_XuatHang_DuKien = DX_XuatHang_DuKien;
-
-                JObject oData = (JObject)JToken.FromObject(data);
-                pt.DX_CongDoanTG = oData.ToString(Formatting.None);
-
-                //pt.DX_XuatHang_DuKien   = DX_XuatHang_DuKien.HasValue ? DX_XuatHang_DuKien : null;
-                //pt.DX_DuKienHT_EDM      = DX_DuKienHT_EDM.HasValue ? DX_DuKienHT_EDM : null;
-                //pt.DX_DuKienHT_Mai      = DX_DuKienHT_Mai.HasValue ? DX_DuKienHT_Mai : null;
-                //pt.DX_DuKienHT_MC       = DX_DuKienHT_MC.HasValue ? DX_DuKienHT_MC : null;
-                //pt.DX_DuKienHT_NC       = DX_DuKienHT_NC.HasValue ? DX_DuKienHT_NC : null;
-                //pt.DX_DuKienHT_Nhiet    = DX_DuKienHT_Nhiet.HasValue ? DX_DuKienHT_Nhiet : null;
-                //pt.DX_DuKienHT_PhayTay  = DX_DuKienHT_PhayTay.HasValue ? DX_DuKienHT_PhayTay : null;
-                //pt.DX_DuKienHT_QA       = DX_DuKienHT_QA.HasValue ? DX_DuKienHT_QA : null;
-                //pt.DX_DuKienHT_WEDM     = DX_DuKienHT_WEDM.HasValue ? DX_DuKienHT_WEDM : null;
+                pt.DX_XuatHang_DuKien   = DX_XuatHang_DuKien.HasValue ? DX_XuatHang_DuKien : null;
 
                 Nullable<decimal> factor = LINQData.db.PM_ProjectMolds.Where(w => w.MoldsId == ProjectTaskMoldsId).Select(s => s.MoldsFactor).FirstOrDefault();
                 if (factor != null)
@@ -221,10 +190,18 @@ public class OrdersModels
                                                                         ItemPos = pl.ProcessListOrder
                                                                     }).OrderByDescending(o => o.ItemPos).ToList();
                 int ProcessTo = 0;
+                // -----   
+                int[] ids = new int[] { 74, 76, 77, 82, 83, 85, 91, 100, 108 };
+                DateTime?[] dataDK = new DateTime?[] { DX_DuKienHT_MC, DX_DuKienHT_PhayTay, DX_DuKienHT_QA, DX_DuKienHT_EDM, DX_DuKienHT_WEDM, DX_DuKienHT_NC, DX_DuKienHT_Nhiet, DX_DuKienHT_LapRap, DX_DuKienHT_Mai };
                 foreach (var MoldsProcess in ListMoldsProcess) {
                     int dataQA = LINQData.db.PM_ProjectProcessLists.FirstOrDefault(fod => fod.ProcessListGroup.Equals("dataQA")).ProcessListId;
                     Nullable<Boolean> DXNhanDuKien = LINQData.db.PM_ProjectProcessLists.FirstOrDefault(fod => fod.ProcessListId == MoldsProcess.ProcessListId).DXNhanDuKien;
                     Nullable<DateTime> DXNgayNhanDuKien = (DXNhanDuKien == true ? ProjectTaskTransmit.AddHours(1) : (DateTime?)null);
+                    Nullable<DateTime> HoanThanhDuKien = (DateTime?)null;
+                    for (int i = 0; i < ids.Length; i++) {
+                        if (ids[i] == MoldsProcess.ProcessListId)
+                            HoanThanhDuKien = dataDK[i] != null ? dataDK[i] : (DateTime?)null;
+                    }
                     LINQData.db.PM_ProjectProcesses.InsertOnSubmit(new PM_ProjectProcess() {
                         ProcessProjectTaskID = newTask.ProjectTaskID,
                         ProcessListId = MoldsProcess.ProcessListId,
@@ -232,6 +209,7 @@ public class OrdersModels
                         ProcessGangerBrowse = false,
                         ProcessSMGangerBrowse = false,
                         DXChuyenQuaCongDoan = ProcessTo,
+                        DX_HoanThanhDuKien = HoanThanhDuKien,
                         CreatedWhen = DateTime.Now,
                         CreatedByUserId = CMSContext.CurrentUser.UserID,
                         ModifiedWhen = DateTime.Now,
@@ -265,6 +243,7 @@ public class OrdersModels
             {
                 bool UpdateProcess = false;
                 PM_ProjectTask pt = LINQData.db.PM_ProjectTasks.FirstOrDefault(x => x.ProjectTaskID == ProjectTaskID);
+                
                 if (pt != null)
                 {
                     if (pt.ProjectTaskMoldsId != ProjectTaskMoldsId)
@@ -285,29 +264,8 @@ public class OrdersModels
                     pt.ProjectTaskTransmit = ProjectTaskTransmit;
                     pt.ProjectTaskDeadline = ProjectTaskDeadline;
                     pt.ProjectTaskDescription = ProjectTaskDescription;
-
-                    // -----
-                    JObject rx = JObject.Parse(pt.DX_CongDoanTG);
-                    rx["DX_DuKienHT_EDM"] = DX_DuKienHT_EDM;
-                    rx["DX_DuKienHT_Mai"] = DX_DuKienHT_Mai;
-                    rx["DX_DuKienHT_MC"] = DX_DuKienHT_MC;
-                    rx["DX_DuKienHT_NC"] = DX_DuKienHT_NC;
-                    rx["DX_DuKienHT_Nhiet"] = DX_DuKienHT_Nhiet;
-                    rx["DX_DuKienHT_PhayTay"] = DX_DuKienHT_PhayTay;
-                    rx["DX_DuKienHT_QA"] = DX_DuKienHT_QA;
-                    rx["DX_DuKienHT_WEDM"] = DX_DuKienHT_WEDM;
-                    rx["DX_DuKienHT_LapRap"] = DX_DuKienHT_LapRap;
-                    rx["DX_XuatHang_DuKien"] = DX_XuatHang_DuKien;
-                    pt.DX_CongDoanTG = rx.ToString(Formatting.None);
-                    //pt.DX_XuatHang_DuKien = DX_XuatHang_DuKien.HasValue ? DX_XuatHang_DuKien : null;
-                    //pt.DX_DuKienHT_EDM = DX_DuKienHT_EDM.HasValue ? DX_DuKienHT_EDM : null;
-                    //pt.DX_DuKienHT_Mai = DX_DuKienHT_Mai.HasValue ? DX_DuKienHT_Mai : null;
-                    //pt.DX_DuKienHT_MC = DX_DuKienHT_MC.HasValue ? DX_DuKienHT_MC : null;
-                    //pt.DX_DuKienHT_NC = DX_DuKienHT_NC.HasValue ? DX_DuKienHT_NC : null;
-                    //pt.DX_DuKienHT_Nhiet = DX_DuKienHT_Nhiet.HasValue ? DX_DuKienHT_Nhiet : null;
-                    //pt.DX_DuKienHT_PhayTay = DX_DuKienHT_PhayTay.HasValue ? DX_DuKienHT_PhayTay : null;
-                    //pt.DX_DuKienHT_QA = DX_DuKienHT_QA.HasValue ? DX_DuKienHT_QA : null;
-                    //pt.DX_DuKienHT_WEDM = DX_DuKienHT_WEDM.HasValue ? DX_DuKienHT_WEDM : null;
+                    pt.DX_XuatHang_DuKien = DX_XuatHang_DuKien.HasValue ? DX_XuatHang_DuKien : null;
+                    
 
                     if (UpdateProcess)
                     {
@@ -338,11 +296,23 @@ public class OrdersModels
                                 });
                         }
                     }
+
+                    // -----  
+                    int[] ids = new int[] { 74, 76, 77, 82, 83, 85, 91, 100, 108 };
+                    DateTime?[] dataDK = new DateTime?[] { DX_DuKienHT_MC, DX_DuKienHT_PhayTay, DX_DuKienHT_QA, DX_DuKienHT_EDM, DX_DuKienHT_WEDM, DX_DuKienHT_NC, DX_DuKienHT_Nhiet, DX_DuKienHT_LapRap, DX_DuKienHT_Mai };
+                    for (int i = 0; i < ids.Length; i++) {
+                        PM_ProjectProcess pp = LINQData.db.PM_ProjectProcesses.FirstOrDefault(fod => fod.ProcessProjectTaskID == ProjectTaskID && fod.ProcessListId == ids[i]);
+                        if (pp != null)
+                            pp.DX_HoanThanhDuKien = dataDK[i] != null ? dataDK[i] : (DateTime?)null;
+                    }
+
                 }
                 LINQData.db.SubmitChanges();
                 transactionScope.Complete();
+            } catch (Exception ex) {
+                DataUtils.WriteLog("Error: Update đơn hàng!");
+                DataUtils.WriteLog(ex.ToString());
             }
-            catch { }
         }
     }
     public static void OrdersUpdatedNd(int ProjectTaskID, int ProjectTaskStatusID, int ProjectTaskPriorityID, DateTime ProjectTaskDeadline, DateTime ProjectTaskTransmit, string ProjectTaskDescription,
@@ -367,14 +337,14 @@ public class OrdersModels
             pt.ProjectTaskDescription = ProjectTaskDescription;
             pt.DX_XuatHang_ThucTe = DX_XuatHang_ThucTe.HasValue ? DX_XuatHang_ThucTe : null;
             pt.DX_XuatHang_DuKien = DX_XuatHang_DuKien.HasValue ? DX_XuatHang_DuKien : null;
-            pt.DX_DuKienHT_EDM = DX_DuKienHT_EDM.HasValue ? DX_DuKienHT_EDM : null;
-            pt.DX_DuKienHT_Mai = DX_DuKienHT_Mai.HasValue ? DX_DuKienHT_Mai : null;
-            pt.DX_DuKienHT_MC = DX_DuKienHT_MC.HasValue ? DX_DuKienHT_MC : null;
-            pt.DX_DuKienHT_NC = DX_DuKienHT_NC.HasValue ? DX_DuKienHT_NC : null;
-            pt.DX_DuKienHT_Nhiet = DX_DuKienHT_Nhiet.HasValue ? DX_DuKienHT_Nhiet : null;
-            pt.DX_DuKienHT_PhayTay = DX_DuKienHT_PhayTay.HasValue ? DX_DuKienHT_PhayTay : null;
-            pt.DX_DuKienHT_QA = DX_DuKienHT_QA.HasValue ? DX_DuKienHT_QA : null;
-            pt.DX_DuKienHT_WEDM = DX_DuKienHT_WEDM.HasValue ? DX_DuKienHT_WEDM : null;
+            //pt.DX_DuKienHT_EDM = DX_DuKienHT_EDM.HasValue ? DX_DuKienHT_EDM : null;
+            //pt.DX_DuKienHT_Mai = DX_DuKienHT_Mai.HasValue ? DX_DuKienHT_Mai : null;
+            //pt.DX_DuKienHT_MC = DX_DuKienHT_MC.HasValue ? DX_DuKienHT_MC : null;
+            //pt.DX_DuKienHT_NC = DX_DuKienHT_NC.HasValue ? DX_DuKienHT_NC : null;
+            //pt.DX_DuKienHT_Nhiet = DX_DuKienHT_Nhiet.HasValue ? DX_DuKienHT_Nhiet : null;
+            //pt.DX_DuKienHT_PhayTay = DX_DuKienHT_PhayTay.HasValue ? DX_DuKienHT_PhayTay : null;
+            //pt.DX_DuKienHT_QA = DX_DuKienHT_QA.HasValue ? DX_DuKienHT_QA : null;
+            //pt.DX_DuKienHT_WEDM = DX_DuKienHT_WEDM.HasValue ? DX_DuKienHT_WEDM : null;
             LINQData.db.SubmitChanges();
         }
     }
