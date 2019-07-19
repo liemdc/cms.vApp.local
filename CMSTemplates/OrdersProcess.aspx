@@ -74,7 +74,7 @@
                         <dx:GridViewBandColumn Caption="Dữ liệu thời gian" VisibleIndex="1">
                             <Columns>
                                 <dx:GridViewDataTextColumn EditFormSettings-VisibleIndex="8" FieldName="ProjectTaskTransmit" Caption="Ngày đặt hàng" ReadOnly="true" PropertiesTextEdit-DisplayFormatString="dd/MM/yyyy HH:mm" EditFormSettings-Visible="False" Width="120"/>
-                                <dx:GridViewDataTextColumn EditFormSettings-VisibleIndex="9" FieldName="ProjectTaskDeadline" Caption="Ngày xuất" ReadOnly="true" PropertiesTextEdit-DisplayFormatString="dd/MM/yyyy HH:mm" EditFormSettings-Visible="False" Width="120"/>
+                                <dx:GridViewDataTextColumn EditFormSettings-VisibleIndex="9" FieldName="DX_HoanThanhDuKien" Caption="Dự kiến HT công đoạn" ReadOnly="true" PropertiesTextEdit-DisplayFormatString="dd/MM/yyyy HH:mm" EditFormSettings-Visible="False" Width="148"/>
                                 <dx:GridViewDataDateColumn EditFormSettings-VisibleIndex="10" FieldName="ProcessExpectedCompletion" Caption="Tg nhận dự kiến" Width="130">
                                     <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm">
                                         <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />

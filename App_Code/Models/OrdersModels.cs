@@ -451,6 +451,7 @@ public class OrdersModels
                 ProjectTaskPriorityID = sm.pp.pp.pt.ProjectTaskPriorityID,
                 ProcessExpectedCompletion = sm.pp.pp.pp.ProcessExpectedCompletion,
                 ProcessNotes = sm.pp.pp.pp.ProcessNotes,
+                DX_HoanThanhDuKien = sm.pp.pp.pp.DX_HoanThanhDuKien,
                 DXMoTa = sm.pp.pp.pt.ProjectTaskDescription,
                 DXNgayNhanThucTe = sm.pp.pp.pp.DXNgayNhanThucTe,
                 DXNgayBatDauDuKien = sm.pp.pp.pp.DXNgayBatDauDuKien,

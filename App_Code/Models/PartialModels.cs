@@ -246,6 +246,7 @@ public partial class OrdersProcessObject
     public Nullable<DateTime> DXGioBatDauThucTe { get; set; }
     public Nullable<DateTime> DXGioKetThucThucTe { get; set; }
     public Nullable<int> DXChuyenQuaCongDoan { get; set; }
+    public Nullable<DateTime> DX_HoanThanhDuKien { get; set; }
 }
 public partial class OrdersProcessDetailObject
 {
