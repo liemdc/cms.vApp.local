@@ -159,10 +159,10 @@ public partial class CMSTemplates_OrdersList : TemplatePage {
         for (int i = 0; i < GField.Length; i++) {
             GridViewDataDateColumn dataColumns = (dataGrid.Columns[GField[i]] as GridViewDataDateColumn);
             dataColumns.Settings.AllowHeaderFilter = DevExpress.Utils.DefaultBoolean.False;
-            if(i % 2 != 0 && valid)
-                dataColumns.EditFormSettings.Visible = DevExpress.Utils.DefaultBoolean.False;
-            else
+            if(i % 2 == 0 && valid)
                 dataColumns.EditFormSettings.Visible = DevExpress.Utils.DefaultBoolean.True;
+            else
+                dataColumns.EditFormSettings.Visible = DevExpress.Utils.DefaultBoolean.False;
             dataColumns.Width = Unit.Pixel(148);
             dataColumns.PropertiesDateEdit.EditFormatString = "dd/MM/yyyy HH:mm";
             dataColumns.PropertiesDateEdit.DisplayFormatString = "dd/MM/yyyy HH:mm";
