@@ -293,19 +293,19 @@ namespace Models
 			}
 		}
 		
-		public System.Data.Linq.Table<DX_View_DonHang_Joined> DX_View_DonHang_Joineds
-		{
-			get
-			{
-				return this.GetTable<DX_View_DonHang_Joined>();
-			}
-		}
-		
 		public System.Data.Linq.Table<PM_ProjectProcess> PM_ProjectProcesses
 		{
 			get
 			{
 				return this.GetTable<PM_ProjectProcess>();
+			}
+		}
+		
+		public System.Data.Linq.Table<DX_View_DonHang_Joined> DX_View_DonHang_Joineds
+		{
+			get
+			{
+				return this.GetTable<DX_View_DonHang_Joined>();
 			}
 		}
 	}
@@ -8680,1761 +8680,6 @@ namespace Models
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.DX_View_DonHang_Joined")]
-	public partial class DX_View_DonHang_Joined
-	{
-		
-		private System.Nullable<int> _ProcessProjectTaskID;
-		
-		private string _ProjectTaskMoldCode;
-		
-		private System.Nullable<int> _ProjectTaskMoldsId;
-		
-		private System.Nullable<decimal> _ProjectTaskMoldsFactor;
-		
-		private string _ProjectTaskDisplayName;
-		
-		private System.Nullable<int> _ProjectTaskQuantities;
-		
-		private string _ProjectTaskHorikomi;
-		
-		private System.Nullable<int> _ProjectTaskThickness;
-		
-		private string _ProjectTaskThicknessTotal;
-		
-		private System.Nullable<decimal> _ProjectTaskDiameterOut;
-		
-		private string _ProjectTaskHardness;
-		
-		private string _ProjectTaskOverlayNum;
-		
-		private string _ProjectTaskHoleNum;
-		
-		private string _ProjectTaskBox;
-		
-		private string _ProjectTaskMaterialsCode;
-		
-		private string _ProjectTaskMaterialsRequire;
-		
-		private string _ProjectTaskDimension;
-		
-		private System.Nullable<decimal> _ProjectTaskWeight;
-		
-		private System.Nullable<System.DateTime> _ProjectTaskDeadline;
-		
-		private System.Nullable<System.DateTime> _ProjectTaskTransmit;
-		
-		private int _ProjectTaskStatusID;
-		
-		private int _ProjectTaskPriorityID;
-		
-		private string _ProjectTaskDescription;
-		
-		private System.Nullable<int> _ProjectTaskOwnerID;
-		
-		private System.Nullable<int> _ProjectTaskCreatedByID;
-		
-		private System.Nullable<int> _ProjectTaskAssignedToUserID;
-		
-		private int _ProjectTaskProgress;
-		
-		private double _ProjectTaskHours;
-		
-		private System.DateTime _ProjectTaskLastModified;
-		
-		private System.Nullable<int> _ProjectTaskUserOrder;
-		
-		private System.Nullable<bool> _ProjectTaskNotificationSent;
-		
-		private System.Nullable<bool> _ProjectTaskIsPrivate;
-		
-		private System.Nullable<int> _ProjectTaskCustomerId;
-		
-		private System.Nullable<System.DateTime> _ProjectTaskExpectedThree;
-		
-		private System.Nullable<System.DateTime> _DX_XuatHang_DuKien;
-		
-		private System.Nullable<System.DateTime> _DX_XuatHang_ThucTe;
-		
-		private string _DX_MaDonHang;
-		
-		private System.Nullable<decimal> _GC074;
-		
-		private System.Nullable<System.DateTime> _DK074;
-		
-		private System.Nullable<System.DateTime> _TT074;
-		
-		private System.Nullable<decimal> _GC075;
-		
-		private System.Nullable<System.DateTime> _DK075;
-		
-		private System.Nullable<System.DateTime> _TT075;
-		
-		private System.Nullable<decimal> _GC076;
-		
-		private System.Nullable<System.DateTime> _DK076;
-		
-		private System.Nullable<System.DateTime> _TT076;
-		
-		private System.Nullable<decimal> _GC077;
-		
-		private System.Nullable<System.DateTime> _DK077;
-		
-		private System.Nullable<System.DateTime> _TT077;
-		
-		private System.Nullable<decimal> _GC081;
-		
-		private System.Nullable<System.DateTime> _DK081;
-		
-		private System.Nullable<System.DateTime> _TT081;
-		
-		private System.Nullable<decimal> _GC082;
-		
-		private System.Nullable<System.DateTime> _DK082;
-		
-		private System.Nullable<System.DateTime> _TT082;
-		
-		private System.Nullable<decimal> _GC083;
-		
-		private System.Nullable<System.DateTime> _DK083;
-		
-		private System.Nullable<System.DateTime> _TT083;
-		
-		private System.Nullable<decimal> _GC085;
-		
-		private System.Nullable<System.DateTime> _DK085;
-		
-		private System.Nullable<System.DateTime> _TT085;
-		
-		private System.Nullable<decimal> _GC091;
-		
-		private System.Nullable<System.DateTime> _DK091;
-		
-		private System.Nullable<System.DateTime> _TT091;
-		
-		private System.Nullable<decimal> _GC094;
-		
-		private System.Nullable<System.DateTime> _DK094;
-		
-		private System.Nullable<System.DateTime> _TT094;
-		
-		private System.Nullable<decimal> _GC095;
-		
-		private System.Nullable<System.DateTime> _DK095;
-		
-		private System.Nullable<System.DateTime> _TT095;
-		
-		private System.Nullable<decimal> _GC096;
-		
-		private System.Nullable<System.DateTime> _DK096;
-		
-		private System.Nullable<System.DateTime> _TT096;
-		
-		private System.Nullable<decimal> _GC097;
-		
-		private System.Nullable<System.DateTime> _DK097;
-		
-		private System.Nullable<System.DateTime> _TT097;
-		
-		private System.Nullable<decimal> _GC098;
-		
-		private System.Nullable<System.DateTime> _DK098;
-		
-		private System.Nullable<System.DateTime> _TT098;
-		
-		private System.Nullable<decimal> _GC100;
-		
-		private System.Nullable<System.DateTime> _DK100;
-		
-		private System.Nullable<System.DateTime> _TT100;
-		
-		private System.Nullable<decimal> _GC101;
-		
-		private System.Nullable<System.DateTime> _DK101;
-		
-		private System.Nullable<System.DateTime> _TT101;
-		
-		private System.Nullable<decimal> _GC102;
-		
-		private System.Nullable<System.DateTime> _DK102;
-		
-		private System.Nullable<System.DateTime> _TT102;
-		
-		private System.Nullable<decimal> _GC103;
-		
-		private System.Nullable<System.DateTime> _DK103;
-		
-		private System.Nullable<System.DateTime> _TT103;
-		
-		private System.Nullable<decimal> _GC108;
-		
-		private System.Nullable<System.DateTime> _DK108;
-		
-		private System.Nullable<System.DateTime> _TT108;
-		
-		private System.Nullable<decimal> _GC111;
-		
-		private System.Nullable<System.DateTime> _DK111;
-		
-		private System.Nullable<System.DateTime> _TT111;
-		
-		public DX_View_DonHang_Joined()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProcessProjectTaskID", DbType="Int")]
-		public System.Nullable<int> ProcessProjectTaskID
-		{
-			get
-			{
-				return this._ProcessProjectTaskID;
-			}
-			set
-			{
-				if ((this._ProcessProjectTaskID != value))
-				{
-					this._ProcessProjectTaskID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskMoldCode", DbType="NVarChar(25)")]
-		public string ProjectTaskMoldCode
-		{
-			get
-			{
-				return this._ProjectTaskMoldCode;
-			}
-			set
-			{
-				if ((this._ProjectTaskMoldCode != value))
-				{
-					this._ProjectTaskMoldCode = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskMoldsId", DbType="Int")]
-		public System.Nullable<int> ProjectTaskMoldsId
-		{
-			get
-			{
-				return this._ProjectTaskMoldsId;
-			}
-			set
-			{
-				if ((this._ProjectTaskMoldsId != value))
-				{
-					this._ProjectTaskMoldsId = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskMoldsFactor", DbType="Decimal(10,2)")]
-		public System.Nullable<decimal> ProjectTaskMoldsFactor
-		{
-			get
-			{
-				return this._ProjectTaskMoldsFactor;
-			}
-			set
-			{
-				if ((this._ProjectTaskMoldsFactor != value))
-				{
-					this._ProjectTaskMoldsFactor = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskDisplayName", DbType="NVarChar(200) NOT NULL", CanBeNull=false)]
-		public string ProjectTaskDisplayName
-		{
-			get
-			{
-				return this._ProjectTaskDisplayName;
-			}
-			set
-			{
-				if ((this._ProjectTaskDisplayName != value))
-				{
-					this._ProjectTaskDisplayName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskQuantities", DbType="Int")]
-		public System.Nullable<int> ProjectTaskQuantities
-		{
-			get
-			{
-				return this._ProjectTaskQuantities;
-			}
-			set
-			{
-				if ((this._ProjectTaskQuantities != value))
-				{
-					this._ProjectTaskQuantities = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskHorikomi", DbType="NVarChar(25)")]
-		public string ProjectTaskHorikomi
-		{
-			get
-			{
-				return this._ProjectTaskHorikomi;
-			}
-			set
-			{
-				if ((this._ProjectTaskHorikomi != value))
-				{
-					this._ProjectTaskHorikomi = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskThickness", DbType="Int")]
-		public System.Nullable<int> ProjectTaskThickness
-		{
-			get
-			{
-				return this._ProjectTaskThickness;
-			}
-			set
-			{
-				if ((this._ProjectTaskThickness != value))
-				{
-					this._ProjectTaskThickness = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskThicknessTotal", DbType="NVarChar(25)")]
-		public string ProjectTaskThicknessTotal
-		{
-			get
-			{
-				return this._ProjectTaskThicknessTotal;
-			}
-			set
-			{
-				if ((this._ProjectTaskThicknessTotal != value))
-				{
-					this._ProjectTaskThicknessTotal = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskDiameterOut", DbType="Decimal(10,0)")]
-		public System.Nullable<decimal> ProjectTaskDiameterOut
-		{
-			get
-			{
-				return this._ProjectTaskDiameterOut;
-			}
-			set
-			{
-				if ((this._ProjectTaskDiameterOut != value))
-				{
-					this._ProjectTaskDiameterOut = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskHardness", DbType="NVarChar(25)")]
-		public string ProjectTaskHardness
-		{
-			get
-			{
-				return this._ProjectTaskHardness;
-			}
-			set
-			{
-				if ((this._ProjectTaskHardness != value))
-				{
-					this._ProjectTaskHardness = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskOverlayNum", DbType="NVarChar(25)")]
-		public string ProjectTaskOverlayNum
-		{
-			get
-			{
-				return this._ProjectTaskOverlayNum;
-			}
-			set
-			{
-				if ((this._ProjectTaskOverlayNum != value))
-				{
-					this._ProjectTaskOverlayNum = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskHoleNum", DbType="NVarChar(25)")]
-		public string ProjectTaskHoleNum
-		{
-			get
-			{
-				return this._ProjectTaskHoleNum;
-			}
-			set
-			{
-				if ((this._ProjectTaskHoleNum != value))
-				{
-					this._ProjectTaskHoleNum = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskBox", DbType="VarChar(3)")]
-		public string ProjectTaskBox
-		{
-			get
-			{
-				return this._ProjectTaskBox;
-			}
-			set
-			{
-				if ((this._ProjectTaskBox != value))
-				{
-					this._ProjectTaskBox = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskMaterialsCode", DbType="NVarChar(25)")]
-		public string ProjectTaskMaterialsCode
-		{
-			get
-			{
-				return this._ProjectTaskMaterialsCode;
-			}
-			set
-			{
-				if ((this._ProjectTaskMaterialsCode != value))
-				{
-					this._ProjectTaskMaterialsCode = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskMaterialsRequire", DbType="NVarChar(12)")]
-		public string ProjectTaskMaterialsRequire
-		{
-			get
-			{
-				return this._ProjectTaskMaterialsRequire;
-			}
-			set
-			{
-				if ((this._ProjectTaskMaterialsRequire != value))
-				{
-					this._ProjectTaskMaterialsRequire = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskDimension", DbType="NVarChar(255)")]
-		public string ProjectTaskDimension
-		{
-			get
-			{
-				return this._ProjectTaskDimension;
-			}
-			set
-			{
-				if ((this._ProjectTaskDimension != value))
-				{
-					this._ProjectTaskDimension = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskWeight", DbType="Decimal(10,2)")]
-		public System.Nullable<decimal> ProjectTaskWeight
-		{
-			get
-			{
-				return this._ProjectTaskWeight;
-			}
-			set
-			{
-				if ((this._ProjectTaskWeight != value))
-				{
-					this._ProjectTaskWeight = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskDeadline", DbType="DateTime")]
-		public System.Nullable<System.DateTime> ProjectTaskDeadline
-		{
-			get
-			{
-				return this._ProjectTaskDeadline;
-			}
-			set
-			{
-				if ((this._ProjectTaskDeadline != value))
-				{
-					this._ProjectTaskDeadline = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskTransmit", DbType="DateTime")]
-		public System.Nullable<System.DateTime> ProjectTaskTransmit
-		{
-			get
-			{
-				return this._ProjectTaskTransmit;
-			}
-			set
-			{
-				if ((this._ProjectTaskTransmit != value))
-				{
-					this._ProjectTaskTransmit = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskStatusID", DbType="Int NOT NULL")]
-		public int ProjectTaskStatusID
-		{
-			get
-			{
-				return this._ProjectTaskStatusID;
-			}
-			set
-			{
-				if ((this._ProjectTaskStatusID != value))
-				{
-					this._ProjectTaskStatusID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskPriorityID", DbType="Int NOT NULL")]
-		public int ProjectTaskPriorityID
-		{
-			get
-			{
-				return this._ProjectTaskPriorityID;
-			}
-			set
-			{
-				if ((this._ProjectTaskPriorityID != value))
-				{
-					this._ProjectTaskPriorityID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskDescription", DbType="NVarChar(MAX)")]
-		public string ProjectTaskDescription
-		{
-			get
-			{
-				return this._ProjectTaskDescription;
-			}
-			set
-			{
-				if ((this._ProjectTaskDescription != value))
-				{
-					this._ProjectTaskDescription = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskOwnerID", DbType="Int")]
-		public System.Nullable<int> ProjectTaskOwnerID
-		{
-			get
-			{
-				return this._ProjectTaskOwnerID;
-			}
-			set
-			{
-				if ((this._ProjectTaskOwnerID != value))
-				{
-					this._ProjectTaskOwnerID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskCreatedByID", DbType="Int")]
-		public System.Nullable<int> ProjectTaskCreatedByID
-		{
-			get
-			{
-				return this._ProjectTaskCreatedByID;
-			}
-			set
-			{
-				if ((this._ProjectTaskCreatedByID != value))
-				{
-					this._ProjectTaskCreatedByID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskAssignedToUserID", DbType="Int")]
-		public System.Nullable<int> ProjectTaskAssignedToUserID
-		{
-			get
-			{
-				return this._ProjectTaskAssignedToUserID;
-			}
-			set
-			{
-				if ((this._ProjectTaskAssignedToUserID != value))
-				{
-					this._ProjectTaskAssignedToUserID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskProgress", DbType="Int NOT NULL")]
-		public int ProjectTaskProgress
-		{
-			get
-			{
-				return this._ProjectTaskProgress;
-			}
-			set
-			{
-				if ((this._ProjectTaskProgress != value))
-				{
-					this._ProjectTaskProgress = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskHours", DbType="Float NOT NULL")]
-		public double ProjectTaskHours
-		{
-			get
-			{
-				return this._ProjectTaskHours;
-			}
-			set
-			{
-				if ((this._ProjectTaskHours != value))
-				{
-					this._ProjectTaskHours = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskLastModified", DbType="DateTime NOT NULL")]
-		public System.DateTime ProjectTaskLastModified
-		{
-			get
-			{
-				return this._ProjectTaskLastModified;
-			}
-			set
-			{
-				if ((this._ProjectTaskLastModified != value))
-				{
-					this._ProjectTaskLastModified = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskUserOrder", DbType="Int")]
-		public System.Nullable<int> ProjectTaskUserOrder
-		{
-			get
-			{
-				return this._ProjectTaskUserOrder;
-			}
-			set
-			{
-				if ((this._ProjectTaskUserOrder != value))
-				{
-					this._ProjectTaskUserOrder = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskNotificationSent", DbType="Bit")]
-		public System.Nullable<bool> ProjectTaskNotificationSent
-		{
-			get
-			{
-				return this._ProjectTaskNotificationSent;
-			}
-			set
-			{
-				if ((this._ProjectTaskNotificationSent != value))
-				{
-					this._ProjectTaskNotificationSent = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskIsPrivate", DbType="Bit")]
-		public System.Nullable<bool> ProjectTaskIsPrivate
-		{
-			get
-			{
-				return this._ProjectTaskIsPrivate;
-			}
-			set
-			{
-				if ((this._ProjectTaskIsPrivate != value))
-				{
-					this._ProjectTaskIsPrivate = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskCustomerId", DbType="Int")]
-		public System.Nullable<int> ProjectTaskCustomerId
-		{
-			get
-			{
-				return this._ProjectTaskCustomerId;
-			}
-			set
-			{
-				if ((this._ProjectTaskCustomerId != value))
-				{
-					this._ProjectTaskCustomerId = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskExpectedThree", DbType="DateTime")]
-		public System.Nullable<System.DateTime> ProjectTaskExpectedThree
-		{
-			get
-			{
-				return this._ProjectTaskExpectedThree;
-			}
-			set
-			{
-				if ((this._ProjectTaskExpectedThree != value))
-				{
-					this._ProjectTaskExpectedThree = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DX_XuatHang_DuKien", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DX_XuatHang_DuKien
-		{
-			get
-			{
-				return this._DX_XuatHang_DuKien;
-			}
-			set
-			{
-				if ((this._DX_XuatHang_DuKien != value))
-				{
-					this._DX_XuatHang_DuKien = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DX_XuatHang_ThucTe", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DX_XuatHang_ThucTe
-		{
-			get
-			{
-				return this._DX_XuatHang_ThucTe;
-			}
-			set
-			{
-				if ((this._DX_XuatHang_ThucTe != value))
-				{
-					this._DX_XuatHang_ThucTe = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DX_MaDonHang", DbType="NVarChar(12)")]
-		public string DX_MaDonHang
-		{
-			get
-			{
-				return this._DX_MaDonHang;
-			}
-			set
-			{
-				if ((this._DX_MaDonHang != value))
-				{
-					this._DX_MaDonHang = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GC074", DbType="Decimal(10,2)")]
-		public System.Nullable<decimal> GC074
-		{
-			get
-			{
-				return this._GC074;
-			}
-			set
-			{
-				if ((this._GC074 != value))
-				{
-					this._GC074 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DK074", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DK074
-		{
-			get
-			{
-				return this._DK074;
-			}
-			set
-			{
-				if ((this._DK074 != value))
-				{
-					this._DK074 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TT074", DbType="DateTime")]
-		public System.Nullable<System.DateTime> TT074
-		{
-			get
-			{
-				return this._TT074;
-			}
-			set
-			{
-				if ((this._TT074 != value))
-				{
-					this._TT074 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GC075", DbType="Decimal(10,2)")]
-		public System.Nullable<decimal> GC075
-		{
-			get
-			{
-				return this._GC075;
-			}
-			set
-			{
-				if ((this._GC075 != value))
-				{
-					this._GC075 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DK075", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DK075
-		{
-			get
-			{
-				return this._DK075;
-			}
-			set
-			{
-				if ((this._DK075 != value))
-				{
-					this._DK075 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TT075", DbType="DateTime")]
-		public System.Nullable<System.DateTime> TT075
-		{
-			get
-			{
-				return this._TT075;
-			}
-			set
-			{
-				if ((this._TT075 != value))
-				{
-					this._TT075 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GC076", DbType="Decimal(10,2)")]
-		public System.Nullable<decimal> GC076
-		{
-			get
-			{
-				return this._GC076;
-			}
-			set
-			{
-				if ((this._GC076 != value))
-				{
-					this._GC076 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DK076", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DK076
-		{
-			get
-			{
-				return this._DK076;
-			}
-			set
-			{
-				if ((this._DK076 != value))
-				{
-					this._DK076 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TT076", DbType="DateTime")]
-		public System.Nullable<System.DateTime> TT076
-		{
-			get
-			{
-				return this._TT076;
-			}
-			set
-			{
-				if ((this._TT076 != value))
-				{
-					this._TT076 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GC077", DbType="Decimal(10,2)")]
-		public System.Nullable<decimal> GC077
-		{
-			get
-			{
-				return this._GC077;
-			}
-			set
-			{
-				if ((this._GC077 != value))
-				{
-					this._GC077 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DK077", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DK077
-		{
-			get
-			{
-				return this._DK077;
-			}
-			set
-			{
-				if ((this._DK077 != value))
-				{
-					this._DK077 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TT077", DbType="DateTime")]
-		public System.Nullable<System.DateTime> TT077
-		{
-			get
-			{
-				return this._TT077;
-			}
-			set
-			{
-				if ((this._TT077 != value))
-				{
-					this._TT077 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GC081", DbType="Decimal(10,2)")]
-		public System.Nullable<decimal> GC081
-		{
-			get
-			{
-				return this._GC081;
-			}
-			set
-			{
-				if ((this._GC081 != value))
-				{
-					this._GC081 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DK081", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DK081
-		{
-			get
-			{
-				return this._DK081;
-			}
-			set
-			{
-				if ((this._DK081 != value))
-				{
-					this._DK081 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TT081", DbType="DateTime")]
-		public System.Nullable<System.DateTime> TT081
-		{
-			get
-			{
-				return this._TT081;
-			}
-			set
-			{
-				if ((this._TT081 != value))
-				{
-					this._TT081 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GC082", DbType="Decimal(10,2)")]
-		public System.Nullable<decimal> GC082
-		{
-			get
-			{
-				return this._GC082;
-			}
-			set
-			{
-				if ((this._GC082 != value))
-				{
-					this._GC082 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DK082", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DK082
-		{
-			get
-			{
-				return this._DK082;
-			}
-			set
-			{
-				if ((this._DK082 != value))
-				{
-					this._DK082 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TT082", DbType="DateTime")]
-		public System.Nullable<System.DateTime> TT082
-		{
-			get
-			{
-				return this._TT082;
-			}
-			set
-			{
-				if ((this._TT082 != value))
-				{
-					this._TT082 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GC083", DbType="Decimal(10,2)")]
-		public System.Nullable<decimal> GC083
-		{
-			get
-			{
-				return this._GC083;
-			}
-			set
-			{
-				if ((this._GC083 != value))
-				{
-					this._GC083 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DK083", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DK083
-		{
-			get
-			{
-				return this._DK083;
-			}
-			set
-			{
-				if ((this._DK083 != value))
-				{
-					this._DK083 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TT083", DbType="DateTime")]
-		public System.Nullable<System.DateTime> TT083
-		{
-			get
-			{
-				return this._TT083;
-			}
-			set
-			{
-				if ((this._TT083 != value))
-				{
-					this._TT083 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GC085", DbType="Decimal(10,2)")]
-		public System.Nullable<decimal> GC085
-		{
-			get
-			{
-				return this._GC085;
-			}
-			set
-			{
-				if ((this._GC085 != value))
-				{
-					this._GC085 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DK085", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DK085
-		{
-			get
-			{
-				return this._DK085;
-			}
-			set
-			{
-				if ((this._DK085 != value))
-				{
-					this._DK085 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TT085", DbType="DateTime")]
-		public System.Nullable<System.DateTime> TT085
-		{
-			get
-			{
-				return this._TT085;
-			}
-			set
-			{
-				if ((this._TT085 != value))
-				{
-					this._TT085 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GC091", DbType="Decimal(10,2)")]
-		public System.Nullable<decimal> GC091
-		{
-			get
-			{
-				return this._GC091;
-			}
-			set
-			{
-				if ((this._GC091 != value))
-				{
-					this._GC091 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DK091", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DK091
-		{
-			get
-			{
-				return this._DK091;
-			}
-			set
-			{
-				if ((this._DK091 != value))
-				{
-					this._DK091 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TT091", DbType="DateTime")]
-		public System.Nullable<System.DateTime> TT091
-		{
-			get
-			{
-				return this._TT091;
-			}
-			set
-			{
-				if ((this._TT091 != value))
-				{
-					this._TT091 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GC094", DbType="Decimal(10,2)")]
-		public System.Nullable<decimal> GC094
-		{
-			get
-			{
-				return this._GC094;
-			}
-			set
-			{
-				if ((this._GC094 != value))
-				{
-					this._GC094 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DK094", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DK094
-		{
-			get
-			{
-				return this._DK094;
-			}
-			set
-			{
-				if ((this._DK094 != value))
-				{
-					this._DK094 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TT094", DbType="DateTime")]
-		public System.Nullable<System.DateTime> TT094
-		{
-			get
-			{
-				return this._TT094;
-			}
-			set
-			{
-				if ((this._TT094 != value))
-				{
-					this._TT094 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GC095", DbType="Decimal(10,2)")]
-		public System.Nullable<decimal> GC095
-		{
-			get
-			{
-				return this._GC095;
-			}
-			set
-			{
-				if ((this._GC095 != value))
-				{
-					this._GC095 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DK095", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DK095
-		{
-			get
-			{
-				return this._DK095;
-			}
-			set
-			{
-				if ((this._DK095 != value))
-				{
-					this._DK095 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TT095", DbType="DateTime")]
-		public System.Nullable<System.DateTime> TT095
-		{
-			get
-			{
-				return this._TT095;
-			}
-			set
-			{
-				if ((this._TT095 != value))
-				{
-					this._TT095 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GC096", DbType="Decimal(10,2)")]
-		public System.Nullable<decimal> GC096
-		{
-			get
-			{
-				return this._GC096;
-			}
-			set
-			{
-				if ((this._GC096 != value))
-				{
-					this._GC096 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DK096", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DK096
-		{
-			get
-			{
-				return this._DK096;
-			}
-			set
-			{
-				if ((this._DK096 != value))
-				{
-					this._DK096 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TT096", DbType="DateTime")]
-		public System.Nullable<System.DateTime> TT096
-		{
-			get
-			{
-				return this._TT096;
-			}
-			set
-			{
-				if ((this._TT096 != value))
-				{
-					this._TT096 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GC097", DbType="Decimal(10,2)")]
-		public System.Nullable<decimal> GC097
-		{
-			get
-			{
-				return this._GC097;
-			}
-			set
-			{
-				if ((this._GC097 != value))
-				{
-					this._GC097 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DK097", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DK097
-		{
-			get
-			{
-				return this._DK097;
-			}
-			set
-			{
-				if ((this._DK097 != value))
-				{
-					this._DK097 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TT097", DbType="DateTime")]
-		public System.Nullable<System.DateTime> TT097
-		{
-			get
-			{
-				return this._TT097;
-			}
-			set
-			{
-				if ((this._TT097 != value))
-				{
-					this._TT097 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GC098", DbType="Decimal(10,2)")]
-		public System.Nullable<decimal> GC098
-		{
-			get
-			{
-				return this._GC098;
-			}
-			set
-			{
-				if ((this._GC098 != value))
-				{
-					this._GC098 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DK098", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DK098
-		{
-			get
-			{
-				return this._DK098;
-			}
-			set
-			{
-				if ((this._DK098 != value))
-				{
-					this._DK098 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TT098", DbType="DateTime")]
-		public System.Nullable<System.DateTime> TT098
-		{
-			get
-			{
-				return this._TT098;
-			}
-			set
-			{
-				if ((this._TT098 != value))
-				{
-					this._TT098 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GC100", DbType="Decimal(10,2)")]
-		public System.Nullable<decimal> GC100
-		{
-			get
-			{
-				return this._GC100;
-			}
-			set
-			{
-				if ((this._GC100 != value))
-				{
-					this._GC100 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DK100", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DK100
-		{
-			get
-			{
-				return this._DK100;
-			}
-			set
-			{
-				if ((this._DK100 != value))
-				{
-					this._DK100 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TT100", DbType="DateTime")]
-		public System.Nullable<System.DateTime> TT100
-		{
-			get
-			{
-				return this._TT100;
-			}
-			set
-			{
-				if ((this._TT100 != value))
-				{
-					this._TT100 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GC101", DbType="Decimal(10,2)")]
-		public System.Nullable<decimal> GC101
-		{
-			get
-			{
-				return this._GC101;
-			}
-			set
-			{
-				if ((this._GC101 != value))
-				{
-					this._GC101 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DK101", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DK101
-		{
-			get
-			{
-				return this._DK101;
-			}
-			set
-			{
-				if ((this._DK101 != value))
-				{
-					this._DK101 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TT101", DbType="DateTime")]
-		public System.Nullable<System.DateTime> TT101
-		{
-			get
-			{
-				return this._TT101;
-			}
-			set
-			{
-				if ((this._TT101 != value))
-				{
-					this._TT101 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GC102", DbType="Decimal(10,2)")]
-		public System.Nullable<decimal> GC102
-		{
-			get
-			{
-				return this._GC102;
-			}
-			set
-			{
-				if ((this._GC102 != value))
-				{
-					this._GC102 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DK102", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DK102
-		{
-			get
-			{
-				return this._DK102;
-			}
-			set
-			{
-				if ((this._DK102 != value))
-				{
-					this._DK102 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TT102", DbType="DateTime")]
-		public System.Nullable<System.DateTime> TT102
-		{
-			get
-			{
-				return this._TT102;
-			}
-			set
-			{
-				if ((this._TT102 != value))
-				{
-					this._TT102 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GC103", DbType="Decimal(10,2)")]
-		public System.Nullable<decimal> GC103
-		{
-			get
-			{
-				return this._GC103;
-			}
-			set
-			{
-				if ((this._GC103 != value))
-				{
-					this._GC103 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DK103", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DK103
-		{
-			get
-			{
-				return this._DK103;
-			}
-			set
-			{
-				if ((this._DK103 != value))
-				{
-					this._DK103 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TT103", DbType="DateTime")]
-		public System.Nullable<System.DateTime> TT103
-		{
-			get
-			{
-				return this._TT103;
-			}
-			set
-			{
-				if ((this._TT103 != value))
-				{
-					this._TT103 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GC108", DbType="Decimal(10,2)")]
-		public System.Nullable<decimal> GC108
-		{
-			get
-			{
-				return this._GC108;
-			}
-			set
-			{
-				if ((this._GC108 != value))
-				{
-					this._GC108 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DK108", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DK108
-		{
-			get
-			{
-				return this._DK108;
-			}
-			set
-			{
-				if ((this._DK108 != value))
-				{
-					this._DK108 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TT108", DbType="DateTime")]
-		public System.Nullable<System.DateTime> TT108
-		{
-			get
-			{
-				return this._TT108;
-			}
-			set
-			{
-				if ((this._TT108 != value))
-				{
-					this._TT108 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GC111", DbType="Decimal(10,2)")]
-		public System.Nullable<decimal> GC111
-		{
-			get
-			{
-				return this._GC111;
-			}
-			set
-			{
-				if ((this._GC111 != value))
-				{
-					this._GC111 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DK111", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DK111
-		{
-			get
-			{
-				return this._DK111;
-			}
-			set
-			{
-				if ((this._DK111 != value))
-				{
-					this._DK111 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TT111", DbType="DateTime")]
-		public System.Nullable<System.DateTime> TT111
-		{
-			get
-			{
-				return this._TT111;
-			}
-			set
-			{
-				if ((this._TT111 != value))
-				{
-					this._TT111 = value;
-				}
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PM_ProjectProcess")]
 	public partial class PM_ProjectProcess : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -11199,6 +9444,915 @@ namespace Models
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.DX_View_DonHang_Joined")]
+	public partial class DX_View_DonHang_Joined
+	{
+		
+		private int _ProcessProjectTaskID;
+		
+		private System.Nullable<int> _ProjectTaskCustomerId;
+		
+		private System.Nullable<System.DateTime> _ProjectTaskDeadline;
+		
+		private string _ProjectTaskDescription;
+		
+		private System.Nullable<decimal> _ProjectTaskDiameterOut;
+		
+		private string _ProjectTaskDisplayName;
+		
+		private string _ProjectTaskHardness;
+		
+		private string _ProjectTaskHoleNum;
+		
+		private string _ProjectTaskHorikomi;
+		
+		private string _ProjectTaskMaterialsCode;
+		
+		private string _ProjectTaskMaterialsRequire;
+		
+		private string _ProjectTaskMoldCode;
+		
+		private System.Nullable<int> _ProjectTaskMoldsId;
+		
+		private string _ProjectTaskOverlayNum;
+		
+		private int _ProjectTaskPriorityID;
+		
+		private System.Nullable<int> _ProjectTaskQuantities;
+		
+		private int _ProjectTaskStatusID;
+		
+		private System.Nullable<int> _ProjectTaskThickness;
+		
+		private string _ProjectTaskThicknessTotal;
+		
+		private System.Nullable<System.DateTime> _ProjectTaskTransmit;
+		
+		private string _DX_MaDonHang;
+		
+		private System.Nullable<System.DateTime> _DX_XuatHang_DuKien;
+		
+		private System.Nullable<System.DateTime> _DX_XuatHang_ThucTe;
+		
+		private System.Nullable<decimal> _GC074;
+		
+		private System.Nullable<System.DateTime> _DK074;
+		
+		private System.Nullable<System.DateTime> _TT074;
+		
+		private System.Nullable<decimal> _GC076;
+		
+		private System.Nullable<System.DateTime> _DK076;
+		
+		private System.Nullable<System.DateTime> _TT076;
+		
+		private System.Nullable<decimal> _GC077;
+		
+		private System.Nullable<System.DateTime> _DK077;
+		
+		private System.Nullable<System.DateTime> _TT077;
+		
+		private System.Nullable<decimal> _GC082;
+		
+		private System.Nullable<System.DateTime> _DK082;
+		
+		private System.Nullable<System.DateTime> _TT082;
+		
+		private System.Nullable<decimal> _GC083;
+		
+		private System.Nullable<System.DateTime> _DK083;
+		
+		private System.Nullable<System.DateTime> _TT083;
+		
+		private System.Nullable<decimal> _GC085;
+		
+		private System.Nullable<System.DateTime> _DK085;
+		
+		private System.Nullable<System.DateTime> _TT085;
+		
+		private System.Nullable<decimal> _GC091;
+		
+		private System.Nullable<System.DateTime> _DK091;
+		
+		private System.Nullable<System.DateTime> _TT091;
+		
+		private System.Nullable<decimal> _GC100;
+		
+		private System.Nullable<System.DateTime> _DK100;
+		
+		private System.Nullable<System.DateTime> _TT100;
+		
+		private System.Nullable<decimal> _GC108;
+		
+		private System.Nullable<System.DateTime> _DK108;
+		
+		private System.Nullable<System.DateTime> _TT108;
+		
+		public DX_View_DonHang_Joined()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProcessProjectTaskID", DbType="Int NOT NULL")]
+		public int ProcessProjectTaskID
+		{
+			get
+			{
+				return this._ProcessProjectTaskID;
+			}
+			set
+			{
+				if ((this._ProcessProjectTaskID != value))
+				{
+					this._ProcessProjectTaskID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskCustomerId", DbType="Int")]
+		public System.Nullable<int> ProjectTaskCustomerId
+		{
+			get
+			{
+				return this._ProjectTaskCustomerId;
+			}
+			set
+			{
+				if ((this._ProjectTaskCustomerId != value))
+				{
+					this._ProjectTaskCustomerId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskDeadline", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ProjectTaskDeadline
+		{
+			get
+			{
+				return this._ProjectTaskDeadline;
+			}
+			set
+			{
+				if ((this._ProjectTaskDeadline != value))
+				{
+					this._ProjectTaskDeadline = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskDescription", DbType="NVarChar(MAX)")]
+		public string ProjectTaskDescription
+		{
+			get
+			{
+				return this._ProjectTaskDescription;
+			}
+			set
+			{
+				if ((this._ProjectTaskDescription != value))
+				{
+					this._ProjectTaskDescription = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskDiameterOut", DbType="Decimal(10,0)")]
+		public System.Nullable<decimal> ProjectTaskDiameterOut
+		{
+			get
+			{
+				return this._ProjectTaskDiameterOut;
+			}
+			set
+			{
+				if ((this._ProjectTaskDiameterOut != value))
+				{
+					this._ProjectTaskDiameterOut = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskDisplayName", DbType="NVarChar(200) NOT NULL", CanBeNull=false)]
+		public string ProjectTaskDisplayName
+		{
+			get
+			{
+				return this._ProjectTaskDisplayName;
+			}
+			set
+			{
+				if ((this._ProjectTaskDisplayName != value))
+				{
+					this._ProjectTaskDisplayName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskHardness", DbType="NVarChar(25)")]
+		public string ProjectTaskHardness
+		{
+			get
+			{
+				return this._ProjectTaskHardness;
+			}
+			set
+			{
+				if ((this._ProjectTaskHardness != value))
+				{
+					this._ProjectTaskHardness = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskHoleNum", DbType="NVarChar(25)")]
+		public string ProjectTaskHoleNum
+		{
+			get
+			{
+				return this._ProjectTaskHoleNum;
+			}
+			set
+			{
+				if ((this._ProjectTaskHoleNum != value))
+				{
+					this._ProjectTaskHoleNum = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskHorikomi", DbType="NVarChar(25)")]
+		public string ProjectTaskHorikomi
+		{
+			get
+			{
+				return this._ProjectTaskHorikomi;
+			}
+			set
+			{
+				if ((this._ProjectTaskHorikomi != value))
+				{
+					this._ProjectTaskHorikomi = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskMaterialsCode", DbType="NVarChar(25)")]
+		public string ProjectTaskMaterialsCode
+		{
+			get
+			{
+				return this._ProjectTaskMaterialsCode;
+			}
+			set
+			{
+				if ((this._ProjectTaskMaterialsCode != value))
+				{
+					this._ProjectTaskMaterialsCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskMaterialsRequire", DbType="NVarChar(12)")]
+		public string ProjectTaskMaterialsRequire
+		{
+			get
+			{
+				return this._ProjectTaskMaterialsRequire;
+			}
+			set
+			{
+				if ((this._ProjectTaskMaterialsRequire != value))
+				{
+					this._ProjectTaskMaterialsRequire = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskMoldCode", DbType="NVarChar(25)")]
+		public string ProjectTaskMoldCode
+		{
+			get
+			{
+				return this._ProjectTaskMoldCode;
+			}
+			set
+			{
+				if ((this._ProjectTaskMoldCode != value))
+				{
+					this._ProjectTaskMoldCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskMoldsId", DbType="Int")]
+		public System.Nullable<int> ProjectTaskMoldsId
+		{
+			get
+			{
+				return this._ProjectTaskMoldsId;
+			}
+			set
+			{
+				if ((this._ProjectTaskMoldsId != value))
+				{
+					this._ProjectTaskMoldsId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskOverlayNum", DbType="NVarChar(25)")]
+		public string ProjectTaskOverlayNum
+		{
+			get
+			{
+				return this._ProjectTaskOverlayNum;
+			}
+			set
+			{
+				if ((this._ProjectTaskOverlayNum != value))
+				{
+					this._ProjectTaskOverlayNum = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskPriorityID", DbType="Int NOT NULL")]
+		public int ProjectTaskPriorityID
+		{
+			get
+			{
+				return this._ProjectTaskPriorityID;
+			}
+			set
+			{
+				if ((this._ProjectTaskPriorityID != value))
+				{
+					this._ProjectTaskPriorityID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskQuantities", DbType="Int")]
+		public System.Nullable<int> ProjectTaskQuantities
+		{
+			get
+			{
+				return this._ProjectTaskQuantities;
+			}
+			set
+			{
+				if ((this._ProjectTaskQuantities != value))
+				{
+					this._ProjectTaskQuantities = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskStatusID", DbType="Int NOT NULL")]
+		public int ProjectTaskStatusID
+		{
+			get
+			{
+				return this._ProjectTaskStatusID;
+			}
+			set
+			{
+				if ((this._ProjectTaskStatusID != value))
+				{
+					this._ProjectTaskStatusID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskThickness", DbType="Int")]
+		public System.Nullable<int> ProjectTaskThickness
+		{
+			get
+			{
+				return this._ProjectTaskThickness;
+			}
+			set
+			{
+				if ((this._ProjectTaskThickness != value))
+				{
+					this._ProjectTaskThickness = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskThicknessTotal", DbType="NVarChar(25)")]
+		public string ProjectTaskThicknessTotal
+		{
+			get
+			{
+				return this._ProjectTaskThicknessTotal;
+			}
+			set
+			{
+				if ((this._ProjectTaskThicknessTotal != value))
+				{
+					this._ProjectTaskThicknessTotal = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectTaskTransmit", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ProjectTaskTransmit
+		{
+			get
+			{
+				return this._ProjectTaskTransmit;
+			}
+			set
+			{
+				if ((this._ProjectTaskTransmit != value))
+				{
+					this._ProjectTaskTransmit = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DX_MaDonHang", DbType="NVarChar(12)")]
+		public string DX_MaDonHang
+		{
+			get
+			{
+				return this._DX_MaDonHang;
+			}
+			set
+			{
+				if ((this._DX_MaDonHang != value))
+				{
+					this._DX_MaDonHang = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DX_XuatHang_DuKien", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DX_XuatHang_DuKien
+		{
+			get
+			{
+				return this._DX_XuatHang_DuKien;
+			}
+			set
+			{
+				if ((this._DX_XuatHang_DuKien != value))
+				{
+					this._DX_XuatHang_DuKien = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DX_XuatHang_ThucTe", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DX_XuatHang_ThucTe
+		{
+			get
+			{
+				return this._DX_XuatHang_ThucTe;
+			}
+			set
+			{
+				if ((this._DX_XuatHang_ThucTe != value))
+				{
+					this._DX_XuatHang_ThucTe = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GC074", DbType="Decimal(10,2)")]
+		public System.Nullable<decimal> GC074
+		{
+			get
+			{
+				return this._GC074;
+			}
+			set
+			{
+				if ((this._GC074 != value))
+				{
+					this._GC074 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DK074", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DK074
+		{
+			get
+			{
+				return this._DK074;
+			}
+			set
+			{
+				if ((this._DK074 != value))
+				{
+					this._DK074 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TT074", DbType="DateTime")]
+		public System.Nullable<System.DateTime> TT074
+		{
+			get
+			{
+				return this._TT074;
+			}
+			set
+			{
+				if ((this._TT074 != value))
+				{
+					this._TT074 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GC076", DbType="Decimal(10,2)")]
+		public System.Nullable<decimal> GC076
+		{
+			get
+			{
+				return this._GC076;
+			}
+			set
+			{
+				if ((this._GC076 != value))
+				{
+					this._GC076 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DK076", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DK076
+		{
+			get
+			{
+				return this._DK076;
+			}
+			set
+			{
+				if ((this._DK076 != value))
+				{
+					this._DK076 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TT076", DbType="DateTime")]
+		public System.Nullable<System.DateTime> TT076
+		{
+			get
+			{
+				return this._TT076;
+			}
+			set
+			{
+				if ((this._TT076 != value))
+				{
+					this._TT076 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GC077", DbType="Decimal(10,2)")]
+		public System.Nullable<decimal> GC077
+		{
+			get
+			{
+				return this._GC077;
+			}
+			set
+			{
+				if ((this._GC077 != value))
+				{
+					this._GC077 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DK077", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DK077
+		{
+			get
+			{
+				return this._DK077;
+			}
+			set
+			{
+				if ((this._DK077 != value))
+				{
+					this._DK077 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TT077", DbType="DateTime")]
+		public System.Nullable<System.DateTime> TT077
+		{
+			get
+			{
+				return this._TT077;
+			}
+			set
+			{
+				if ((this._TT077 != value))
+				{
+					this._TT077 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GC082", DbType="Decimal(10,2)")]
+		public System.Nullable<decimal> GC082
+		{
+			get
+			{
+				return this._GC082;
+			}
+			set
+			{
+				if ((this._GC082 != value))
+				{
+					this._GC082 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DK082", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DK082
+		{
+			get
+			{
+				return this._DK082;
+			}
+			set
+			{
+				if ((this._DK082 != value))
+				{
+					this._DK082 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TT082", DbType="DateTime")]
+		public System.Nullable<System.DateTime> TT082
+		{
+			get
+			{
+				return this._TT082;
+			}
+			set
+			{
+				if ((this._TT082 != value))
+				{
+					this._TT082 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GC083", DbType="Decimal(10,2)")]
+		public System.Nullable<decimal> GC083
+		{
+			get
+			{
+				return this._GC083;
+			}
+			set
+			{
+				if ((this._GC083 != value))
+				{
+					this._GC083 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DK083", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DK083
+		{
+			get
+			{
+				return this._DK083;
+			}
+			set
+			{
+				if ((this._DK083 != value))
+				{
+					this._DK083 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TT083", DbType="DateTime")]
+		public System.Nullable<System.DateTime> TT083
+		{
+			get
+			{
+				return this._TT083;
+			}
+			set
+			{
+				if ((this._TT083 != value))
+				{
+					this._TT083 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GC085", DbType="Decimal(10,2)")]
+		public System.Nullable<decimal> GC085
+		{
+			get
+			{
+				return this._GC085;
+			}
+			set
+			{
+				if ((this._GC085 != value))
+				{
+					this._GC085 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DK085", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DK085
+		{
+			get
+			{
+				return this._DK085;
+			}
+			set
+			{
+				if ((this._DK085 != value))
+				{
+					this._DK085 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TT085", DbType="DateTime")]
+		public System.Nullable<System.DateTime> TT085
+		{
+			get
+			{
+				return this._TT085;
+			}
+			set
+			{
+				if ((this._TT085 != value))
+				{
+					this._TT085 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GC091", DbType="Decimal(10,2)")]
+		public System.Nullable<decimal> GC091
+		{
+			get
+			{
+				return this._GC091;
+			}
+			set
+			{
+				if ((this._GC091 != value))
+				{
+					this._GC091 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DK091", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DK091
+		{
+			get
+			{
+				return this._DK091;
+			}
+			set
+			{
+				if ((this._DK091 != value))
+				{
+					this._DK091 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TT091", DbType="DateTime")]
+		public System.Nullable<System.DateTime> TT091
+		{
+			get
+			{
+				return this._TT091;
+			}
+			set
+			{
+				if ((this._TT091 != value))
+				{
+					this._TT091 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GC100", DbType="Decimal(10,2)")]
+		public System.Nullable<decimal> GC100
+		{
+			get
+			{
+				return this._GC100;
+			}
+			set
+			{
+				if ((this._GC100 != value))
+				{
+					this._GC100 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DK100", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DK100
+		{
+			get
+			{
+				return this._DK100;
+			}
+			set
+			{
+				if ((this._DK100 != value))
+				{
+					this._DK100 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TT100", DbType="DateTime")]
+		public System.Nullable<System.DateTime> TT100
+		{
+			get
+			{
+				return this._TT100;
+			}
+			set
+			{
+				if ((this._TT100 != value))
+				{
+					this._TT100 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GC108", DbType="Decimal(10,2)")]
+		public System.Nullable<decimal> GC108
+		{
+			get
+			{
+				return this._GC108;
+			}
+			set
+			{
+				if ((this._GC108 != value))
+				{
+					this._GC108 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DK108", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DK108
+		{
+			get
+			{
+				return this._DK108;
+			}
+			set
+			{
+				if ((this._DK108 != value))
+				{
+					this._DK108 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TT108", DbType="DateTime")]
+		public System.Nullable<System.DateTime> TT108
+		{
+			get
+			{
+				return this._TT108;
+			}
+			set
+			{
+				if ((this._TT108 != value))
+				{
+					this._TT108 = value;
+				}
 			}
 		}
 	}
