@@ -56,9 +56,6 @@
                                         <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
                                     </PropertiesComboBox>
                                 </dx:GridViewDataComboBoxColumn>
-                                <dx:GridViewDataSpinEditColumn FieldName="DX_DuKienGC_LapRap" Caption="Dự kiến GC: Lắp ráp" Width="148" PropertiesSpinEdit-NumberType="Integer" EditFormSettings-Visible="False" />                                
-                                <dx:GridViewDataDateColumn FieldName="DX_DuKienHT_LapRap" Caption="Dự kiến HT: Lắp ráp" />
-                                <dx:GridViewDataDateColumn FieldName="DX_ThucTeHT_LapRap" Caption="Thực tế HT: Lắp ráp" />
                                 <dx:GridViewDataSpinEditColumn FieldName="DX_DuKienGC_NC" Caption="Dự kiến GC: NC" Width="148" PropertiesSpinEdit-NumberType="Integer" EditFormSettings-Visible="False" />
                                 <dx:GridViewDataDateColumn FieldName="DX_DuKienHT_NC" Caption="Dự kiến HT: NC" />
                                 <dx:GridViewDataDateColumn FieldName="DX_ThucTeHT_NC" Caption="Thực tế HT: NC" />
@@ -68,18 +65,21 @@
                                 <dx:GridViewDataSpinEditColumn FieldName="DX_DuKienGC_PhayTay" Caption="Dự kiến GC: Phay tay" Width="148" PropertiesSpinEdit-NumberType="Integer" EditFormSettings-Visible="False" />
                                 <dx:GridViewDataDateColumn FieldName="DX_DuKienHT_PhayTay" Caption="Dự kiến HT: Phay tay" />
                                 <dx:GridViewDataDateColumn FieldName="DX_ThucTeHT_PhayTay" Caption="Thực tế HT: Phay tay" />
-                                <dx:GridViewDataSpinEditColumn FieldName="DX_DuKienGC_Nhiet" Caption="Dự kiến GC: Nhiệt" Width="148" PropertiesSpinEdit-NumberType="Integer" EditFormSettings-Visible="False" />
-                                <dx:GridViewDataDateColumn FieldName="DX_DuKienHT_Nhiet" Caption="Dự kiến HT: Nhiệt" />
-                                <dx:GridViewDataDateColumn FieldName="DX_ThucTeHT_Nhiet" Caption="Thực tế HT: Nhiệt" />
+                                <dx:GridViewDataSpinEditColumn FieldName="DX_DuKienGC_Nhiet" Caption="Dự kiến GC: Nhiệt luyện" Width="148" PropertiesSpinEdit-NumberType="Integer" EditFormSettings-Visible="False" />
+                                <dx:GridViewDataDateColumn FieldName="DX_DuKienHT_Nhiet" Caption="Dự kiến HT: Nhiệt luyện" />
+                                <dx:GridViewDataDateColumn FieldName="DX_ThucTeHT_Nhiet" Caption="Thực tế HT: Nhiệt luyện" />
                                 <dx:GridViewDataSpinEditColumn FieldName="DX_DuKienGC_Mai" Caption="Dự kiến GC: Mài" Width="148" PropertiesSpinEdit-NumberType="Integer" EditFormSettings-Visible="False" />
                                 <dx:GridViewDataDateColumn FieldName="DX_DuKienHT_Mai" Caption="Dự kiến HT: Mài" />
                                 <dx:GridViewDataDateColumn FieldName="DX_ThucTeHT_Mai" Caption="Thực tế HT: Mài" />
-                                <dx:GridViewDataSpinEditColumn FieldName="DX_DuKienGC_WEDM" Caption="Dự kiến GC: WEDM" Width="148" PropertiesSpinEdit-NumberType="Integer" EditFormSettings-Visible="False" />
-                                <dx:GridViewDataDateColumn FieldName="DX_DuKienHT_WEDM" Caption="Dự kiến HT: WEDM" />
-                                <dx:GridViewDataDateColumn FieldName="DX_ThucTeHT_WEDM" Caption="Thực tế HT: WEDM" />
                                 <dx:GridViewDataSpinEditColumn FieldName="DX_DuKienGC_EDM" Caption="Dự kiến GC: EDM" Width="148" PropertiesSpinEdit-NumberType="Integer" EditFormSettings-Visible="False" />
                                 <dx:GridViewDataDateColumn FieldName="DX_DuKienHT_EDM" Caption="Dự kiến HT: EDM" />
                                 <dx:GridViewDataDateColumn FieldName="DX_ThucTeHT_EDM" Caption="Thực tế HT: EDM" />
+                                <dx:GridViewDataSpinEditColumn FieldName="DX_DuKienGC_WEDM" Caption="Dự kiến GC: WEDM" Width="148" PropertiesSpinEdit-NumberType="Integer" EditFormSettings-Visible="False" />
+                                <dx:GridViewDataDateColumn FieldName="DX_DuKienHT_WEDM" Caption="Dự kiến HT: WEDM" />
+                                <dx:GridViewDataDateColumn FieldName="DX_ThucTeHT_WEDM" Caption="Thực tế HT: WEDM" />
+                                <dx:GridViewDataSpinEditColumn FieldName="DX_DuKienGC_LapRap" Caption="Dự kiến GC: Lắp ráp" Width="148" PropertiesSpinEdit-NumberType="Integer" EditFormSettings-Visible="False" />                                
+                                <dx:GridViewDataDateColumn FieldName="DX_DuKienHT_LapRap" Caption="Dự kiến HT: Lắp ráp" />
+                                <dx:GridViewDataDateColumn FieldName="DX_ThucTeHT_LapRap" Caption="Thực tế HT: Lắp ráp" />                                
                                 <dx:GridViewDataSpinEditColumn FieldName="DX_DuKienGC_QA" Caption="Dự kiến GC: QA" Width="148" PropertiesSpinEdit-NumberType="Integer" EditFormSettings-Visible="False" />
                                 <dx:GridViewDataDateColumn FieldName="DX_DuKienHT_QA" Caption="Dự kiến HT: QA" />
                                 <dx:GridViewDataDateColumn FieldName="DX_ThucTeHT_QA" Caption="Thực tế HT: QA" />  
@@ -253,9 +253,6 @@
                                 </dx:GridViewBandColumn>                                 
                                 <dx:GridViewBandColumn Caption="Gia công dự kiến / Dự kiến hoàn thành / Thực tế hoàn thành">
                                     <Columns>
-                                        <dx:GridViewDataSpinEditColumn FieldName="DX_DuKienGC_LapRap" Caption="Dự kiến GC: Lắp ráp" Width="148" PropertiesSpinEdit-NumberType="Integer" EditFormSettings-Visible="False" />                                
-                                        <dx:GridViewDataDateColumn FieldName="DX_DuKienHT_LapRap" Caption="Dự kiến HT: Lắp ráp" />
-                                        <dx:GridViewDataDateColumn FieldName="DX_ThucTeHT_LapRap" Caption="Thực tế HT: Lắp ráp" />
                                         <dx:GridViewDataSpinEditColumn FieldName="DX_DuKienGC_NC" Caption="Dự kiến GC: NC" Width="148" PropertiesSpinEdit-NumberType="Integer" EditFormSettings-Visible="False" />
                                         <dx:GridViewDataDateColumn FieldName="DX_DuKienHT_NC" Caption="Dự kiến HT: NC" />
                                         <dx:GridViewDataDateColumn FieldName="DX_ThucTeHT_NC" Caption="Thực tế HT: NC" />
@@ -265,19 +262,22 @@
                                         <dx:GridViewDataSpinEditColumn FieldName="DX_DuKienGC_PhayTay" Caption="Dự kiến GC: Phay tay" Width="148" PropertiesSpinEdit-NumberType="Integer" EditFormSettings-Visible="False" />
                                         <dx:GridViewDataDateColumn FieldName="DX_DuKienHT_PhayTay" Caption="Dự kiến HT: Phay tay" />
                                         <dx:GridViewDataDateColumn FieldName="DX_ThucTeHT_PhayTay" Caption="Thực tế HT: Phay tay" />
-                                        <dx:GridViewDataSpinEditColumn FieldName="DX_DuKienGC_Nhiet" Caption="Dự kiến GC: Nhiệt" Width="148" PropertiesSpinEdit-NumberType="Integer" EditFormSettings-Visible="False" />
-                                        <dx:GridViewDataDateColumn FieldName="DX_DuKienHT_Nhiet" Caption="Dự kiến HT: Nhiệt" />
-                                        <dx:GridViewDataDateColumn FieldName="DX_ThucTeHT_Nhiet" Caption="Thực tế HT: Nhiệt" />
+                                        <dx:GridViewDataSpinEditColumn FieldName="DX_DuKienGC_Nhiet" Caption="Dự kiến GC: Nhiệt luyện" Width="148" PropertiesSpinEdit-NumberType="Integer" EditFormSettings-Visible="False" />
+                                        <dx:GridViewDataDateColumn FieldName="DX_DuKienHT_Nhiet" Caption="Dự kiến HT: Nhiệt luyện" />
+                                        <dx:GridViewDataDateColumn FieldName="DX_ThucTeHT_Nhiet" Caption="Thực tế HT: Nhiệt luyện" />
                                         <dx:GridViewDataSpinEditColumn FieldName="DX_DuKienGC_Mai" Caption="Dự kiến GC: Mài" Width="148" PropertiesSpinEdit-NumberType="Integer" EditFormSettings-Visible="False" />
                                         <dx:GridViewDataDateColumn FieldName="DX_DuKienHT_Mai" Caption="Dự kiến HT: Mài" />
                                         <dx:GridViewDataDateColumn FieldName="DX_ThucTeHT_Mai" Caption="Thực tế HT: Mài" />
+                                        <dx:GridViewDataSpinEditColumn FieldName="DX_DuKienGC_EDM" Caption="Dự kiến GC: EDM" Width="148" PropertiesSpinEdit-NumberType="Integer" EditFormSettings-Visible="False" />
+                                        <dx:GridViewDataDateColumn FieldName="DX_DuKienHT_EDM" Caption="Dự kiến HT: EDM" />
+                                        <dx:GridViewDataDateColumn FieldName="DX_ThucTeHT_EDM" Caption="Thực tế HT: EDM" />                                       
                                         <dx:GridViewDataSpinEditColumn FieldName="DX_DuKienGC_WEDM" Caption="Dự kiến GC: WEDM" Width="148" PropertiesSpinEdit-NumberType="Integer" EditFormSettings-Visible="False" />
                                         <dx:GridViewDataDateColumn FieldName="DX_DuKienHT_WEDM" Caption="Dự kiến HT: WEDM" />
                                         <dx:GridViewDataDateColumn FieldName="DX_ThucTeHT_WEDM" Caption="Thực tế HT: WEDM" />
-                                        <dx:GridViewDataSpinEditColumn FieldName="DX_DuKienGC_EDM" Caption="Dự kiến GC: EDM" Width="148" PropertiesSpinEdit-NumberType="Integer" EditFormSettings-Visible="False" />
-                                        <dx:GridViewDataDateColumn FieldName="DX_DuKienHT_EDM" Caption="Dự kiến HT: EDM" />
-                                        <dx:GridViewDataDateColumn FieldName="DX_ThucTeHT_EDM" Caption="Thực tế HT: EDM" />
-                                        <dx:GridViewDataSpinEditColumn FieldName="DX_DuKienGC_QA" Caption="Dự kiến GC: QA" Width="148" PropertiesSpinEdit-NumberType="Integer" EditFormSettings-Visible="False" />
+                                        <dx:GridViewDataSpinEditColumn FieldName="DX_DuKienGC_LapRap" Caption="Dự kiến GC: Lắp ráp" Width="148" PropertiesSpinEdit-NumberType="Integer" EditFormSettings-Visible="False" />                                
+                                        <dx:GridViewDataDateColumn FieldName="DX_DuKienHT_LapRap" Caption="Dự kiến HT: Lắp ráp" />
+                                        <dx:GridViewDataDateColumn FieldName="DX_ThucTeHT_LapRap" Caption="Thực tế HT: Lắp ráp" />                                        
+                                         <dx:GridViewDataSpinEditColumn FieldName="DX_DuKienGC_QA" Caption="Dự kiến GC: QA" Width="148" PropertiesSpinEdit-NumberType="Integer" EditFormSettings-Visible="False" />
                                         <dx:GridViewDataDateColumn FieldName="DX_DuKienHT_QA" Caption="Dự kiến HT: QA" />
                                         <dx:GridViewDataDateColumn FieldName="DX_ThucTeHT_QA" Caption="Thực tế HT: QA" />                                    
                                     </Columns>

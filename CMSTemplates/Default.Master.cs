@@ -67,6 +67,8 @@ public partial class CMSTemplates_Default : TemplateMasterPage {
                 FMIMenu.Items.Add(new MenuItem("Báo cáo tổng hợp", "BaoCaoTongHop", "~/App_Themes/VMMP/images/icon_display.png", "/ReportTotal"));
             if (CMSContext.CurrentUser.IsAuthorizedPerResource("Functions", "BaoCaoDonHang"))
                 FMIMenu.Items.Add(new MenuItem("Báo cáo đơn hàng", "BaoCaoDonHang", "~/App_Themes/VMMP/images/icon_display.png", "/ReportOrders"));
+            if (CMSContext.CurrentUser.IsAuthorizedPerResource("Functions", "BaoCaoDonHang"))
+                FMIMenu.Items.Add(new MenuItem("Dự kiến hoàn thành", "DuKienHoanThanh", "~/App_Themes/VMMP/images/icon_display.png", "/DuKienHoanThanh"));
             NBMenuLeft.Items.Add(FMIMenu);
         }
         #endregion

@@ -66,6 +66,33 @@ public class ReportModels {
                 ProjectTaskXuatHangKQ = (sm.pt.pt.pt.pt.DX_XuatHang_ThucTe <= sm.pt.pt.pt.pt.DX_XuatHang_DuKien) ? "Đạt" : !sm.pt.pt.pt.pt.DX_XuatHang_ThucTe.HasValue ? "" : "Không đạt"
             }).ToList();
     }
+    public static IEnumerable DuKienHoanThanh(DateTime RTDateBegin, DateTime RTDateEnd, string Filter) {
+        IEnumerable<DX_View_DonHang_Joined> DonHang_Joined = null;
+        if (Filter == "Transmit") DonHang_Joined = LINQData.db.DX_View_DonHang_Joineds.Where(w => w.ProjectTaskTransmit >= RTDateBegin && w.ProjectTaskTransmit <= RTDateEnd);
+        else DonHang_Joined = LINQData.db.DX_View_DonHang_Joineds.Where(w => w.ProjectTaskDeadline >= RTDateBegin && w.ProjectTaskDeadline <= RTDateEnd);
+        return DonHang_Joined.Select(s => new {
+                ProjectTaskID = (int)s.ProcessProjectTaskID,
+                ProjectTaskCustomerId = s.ProjectTaskCustomerId,
+                ProjectTaskDeadline = s.ProjectTaskDeadline,
+                ProjectTaskDescription = s.ProjectTaskDescription,
+                ProjectTaskDisplayName = s.ProjectTaskDisplayName,
+                ProjectTaskMaterialsCode = s.ProjectTaskMaterialsCode,
+                ProjectTaskMoldCode = s.ProjectTaskMoldCode,
+                ProjectTaskMoldsId = s.ProjectTaskMoldsId,
+                ProjectTaskOverlayNum = s.ProjectTaskOverlayNum,
+                ProjectTaskQuantities = s.ProjectTaskQuantities,
+                ProjectTaskTransmit = s.ProjectTaskTransmit,
+                DX_DuKienHT_EDM = s.DK082,
+                DX_DuKienHT_Mai = s.DK108,
+                DX_DuKienHT_MC = s.DK074,
+                DX_DuKienHT_NC = s.DK085,
+                DX_DuKienHT_Nhiet = s.DK091,
+                DX_DuKienHT_PhayTay = s.DK076,
+                DX_DuKienHT_QA = s.DK077,
+                DX_DuKienHT_WEDM = s.DK083,
+                DX_DuKienHT_LapRap = s.DK100,
+            }).OrderByDescending(o => o.ProjectTaskID);
+    }
     public static IEnumerable ReportTotalDetailList(int ProjectTaskID) {
         return LINQData.db.PM_ProjectProcesses.Where(w => w.ProcessProjectTaskID == ProjectTaskID)
             .Join(LINQData.db.PM_ProjectProcessLists.OrderBy(p => p.ProcessListOrder), pp => pp.ProcessListId, ppl => ppl.ProcessListId, (pp, ppl) => new { pp, ppl })

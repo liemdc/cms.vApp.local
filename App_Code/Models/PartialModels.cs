@@ -1,5 +1,4 @@
 ﻿using Models;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Web;
 
@@ -247,6 +246,8 @@ public partial class OrdersProcessObject
     public Nullable<DateTime> DXGioKetThucThucTe { get; set; }
     public Nullable<int> DXChuyenQuaCongDoan { get; set; }
     public Nullable<DateTime> DX_HoanThanhDuKien { get; set; }
+    public Nullable<DateTime> DX_XuatHang_DuKien { get; set; }
+    public Nullable<DateTime> DX_XuatHang_ThucTe { get; set; }
 }
 public partial class OrdersProcessDetailObject
 {

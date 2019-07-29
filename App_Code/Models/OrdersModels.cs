@@ -1,8 +1,6 @@
 ﻿using CMS.CMSHelper;
 using CMS.ProjectManagement;
 using Models;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -457,6 +455,8 @@ public class OrdersModels
                 DXNgayBatDauDuKien = sm.pp.pp.pp.DXNgayBatDauDuKien,
                 DXThoiGianDieuChinh = sm.pp.pp.pp.DXThoiGianDieuChinh,
                 DXMaSanPhamUuTienGiaCong = sm.pp.pp.pp.DXMaSanPhamUuTienGiaCong,
+                DX_XuatHang_DuKien = sm.pp.pp.pt.DX_XuatHang_DuKien,
+                DX_XuatHang_ThucTe = sm.pp.pp.pt.DX_XuatHang_ThucTe,
                 AutoPriority = Convert.ToInt32(((Convert.ToDateTime(sm.pp.pp.pt.ProjectTaskTransmit) - DateTime.Now).Days + (Convert.ToDateTime(sm.pp.pp.pt.ProjectTaskDeadline) - DateTime.Now).Days) - sm.pp.pm.MoldsMinScheduledDays)
             }).OrderBy(o => o.AutoPriority).OrderBy(o1 => o1.ProjectTaskPriorityID).ToList();
     }
