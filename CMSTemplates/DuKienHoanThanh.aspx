@@ -19,7 +19,11 @@
         <dx:GridViewDataTextColumn FieldName="ProjectTaskOverlayNum" Caption="Số phủ" Width="100" />
         <dx:GridViewDataTextColumn FieldName="ProjectTaskMoldsId" Caption="Phân loại" Width="100" />
         <dx:GridViewDataTextColumn FieldName="ProjectTaskQuantities" Caption="Số lượng" Width="100" />
-        <dx:GridViewDataTextColumn FieldName="ProjectTaskCustomerId" Caption="Khách hàng" Width="120" />        
+        <dx:GridViewDataComboBoxColumn FieldName="ProjectTaskCustomerId" Caption="Khách hàng" Width="128">
+            <PropertiesComboBox DataSourceID="OdsCustomer" TextField="CustomerName" ValueField="CustomerId" ValueType="System.Int32" IncrementalFilteringMode="StartsWith">
+                <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
+            </PropertiesComboBox>
+        </dx:GridViewDataComboBoxColumn>        
         <dx:GridViewDataTextColumn FieldName="ProjectTaskTransmit" PropertiesTextEdit-DisplayFormatString="dd/MM/yyyy HH:mm" Caption="Ngày nhận" Width="132" />
         <dx:GridViewDataTextColumn FieldName="DX_DuKienHT_NC" PropertiesTextEdit-DisplayFormatString="dd/MM/yyyy HH:mm" Caption="Dự kiến HT: NC" Width="132" />
         <dx:GridViewDataTextColumn FieldName="DX_DuKienHT_MC" PropertiesTextEdit-DisplayFormatString="dd/MM/yyyy HH:mm" Caption="Dự kiến HT: MC" Width="132" />
@@ -43,6 +47,7 @@
     <Settings ShowHeaderFilterButton="false" VerticalScrollBarMode="Visible" HorizontalScrollBarMode="Visible" />    
 </dx:ASPxGridView>
 <dx:ASPxGridViewExporter ID="GvExport" runat="server" GridViewID="GvLevelA" />
+<asp:ObjectDataSource ID="OdsCustomer" runat="server" TypeName="CustomerModels" SelectMethod="MinCustomerList" />
 <asp:ObjectDataSource ID="OdsGvLevelA" runat="server" TypeName="ReportModels" SelectMethod="DuKienHoanThanh">
     <SelectParameters>
         <asp:ControlParameter ControlID="DeStart" Name="RTDateBegin" Type="DateTime" />
