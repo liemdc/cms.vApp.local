@@ -102,7 +102,7 @@ public class ProcessListModels {
             }).OrderBy(o => o.ProcessListOrder).ToList();
     }
     public static List<ProcessListObject> MinProcessListForUserId() {
-        List<ProcessListObject> ProcessList = LINQData.db.PM_ProjectProcessLists.Select(s => new ProcessListObject { ProcessListId = s.ProcessListId, ProcessListIds = string.Format("PL-{0}", s.ProcessListId), ProcessListName = s.ProcessListName, ProcessListGroup = s.ProcessListGroup, ProcessListStatus = s.ProcessListStatus, ProcessListOrder = s.ProcessListOrder }).OrderBy(o => o.ProcessListOrder).ToList();
+        List<ProcessListObject> ProcessList = LINQData.db.PM_ProjectProcessLists.Where(w => w.ProcessListStatus == "Enable").Select(s => new ProcessListObject { ProcessListId = s.ProcessListId, ProcessListIds = string.Format("PL-{0}", s.ProcessListId), ProcessListName = s.ProcessListName, ProcessListGroup = s.ProcessListGroup, ProcessListStatus = s.ProcessListStatus, ProcessListOrder = s.ProcessListOrder }).OrderBy(o => o.ProcessListOrder).ToList();
         List<ProcessListObject> UsProcessList = new List<ProcessListObject>();
         foreach (ProcessListObject Process in ProcessList) {
             if (CMSContext.CurrentUser.IsAuthorizedPerResource("Functions", "CongDoan" + Process.ProcessListId))
