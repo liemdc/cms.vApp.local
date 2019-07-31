@@ -163,6 +163,9 @@ public partial class OrdersObject {
     public Nullable<Decimal> DX_DuKienGC_Mai { get; set; }
     public Nullable<DateTime> DX_DuKienHT_Mai { get; set; }
     public Nullable<DateTime> DX_ThucTeHT_Mai { get; set; }
+    public Nullable<Decimal> DX_DuKienGC_MaiSNK { get; set; }
+    public Nullable<DateTime> DX_DuKienHT_MaiSNK { get; set; }
+    public Nullable<DateTime> DX_ThucTeHT_MaiSNK { get; set; }
     public Nullable<Decimal> DX_DuKienGC_WEDM { get; set; }
     public Nullable<DateTime> DX_DuKienHT_WEDM { get; set; }
     public Nullable<DateTime> DX_ThucTeHT_WEDM { get; set; }

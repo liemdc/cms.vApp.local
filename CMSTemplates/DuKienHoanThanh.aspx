@@ -24,17 +24,18 @@
                 <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
             </PropertiesComboBox>
         </dx:GridViewDataComboBoxColumn>        
-        <dx:GridViewDataTextColumn FieldName="ProjectTaskTransmit" PropertiesTextEdit-DisplayFormatString="dd/MM/yyyy HH:mm" Caption="Ngày nhận" Width="132" />
-        <dx:GridViewDataTextColumn FieldName="DX_DuKienHT_NC" PropertiesTextEdit-DisplayFormatString="dd/MM/yyyy HH:mm" Caption="Dự kiến HT: NC" Width="132" />
-        <dx:GridViewDataTextColumn FieldName="DX_DuKienHT_MC" PropertiesTextEdit-DisplayFormatString="dd/MM/yyyy HH:mm" Caption="Dự kiến HT: MC" Width="132" />
-        <dx:GridViewDataTextColumn FieldName="DX_DuKienHT_PhayTay" PropertiesTextEdit-DisplayFormatString="dd/MM/yyyy HH:mm" Caption="Dự kiến HT: Phay tay" Width="132" />
-        <dx:GridViewDataTextColumn FieldName="DX_DuKienHT_Nhiet" PropertiesTextEdit-DisplayFormatString="dd/MM/yyyy HH:mm" Caption="Dự kiến HT: Nhiệt luyện" Width="132" />
-        <dx:GridViewDataTextColumn FieldName="DX_DuKienHT_Mai" PropertiesTextEdit-DisplayFormatString="dd/MM/yyyy HH:mm" Caption="Dự kiến HT: Mài" Width="132" />
-        <dx:GridViewDataTextColumn FieldName="DX_DuKienHT_EDM" PropertiesTextEdit-DisplayFormatString="dd/MM/yyyy HH:mm" Caption="Dự kiến HT: EDM" Width="132" />
-        <dx:GridViewDataTextColumn FieldName="DX_DuKienHT_WEDM" PropertiesTextEdit-DisplayFormatString="dd/MM/yyyy HH:mm" Caption="Dự kiến HT: WEDM" Width="132" />
-        <dx:GridViewDataTextColumn FieldName="DX_DuKienHT_LapRap" PropertiesTextEdit-DisplayFormatString="dd/MM/yyyy HH:mm" Caption="Dự kiến HT: Lắp ráp" Width="132" />
-        <dx:GridViewDataTextColumn FieldName="DX_DuKienHT_QA" PropertiesTextEdit-DisplayFormatString="dd/MM/yyyy HH:mm" Caption="Dự kiến HT: QA" Width="132" />
-        <dx:GridViewDataTextColumn FieldName="ProjectTaskDeadline" PropertiesTextEdit-DisplayFormatString="dd/MM/yyyy HH:mm" Caption="Ngày hoàn thành" Width="132" />
+        <dx:GridViewDataTextColumn FieldName="ProjectTaskTransmit" PropertiesTextEdit-DisplayFormatString="dd/MM/yyyy HH:mm" Caption="Ngày nhận" Width="158" />
+        <dx:GridViewDataTextColumn FieldName="DX_DuKienHT_NC" PropertiesTextEdit-DisplayFormatString="dd/MM/yyyy HH:mm" Caption="Dự kiến HT: NC" Width="158" />
+        <dx:GridViewDataTextColumn FieldName="DX_DuKienHT_MC" PropertiesTextEdit-DisplayFormatString="dd/MM/yyyy HH:mm" Caption="Dự kiến HT: MC" Width="158" />
+        <dx:GridViewDataTextColumn FieldName="DX_DuKienHT_PhayTay" PropertiesTextEdit-DisplayFormatString="dd/MM/yyyy HH:mm" Caption="Dự kiến HT: Phay tay" Width="158" />
+        <dx:GridViewDataTextColumn FieldName="DX_DuKienHT_Nhiet" PropertiesTextEdit-DisplayFormatString="dd/MM/yyyy HH:mm" Caption="Dự kiến HT: Nhiệt luyện" Width="158" />
+        <dx:GridViewDataTextColumn FieldName="DX_DuKienHT_Mai" PropertiesTextEdit-DisplayFormatString="dd/MM/yyyy HH:mm" Caption="Dự kiến HT: Mài chi tiết" Width="158" />
+        <dx:GridViewDataTextColumn FieldName="DX_DuKienHT_Mai" PropertiesTextEdit-DisplayFormatString="dd/MM/yyyy HH:mm" Caption="Dự kiến HT: Tiện mài SNK" Width="158" />
+        <dx:GridViewDataTextColumn FieldName="DX_DuKienHT_EDM" PropertiesTextEdit-DisplayFormatString="dd/MM/yyyy HH:mm" Caption="Dự kiến HT: EDM" Width="158" />
+        <dx:GridViewDataTextColumn FieldName="DX_DuKienHT_WEDM" PropertiesTextEdit-DisplayFormatString="dd/MM/yyyy HH:mm" Caption="Dự kiến HT: WEDM" Width="158" />
+        <dx:GridViewDataTextColumn FieldName="DX_DuKienHT_LapRap" PropertiesTextEdit-DisplayFormatString="dd/MM/yyyy HH:mm" Caption="Dự kiến HT: LR Đánh bóng" Width="158" />
+        <dx:GridViewDataTextColumn FieldName="DX_DuKienHT_QA" PropertiesTextEdit-DisplayFormatString="dd/MM/yyyy HH:mm" Caption="Dự kiến HT: QA" Width="158" />
+        <dx:GridViewDataTextColumn FieldName="ProjectTaskDeadline" PropertiesTextEdit-DisplayFormatString="dd/MM/yyyy HH:mm" Caption="Ngày hoàn thành" Width="158" />
         <dx:GridViewDataTextColumn FieldName="ProjectTaskDescription" Caption="Ghi chú" Width="480" />        
     </Columns>
     <Styles DetailCell-Paddings-Padding="0" Header-VerticalAlign="Bottom" />

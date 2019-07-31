@@ -12,8 +12,9 @@ using System.Web;
 public class OrdersModels
 {
     public static IEnumerable<OrdersObject> OrdersList() {
-        return LINQData.db.DX_View_DonHang_Joineds
-            .Select(s => new OrdersObject {
+        IEnumerable<DX_View_DonHang_Joined> DonHang_Joined = null;
+        DonHang_Joined = LINQData.db.DX_View_DonHang_Joineds.Where(w => w.ProjectTaskDeadline >= new DateTime(DateTime.Now.Year - 1, 06,01) && w.ProjectTaskDeadline <= new DateTime(DateTime.Now.Year,12,31));
+        return DonHang_Joined.Select(s => new OrdersObject {
                 ProjectTaskID               = (int)s.ProcessProjectTaskID,
                 ProjectTaskCustomerId       = s.ProjectTaskCustomerId,
                 ProjectTaskDeadline         = s.ProjectTaskDeadline,
@@ -37,6 +38,9 @@ public class OrdersModels
                 DX_MaDonHang                = s.DX_MaDonHang,
                 DX_XuatHang_DuKien = s.DX_XuatHang_DuKien,
                 DX_XuatHang_ThucTe = s.DX_XuatHang_ThucTe,
+                DX_DuKienGC_MaiSNK = s.GC081,
+                DX_DuKienHT_MaiSNK = s.DK081,
+                DX_ThucTeHT_MaiSNK = s.TT081,
                 DX_DuKienGC_EDM = s.GC082,
                 DX_DuKienHT_EDM = s.DK082,
                 DX_ThucTeHT_EDM = s.TT082,
@@ -68,8 +72,10 @@ public class OrdersModels
     }
     public static IEnumerable<OrdersObject> OrdersListNd(string TaskStatus, string TaskPriority, DateTime DateBeginB, DateTime DateEndB) {
         int[] statusIds = Array.ConvertAll(TaskStatus.Split(';'), s => int.Parse(s));
-        int[] priorityIds = Array.ConvertAll(TaskPriority.Split(';'), s => int.Parse(s));        
-        return LINQData.db.DX_View_DonHang_Joineds.Where(w => statusIds.Contains(w.ProjectTaskStatusID) && priorityIds.Contains(w.ProjectTaskPriorityID) && !w.DX_XuatHang_DuKien.HasValue ? w.DX_XuatHang_DuKien == null : w.DX_XuatHang_DuKien >= DateBeginB && !w.DX_XuatHang_DuKien.HasValue ? w.DX_XuatHang_DuKien == null : w.DX_XuatHang_DuKien <= DateEndB)
+        int[] priorityIds = Array.ConvertAll(TaskPriority.Split(';'), s => int.Parse(s));
+        IEnumerable<DX_View_DonHang_Joined> DonHang_Joined = null;
+        DonHang_Joined = LINQData.db.DX_View_DonHang_Joineds.Where(w => w.ProjectTaskDeadline >= new DateTime(DateTime.Now.Year - 1, 06, 01) && w.ProjectTaskDeadline <= new DateTime(DateTime.Now.Year, 12, 31));
+        return DonHang_Joined.Where(w => statusIds.Contains(w.ProjectTaskStatusID) && priorityIds.Contains(w.ProjectTaskPriorityID) && !w.DX_XuatHang_DuKien.HasValue ? w.DX_XuatHang_DuKien == null : w.DX_XuatHang_DuKien >= DateBeginB && !w.DX_XuatHang_DuKien.HasValue ? w.DX_XuatHang_DuKien == null : w.DX_XuatHang_DuKien <= DateEndB)
             .Select(s => new OrdersObject {
                 ProjectTaskID = (int)s.ProcessProjectTaskID,
                 ProjectTaskCustomerId = s.ProjectTaskCustomerId,
@@ -94,6 +100,9 @@ public class OrdersModels
                 DX_MaDonHang = s.DX_MaDonHang,
                 DX_XuatHang_DuKien = s.DX_XuatHang_DuKien,
                 DX_XuatHang_ThucTe = s.DX_XuatHang_ThucTe,
+                DX_DuKienGC_MaiSNK = s.GC081,
+                DX_DuKienHT_MaiSNK = s.DK081,
+                DX_ThucTeHT_MaiSNK = s.TT081,
                 DX_DuKienGC_EDM = s.GC082,
                 DX_DuKienHT_EDM = s.DK082,
                 DX_ThucTeHT_EDM = s.TT082,
@@ -128,6 +137,7 @@ public class OrdersModels
                                      DateTime? DX_XuatHang_DuKien,
                                      DateTime? DX_DuKienHT_EDM,
                                      DateTime? DX_DuKienHT_Mai,
+                                     DateTime? DX_DuKienHT_MaiSNK,
                                      DateTime? DX_DuKienHT_MC,
                                      DateTime? DX_DuKienHT_NC,
                                      DateTime? DX_DuKienHT_Nhiet,
@@ -189,8 +199,8 @@ public class OrdersModels
                                                                     }).OrderByDescending(o => o.ItemPos).ToList();
                 int ProcessTo = 0;
                 // -----   
-                int[] ids = new int[] { 74, 76, 77, 82, 83, 85, 91, 100, 108 };
-                DateTime?[] dataDK = new DateTime?[] { DX_DuKienHT_MC, DX_DuKienHT_PhayTay, DX_DuKienHT_QA, DX_DuKienHT_EDM, DX_DuKienHT_WEDM, DX_DuKienHT_NC, DX_DuKienHT_Nhiet, DX_DuKienHT_LapRap, DX_DuKienHT_Mai };
+                int[] ids = new int[] { 74, 76, 77, 81, 82, 83, 85, 91, 100, 108 };
+                DateTime?[] dataDK = new DateTime?[] { DX_DuKienHT_MC, DX_DuKienHT_PhayTay, DX_DuKienHT_QA, DX_DuKienHT_MaiSNK, DX_DuKienHT_EDM, DX_DuKienHT_WEDM, DX_DuKienHT_NC, DX_DuKienHT_Nhiet, DX_DuKienHT_LapRap, DX_DuKienHT_Mai };
                 foreach (var MoldsProcess in ListMoldsProcess) {
                     int dataQA = LINQData.db.PM_ProjectProcessLists.FirstOrDefault(fod => fod.ProcessListGroup.Equals("dataQA")).ProcessListId;
                     Nullable<Boolean> DXNhanDuKien = LINQData.db.PM_ProjectProcessLists.FirstOrDefault(fod => fod.ProcessListId == MoldsProcess.ProcessListId).DXNhanDuKien;
@@ -227,6 +237,7 @@ public class OrdersModels
                                      DateTime? DX_XuatHang_DuKien,
                                      DateTime? DX_DuKienHT_EDM,
                                      DateTime? DX_DuKienHT_Mai,
+                                     DateTime? DX_DuKienHT_MaiSNK,
                                      DateTime? DX_DuKienHT_MC,
                                      DateTime? DX_DuKienHT_NC,
                                      DateTime? DX_DuKienHT_Nhiet,
@@ -296,8 +307,8 @@ public class OrdersModels
                     }
 
                     // -----  
-                    int[] ids = new int[] { 74, 76, 77, 82, 83, 85, 91, 100, 108 };
-                    DateTime?[] dataDK = new DateTime?[] { DX_DuKienHT_MC, DX_DuKienHT_PhayTay, DX_DuKienHT_QA, DX_DuKienHT_EDM, DX_DuKienHT_WEDM, DX_DuKienHT_NC, DX_DuKienHT_Nhiet, DX_DuKienHT_LapRap, DX_DuKienHT_Mai };
+                    int[] ids = new int[] { 74, 76, 77, 81, 82, 83, 85, 91, 100, 108 };
+                    DateTime?[] dataDK = new DateTime?[] { DX_DuKienHT_MC, DX_DuKienHT_PhayTay, DX_DuKienHT_QA, DX_DuKienHT_MaiSNK, DX_DuKienHT_EDM, DX_DuKienHT_WEDM, DX_DuKienHT_NC, DX_DuKienHT_Nhiet, DX_DuKienHT_LapRap, DX_DuKienHT_Mai };
                     for (int i = 0; i < ids.Length; i++) {
                         PM_ProjectProcess pp = LINQData.db.PM_ProjectProcesses.FirstOrDefault(fod => fod.ProcessProjectTaskID == ProjectTaskID && fod.ProcessListId == ids[i]);
                         if (pp != null)

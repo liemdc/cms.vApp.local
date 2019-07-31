@@ -154,7 +154,7 @@ public partial class CMSTemplates_OrdersList : TemplatePage {
     }
 
     private string[] GTitle = new string[]{"Dự kiến GC: ", "Dự kiến HT: ", "Thực tế HT: "};
-    private string[] GField = new string[]{"DX_DuKienHT_EDM", "DX_ThucTeHT_EDM", "DX_DuKienHT_Mai", "DX_ThucTeHT_Mai", "DX_DuKienHT_MC", "DX_ThucTeHT_MC", "DX_DuKienHT_NC", "DX_ThucTeHT_NC", "DX_DuKienHT_Nhiet", "DX_ThucTeHT_Nhiet", "DX_DuKienHT_PhayTay", "DX_ThucTeHT_PhayTay", "DX_DuKienHT_QA", "DX_ThucTeHT_QA", "DX_DuKienHT_WEDM", "DX_ThucTeHT_WEDM", "DX_DuKienHT_LapRap", "DX_ThucTeHT_LapRap"};
+    private string[] GField = new string[]{"DX_DuKienHT_EDM", "DX_ThucTeHT_EDM", "DX_DuKienHT_Mai", "DX_ThucTeHT_Mai", "DX_DuKienHT_MaiSNK", "DX_ThucTeHT_MaiSNK", "DX_DuKienHT_MC", "DX_ThucTeHT_MC", "DX_DuKienHT_NC", "DX_ThucTeHT_NC", "DX_DuKienHT_Nhiet", "DX_ThucTeHT_Nhiet", "DX_DuKienHT_PhayTay", "DX_ThucTeHT_PhayTay", "DX_DuKienHT_QA", "DX_ThucTeHT_QA", "DX_DuKienHT_WEDM", "DX_ThucTeHT_WEDM", "DX_DuKienHT_LapRap", "DX_ThucTeHT_LapRap"};
     private void SetColumns(ASPxGridView dataGrid, Boolean valid) {
         for (int i = 0; i < GField.Length; i++) {
             GridViewDataDateColumn dataColumns = (dataGrid.Columns[GField[i]] as GridViewDataDateColumn);
@@ -163,7 +163,7 @@ public partial class CMSTemplates_OrdersList : TemplatePage {
                 dataColumns.EditFormSettings.Visible = DevExpress.Utils.DefaultBoolean.True;
             else
                 dataColumns.EditFormSettings.Visible = DevExpress.Utils.DefaultBoolean.False;
-            dataColumns.Width = Unit.Pixel(148);
+            dataColumns.Width = Unit.Pixel(178);
             dataColumns.PropertiesDateEdit.EditFormatString = "dd/MM/yyyy HH:mm";
             dataColumns.PropertiesDateEdit.DisplayFormatString = "dd/MM/yyyy HH:mm";
             dataColumns.PropertiesDateEdit.EditFormat = EditFormat.DateTime;

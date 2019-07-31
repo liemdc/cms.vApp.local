@@ -9516,6 +9516,12 @@ namespace Models
 		
 		private System.Nullable<System.DateTime> _TT077;
 		
+		private System.Nullable<decimal> _GC081;
+		
+		private System.Nullable<System.DateTime> _DK081;
+		
+		private System.Nullable<System.DateTime> _TT081;
+		
 		private System.Nullable<decimal> _GC082;
 		
 		private System.Nullable<System.DateTime> _DK082;
@@ -10064,6 +10070,54 @@ namespace Models
 				if ((this._TT077 != value))
 				{
 					this._TT077 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GC081", DbType="Decimal(10,2)")]
+		public System.Nullable<decimal> GC081
+		{
+			get
+			{
+				return this._GC081;
+			}
+			set
+			{
+				if ((this._GC081 != value))
+				{
+					this._GC081 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DK081", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DK081
+		{
+			get
+			{
+				return this._DK081;
+			}
+			set
+			{
+				if ((this._DK081 != value))
+				{
+					this._DK081 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TT081", DbType="DateTime")]
+		public System.Nullable<System.DateTime> TT081
+		{
+			get
+			{
+				return this._TT081;
+			}
+			set
+			{
+				if ((this._TT081 != value))
+				{
+					this._TT081 = value;
 				}
 			}
 		}

@@ -82,6 +82,7 @@ public class ReportModels {
                 ProjectTaskOverlayNum = s.ProjectTaskOverlayNum,
                 ProjectTaskQuantities = s.ProjectTaskQuantities,
                 ProjectTaskTransmit = s.ProjectTaskTransmit,
+                DX_DuKienHT_MaiSNK = s.DK081,
                 DX_DuKienHT_EDM = s.DK082,
                 DX_DuKienHT_Mai = s.DK108,
                 DX_DuKienHT_MC = s.DK074,
