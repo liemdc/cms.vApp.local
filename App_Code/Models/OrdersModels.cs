@@ -13,7 +13,7 @@ public class OrdersModels
 {
     public static IEnumerable<OrdersObject> OrdersList() {
         IEnumerable<DX_View_DonHang_Joined> DonHang_Joined = null;
-        DonHang_Joined = LINQData.db.DX_View_DonHang_Joineds.Where(w => w.ProjectTaskDeadline >= new DateTime(DateTime.Now.Year - 1, 06,01) && w.ProjectTaskDeadline <= new DateTime(DateTime.Now.Year,12,31));
+        DonHang_Joined = LINQData.db.DX_View_DonHang_Joineds.Where(w => w.ProjectTaskStatusID != 7);
         return DonHang_Joined.Select(s => new OrdersObject {
                 ProjectTaskID               = (int)s.ProcessProjectTaskID,
                 ProjectTaskCustomerId       = s.ProjectTaskCustomerId,
@@ -74,7 +74,7 @@ public class OrdersModels
         int[] statusIds = Array.ConvertAll(TaskStatus.Split(';'), s => int.Parse(s));
         int[] priorityIds = Array.ConvertAll(TaskPriority.Split(';'), s => int.Parse(s));
         IEnumerable<DX_View_DonHang_Joined> DonHang_Joined = null;
-        DonHang_Joined = LINQData.db.DX_View_DonHang_Joineds.Where(w => w.ProjectTaskDeadline >= new DateTime(DateTime.Now.Year - 1, 06, 01) && w.ProjectTaskDeadline <= new DateTime(DateTime.Now.Year, 12, 31));
+        DonHang_Joined = LINQData.db.DX_View_DonHang_Joineds.Where(w => w.ProjectTaskStatusID != 7);
         return DonHang_Joined.Where(w => statusIds.Contains(w.ProjectTaskStatusID) && priorityIds.Contains(w.ProjectTaskPriorityID) && !w.DX_XuatHang_DuKien.HasValue ? w.DX_XuatHang_DuKien == null : w.DX_XuatHang_DuKien >= DateBeginB && !w.DX_XuatHang_DuKien.HasValue ? w.DX_XuatHang_DuKien == null : w.DX_XuatHang_DuKien <= DateEndB)
             .Select(s => new OrdersObject {
                 ProjectTaskID = (int)s.ProcessProjectTaskID,
