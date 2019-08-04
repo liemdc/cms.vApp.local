@@ -92,7 +92,7 @@
                                         <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
                                     </PropertiesDateEdit>
                                 </dx:GridViewDataDateColumn>
-                                <dx:GridViewDataDateColumn FieldName="ProjectTaskDeadline" Caption="Ngày hoàn thành" Width="128" Visible="false">                                    
+                                <dx:GridViewDataDateColumn FieldName="ProjectTaskDeadline" Caption="Ngày hoàn thành" Width="128">                                    
                                     <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm"> 
                                         <DateRangeSettings StartDateEditID="ProjectTaskTransmit" />                                       
                                         <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
@@ -294,7 +294,7 @@
                                                 <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
                                             </PropertiesDateEdit>
                                         </dx:GridViewDataDateColumn>
-                                        <dx:GridViewDataDateColumn FieldName="ProjectTaskDeadline" Caption="Ngày hoàn thành" Width="120" Visible="false">
+                                        <dx:GridViewDataDateColumn FieldName="ProjectTaskDeadline" Caption="Ngày hoàn thành" Width="120">
                                             <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm">
                                                 <DateRangeSettings StartDateEditID="ProjectTaskTransmit" />    
                                                 <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
