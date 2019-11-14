@@ -30,12 +30,14 @@ public partial class CMSTemplates_OrdersProcess : TemplatePage {
     protected void GvLevelAAA_BeforePerformDataSelect(object sender, EventArgs e) {
         Session["ProjectTaskID"] = (sender as ASPxGridView).GetMasterRowKeyValue();
     }
-    protected void GvLevelAA_HtmlDataCellPrepared(object sender, ASPxGridViewTableDataCellEventArgs e) {
+    protected void GvLevelAA_HtmlDataCellPrepared(object sender, ASPxGridViewTableDataCellEventArgs e) {        
         if ((int)e.GetValue("ProjectTaskPriorityID") == 2)
             e.Cell.ForeColor = ColorTranslator.FromHtml("#F77E0E");
         else if ((int)e.GetValue("ProjectTaskPriorityID") == 3)
             e.Cell.ForeColor = ColorTranslator.FromHtml("#0FAA15");
         if (e.GetValue("ProcessPlusBrowse") != null)
+            e.Cell.ForeColor = ColorTranslator.FromHtml("#FF0000");
+        if ((bool)e.GetValue("DX_XuatHang_TruocDuKien") == true)
             e.Cell.ForeColor = ColorTranslator.FromHtml("#FF0000");
     }
     protected void GvLevelAA_FillContextMenuItems(object sender, ASPxGridViewContextMenuEventArgs e) {

@@ -251,6 +251,7 @@ public partial class OrdersProcessObject
     public Nullable<DateTime> DX_HoanThanhDuKien { get; set; }
     public Nullable<DateTime> DX_XuatHang_DuKien { get; set; }
     public Nullable<DateTime> DX_XuatHang_ThucTe { get; set; }
+    public Nullable<bool> DX_XuatHang_TruocDuKien { get; set; }
 }
 public partial class OrdersProcessDetailObject
 {

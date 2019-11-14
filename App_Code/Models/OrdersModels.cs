@@ -235,26 +235,18 @@ public class OrdersModels
     public static void OrdersUpdated(int ProjectTaskID, string ProjectTaskMoldCode, string ProjectTaskOverlayNum, string ProjectTaskHoleNum, decimal ProjectTaskDiameterOut, string ProjectTaskMaterialsRequire, string ProjectTaskMaterialsCode, int ProjectTaskMoldsId,
                                      int ProjectTaskThickness, string ProjectTaskThicknessTotal, int ProjectTaskQuantities, string ProjectTaskHorikomi, string ProjectTaskHardness, int ProjectTaskCustomerId,
                                      DateTime? DX_XuatHang_DuKien,
-                                     DateTime? DX_DuKienHT_EDM,
-                                     DateTime? DX_DuKienHT_Mai,
-                                     DateTime? DX_DuKienHT_MaiSNK,
-                                     DateTime? DX_DuKienHT_MC,
-                                     DateTime? DX_DuKienHT_NC,
-                                     DateTime? DX_DuKienHT_Nhiet,
-                                     DateTime? DX_DuKienHT_PhayTay,
-                                     DateTime? DX_DuKienHT_QA,
-                                     DateTime? DX_DuKienHT_WEDM,
-                                     DateTime? DX_DuKienHT_LapRap, DateTime ProjectTaskDeadline, DateTime ProjectTaskTransmit, string ProjectTaskDescription)
-    {
-        using (TransactionScope transactionScope = new TransactionScope())
-        {
-            try
-            {
+                                     DateTime? DX_DuKienHT_EDM, DateTime? DX_DuKienHT_Mai,
+                                     DateTime? DX_DuKienHT_MaiSNK, DateTime? DX_DuKienHT_MC,
+                                     DateTime? DX_DuKienHT_NC, DateTime? DX_DuKienHT_Nhiet,
+                                     DateTime? DX_DuKienHT_PhayTay, DateTime? DX_DuKienHT_QA,
+                                     DateTime? DX_DuKienHT_WEDM, DateTime? DX_DuKienHT_LapRap, 
+                                     DateTime ProjectTaskDeadline, DateTime ProjectTaskTransmit, string ProjectTaskDescription) {        
+        using (TransactionScope transactionScope = new TransactionScope()){
+            try{
                 bool UpdateProcess = false;
                 PM_ProjectTask pt = LINQData.db.PM_ProjectTasks.FirstOrDefault(x => x.ProjectTaskID == ProjectTaskID);
                 
-                if (pt != null)
-                {
+                if (pt != null){
                     if (pt.ProjectTaskMoldsId != ProjectTaskMoldsId)
                         UpdateProcess = true;
                     pt.ProjectTaskMoldCode = ProjectTaskMoldCode;
@@ -273,9 +265,9 @@ public class OrdersModels
                     pt.ProjectTaskTransmit = ProjectTaskTransmit;
                     pt.ProjectTaskDeadline = ProjectTaskDeadline;
                     pt.ProjectTaskDescription = ProjectTaskDescription;
+                    pt.DX_XuatHang_TruocDuKien = DX_XuatHang_DuKien.Value < pt.DX_XuatHang_DuKien.Value ? true : false;
                     pt.DX_XuatHang_DuKien = DX_XuatHang_DuKien.HasValue ? DX_XuatHang_DuKien : null;
                     
-
                     if (UpdateProcess)
                     {
                         Nullable<decimal> factor = LINQData.db.PM_ProjectMolds.Where(w => w.MoldsId == ProjectTaskMoldsId).Select(s => s.MoldsFactor).FirstOrDefault();
@@ -468,8 +460,9 @@ public class OrdersModels
                 DXMaSanPhamUuTienGiaCong = sm.pp.pp.pp.DXMaSanPhamUuTienGiaCong,
                 DX_XuatHang_DuKien = sm.pp.pp.pt.DX_XuatHang_DuKien,
                 DX_XuatHang_ThucTe = sm.pp.pp.pt.DX_XuatHang_ThucTe,
+                DX_XuatHang_TruocDuKien = sm.pp.pp.pt.DX_XuatHang_TruocDuKien != null ? sm.pp.pp.pt.DX_XuatHang_TruocDuKien : false,
                 AutoPriority = Convert.ToInt32(((Convert.ToDateTime(sm.pp.pp.pt.ProjectTaskTransmit) - DateTime.Now).Days + (Convert.ToDateTime(sm.pp.pp.pt.ProjectTaskDeadline) - DateTime.Now).Days) - sm.pp.pm.MoldsMinScheduledDays)
-            }).OrderBy(o => o.AutoPriority).OrderBy(o1 => o1.ProjectTaskPriorityID).ToList();
+            }).OrderBy(o => o.AutoPriority).OrderBy(o1 => o1.ProjectTaskPriorityID).OrderByDescending(o => o.DX_XuatHang_TruocDuKien).ToList();
     }
     public static void OrdersProcessUpdated(int ProjectTaskID, int ProcessListId, bool ProcessGangerBrowse, decimal ProcessExpectedTime, decimal DXThoiGianDieuChinh, DateTime ProcessExpectedCompletion, DateTime? DXNgayNhanThucTe, DateTime DXNgayBatDauDuKien, int ProcessPlusBrowse, string DXMaSanPhamUuTienGiaCong, string ProcessNotes) {
         using (TransactionScope transactionScope = new TransactionScope()) {

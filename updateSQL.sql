@@ -382,3 +382,9 @@ DROP COLUMN DX_DuKienHT_LapRap;
 GO
 ALTER TABLE PM_ProjectTask
 DROP COLUMN DX_CongDoanTG;
+-- Add Column DX_XuatHang_TruocDuKien BIT
+IF NOT EXISTS ( SELECT object_id FROM sys.columns WHERE object_id = OBJECT_ID(N'PM_ProjectTask') AND name = 'DX_XuatHang_TruocDuKien' )
+BEGIN ALTER TABLE PM_ProjectTask
+	ADD DX_XuatHang_TruocDuKien BIT;
+	PRINT ('ADD DX_XuatHang_TruocDuKien BIT');
+END

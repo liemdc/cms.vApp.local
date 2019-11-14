@@ -76,7 +76,7 @@
                                 <dx:GridViewDataDateColumn EditFormSettings-VisibleIndex="8" FieldName="ProjectTaskTransmit" Caption="Ngày đặt hàng" ReadOnly="true" PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy HH:mm" Settings-FilterMode="DisplayText" EditFormSettings-Visible="False" Width="120"/>
 								<dx:GridViewDataDateColumn EditFormSettings-VisibleIndex="8" FieldName="DX_XuatHang_DuKien" Caption="Xuất hàng dự kiến" ReadOnly="true" PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy HH:mm" Settings-FilterMode="DisplayText" EditFormSettings-Visible="False" Width="120"/>
                                 <dx:GridViewDataDateColumn EditFormSettings-VisibleIndex="8" FieldName="DX_XuatHang_ThucTe" Caption="Xuất hàng thực tế" ReadOnly="true" PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy HH:mm" Settings-FilterMode="DisplayText" EditFormSettings-Visible="False" Width="120"/>                                
-                                <dx:GridViewDataDateColumn EditFormSettings-VisibleIndex="9" FieldName="DX_HoanThanhDuKien" Caption="Dự kiến HT công đoạn" ReadOnly="true" PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy HH:mm" Settings-FilterMode="DisplayText" EditFormSettings-Visible="False" Width="148"/>								
+                                <dx:GridViewDataDateColumn EditFormSettings-VisibleIndex="9" FieldName="DX_HoanThanhDuKien" Caption="Dự kiến HT công đoạn" ReadOnly="true" PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy HH:mm" Settings-FilterMode="DisplayText" EditFormSettings-Visible="False" Width="148"/>
                                 <dx:GridViewDataDateColumn EditFormSettings-VisibleIndex="10" FieldName="ProcessExpectedCompletion" Caption="Tg nhận dự kiến" Width="130">
                                     <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm">
                                         <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
@@ -89,6 +89,7 @@
                                     </PropertiesDateEdit>
                                 </dx:GridViewDataDateColumn>
                                 <dx:GridViewDataSpinEditColumn EditFormSettings-VisibleIndex="11" FieldName="AutoPriority" Caption="Độ trễ" ReadOnly="true" EditFormSettings-Visible="False" Width="78" />
+                                <dx:GridViewDataCheckColumn EditFormSettings-VisibleIndex="12" FieldName="DX_XuatHang_TruocDuKien" Visible="False" EditFormSettings-Visible="False"/>                                
                                 <dx:GridViewDataComboBoxColumn EditFormSettings-VisibleIndex="12" FieldName="ProcessPlusBrowse" Caption="Hỗ trợ" Visible="false" EditFormSettings-Visible="True">
                                     <PropertiesComboBox DataSourceID="OdsProcessExtraList" ValueField="ProcessListId" TextField="ProcessListName" ValueType="System.Int32" />
                                 </dx:GridViewDataComboBoxColumn>
