@@ -265,9 +265,9 @@ public class OrdersModels
                     pt.ProjectTaskTransmit = ProjectTaskTransmit;
                     pt.ProjectTaskDeadline = ProjectTaskDeadline;
                     pt.ProjectTaskDescription = ProjectTaskDescription;
-                    pt.DX_XuatHang_TruocDuKien = DX_XuatHang_DuKien.Value < pt.DX_XuatHang_DuKien.Value ? true : false;
+                    pt.DX_XuatHang_TruocDuKien = DX_XuatHang_DuKien.HasValue && pt.DX_XuatHang_DuKien.HasValue ? DX_XuatHang_DuKien.Value < pt.DX_XuatHang_DuKien.Value ? true : false : false;
                     pt.DX_XuatHang_DuKien = DX_XuatHang_DuKien.HasValue ? DX_XuatHang_DuKien : null;
-                    
+
                     if (UpdateProcess)
                     {
                         Nullable<decimal> factor = LINQData.db.PM_ProjectMolds.Where(w => w.MoldsId == ProjectTaskMoldsId).Select(s => s.MoldsFactor).FirstOrDefault();

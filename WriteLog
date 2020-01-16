@@ -82,3 +82,28 @@ Date: 14/11/2019 9:50:36 SA
 True
 Date: 14/11/2019 9:50:36 SA
 True
+Date: 16/01/2020 11:08:14 SA
+Error: Update đơn hàng!
+Date: 16/01/2020 11:08:14 SA
+System.InvalidOperationException: Nullable object must have a value.
+   at System.ThrowHelper.ThrowInvalidOperationException(ExceptionResource resource)
+   at System.Nullable`1.get_Value()
+   at OrdersModels.OrdersUpdated(Int32 ProjectTaskID, String ProjectTaskMoldCode, String ProjectTaskOverlayNum, String ProjectTaskHoleNum, Decimal ProjectTaskDiameterOut, String ProjectTaskMaterialsRequire, String ProjectTaskMaterialsCode, Int32 ProjectTaskMoldsId, Int32 ProjectTaskThickness, String ProjectTaskThicknessTotal, Int32 ProjectTaskQuantities, String ProjectTaskHorikomi, String ProjectTaskHardness, Int32 ProjectTaskCustomerId, Nullable`1 DX_XuatHang_DuKien, Nullable`1 DX_DuKienHT_EDM, Nullable`1 DX_DuKienHT_Mai, Nullable`1 DX_DuKienHT_MaiSNK, Nullable`1 DX_DuKienHT_MC, Nullable`1 DX_DuKienHT_NC, Nullable`1 DX_DuKienHT_Nhiet, Nullable`1 DX_DuKienHT_PhayTay, Nullable`1 DX_DuKienHT_QA, Nullable`1 DX_DuKienHT_WEDM, Nullable`1 DX_DuKienHT_LapRap, DateTime ProjectTaskDeadline, DateTime ProjectTaskTransmit, String ProjectTaskDescription) in d:\GitHub\cms.vApp.local\App_Code\Models\OrdersModels.cs:line 268
+Date: 16/01/2020 11:12:14 SA
+Error: Update đơn hàng!
+Date: 16/01/2020 11:12:14 SA
+System.InvalidOperationException: Nullable object must have a value.
+   at System.ThrowHelper.ThrowInvalidOperationException(ExceptionResource resource)
+   at System.Nullable`1.get_Value()
+   at OrdersModels.OrdersUpdated(Int32 ProjectTaskID, String ProjectTaskMoldCode, String ProjectTaskOverlayNum, String ProjectTaskHoleNum, Decimal ProjectTaskDiameterOut, String ProjectTaskMaterialsRequire, String ProjectTaskMaterialsCode, Int32 ProjectTaskMoldsId, Int32 ProjectTaskThickness, String ProjectTaskThicknessTotal, Int32 ProjectTaskQuantities, String ProjectTaskHorikomi, String ProjectTaskHardness, Int32 ProjectTaskCustomerId, Nullable`1 DX_XuatHang_DuKien, Nullable`1 DX_DuKienHT_EDM, Nullable`1 DX_DuKienHT_Mai, Nullable`1 DX_DuKienHT_MaiSNK, Nullable`1 DX_DuKienHT_MC, Nullable`1 DX_DuKienHT_NC, Nullable`1 DX_DuKienHT_Nhiet, Nullable`1 DX_DuKienHT_PhayTay, Nullable`1 DX_DuKienHT_QA, Nullable`1 DX_DuKienHT_WEDM, Nullable`1 DX_DuKienHT_LapRap, DateTime ProjectTaskDeadline, DateTime ProjectTaskTransmit, String ProjectTaskDescription) in d:\GitHub\cms.vApp.local\App_Code\Models\OrdersModels.cs:line 268
+Date: 16/01/2020 11:15:49 SA
+Error: Update đơn hàng!
+Date: 16/01/2020 11:15:50 SA
+System.InvalidOperationException: Nullable object must have a value.
+   at System.ThrowHelper.ThrowInvalidOperationException(ExceptionResource resource)
+   at System.Nullable`1.get_Value()
+   at OrdersModels.OrdersUpdated(Int32 ProjectTaskID, String ProjectTaskMoldCode, String ProjectTaskOverlayNum, String ProjectTaskHoleNum, Decimal ProjectTaskDiameterOut, String ProjectTaskMaterialsRequire, String ProjectTaskMaterialsCode, Int32 ProjectTaskMoldsId, Int32 ProjectTaskThickness, String ProjectTaskThicknessTotal, Int32 ProjectTaskQuantities, String ProjectTaskHorikomi, String ProjectTaskHardness, Int32 ProjectTaskCustomerId, Nullable`1 DX_XuatHang_DuKien, Nullable`1 DX_DuKienHT_EDM, Nullable`1 DX_DuKienHT_Mai, Nullable`1 DX_DuKienHT_MaiSNK, Nullable`1 DX_DuKienHT_MC, Nullable`1 DX_DuKienHT_NC, Nullable`1 DX_DuKienHT_Nhiet, Nullable`1 DX_DuKienHT_PhayTay, Nullable`1 DX_DuKienHT_QA, Nullable`1 DX_DuKienHT_WEDM, Nullable`1 DX_DuKienHT_LapRap, DateTime ProjectTaskDeadline, DateTime ProjectTaskTransmit, String ProjectTaskDescription) in d:\GitHub\cms.vApp.local\App_Code\Models\OrdersModels.cs:line 268
+Date: 16/01/2020 11:17:49 SA
+16/01/2020 12:00:00 SA_DX
+Date: 16/01/2020 11:35:06 SA
+16/01/2020 12:00:00 SA_DX
