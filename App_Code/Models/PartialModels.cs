@@ -143,6 +143,7 @@ public partial class OrdersObject {
     public Nullable<DateTime> ProjectTaskTransmit { get; set; }
     public string ProjectTaskDescription { get; set; }
     public string UserModified { get; set; }
+    public Nullable<DateTime> ModifiedWhen { get; set; }
     public Nullable<DateTime> CreatedWhen { get; set; }
     public string               DX_MaDonHang { get; set; }
     public Nullable<Decimal> DX_DuKienGC_LapRap { get; set; }

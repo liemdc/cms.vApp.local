@@ -99,6 +99,12 @@
             	                        <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
 	                                </PropertiesDateEdit>
                                 </dx:GridViewDataDateColumn>
+                                <dx:GridViewDataMemoColumn FieldName="UserModified" Caption="Người cập nhật" Width="188" EditFormSettings-Visible="False" />
+                                <dx:GridViewDataDateColumn FieldName="ModifiedWhen" Caption="Ngày cập nhật" Width="128" EditFormSettings-Visible="False">                                    
+                                    <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm">
+                                        <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
+                                    </PropertiesDateEdit>
+                                </dx:GridViewDataDateColumn>
                                 <dx:GridViewDataMemoColumn FieldName="ProjectTaskDescription" Caption="Mô tả" MinWidth="348" />                                            
                             </Columns>
                             <ClientSideEvents Init="OnInit" BeginCallback="OnBeginCallback" EndCallback="OnEndCallback" ColumnResized="function(s, e) { OnColumnResized(s, e, 0); }" ContextMenuItemClick="function(s,e) { if (e.item.name == 'CloneProduct') e.processOnServer = true; }" />
@@ -311,6 +317,12 @@
                                                 <ValidationSettings Display="Dynamic" RequiredField-IsRequired="true" RequiredField-ErrorText="Data is required." />
                                             </PropertiesComboBox>
                                         </dx:GridViewDataComboBoxColumn>
+                                        <dx:GridViewDataMemoColumn FieldName="UserModified" Caption="Người cập nhật" Width="188" EditFormSettings-Visible="False" />
+                                        <dx:GridViewDataDateColumn FieldName="ModifiedWhen" Caption="Ngày cập nhật" Width="128" EditFormSettings-Visible="False">                                    
+                                            <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm">
+                                                <TimeSectionProperties Visible="true" TimeEditProperties-EditFormatString="HH:mm" />
+                                            </PropertiesDateEdit>
+                                        </dx:GridViewDataDateColumn>
                                         <dx:GridViewDataMemoColumn FieldName="ProjectTaskDescription" Caption="Mô tả" MinWidth="348" />
                                     </Columns>
                                 <HeaderStyle HorizontalAlign="Left" />

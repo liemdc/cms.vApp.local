@@ -357,63 +357,6 @@
       <Association Name="PM_ProjectTask_PM_ProjectProcess" Member="PM_ProjectTask" ThisKey="ProcessProjectTaskID" OtherKey="ProjectTaskID" Type="PM_ProjectTask" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.DX_View_DonHang_Joined" Member="DX_View_DonHang_Joineds">
-    <Type Name="DX_View_DonHang_Joined">
-      <Column Name="ProcessProjectTaskID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="ProjectTaskCustomerId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ProjectTaskDeadline" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="ProjectTaskDescription" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="ProjectTaskDiameterOut" Type="System.Decimal" DbType="Decimal(10,0)" CanBeNull="true" />
-      <Column Name="ProjectTaskDisplayName" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
-      <Column Name="ProjectTaskHardness" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
-      <Column Name="ProjectTaskHoleNum" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
-      <Column Name="ProjectTaskHorikomi" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
-      <Column Name="ProjectTaskMaterialsCode" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
-      <Column Name="ProjectTaskMaterialsRequire" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
-      <Column Name="ProjectTaskMoldCode" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
-      <Column Name="ProjectTaskMoldsId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ProjectTaskOverlayNum" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
-      <Column Name="ProjectTaskPriorityID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="ProjectTaskQuantities" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ProjectTaskStatusID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="ProjectTaskThickness" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ProjectTaskThicknessTotal" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
-      <Column Name="ProjectTaskTransmit" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="DX_MaDonHang" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
-      <Column Name="DX_XuatHang_DuKien" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="DX_XuatHang_ThucTe" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="GC074" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
-      <Column Name="DK074" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="TT074" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="GC076" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
-      <Column Name="DK076" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="TT076" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="GC077" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
-      <Column Name="DK077" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="TT077" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="GC081" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
-      <Column Name="DK081" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="TT081" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="GC082" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
-      <Column Name="DK082" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="TT082" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="GC083" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
-      <Column Name="DK083" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="TT083" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="GC085" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
-      <Column Name="DK085" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="TT085" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="GC091" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
-      <Column Name="DK091" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="TT091" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="GC100" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
-      <Column Name="DK100" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="TT100" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="GC108" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
-      <Column Name="DK108" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="TT108" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.PM_ProjectTask" Member="PM_ProjectTasks">
     <Type Name="PM_ProjectTask">
       <Column Name="ProjectTaskID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -471,6 +414,65 @@
       <Association Name="PM_ProjectTaskPriority_PM_ProjectTask" Member="PM_ProjectTaskPriority" ThisKey="ProjectTaskPriorityID" OtherKey="TaskPriorityID" Type="PM_ProjectTaskPriority" IsForeignKey="true" />
       <Association Name="PM_Project_PM_ProjectTask" Member="PM_Project" ThisKey="ProjectTaskProjectID" OtherKey="ProjectID" Type="PM_Project" IsForeignKey="true" />
       <Association Name="PM_ProjectTaskStatus_PM_ProjectTask" Member="PM_ProjectTaskStatus" ThisKey="ProjectTaskStatusID" OtherKey="TaskStatusID" Type="PM_ProjectTaskStatus" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DX_View_DonHang_Joined" Member="DX_View_DonHang_Joineds">
+    <Type Name="DX_View_DonHang_Joined">
+      <Column Name="ProcessProjectTaskID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProjectTaskCustomerId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectTaskDeadline" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ProjectTaskDescription" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ProjectTaskDiameterOut" Type="System.Decimal" DbType="Decimal(10,0)" CanBeNull="true" />
+      <Column Name="ProjectTaskDisplayName" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="ProjectTaskHardness" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="ProjectTaskHoleNum" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="ProjectTaskHorikomi" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="ProjectTaskMaterialsCode" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="ProjectTaskMaterialsRequire" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="ProjectTaskMoldCode" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="ProjectTaskMoldsId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectTaskOverlayNum" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="ProjectTaskPriorityID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProjectTaskQuantities" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectTaskStatusID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProjectTaskThickness" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectTaskThicknessTotal" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="ProjectTaskTransmit" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DX_MaDonHang" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="DX_XuatHang_DuKien" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DX_XuatHang_ThucTe" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifiedByUserId" Type="System.String" DbType="NVarChar(450)" CanBeNull="true" />
+      <Column Name="ModifiedWhen" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="GC074" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="DK074" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TT074" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="GC076" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="DK076" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TT076" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="GC077" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="DK077" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TT077" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="GC081" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="DK081" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TT081" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="GC082" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="DK082" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TT082" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="GC083" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="DK083" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TT083" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="GC085" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="DK085" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TT085" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="GC091" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="DK091" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TT091" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="GC100" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="DK100" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TT100" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="GC108" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="DK108" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TT108" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

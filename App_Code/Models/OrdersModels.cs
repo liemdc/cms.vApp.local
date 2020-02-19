@@ -38,6 +38,8 @@ public class OrdersModels
                 DX_MaDonHang                = s.DX_MaDonHang,
                 DX_XuatHang_DuKien = s.DX_XuatHang_DuKien,
                 DX_XuatHang_ThucTe = s.DX_XuatHang_ThucTe,
+                UserModified = s.ModifiedByUserId,
+                ModifiedWhen = s.ModifiedWhen,
                 DX_DuKienGC_MaiSNK = s.GC081,
                 DX_DuKienHT_MaiSNK = s.DK081,
                 DX_ThucTeHT_MaiSNK = s.TT081,
@@ -100,6 +102,8 @@ public class OrdersModels
                 DX_MaDonHang = s.DX_MaDonHang,
                 DX_XuatHang_DuKien = s.DX_XuatHang_DuKien,
                 DX_XuatHang_ThucTe = s.DX_XuatHang_ThucTe,
+                UserModified = s.ModifiedByUserId,
+                ModifiedWhen = s.ModifiedWhen,
                 DX_DuKienGC_MaiSNK = s.GC081,
                 DX_DuKienHT_MaiSNK = s.DK081,
                 DX_ThucTeHT_MaiSNK = s.TT081,
@@ -267,6 +271,10 @@ public class OrdersModels
                     pt.ProjectTaskDescription = ProjectTaskDescription;
                     pt.DX_XuatHang_TruocDuKien = DX_XuatHang_DuKien.HasValue && pt.DX_XuatHang_DuKien.HasValue ? DX_XuatHang_DuKien.Value < pt.DX_XuatHang_DuKien.Value ? true : false : false;
                     pt.DX_XuatHang_DuKien = DX_XuatHang_DuKien.HasValue ? DX_XuatHang_DuKien : null;
+
+                    pt.ModifiedWhen = DateTime.Now;
+                    pt.ModifiedByUserId = CMSContext.CurrentUser.UserID;
+                    pt.ProjectTaskDescription = DX_XuatHang_DuKien.HasValue ? string.Format("[{0} cập nhật ngày xuất: {1}]", CMSContext.CurrentUser.FullName, DateTime.Now.ToShortDateString()) + pt.ProjectTaskDescription : pt.ProjectTaskDescription;
 
                     if (UpdateProcess)
                     {
